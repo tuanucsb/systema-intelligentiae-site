@@ -1,0 +1,166 @@
+{
+  "id": 4,
+  "title": "The Exosomatic Ratchet: Decoupling Informational Persistence from Somatic Biomass from Acheulean Handaxes to the Modern Datasphere",
+  "plain_title": "How humans moved memory out of the brain",
+  "thesis": "Human intelligence became cumulative and planetary because memory moved out of living brains into durable objects, from stone tools to clay, paper and data centres.",
+  "summary": "The paper argues that brains are capped by lifespan, skull size and a four-item working memory, so humans had to store knowledge outside the body. It proposes a ratchet number that says when a culture keeps more knowledge than it loses, and a persistence capacity (bits stored times years they last) that it evaluates for stone tools, oral tradition, clay tablets, printed books and cloud storage. It also tabulates brain size and neuron counts for 14 fossil hominins, sketches ten ages of planetary computing, and claims that storage density rose 21 orders of magnitude while retention time fell, and that digital computing now exceeds all human brains combined.",
+  "claims": [
+    {
+      "claim": "Storage density of human-made memory rose 21 orders of magnitude from the Acheulean handaxe to DNA storage.",
+      "section": "Abstract; Section 5 table; Figure 1",
+      "paper_value": "21 orders of magnitude (10⁻⁴ bits per cm³ for a handaxe up to 10¹⁷ bits per cm³ for DNA storage)",
+      "data_value": "No handaxe density exists in the project data. Using the paper's own 100 to 1,000 bits per handaxe and a hand-sized stone of about 300 cm³ gives 0.3 to 3 bits per cm³, so the span is about 14 orders to today's flash memory and 16 to 17 orders to the paper's DNA figure; the memory ledger's own range from clay tablets (0.23 bits per cm³) to flash drives (1.8×10¹⁴) is 15 orders.",
+      "source": "Recomputed from the manuscript's stated bits per tool; compared with volumetric densities in paper0_memory_persistence_ledger.csv",
+      "verdict": "not_reproducible",
+      "note": "The stated endpoints do divide to 21 orders, but the low endpoint is impossible: 100 to 1,000 bits at 10⁻⁴ bits per cm³ means a handaxe of 1 to 10 cubic metres of stone, and the figure's five deployed technologies only span 10⁻⁴ to 10¹⁴, 18 orders even accepting the handaxe value."
+    },
+    {
+      "claim": "The engraved Blombos ochre stores a few thousand bits of abstract pattern at about a tenth of a bit per cubic centimetre.",
+      "section": "Abstract; Section 5, Epoch II",
+      "paper_value": "about 4,200 bits; 10⁻¹ bits per cm³",
+      "data_value": "4,200 bits in the catalog measurement log (matches); no volume or density is recorded, and 4,200 bits at 0.1 bits per cm³ implies a 42-litre block, while the real engraved piece is a few centimetres long (tens of cm³, so roughly 50 to 100 bits per cm³)",
+      "source": "Systema_Intelligentiae_Catalog.xlsx Measurements sheet (Blombos ochre capacity row); density recomputed as bits divided by implied volume",
+      "verdict": "not_reproducible",
+      "note": "The bit count matches the catalog exactly, but dividing it by any realistic volume gives a density about 500 to 1,000 times higher than the manuscript's 0.1 bits per cm³, which pulls the low end of Figure 1 up by about three orders."
+    },
+    {
+      "claim": "Clay tablets store about a hundred bits per cubic centimetre and printed paper about a hundred thousand.",
+      "section": "Abstract; Section 5 table",
+      "paper_value": "10² bits per cm³ (fired clay); 10⁵ bits per cm³ (rag paper)",
+      "data_value": "0.23 bits per cm³ for inscribed clay and stone; 8,000 bits per cm³ for rag paper (12,000 for wood-pulp paper)",
+      "source": "paper0_memory_persistence_ledger.csv, volumetric_density_bits_per_cm3 column; book density also recomputed from the paper's own 5×10⁶ bits per book",
+      "verdict": "differs",
+      "note": "The ledger gives clay about 400 times lower and paper about 12 times lower than the manuscript; the paper's own 5 million bits per book at 10⁵ bits per cm³ would need a 50 cm³ book, whereas a real 500 to 1,000 cm³ book gives 5,000 to 10,000 bits per cm³, in line with the ledger."
+    },
+    {
+      "claim": "The world's unique active cloud and archival storage in 2026 is about 15 zettabytes.",
+      "section": "Abstract; Section 2.5.3, item 5; Section 4, Age X",
+      "paper_value": "1.2×10²³ bits (about 15 zettabytes), within a 150 zettabyte gross datasphere",
+      "data_value": "1.2×10²³ bits installed exosomatic storage, 2026 (tape 1.8×10²² + hard disks 5.4×10²² + flash 4.8×10²² = 1.2×10²³); the planetary time series gives the same 1.2×10²³ for the present",
+      "source": "paper0_memory_persistence_ledger.csv (installed_capacity_2026_bits) and planetary_intelligence_timeseries.csv (m_exo_installed_bits, final row)",
+      "verdict": "matches",
+      "note": "I summed the three digital media rows of the ledger and converted 15 zettabytes to bits (15×10²¹ × 8 = 1.2×10²³); both agree with the manuscript."
+    },
+    {
+      "claim": "Modern storage must be refreshed every 15 years, giving a persistence capacity of 1.8×10²⁴ bit-years for the datasphere.",
+      "section": "Abstract; Section 2.5.3, item 5; Section 5 table",
+      "paper_value": "retention 15 years; persistence 1.8×10²⁴ bit-years",
+      "data_value": "ledger: weighted mean retention 8.3 years and persistence 9.96×10²³ bit-years (sum of tape 4.5×10²³, disk 3.78×10²³, flash 1.68×10²³); planetary time series: 3.5 years and 4.2×10²³ bit-years",
+      "source": "paper0_memory_persistence_ledger.csv (mean_retention_lifetime_yr, persistence_integral_bit_yr); planetary_intelligence_timeseries.csv (tau_exo_unpowered_years, phi_exo_unpowered_bit_years)",
+      "verdict": "differs",
+      "note": "The manuscript's multiplication (1.2×10²³ × 15 = 1.8×10²⁴) is correct, but 15 years is the top of its own quoted 5-to-15-year range, while the project's ledger gives 8.3 years and 9.96×10²³ bit-years, 1.8 times smaller, and the time series 3.5 years and 4.2×10²³."
+    },
+    {
+      "claim": "One human brain holds about 88 terabytes in its synapses, performs about 150 trillion synaptic operations a second, and runs on 20 watts.",
+      "section": "Sections 2.3, 2.4, 4 (Age VIII) and 7",
+      "paper_value": "1.5×10¹⁴ synapses × 4.7 bits = 7.05×10¹⁴ bits ≈ 88.1 TB; 150 TOPS; 20 W (0.133 pJ per operation)",
+      "data_value": "arithmetic reproduces: log₂(26) = 4.70 bits, 7.05×10¹⁴ bits ÷ 8 = 88.1 TB, 20 W ÷ 1.5×10¹⁴ per s = 0.133 pJ; the ledger uses the same 4.7 bits per synapse (3×10²⁷ synapses worldwide × 4.7 = 1.41×10²⁸ bits); the hominin table's RAM, TB and TOPS columns all follow from neurons × 1,743 synapses per neuron",
+      "source": "Recomputed by hand; cross-checked against paper0_memory_persistence_ledger.csv synaptic row and planetary_intelligence_timeseries.csv n_synapses_global",
+      "verdict": "matches",
+      "note": "Every number in this chain follows from the two literature inputs (1.5×10¹⁴ synapses, 26 synapse states) and a 1 Hz firing rate, and the ledger adopts the same per-synapse figure; the only wrinkle is that the paper also quotes 11.2 W per kg, which would give 15.7 W for a 1.4 kg brain, not 20 W."
+    },
+    {
+      "claim": "Fourteen fossil hominins trace a tripling of brain size with specific ages, body masses and neuron counts.",
+      "section": "Section 3 table; Figure 2",
+      "paper_value": "e.g. Homo erectus 1.0 million years ago, 60 kg, 950 cm³, 62 billion neurons; Australopithecus afarensis 3.2 million years ago; Homo habilis 1.9; Homo heidelbergensis 0.43; Neanderthal 0.06",
+      "data_value": "brain volumes and neuron counts match for all 11 taxa present in the file; ages differ for six (afarensis 3.5, boisei 2.0, habilis 2.3, erectus 1.8, heidelbergensis 0.6, Neanderthal 0.1 million years ago) and body mass for two (erectus 55 kg, heidelbergensis 70 kg); Sahelanthropus, Homo antecessor and the Jebel Irhoud skull are not in the file",
+      "source": "cns_structural_evolution.csv, columns divergence_mya, body_mass_g, total_brain_mass_g, total_neurons, compared row by row",
+      "verdict": "differs",
+      "note": "Neuron counts and volumes come straight from the file, but 3 of the 14 taxa are not in it and the dates of 6 others were changed (Homo erectus by 0.8 million years), so the table is only partly from the cited data."
+    },
+    {
+      "claim": "In 2026 digital machines out-compute all human brains combined: 3.5×10²⁴ operations a second on 450 GW versus 1.215×10²⁴ synaptic operations a second on 162 GW.",
+      "section": "Section 4, Age X; Section 5, Epoch V; Figure 3",
+      "paper_value": "digital 3.5×10²⁴ FLOP/s at 450 GW; human 1.215×10²⁴ synaptic operations per second at 162 GW; total 4.7×10²⁴",
+      "data_value": "device ledger: 1.89×10²² executed operations a second (peak 7.6×10²²) at 80 GW; time series: digital 1.89×10²², human-plus-animal synaptic 3×10²⁶, total planetary 2.8×10³³ (dominated by microbial biochemistry)",
+      "source": "paper0_device_inventory_ledger.csv total row; planetary_intelligence_timeseries.csv final row (c_digital_ops_sec, c_neural_ops_sec, c_total_ops_sec, p_digital_it_watts)",
+      "verdict": "differs",
+      "note": "The human side reproduces (8.1×10⁹ × 1.5×10¹⁴ = 1.215×10²⁴; 8.1×10⁹ × 20 W = 162 GW), but the digital side is 185 times the ledger's executed figure and 46 times its peak, and uses 5.6 times its power; by the project's own data digital computing is 1.6 percent of human synaptic activity, so there is no inversion."
+    },
+    {
+      "claim": "Planetary computing in the first two ages of life ran at about 10¹⁴ operations a second (RNA world) and 10²¹ (prokaryotes).",
+      "section": "Section 4, Ten Ages table and Ages I to III",
+      "paper_value": "10¹³ to 10¹⁵ operations per second from 6×10³⁶ ribozymes; 10²¹ from 1.2 to 3.1×10³⁰ prokaryotic cells at 1,000 steps a second each",
+      "data_value": "the paper's own inputs give 6×10³⁶ to 6×10³⁷ (RNA) and 1.2 to 3.1×10³³ (prokaryotes); the time series gives 2.6×10²¹ for the first protocells and 10³² to 10³³ for the prokaryotic ages",
+      "source": "Recomputed from the manuscript's stated molecule and cell counts and rates; compared with planetary_intelligence_timeseries.csv c_total_ops_sec",
+      "verdict": "not_reproducible",
+      "note": "Multiplying the paper's 6×10³⁶ molecules by its 1 to 10 reactions a second gives 22 orders of magnitude more than it states, and its prokaryote figure is 12 orders below its own cells-times-rate product and 11 to 12 orders below the project time series, so the Ten Ages table and Figure 3 are not derived from the stated inputs."
+    },
+    {
+      "claim": "Small hunter-gatherer bands fall below the cultural ratchet threshold, so skills are lost faster than they are invented.",
+      "section": "Section 2.5.2",
+      "paper_value": "ratchet number = N × τ × F ÷ μ with N 10 to 100, τ 30 years, F 0.15, μ 500 per year, giving a value below 1",
+      "data_value": "not in the data; recomputing gives 0.09 (N = 10) to 0.9 (N = 100), and the value passes 1 at N ≈ 111",
+      "source": "Arithmetic on the manuscript's own parameters; formula attributed to Henrich 2004",
+      "verdict": "prose_only",
+      "note": "The numbers do fall below 1 as stated, but the quantity is called dimensionless while its units work out to years squared, none of the four parameters is measured anywhere in the project, and the result flips above 1 for a band only slightly larger than the paper's own range."
+    }
+  ],
+  "rationale": [
+    {
+      "step": "Brains are capped by lifespan, by skull size and heat, and by a four-item working memory, so growing knowledge had to move outside the body.",
+      "assessment": "weak",
+      "note": "The three limits are real and well cited, but the paper's own table shows brain volume still rising to 1,600 cm³ at 60,000 years ago while the first handaxes date to 1.76 million years ago, so externalisation began long before any ceiling and the ceiling cannot have forced it."
+    },
+    {
+      "step": "A culture accumulates knowledge only when a ratchet number (population × retention × fidelity ÷ loss rate) exceeds one, and external media push it over by lengthening retention and raising copying fidelity.",
+      "assessment": "weak",
+      "note": "The formula is asserted rather than derived, has units of years squared despite being called dimensionless, and is never evaluated against any project measurement; the only worked example uses chosen parameters."
+    },
+    {
+      "step": "Across five epochs the density of external memory rose about 21 orders of magnitude while unpowered retention time fell from 100,000 years to 15 years.",
+      "assessment": "unsupported",
+      "note": "The direction holds (the ledger goes from 0.23 bits per cm³ and 5,000 years for clay to 1.8×10¹⁴ bits per cm³ and 3.5 years for flash), but the 21-orders figure rests on a handaxe density that implies a cubic-metre stone and on no measured volume for any artefact."
+    },
+    {
+      "step": "Persistence capacity (bits × years) nonetheless climbed from about 10¹³ bit-years for stone tools to about 10²⁴ for the datasphere, which now survives only through continuous electrical refresh.",
+      "assessment": "holds",
+      "note": "The ledger gives 5×10¹³ bit-years for clay and stone, 9.96×10²³ for digital media and 20 GW of refresh power, so the shape of the argument is supported even though the paper's 1.8×10²⁴ overstates the ledger by 1.8 times."
+    },
+    {
+      "step": "Digital machines now out-compute all human brains, so intelligence has become non-biological and planetary.",
+      "assessment": "unsupported",
+      "note": "The project's device ledger puts executed digital operations at 1.89×10²² a second, 1.6 percent of the 1.215×10²⁴ synaptic operations of 8.1 billion human brains and 0.006 percent of all animal synaptic activity, the reverse of the inversion the paper describes."
+    }
+  ],
+  "conclusions": [
+    {
+      "conclusion": "Human culture accumulates because memory was moved out of brains into durable external objects, and this is what made intelligence cumulative and planetary.",
+      "assessment": "partly",
+      "note": "The project time series does show external memory climbing from about 10⁵ bits in the handaxe era to 1.2×10²³ bits today, but the threshold mechanism is never tested and the claim that brain limits forced the move contradicts the paper's own timeline."
+    },
+    {
+      "conclusion": "Storage density of human-made memory has increased by 21 orders of magnitude.",
+      "assessment": "not_supported",
+      "note": "Bits divided by any realistic artefact volume gives about 14 orders to today's flash memory and 16 to 17 to DNA storage; the ledger's clay-to-flash range is 15 orders."
+    },
+    {
+      "conclusion": "Modern civilisation's memory is far larger but far shorter-lived than ancient media, and survives only by continuous power (the persistence paradox).",
+      "assessment": "supported",
+      "note": "The ledger gives 1.2×10²³ bits with 8.3-year mean retention and 20 GW refresh power against 10¹⁰ bits with 5,000-year retention and zero power for clay, so the paradox holds even though the paper's 15 years and 1.8×10²⁴ bit-years overstate it."
+    },
+    {
+      "conclusion": "Digital computing has overtaken the combined computing of all human brains.",
+      "assessment": "not_supported",
+      "note": "The paper's 3.5×10²⁴ operations a second is 185 times the executed total and 46 times the peak total in the project's own device ledger, which leaves digital computing well below human synaptic activity."
+    }
+  ],
+  "inconsistencies": [
+    "The handaxe is said to hold 100 to 1,000 bits at 10⁻⁴ bits per cm³, which requires a stone of 1 to 10 cubic metres; the Blombos ochre is said to hold 4,200 bits at 0.1 bits per cm³, which requires a 42-litre block. The bit counts and the densities cannot both be right.",
+    "The abstract gives DNA storage as 10¹⁷ bits per cm³ while Figure 1 plots 2.15×10¹⁷ and the memory ledger gives 2.4×10²¹ bits per cm³ for DNA; the figure's number equals a published figure of 215 petabytes per gram, a bytes-per-gram quantity, which suggests a unit mix-up.",
+    "Retention for cloud storage is 15 years in every table and formula, but the same paragraph calls it a 5-to-15-year horizon, the memory ledger gives 8.3 years and the planetary time series 3.5 years.",
+    "The Ten Ages table and its text disagree: hominin Paleolithic compute is 1.5×10²⁰ to 10²² in the table but 1.5×10¹⁹ to 7.5×10²⁰ in the text; RNA-world hereditary code is 200 to 500 bits in the table but 200 to 1,000 bits in the text, and the text's 100-letter error threshold contradicts its own 100-to-500-letter ribozymes.",
+    "Figure 3 plots 1.2×10²⁴ and 1.3×10²⁴ operations a second for the hominin and historical ages, while the Ten Ages table gives at most 10²² and 3.5×10²³ for the same ages.",
+    "The Anthropocene total of 4.7×10²⁴ operations a second counts only humans and machines, yet the paper's own Age VII puts non-human animal brains at 10²⁴ to 3×10²⁶, and the project time series gives 3×10²⁶ for all animal synaptic activity today.",
+    "The paper says it tracks 14 hominin taxa; the table has 15 rows (including the chimpanzee), the data file has 11 of them, and Figure 2 plots only 12 (dropping Australopithecus sediba and Homo floresiensis).",
+    "Six hominin dates and two body masses differ from the project's CNS file, most sharply Homo erectus at 1.0 versus 1.8 million years ago.",
+    "The paper's epoch labels are shifted by about two steps from the project's own epoch table: in the project table the handaxe era, Blombos ochre, Uruk cuneiform and Gutenberg fall two sub-epochs earlier than the labels the manuscript gives them, so cross-references to the planetary time series point at the wrong rows.",
+    "Seven of the catalog entries the manuscript cites describe different objects: the entry given for the Acheulean handaxe is the spear-thrower, the one for Uruk clay tablets is the Antikythera mechanism, the one for the Gutenberg press is Babbage's Difference Engine, the one for the Antikythera mechanism is the Inca quipu, the one for the Analytical Engine is Kelvin's tide predictor, the one for cave murals is the meerkat alarm call, and the one for the modern human is the sea slug Aplysia.",
+    "Brain power is given as 20 W for a 1.4 kg brain (14.3 W per kg) but also as 11.2 W per kg, which would be 15.7 W; a 3 kg brain is said to need 45 W, whereas 20 W scaled to 3 kg is 43 W and 11.2 W per kg gives 34 W.",
+    "Eukaryotic genomes of 10⁷ to 10⁹ letters are given as 20 to 200 megabytes; at 2 bits per letter they are 2.5 to 250 megabytes.",
+    "Oral tradition is dated 30,000 to 10,000 years ago in Section 2 and 36,000 to 10,000 years ago in Section 5; the ledger treats living synaptic memory as lasting weeks (0.055 years), not the 50 years the paper assigns to it.",
+    "Printed-book memory for 1450 to 1700 is put at 10¹⁴ bits, while the project time series gives 2×10¹² to 10¹³ bits for the same period, 10 to 50 times less.",
+    "The ratchet number is called dimensionless, but population × years × fidelity ÷ (per year) has units of years squared."
+  ],
+  "bottom_line": "A reader can rely on the brain-scale arithmetic (88 TB, 150 trillion operations a second, 20 W), on today's 1.2×10²³ bits of storage, and on the broad picture that external memory grew enormously while its unpowered lifetime shrank to a few years. The headline numbers should not be repeated: the 21 orders of magnitude in density rests on impossible artefact volumes, the 15-year retention and 1.8×10²⁴ bit-years overstate the project ledger, the Ten Ages compute figures do not follow from their own inputs, and the project's device ledger shows digital computing at about 1.6 percent of human synaptic activity, not ahead of it."
+}

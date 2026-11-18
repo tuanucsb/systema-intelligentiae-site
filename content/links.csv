@@ -1,0 +1,84 @@
+from,to,why,refs
+vent-gradient,autocatalysis,The vent battery powers the first carbon fixation.,27; 47; 48; 67
+autocatalysis,self-copying,Reactions that make more of themselves.,27; 47; 67; 81
+self-copying,genetic-code,Copying chemistry becomes a code.,47; 67; 68; 81
+ribosome,chemoreceptors,Proteins built by ribosomes become sensors.,28; 29; 30; 66
+genetic-code,gene-swapping,A shared code lets cells swap genes.,21; 28; 30; 66
+chem-state,four-second-memory,Chemical state becomes a deliberate memory.,13; 27; 47; 50
+chemoreceptors,gradient-climbing,Sensors feed the first navigation rule.,13; 49; 50; 80
+four-second-memory,gradient-climbing,Comparing now with then is what makes climbing possible.,13; 49; 50
+oxy-photo,day-clock,Sun-powered cells need to anticipate dawn.,13; 16; 17; 27
+oxy-photo,aerobic,Oxygen from photosynthesis becomes fuel.,15; 16; 17; 27
+quorum,multicellular,Cells that coordinate can stick together.,3; 13; 22; 68
+aerobic,mitochondria,An oxygen-breathing bacterium becomes the mitochondrion.,15; 17; 22; 27
+mitochondria,chromatin,Spare energy per gene lets genomes grow.,20; 22; 27; 68
+mitochondria,euk-signaling,Spare energy pays for complex signaling.,13; 22; 27; 68
+oxy-photo,chloroplast,A cyanobacterium is captured and kept.,2; 16; 17; 27
+chloroplast,eyespot,Sun-harvesters learn to steer toward light.,2; 16; 27; 68
+chromatin,sex,Large genomes get shuffled by meiosis.,20; 22; 27; 68
+euk-signaling,multicellular,Cell-to-cell signals let clones split the work.,13; 22; 27; 69
+multicellular,tissue-waves,Tissues need to coordinate.,22; 68; 69; 74
+synapse-kit,neurons,Glue proteins are repurposed as synapses.,18; 43; 74; 75
+tissue-waves,bioelectric,Chemical waves become electrical ones.,69; 74; 75
+bioelectric,neurons,Tissue voltage signaling becomes nerve nets.,18; 69; 74; 75
+head,steering,Sensors at the front make steering possible.,39; 49; 74; 75
+neurons,steering,A nerve net links sensing to turning.,18; 19; 39; 74
+steering,reinforcing,Approach-or-avoid becomes learning from reward.,39; 49; 50
+three-part-brain,reinforcing,A central brain can learn.,39; 49; 51; 76
+neural-activity,synaptic-weights,Activity leaves lasting traces in synapses.,14; 18; 24; 39
+myelin,neocortex,Fast wiring lets big brains stay in sync.,18; 19; 39; 65
+land-plants,hyperoxia,Forests push oxygen up to ~33%.,2; 16; 63; 70
+land-plants,wood-wide-web,Roots invite fungal partners.,2; 16; 63; 70
+eyes-in-air,planning,Seeing far makes planning pay.,39; 64
+planning,simulating,Planning becomes imagined replay.,39; 49; 64; 65
+endothermy,neocortex,A warm body keeps a big cortex running.,15; 39; 56; 65
+hippocampal-maps,simulating,Maps are what replay runs on.,14; 39; 49; 65
+neocortex,mentalizing,A larger cortex can model other minds.,18; 23; 39; 65
+simulating,mentalizing,Modeling yourself extends to modeling others.,23; 39; 49; 65
+middle-ear,echolocation,High-pitched hearing makes echolocation possible.,10; 43; 62; 65
+flight-controller,dense-pallium,Flying brains stay light by packing neurons densely.,23; 43; 61
+mentalizing,speaking,Reading minds makes language worth having.,23; 39; 68
+fire,speaking,Cooked food frees energy for a bigger brain.,23; 39; 68
+tool-hands,stone-tools,Hands strike the first tools.,23; 25; 39; 43
+stone-tools,fire,Toolmaking bands learn to manage fire.,23; 25; 39
+stone-tools,engraved-symbols,Marks on stone start to mean something.,23; 25; 39
+speech,tribes,Shared language binds larger groups.,23; 39; 44; 68
+speaking,cave-art,Stories get painted onto walls.,23; 25; 39; 68
+agriculture,villages,A surplus lets people settle down.,2; 6; 23; 35
+agriculture,cuneiform,A surplus needs accounting.,2; 6; 25; 35
+cuneiform,city-states,Written ledgers coordinate strangers.,25; 68; 83
+alphabet,printing,Few letters make movable type practical.,25; 44
+printing,journals,Cheap copies make journals possible.,25; 44; 79
+journals,stored-programs,Centuries of printed logic and math become the theory of computing.,25; 28; 44; 79
+coal-steam,telegraph,Industrial power and copper wire.,17; 25; 44; 79
+coal-steam,tabulators,Electric industry powers counting machines.,17; 25; 29; 79
+telegraph,arpanet,Electrical signaling grows into computer networks.,25; 44
+integrated-circuits,dram,Chips make electronic memory cheap.,25; 45; 80; 85
+integrated-circuits,digital-storage,Cheap chips make digital storage cheap.,25; 26; 45; 80
+fiber,web,Light in glass carries the traffic.,25; 26; 44
+gpus,transformers,GPU power makes large models trainable.,77; 78; 80
+web,transformers,The web becomes training text.,25; 26; 44; 77
+transformers,ai-clusters,Big models need giant clusters.,26; 77; 78; 80
+vent-gradient,pore-clusters,One vent feeds thousands of mineral pores.,27; 47; 48; 68
+diffusion,contact-chem,Molecules reach the walls only by drifting there.,27; 48; 50; 81
+diffusion,neurons,"Diffusion takes minutes to cross a millimeter, too slow for a body. Nerves fix that.",18; 27; 48; 50
+rna,ribosome,The ribosome's core is still an RNA machine.,28; 67; 68; 81
+dna,gene-swapping,Stable DNA can be handed from cell to cell.,20; 21; 28; 68
+anoxy-photo,syntrophy,Sunlight-fed microbes feed whole partner communities.,3; 16; 17; 27
+endosymbiosis,mitochondria,Living inside another cell is how the mitochondrion began.,22; 27; 68
+endosymbiosis,chloroplast,"The same trick, done again with a cyanobacterium.",2; 22; 27; 68
+mycelia,land-plants,Fungal partners help the first plants settle on land.,2; 16; 68; 73
+neurons,bare-axons,Neurons send their signals down long fibers.,18; 19; 39; 74
+compound-eyes,three-part-brain,Big eyes need a brain to make sense of the picture.,39; 50; 51; 76
+three-part-brain,schools,Brains that track neighbors let fish move as one.,39; 51; 76
+three-part-brain,eusocial,"Tiny insect brains, linked by scent, run a whole colony.",9; 39; 51; 76
+cuneiform,gear-computer,Centuries of Babylonian sky records give the gears their cycles.,25; 29; 83
+empires,codex,Empires need records that travel well and open at any page.,25; 44; 68
+codex,journals,"Bound, indexed pages become the shape of the journal.",25; 44; 79
+calculators,stored-programs,Leibniz's binary arithmetic becomes the language of programs.,25; 28; 29; 46
+electronic-computers,stored-programs,EDVAC's design keeps the program in memory beside the data.,25; 28; 29; 45
+ai-clusters,power-today,Data centers now draw about 50–80 GW of the total.,26; 77; 78; 80
+ai-clusters,hbm,AI chips sit on stacks of fast memory.,26; 77; 78; 80
+ai-clusters,reasoning,Giant clusters make step-by-step thinking affordable.,26; 77; 78; 80
+web,zettabytes,"The web's photos, videos and messages fill the world's drives.",25; 26; 44; 85
+fiber,planetary-net,Undersea fiber carries almost all traffic between continents.,25; 26; 44; 79

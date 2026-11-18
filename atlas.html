@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atlas of Minds · Systema Intelligentiae</title>
+<meta name="description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
+<meta property="og:title" content="Atlas of Minds · Systema Intelligentiae">
+<meta property="og:description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
+<meta property="og:image" content="assets/og/default.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Atlas of Minds · Systema Intelligentiae">
+<meta name="twitter:description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
+<meta name="twitter:image" content="assets/og/default.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <span class="eyebrow">Atlas of minds</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">The stack is made of things</h1>
+    <p>Each dot is one system from the catalog behind this site: a cell, an animal, an archive, a society, a chip, a neural net. It sits where its kind first appeared and at the number of operations it does each second, in the colour of the layer of the <a href="index.html">thinking stack</a> it lives in.</p>
+  </div>
+
+  <section class="sec" style="padding-top:8px" aria-labelledby="mapH">
+    <h2 id="mapH" class="sr-only">Map of systems</h2>
+    <div class="keys" id="atKeys" role="group" aria-label="Kinds of system: select one to highlight it"></div>
+    <div class="stack-wrap"><svg id="atlas" role="img" aria-label="Catalog systems by date of first appearance and operations per second. The table below counts what has been measured for each kind."></svg></div>
+    <p class="teach">Both axes go up in steps of ×10. A dot one grid line higher does ten times more each second; a dot one grid line to the left first appeared ten times longer ago. <span id="atNote"></span></p>
+  </section>
+
+  <section class="sec" aria-labelledby="covH">
+    <div class="sec-head"><h2 id="covH">What we have measured, and for whom</h2><p>Each cell counts the systems of that kind with at least one sourced measurement in that dimension. Darker means a larger share of that kind is covered. The pale cells are the gaps.</p></div>
+    <div class="cov-wrap"><table class="cov" id="cov"><caption class="sr-only">Number of catalog systems with a sourced measurement, by dimension and kind</caption></table></div>
+    <p class="note">The full tables, with sources and uncertainty ranges, are in the <a href="data.html">Data Lab</a>.</p>
+  </section>
+</main>
+
+<div class="tip" id="tip" hidden></div>
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/atlas-page.js"></script>
+</body>
+</html>

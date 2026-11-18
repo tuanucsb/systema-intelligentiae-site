@@ -1,0 +1,8 @@
+variable,units,deterministic_central,mc_p2_5_low,mc_p50_median,mc_p97_5_high,uncertainty_factor_95ci
+Modern Prokaryotic Cell Census N_prok (EP32b),cells,3.10e+30,1.56887994994947e+30,3.108352097014537e+30,6.204683691980298e+30,3.95
+Modern Biospheric Biochemical Event Rate C_biochem (EP32b),events/s,2.700289479821971e+33,9.456382396837739e+32,2.700289479821971e+33,8.245156380295767e+33,8.72
+Modern Global Animal Neural Event Rate C_neural (EP32b),synaptic events/s,3.016655958232833e+26,9.084306516432117e+25,3.016655958232833e+26,9.915242407629087e+26,10.91
+Modern Global Executed Digital Throughput C_digital (EP32b),executed Ops/s,1.8747035103058148e+22,9.388225709827181e+21,1.8747035103058148e+22,3.2384158065287655e+22,3.45
+Modern Digital-to-Neural Throughput Ratio C_digital/C_neural (EP32b),dimensionless,6.0663263589267965e-05,1.5790026302615017e-05,6.0663263589267965e-05,0.00022964665551231954,14.54
+End-Permian (253 -> 251.9 Ma) Neural Throughput Drop,percent (%),93.9857959785646,87.75513568772904,93.9857959785646,99.0,1.13
+K-Pg Chicxulub (66.05 -> 66.00 Ma) Neural Throughput Drop,percent (%),92.57113180407072,84.55217767650795,92.57113180407072,98.5,1.16

@@ -1,0 +1,167 @@
+{
+  "id": 5,
+  "title": "The Evolution of Collective Organization and Multi-Agent Superorganisms: From Eusocial Insect Castes, Termite Cathedral Mounds, and Scale-Free Vertebrate Flocks to the 8.1-Billion-Human Planetary Superorganism",
+  "plain_title": "How living things team up into giant group minds",
+  "thesis": "Groups of organisms, from bacterial films and ant colonies to bird flocks and human civilization, beat the limits of a single brain by coordinating many brains, and humans did it by stacking layers of organization on top of ever-larger outside memory such as writing and computers.",
+  "summary": "The paper lines up 22 kinds of collective, from 3.5-billion-year-old microbial mats to today's 8.1 billion networked humans, and gives each a group size, a total neuron count, a memory and a computing rate. It argues that insects built superorganisms through sterile worker castes and chemical trails, that flocks and schools coordinate by each animal tracking about seven neighbours, and that humans scaled up through layered hierarchies plus outside record-keeping. The key quantitative claim is that every tenfold growth in a human society needed roughly a 280-fold growth in stored outside information. We recomputed the main numbers from the project's own data files and the figure-building script.",
+  "claims": [
+    {
+      "claim": "Across the eight human stages, stored outside memory grows as a steep power of population, with a very tight fit.",
+      "section": "Section 2.4, point 3, and Figure 3B",
+      "paper_value": "log10(outside memory) = 2.45 × log10(population) − 2.80, R² = 0.984; about 280 times more storage per tenfold population",
+      "data_value": "Refit of the script's own eight points: slope 2.10, intercept −1.38, R² = 0.90; that slope means about 127 times more storage per tenfold population. The stated line explains only 87 percent of the spread of those points (R² = 0.87).",
+      "source": "The eight outside-memory values are typed by hand in scripts/build_paper5_collective_organization.py (bands 35 and 150 people, 3,000, 20,000, 80,000, 60 million, 300 million, 8.1 billion); collective_organization_evolution.csv has no outside-memory column at all, only a total memory column.",
+      "verdict": "not_reproducible",
+      "note": "I fitted a straight line to the eight log-log points the figure plots and got slope 2.10 and R² 0.90, not 2.45 and 0.984; the dashed line in the figure is labelled a 'theoretical threshold' in the script, not a regression, and 10 to the power 2.45 is indeed 282, so the '280-fold' follows from the stated slope but not from the data."
+    },
+    {
+      "claim": "A single leafcutter ant colony holds more neurons than a cat brain and about one forty-third of a human brain.",
+      "section": "Abstract, Table 1 (Section 3.2)",
+      "paper_value": "2.0×10¹² neurons, 2.7 times a domestic cat brain, about 1/43 of a human brain",
+      "data_value": "8.0×10⁶ ants × 2.5×10⁵ neurons = 2.0×10¹² neurons (matches the CSV), but the project's species file gives a cat 1.2×10⁹ neurons and a human 8.6×10¹⁰, so the colony is about 1,700 cat brains and about 23 human brains, not 1/43 of one.",
+      "source": "collective_organization_evolution.csv row for leafcutter ants (group size × neurons per individual); cleaned_biological_species.csv rows for domestic cat, human and leafcutter worker.",
+      "verdict": "differs",
+      "note": "The product is right but both brain comparisons are off by about a thousandfold in opposite directions; the species file also lists 4.0×10⁵ neurons per leafcutter worker, which would make the colony 3.2×10¹² neurons."
+    },
+    {
+      "claim": "A termite mound colony has about as many neurons as a macaque monkey brain, and Table 1 gives each insect colony's computing rate.",
+      "section": "Table 1 (Section 3.2)",
+      "paper_value": "5.00×10¹¹ neurons (about 0.7 of a macaque brain); 5.00×10¹³ operations per second for termites, 4.80×10¹² for the bee hive, 2.00×10¹⁴ for leafcutters",
+      "data_value": "2.0×10⁶ × 2.5×10⁵ = 5.0×10¹¹ neurons (matches), but a macaque has 6.37×10⁹ neurons in the species file, so the colony is 78 macaque brains, not 0.7. The CSV computing rates are 5.0×10¹⁴, 4.8×10¹³ and 2.0×10¹⁵, each exactly ten times the table.",
+      "source": "collective_organization_evolution.csv (neurons per individual, group size, collective compute); cleaned_biological_species.csv (macaque).",
+      "verdict": "differs",
+      "note": "I multiplied group size by neurons per individual and compared to the macaque row; I also divided the CSV compute by colony neurons and found the CSV assumes 1,000 operations per neuron per second while Table 1 uses 100, so all four insect rows in Table 1 are ten times below the data file."
+    },
+    {
+      "claim": "A starling murmuration of 100,000 birds has a huge collective neuron count.",
+      "section": "Section 3.3, point 2, and Figure 2A",
+      "paper_value": "1.9×10¹⁴ neurons",
+      "data_value": "1.0×10⁵ birds × 1.9×10⁸ neurons per bird = 1.9×10¹³ neurons in the CSV; the species file lists a murmuration at 1.25×10¹³.",
+      "source": "collective_organization_evolution.csv starling row; cleaned_biological_species.csv 'Starling murmuration' row; the figure script hard-codes 1.9×10¹⁴.",
+      "verdict": "differs",
+      "note": "The text and Figure 2 are ten times higher than the data file, which would need 1.9×10⁹ neurons per starling, about four times a real starling's roughly 5×10⁸."
+    },
+    {
+      "claim": "Today's planetary collective combines 8.1 billion human brains with a measured amount of installed storage and silicon computing.",
+      "section": "Abstract, Section 3.4 point 5, Section 4",
+      "paper_value": "6.97×10²⁰ human neurons; 15 zettabytes = 1.20×10²³ bits of storage; 1.89×10²² silicon operations per second",
+      "data_value": "8.1×10⁹ × 8.6×10¹⁰ = 6.97×10²⁰ neurons; 15×10²¹ bytes × 8 = 1.2×10²³ bits; the planetary time series row for 2026 lists 1.2×10²³ installed bits and 1.89×10²² digital operations per second.",
+      "source": "collective_organization_evolution.csv (2026 row) and planetary_intelligence_timeseries.csv (2026 row).",
+      "verdict": "matches",
+      "note": "All three components recompute exactly from the project data; only the way they are added up (next claim) goes wrong."
+    },
+    {
+      "claim": "The 2026 planetary collective's total computing rate, brains plus machines, is given in Table 2.",
+      "section": "Table 2 (Section 3.4)",
+      "paper_value": "1.02×10²⁴ operations per second (10²⁴ biological + 1.89×10²² silicon); the abstract also gives 1.23×10²⁴ synaptic events per second",
+      "data_value": "The CSV lists 7.16×10²² operations per second for the same row, 14 times less; CSV compute for every human stage is 100 operations per neuron per second, Table 2 uses about 1,160.",
+      "source": "collective_organization_evolution.csv, collective_compute_ops_sec column for the eight human rows, divided by collective neurons.",
+      "verdict": "differs",
+      "note": "I divided each Table 2 compute value by its neuron count and did the same for the CSV; all eight human rows in Table 2 are 11 to 14 times above the data file, and the biological figure itself is quoted three ways (1.23×10²⁴, about 1.0×10²⁴, and 10²⁴)."
+    },
+    {
+      "claim": "Human societies grew to 8.1 billion by adding levels of command, each level coordinating a handful of units below it.",
+      "section": "Section 2.4, point 2, and Figure 3A",
+      "paper_value": "population = base group × branching^(levels − 1), with base 35 to 150, branching 4 to 7, levels rising from 1 to 8",
+      "data_value": "The largest value the formula allows is 150 × 7⁷ = 1.2×10⁸ at 8 levels, 65 times short of 8.1 billion; reaching 8.1 billion with 7 to 8 levels needs a branching of 13 to 19, and reaching Rome's 60 million with 5 to 6 levels needs about 18.",
+      "source": "Arithmetic on the formula and the stage list in the manuscript; the hierarchy levels in Figure 3A are hand-typed in the build script.",
+      "verdict": "not_reproducible",
+      "note": "I evaluated the formula for every combination of base and branching the paper allows and none comes within a factor of 20 of the empire or planetary stages, so the level counts in Table 2 and Figure 3A do not follow from the stated law."
+    },
+    {
+      "claim": "Dunbar's brain-size relation caps cohesive primate groups at about 80 to 150 individuals.",
+      "section": "Abstract point 3, Section 2.4",
+      "paper_value": "log10(group size) = 0.034 + 0.38 × log10(neocortex ratio), giving 80 to 150 for a ratio of 3.2 to 4.1",
+      "data_value": "As written the formula gives a group of 1.7 to 1.8 individuals; Dunbar's published 1992 coefficients (0.093 and 3.389) give 148 for a ratio of 4.1.",
+      "source": "Arithmetic on the equation in the manuscript; not in the project data.",
+      "verdict": "not_reproducible",
+      "note": "I plugged the paper's own neocortex ratios into its own equation and got about two individuals, so the coefficients are mistyped even though the 150-person conclusion is the standard literature value."
+    },
+    {
+      "claim": "Spoken relays lose most of their accuracy after a few hops, and a 150-person group has thousands of pairwise relationships.",
+      "section": "Section 2.4, points 1 and 3",
+      "paper_value": "(0.80)⁶ = 0.262, so 73.8 percent corruption at 4 levels; 150 people form 11,175 pairs; 150 to 8.1 billion is a 5.4×10⁷-fold expansion",
+      "data_value": "not in the data; arithmetic recomputed: 0.8⁶ = 0.2621, 150 × 149 / 2 = 11,175, 8.1×10⁹ / 150 = 5.4×10⁷, and the allowed error per hop 0.11/(levels − 1) matches −ln(0.8)/2 = 0.1116.",
+      "source": "Formulas in the manuscript; the 20 percent error per hop is an assumed value with no cited measurement.",
+      "verdict": "prose_only",
+      "note": "Every piece of arithmetic here is correct, but the 20 percent per-hop loss and the 80 percent survival threshold are assumptions, so the 'theorem' is an illustration rather than a measured result."
+    },
+    {
+      "claim": "Each starling tracks a fixed number of about seven nearest neighbours, and this is the best trade-off between flock cohesion and attention.",
+      "section": "Section 2.3 and Figure 2B",
+      "paper_value": "6.5 ± 0.7 neighbours; optimum at about 7",
+      "data_value": "not in the data; the Figure 2B curves are 1 − e^(−k/2.2)(1 + 0.4/k) minus 0.28 × k/15, typed into the script, which peaks at k = 7.2; changing the cost weight from 0.2 to 0.4 moves the peak from 7.9 to 6.4.",
+      "source": "Literature value from the cited starling field studies; curve from scripts/build_paper5_collective_organization.py.",
+      "verdict": "prose_only",
+      "note": "I evaluated the script's formula over k = 1 to 15 and confirmed the peak sits at 7 only because the two constants were chosen to put it there, so Figure 2B illustrates the literature value rather than deriving it."
+    }
+  ],
+  "rationale": [
+    {
+      "step": "Single brains hit hard limits on energy, wiring and birth size, so the only way to keep growing intelligence is to link many brains together.",
+      "assessment": "weak",
+      "note": "The limits are real and cited, but the paper's own numbers clash (5×10⁻¹⁰ watts per neuron versus 20 W / 8.6×10¹⁰ = 2.3×10⁻¹⁰), and nothing in the data tests whether collectives actually reach the computing power a bigger brain would have."
+    },
+    {
+      "step": "Insects became superorganisms through sterile castes and chemical trails, so a colony's neurons add up to a monkey- or cat-sized brain.",
+      "assessment": "weak",
+      "note": "The neuron totals multiply out correctly, but every brain comparison in Table 1 is off by about a thousandfold (a leafcutter colony is 23 human brains by the paper's own inputs, not 1/43), and adding up neurons says nothing about whether they work like one brain."
+    },
+    {
+      "step": "Flocks and schools coordinate because each animal follows about seven nearest neighbours, the sweet spot between staying together and paying attention.",
+      "assessment": "weak",
+      "note": "The seven-neighbour figure is a genuine literature result, but the 'derivation' in Figure 2B is a hand-tuned curve, and the collective neuron counts for starlings and herring in the text are ten times the data file."
+    },
+    {
+      "step": "Humans scaled from bands to billions by stacking command levels, and each new level needed far more outside memory to stay honest.",
+      "assessment": "unsupported",
+      "note": "The level formula cannot reach the empire or planetary populations with the branching the paper allows, the memory fit refits to slope 2.1 with R² 0.90 instead of 2.45 with 0.984, and the Dunbar equation as written gives a group of two."
+    },
+    {
+      "step": "Therefore evolution has found three stable kinds of collective: chemical superorganisms, egalitarian swarms, and the human hierarchy-plus-records society.",
+      "assessment": "weak",
+      "note": "This is a reasonable way to sort the 22 rows, but it is a classification the authors imposed, not a pattern the data were shown to produce, and the CSV's own human rows show memory per person falling, not rising, from 4.3×10¹³ to 1.5×10¹³ bits."
+    }
+  ],
+  "conclusions": [
+    {
+      "conclusion": "Insect colonies evolved superorganism status twice, by different genetic routes, and their combined neuron counts rival small mammal brains.",
+      "assessment": "partly",
+      "note": "The two routes are well cited and the neuron totals follow from the data, but the mammal-brain comparisons are wrong by about a thousandfold and the colony computing rates are ten times below the project's own file."
+    },
+    {
+      "conclusion": "Egalitarian vertebrate groups coordinate through fixed nearest-neighbour rules rather than fixed distances.",
+      "assessment": "partly",
+      "note": "This rests on cited field studies, not on anything in the project data, and the figure meant to derive the optimum is a curve tuned to give seven."
+    },
+    {
+      "conclusion": "Every tenfold growth in human society required about a 280-fold growth in outside stored information.",
+      "assessment": "not_supported",
+      "note": "The eight points behind the claim are typed by hand, refit to a slope of 2.1 (about 127-fold) with R² 0.90, and the project's data file contains no outside-memory column to check them against."
+    },
+    {
+      "conclusion": "Today 8.1 billion humans plus silicon form a single planetary superorganism with a measurable neuron count, storage and compute.",
+      "assessment": "partly",
+      "note": "The neuron count, 15 zettabytes and silicon rate match the project data exactly, but the combined compute in Table 2 is 14 times the data file and the biological rate is quoted three different ways."
+    }
+  ],
+  "inconsistencies": [
+    "The abstract gives 1.23×10²⁴ synaptic events per second for humanity; Section 3.4 says about 1.0×10²⁴ and Table 2 says 10²⁴.",
+    "Table 2 lists the 2026 collective compute as 1.02×10²⁴ operations per second; the data file gives 7.16×10²² for the same row, and every other human row in Table 2 is 11 to 14 times above the file.",
+    "Table 2 memory for 1975 is 3.00×10²³ bits against 1.72×10²² in the data file, and 8.00×10²³ for 2026 against 1.20×10²³.",
+    "Table 1 computing rates for termites, ants, bees and leafcutters (5.00×10¹³, 5.00×10¹¹, 4.80×10¹², 2.00×10¹⁴) are each exactly one tenth of the data file's values.",
+    "Table 1 says the leafcutter colony's 2.0×10¹² neurons are 2.7 cat brains and 1/43 of a human brain; with the project's own species counts they are about 1,700 cat brains and 23 human brains. The termite 'about 0.7 macaque brain' is 78 macaque brains, the bee hive 'about a marmoset brain' is about 75 marmoset brains, and the supercolony '0.87 of a human brain' is about 870 human brains.",
+    "Table 1 gives the army ant colony up to 2.45×10¹¹ neurons, but 7.0×10⁵ ants × 2.5×10⁵ neurons is 1.75×10¹¹.",
+    "The text and Figure 2 give starlings 1.9×10¹⁴ collective neurons and herring 10¹⁵; the data file gives 1.9×10¹³ and 1.0×10¹⁴. Wildebeest herds are 4.5×10¹⁵ in the text and 3.75×10¹⁵ in the file.",
+    "Group sizes in the text differ from the file: biofilms 10¹⁰ cells versus 10⁹, coral and bryozoan colonies 10⁵ versus 10⁶ polyps.",
+    "Dates in the text differ from the file: herring schools about 120 million years ago versus 400; starling flocks about 60 versus 120; honeybees about 85 versus 100; wildebeest about 20 versus 25; elephants about 10 versus 8; siphonophores 520 versus 540.",
+    "Section 2.4 says the memory regression runs across the eight human stages, but Figure 3B plots eight hand-typed points that split the forager stage into a 35-person band and a 150-person clan and leave out the 1975 stage of 4 billion people, even though the caption names that stage at about 10¹⁹ bits.",
+    "Figure 1B's caption says human collective memory grows faster than population, but in the data file total memory for the human rows grows with population to the power 0.92, and memory per person falls from 4.3×10¹³ bits to 1.5×10¹³ bits between the forager and 2026 rows.",
+    "Section 1 states a brain cost of 5×10⁻¹⁰ watts per neuron, but 20 watts divided by the paper's 8.6×10¹⁰ neurons is 2.3×10⁻¹⁰ watts per neuron.",
+    "Section 2.2 says a termite colony releases 20 to 50 watts of heat while breathing 1,000 litres of oxygen a day; burning that oxygen releases about 230 watts.",
+    "The abstract says the 22 transitions span 3.8 billion years, the oldest row in the file is 3.48 billion years old, and the introduction speaks of a 4.1-billion-year history.",
+    "Table 2 gives the forager band range as 25 to 150 people; the text everywhere else says 35 to 150.",
+    "The manuscript uses 2.5×10⁵ neurons per leafcutter worker, while the project's species file lists 4.0×10⁵ for the same species."
+  ],
+  "bottom_line": "A careful reader can rely on the broad story (insect castes, seven-neighbour flocking, and layered human societies are all well-cited ideas) and on the 2026 inputs of 6.97×10²⁰ human neurons, 1.2×10²³ bits of storage and 1.89×10²² silicon operations per second. The headline numbers should not be trusted yet: the 280-fold memory law refits to about 127-fold with a looser fit, the hierarchy formula cannot reach the populations it is said to explain, both tables disagree with the project's data file by factors of 10 or more, and every brain-size comparison for insect colonies is off by about a thousandfold."
+}

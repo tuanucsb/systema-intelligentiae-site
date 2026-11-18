@@ -1,0 +1,65 @@
+epoch_id,title,hook
+EP01a,Chemistry starts keeping score,
+EP01b,Life gets a code,
+EP02a,Bacteria swim toward food,
+EP02b,A clock for the day,
+EP03a,Oxygen and the big freeze,
+EP03b,Breathing oxygen,
+EP04a,One cell swallows another,
+EP04b,Steering toward light,
+EP05a,Sex and many-celled bodies,
+EP05b,Spare parts for synapses,
+EP06a,Snowball Earth,
+EP06b,The thaw feeds the sponges,"Melting ice washes ground-up rock into the sea. Its phosphorus feeds a bloom of algae and sponges, and the mass of living things grows more than fourfold."
+EP07a,Bodies without nerves,
+EP07b,The first neurons,
+EP08a,Steering in three dimensions,
+EP08b,Eyes start an arms race,
+EP09a,Life fills the open sea,"Animals rise off the seafloor into open water, where giant shelled relatives of squid hunt. Sea animal families triple, and nerve signaling grows about sixfold."
+EP09b,Learning from reward,
+EP10a,The first mass extinction,
+EP10b,The sea refills,"The ice melts and the seas lose oxygen for a while. Then sea scorpions and early jawed fish spread into the emptied water, and nerve signaling triples."
+EP11a,Faster nerves,
+EP11b,Plants move onto land,
+EP12a,Reefs and armored fish collapse,"The first forests wash nutrients into the sea, which then runs short of oxygen. About 75% of sea species die, including the armored fish, and nerve signaling falls by 70%."
+EP12b,Eyes leave the water,
+EP13a,Giants in oxygen-rich air,
+EP13b,Egg-layers take the land,"The shelled egg lets reptile and mammal ancestors breed far from water. Herds of tusked plant-eaters roam seed-fern forests, just before the worst extinction ever."
+EP14a,The Great Dying,
+EP14b,Life in thin air,"Oxygen is down to about 14%, and good breathers win. Dinosaur ancestors get one-way airflow lungs; mammal ancestors get nose bones that save heat and water, a step toward warm blood."
+EP15a,Dinosaurs rise on two legs,"A long rainy spell reshapes the land. The first dinosaurs run on two legs, which takes a sharper sense of balance, and nerve signaling grows fourfold."
+EP15b,Warm blood and a layered cortex,
+EP16a,Volcanoes clear the field,"Huge eruptions, as the Atlantic starts to open, fill the air with carbon dioxide. About 76% of species die, and dinosaurs rule the land for the next 135 million years."
+EP16b,Hearing high notes,
+EP17a,A brain built for flight,
+EP17b,Giants and superorganisms,
+EP18a,The asteroid,
+EP18b,Survivors inherit the Earth,
+EP19a,A hothouse of new mammals,"The warmest stretch since the dinosaurs died. Early primates and the ancestors of whales and carnivores spread out, some brains start to fold, and nerve signaling more than doubles."
+EP19b,Seeing with sound,
+EP20a,Reading minds,
+EP20b,Apes stand up,"East Africa dries out and grasslands spread. Our line splits from the chimpanzees', and our ancestors start walking upright, which frees their hands."
+EP21a,The first stone tools,
+EP21b,A toolmaking tradition,"Homo habilis strikes sharp flakes to cut meat and crack bones for marrow. Each flake outlasts its maker by a million years, and memory stored outside bodies grows tenfold."
+EP22a,Fire and cooking,
+EP22b,"Bigger brains, planned tools","Neanderthals and their relatives hunt big game with wooden spears and shape stone in several planned steps. Their brains reach 1,200–1,450 cm³, as big as ours."
+EP23a,The first symbols,"In Blombos Cave, South Africa, people scratch a crosshatch into red ochre and wear shell beads. Marks now carry meaning, and memory outside bodies grows tenfold."
+EP23b,Language and art,
+EP24a,Farming and villages,"People in the Fertile Crescent plant wheat, tame goats and cattle, and settle down. About half the kinds of large mammals disappear while farms and herds spread."
+EP24b,Clay tokens become signs,"Traders seal counting tokens inside clay balls, then press the tokens into the outside to show what is in. Objects become flat marks, one step before writing."
+EP25a,Writing on clay,
+EP25b,The alphabet,"Writers around Sinai and Phoenicia shrink about 800 word-signs to 22 letters, one per sound, so reading gets far easier to learn. In China, Shang kings carve questions into oracle bones."
+EP26a,Rules for reasoning,"In India, Panini writes about 4,000 exact rules for Sanskrit grammar. Greeks prove geometry step by step, and coins put a number on value. Reasoning gets written rules."
+EP26b,Libraries and empires,"The Library of Alexandria collects about 500,000 scrolls, and Callimachus makes a catalog to find them. Euclid writes the Elements, and bronze gears predict eclipses."
+EP27a,The book with pages,"Bound pages replace scrolls. With page numbers and a table of contents, you can jump straight to any passage instead of unrolling to it."
+EP27b,Paper and zero,"Paper mills spread from Samarkand to Baghdad and Córdoba. Numbers with a zero turn hard sums into quick written steps, and in China Bi Sheng prints with clay type."
+EP28a,The printing press,
+EP28b,Science goes public,"The first science journal appears in 1665. Printed log tables turn multiplying into adding, and Pascal and Leibniz build calculators with gears. Results become public and checkable."
+EP29a,Wires across continents,
+EP29b,Machines count the census,"Punch-card machines count the 1890 US census. Cheap wood-pulp paper floods the world but crumbles within decades, and radio starts sending messages without wires."
+EP30a,Electronic computers,
+EP30b,Microchips and networks,"Whole circuits now fit on one silicon chip, and Gordon Moore predicts the count will keep doubling. Data moves to magnetic tape and disk, and ARPANET links computers by sending data in packets."
+EP31a,The World Wide Web,
+EP31b,Machines that learn,
+EP32a,Language machines,"Transformer models trained on huge amounts of text learn to write. AlphaFold predicts the shapes of about 200 million proteins: silicon starts reading biology."
+EP32b,Today,

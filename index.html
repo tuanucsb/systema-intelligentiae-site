@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Systema Intelligentiae</title>
+<meta name="description" content="How did a planet learn to think? Follow 4.1 billion years of memory, wiring and computing, from a rock pore to a data center.">
+<meta property="og:title" content="Systema Intelligentiae — How did a planet learn to think?">
+<meta property="og:description" content="Follow 4.1 billion years of memory, wiring and computing across 64 moments in Earth's history, from a rock pore to a data center.">
+<meta property="og:image" content="assets/og/default.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Systema Intelligentiae — How did a planet learn to think?">
+<meta name="twitter:description" content="Follow 4.1 billion years of memory, wiring and computing across 64 moments in Earth's history, from a rock pore to a data center.">
+<meta name="twitter:image" content="assets/og/default.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/home-story.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">This page draws its charts and stories with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
+
+<main id="main" class="wrap">
+  <section class="hero story-home">
+    <div class="hero-text">
+      <span class="eyebrow">A natural history of thinking matter</span>
+      <h1>How did a planet learn to <span class="ink-run">think?<span class="act-rule" id="actRule" aria-hidden="true"></span></span></h1>
+      <p class="lede">Earth learned to think five times: in cells, in nerves, in memory kept outside the body, in machines that compute and in machines that learn. Each new way arrived faster than the last, and none of the old ones went away.</p>
+      <div class="cta">
+        <a class="btn" href="journey.html">Start the journey →</a>
+        <a class="btn ghost" href="tree.html">Explore the tree</a>
+      </div>
+    </div>
+  <figure class="hero-fig story-figure" aria-labelledby="floorsH">
+    <h2 class="fig-title" id="floorsH">Five floors of thinking</h2>
+    <p class="fig-sub">If all of Earth’s history were one day, the ground floor opened at midnight. The top three floors were all built in the last 70 seconds, and every floor is still in use.</p>
+    <div class="bld">
+      <div>
+        <div class="floors" id="floors" role="group" aria-label="Five floors, from the oldest at the bottom to the newest at the top. Select one to read its story.">
+      <button type="button" class="floor" data-floor="0" aria-pressed="true" aria-controls="floorDetail" style="--k:var(--l-chem)"><span class="ph"><img src="assets/plates/EP02a.jpg" alt="" loading="lazy"></span><span class="what"><b>Chemistry in cells</b><span class="one">Reactions inside single cells keep score of what works.</span></span><span class="when"><b>00:00</b><span>4.1 billion years ago</span></span></button>
+      <button type="button" class="floor" data-floor="1" aria-pressed="false" aria-controls="floorDetail" style="--k:var(--l-nerve)"><span class="ph"><img src="assets/plates/EP08b.jpg" alt="" loading="lazy"></span><span class="what"><b>Nerves and brains</b><span class="one">Cells send fast signals to each other. Animals can sense, decide and move.</span></span><span class="when"><b>20:45</b><span>555 million years ago</span></span></button>
+      <button type="button" class="floor" data-floor="2" aria-pressed="false" aria-controls="floorDetail" style="--k:var(--l-exo)"><span class="ph"><img src="assets/plates/EP25a.jpg" alt="" loading="lazy"></span><span class="what"><b>Memory outside the body</b><span class="one">Knowledge survives outside any one brain: tools, then speech, then writing.</span></span><span class="when"><b>23:58:50</b><span>3.3 million years ago</span></span></button>
+      <button type="button" class="floor" data-floor="3" aria-pressed="false" aria-controls="floorDetail" style="--k:var(--l-sil)"><span class="ph"><img src="assets/plates/EP30a.jpg" alt="" loading="lazy"></span><span class="what"><b>Machines that compute</b><span class="one">People build thinking out of something that was never alive.</span></span><span class="when"><b>last 2 thousandths of a second</b><span>since 1945</span></span></button>
+      <button type="button" class="floor" data-floor="4" aria-pressed="false" aria-controls="floorDetail" style="--k:var(--l-ai)"><span class="ph"><img src="assets/plates/EP31b.jpg" alt="" loading="lazy"></span><span class="what"><b>Machines that learn</b><span class="one">Chips run neural nets that learn from examples, as brains do.</span></span><span class="when"><b>last 0.3 thousandths of a second</b><span>since 2012</span></span></button>
+        </div>
+        <div class="ground">Ground · 4.1 billion years ago</div>
+      </div>
+      <div class="clock" id="dayClock" aria-hidden="true"></div>
+    </div>
+    <section class="floor-detail" id="floorDetail" aria-live="polite"></section>
+    <details class="more-g day-zoom" id="dayZoom">
+      <summary>See the whole day drawn to scale</summary>
+      <div class="zoom-wrap"><svg id="zoom" role="img" aria-label="Three time bars drawn to scale. The whole day shows chemistry from midnight and nerves from 20:45. The last 70 seconds adds memory outside the body. The last 2 thousandths of a second adds chips from 1945 and neural nets from 2012."></svg></div>
+      <p class="teach">Every bar is drawn to scale. Each one magnifies the last sliver of the bar above it, and you have to zoom in twice to find the machines.</p>
+    </details>
+    <figcaption class="caption">Five selected developments, told as a story. Equal-sized floors show neither equal time spans nor equal amounts, and the order is by first appearance, not rank. The counts beside each floor say how often things happen, not how clever they are.</figcaption>
+  </figure>
+  </section>
+
+  <details class="sec home-evidence" id="homeEvidence">
+    <summary><span>Explore the numbers behind the story</span><small>64 moments · original chart · units and assumptions</small></summary>
+    <div class="home-evidence-body">
+      <p class="note">These are model estimates and reconstructions. Biochemical events, nerve signals and digital operations describe different processes; their counts do not measure a shared quantity of intelligence.</p>
+      <div class="stats" id="stats"></div>
+    <figure class="evidence-fig">
+      <div class="fig-tools"><div class="seg" role="group" aria-label="Time axis"><button type="button" id="mOrd" aria-pressed="true">One column per moment</button><button type="button" id="mTime" aria-pressed="false">True time</button></div></div>
+      <div class="keys" id="heroKeys" role="group" aria-label="Layers of the stack: select one to highlight it"></div>
+      <div class="stack-wrap"><svg id="heroChart" role="img" aria-label="Seven layers of Earth’s computing and memory across 64 moments, each drawn as thick as its value has digits. The table below the chart gives the values."></svg></div>
+      <div class="scrub"><input type="range" class="time-slider" id="heroSlider" aria-label="Moment in Earth’s history"><a class="btn sm ghost" id="heroGo" href="journey.html#EP32b">Visit this moment →</a></div>
+      <figcaption><span class="teach" id="heroRead">Each layer is as thick as its number has digits: 10²⁶ is 26 digits thick. Each column is one moment in Earth’s history, not one year, so the last six columns cover only 80 years.</span></figcaption>
+    </figure>
+    <section class="evidence-readout" aria-labelledby="stackH">
+    <div class="sec-head"><h2 id="stackH">Read the selected moment</h2><p>Above the line are modeled activity rates. Below it are storage capacities. The table keeps the original quantities and units visible; the combined height is only a visual index.</p></div>
+    <div class="read">
+      <div aria-live="polite">
+        <span class="when" id="rWhen"></span>
+        <h3 id="rTitle"></h3>
+        <table class="rt"><caption>The stack at this moment</caption><tbody id="rBody"></tbody><tfoot id="rFoot"></tfoot></table>
+      </div>
+      <div class="formula-card">
+        <span class="sub">How the detailed chart is drawn</span>
+        <ol>
+          <li>Write down each number: operations a second, bits kept, the largest group acting as one.</li>
+          <li>Count its digits.</li>
+          <li>Stack the counts. The combined height is a <b>visual index</b>, not an intelligence measurement.</li>
+        </ol>
+        <div class="x-only"><div class="eqn">𝕊(t) = log₁₀(C_chem · C_nerve · C_AI · C_silicon)
+     + log₁₀(H_DNA · M_exo)
+     + log₁₀(N_group)
+
+doing: ops/s · keeping: bits · reach: individuals</div></div>
+        <p class="cav">The stack height is an index for this picture. It counts digits, so a thin layer can still be a trillion times smaller than its neighbor. The layers are never merged, and nothing on this site is ranked by it.</p>
+        <p class="note"><a href="intelligence.html">Six other ways to add the numbers up, and what each one says →</a></p>
+      </div>
+    </div>
+  </section>
+    </div>
+  </details>
+
+  <section class="sec" id="questions" aria-labelledby="askH">
+    <div class="sec-head"><h2 id="askH">Follow a question</h2><p>Each question opens the detailed chart, highlights its relevant layers and points to stops in the Journey.</p></div>
+    <div class="threads" id="threads"></div>
+    <div class="thread-out" id="threadOut" hidden></div>
+    <p class="note">The stack is made of things: cells, animals, archives, societies, chips. <a href="atlas.html">Meet hundreds of them in the atlas of minds →</a></p>
+  </section>
+
+  <section class="sec" aria-labelledby="ways">
+    <div class="sec-head"><h2 id="ways">Four ways in</h2><p>Pick the one that fits your mood. They all use the same story and the same numbers.</p></div>
+    <div class="doors">
+      <a class="door" id="journeyDoor" href="journey.html" style="--dc:var(--act-1);--do:var(--on-act-1)"><span class="lvl">Start here</span><span class="big">Take the journey</span><p><span class="n-stops">40</span> stops, from a mineral bubble to an AI supercomputer. One creature at each stop.</p><span class="go" id="journeyGo">About 20 minutes →</span></a>
+      <a class="door" href="tree.html" style="--dc:var(--c-cpu);--do:var(--on-cpu)"><span class="lvl">Explore</span><span class="big">Explore the tree</span><p><span class="n-inv">97</span> inventions and the links between them. Pick one and follow the thread.</p><span class="go">Go exploring →</span></a>
+      <a class="door" href="how.html" style="--dc:var(--c-io);--do:var(--on-io)"><span class="lvl">Skeptics</span><span class="big">How we know</span><p>Eight popular estimates that are badly wrong, and what the evidence says instead.</p><span class="go">Check our work →</span></a>
+      <a class="door" href="data.html" style="--dc:var(--c-store);--do:var(--on-store)"><span class="lvl">Expert</span><span class="big">Data Lab</span><p>All 64 rows, every column, uncertainty ranges, energy and hardware ledgers. Plot anything.</p><span class="go">Open the data →</span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="threadH">
+    <div class="sec-head"><h2 id="threadH">One thread through 4.1 billion years</h2><p>Every invention rests on earlier ones. Here is one path, from a rock battery to an AI supercomputer. <span class="v-ptr">Click</span><span class="v-touch">Tap</span> any step to see what else it connects to.</p></div>
+    <div class="thread" id="thread"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="partsH">
+    <div class="sec-head"><h2 id="partsH">Every thinking thing has nine parts</h2><p>A bacterium, you and a laptop all need power, senses, wiring, a processor, memory, a program, storage, outside memory and a network. Watch each part get upgraded through time.</p></div>
+    <div class="spec-wrap"><table class="spec" id="parts"><caption class="sr-only">The nine parts of a thinking thing, in a bacterium, in you and in a laptop</caption></table></div>
+  </section>
+
+  <section class="sec x-only" aria-labelledby="vecH">
+    <div class="sec-head"><h2 id="vecH">For researchers: the state vector</h2><p>Each of the 64 moments is described by ten separately measured quantities, each kept in its own units. The stack height on this page is an index for the picture (a sum of digit counts) and is never used to rank anything. Units are kept apart: bits, events per second, watts and bit-years.</p></div>
+    <div class="lab">
+      <pre>Ψ(t) = ( H_copy, H_div, H_sel,            hereditary DNA (bits)
+         M_active, M_passive,              working vs. structural memory (bits)
+         C_biochem, C_neural, C_digital,   substrate-separated throughput (events/s)
+         P_total,                          closed power budget (W)
+         Φ_persist )                       persistence (bit·yr)</pre>
+      <p class="muted">Ordering laws hold at every epoch: H_div ≪ H_sel ≤ H_copy. Modern values carry 95% intervals from a joint 10,000-draw Monte Carlo. <a href="data.html">Open the Data Lab</a> or <a href="how.html#math">read the equations</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="actsH">
+    <div class="sec-head"><h2 id="actsH">Seven acts, <span class="n-stops">40</span> stops</h2><p>The journey runs in seven acts, from chemistry in a rock pore to machines. Open an act to start at its first stop.</p></div>
+    <div class="acts" id="acts"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="surpH">
+    <div class="sec-head"><h2 id="surpH">Things that surprised us</h2></div>
+    <div class="surprises">
+      <a class="surprise" href="journey.html#EP32b" style="--sc:var(--act-2)"><b>97%</b><h3>Most life is still bacteria</h3><p>Of Earth’s ~3×10³⁰ living cells, almost all are single-celled microbes. The typical cell today is about as simple as one from 3 billion years ago.</p></a>
+      <a class="surprise" href="how.html#trex" style="--sc:var(--c-io)"><b>0.02%</b><h3>Humans hold almost no neurons</h3><p>All 8 billion human brains together hold about 0.02% of Earth’s neurons. Worms, insects and tiny sea creatures hold the rest.</p></a>
+      <a class="surprise" href="how.html#flops" style="--sc:var(--c-wire)"><b>0.006%</b><h3>Computers are still small</h3><p>Every chip on Earth together does about 0.006% of the signaling done by the world’s animal nervous systems.</p></a>
+      <a class="surprise" href="how.html#clay" style="--sc:var(--c-backup)"><b>1,000×</b><h3>Clay beats the SSD</h3><p>A baked clay tablet keeps its writing for thousands of years with no power. An unplugged SSD fades about a thousand times sooner.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/home.js"></script>
+<script src="assets/home-story.js"></script>
+</body>
+</html>

@@ -1,0 +1,817 @@
+name,years_before_today,ops_per_sec,kind,rate_basis
+E. coli cell,3.5e+09,1000,chem,class
+Bacterial biofilm,3.5e+09,1000,grp,class
+Norway spruce,1e+06,1e+09,chem,class
+Poplar shoot,1e+06,1e+09,nerve,class
+Loblolly pine,1e+06,1e+09,chem,class
+C. elegans,1e+06,1e+09,nerve,class
+Fruit fly,4e+08,1e+10,nerve,class
+Mouse,1e+06,1e+09,nerve,class
+Rat hippocampal tissue,1e+06,1e+09,nerve,class
+Human individual,300000,1.5e+14,nerve,estimate
+Small human group,300000,1.5e+14,nerve,estimate
+Society + technology (2007),1e+06,1e+09,grp,class
+Honeybee - individual,4e+08,1e+10,nerve,class
+Honeybee - collective,4e+08,1e+10,grp,class
+Tyrannosaurus rex,2.3e+08,5e+11,nerve,estimate
+Buriolestes schultzi,1e+06,1e+09,nerve,class
+Budding yeast cell,1e+06,1e+09,chem,class
+Slime mold plasmodium,8e+08,1e+06,chem,class
+Sensitive plant,4e+08,1e+10,chem,class
+House-hunting ant colony,4e+08,1e+10,grp,class
+Zebrafish larva,5e+08,1e+11,nerve,class
+Pigeon,1e+06,1e+09,nerve,class
+Border collie - Chaser,1e+06,1e+09,nerve,class
+Common octopus,4.5e+08,1.2e+11,nerve,estimate
+Chimpanzee,2.5e+07,3e+13,nerve,estimate
+Halophilic archaeon cell,3.5e+09,1000,chem,class
+Giant trumpet ciliate,4e+08,1e+10,chem,class
+Slipper animalcule,1e+06,1e+09,chem,class
+Cellular slime mold collective,8e+08,1e+06,grp,class
+Wood-decay fungal network,1e+06,1e+09,chem,class
+Thale cress,1e+06,1e+09,nerve,class
+Portia jumping spider,4e+08,1e+10,nerve,class
+Leafcutter ant superorganism,4e+08,1e+10,grp,class
+European cuttlefish,5e+08,1e+11,nerve,class
+New Caledonian crow,6.5e+07,5e+12,nerve,estimate
+African savanna elephant,2e+08,1e+13,nerve,class
+Archaeopteryx,6.5e+07,5e+12,chem,estimate
+Stenonychosaurus / Troodon,1e+06,1e+09,nerve,class
+Caribbean box jellyfish,5e+08,1e+11,nerve,class
+Desert navigation ant,4e+08,1e+10,nerve,class
+Neanderthal,300000,8e+13,nerve,estimate
+Domestic pig,1e+06,1e+09,nerve,class
+Rhesus macaque,2.5e+07,3e+13,nerve,estimate
+Bottlenose dolphin,3.5e+07,1e+14,nerve,class
+Mycorrhizal common mycelial network,1e+06,1e+09,chem,class
+Raven-Wolf cooperative foraging mutualism,1e+06,1e+09,nerve,class
+Tufted capuchin monkey,2.5e+07,3e+13,nerve,estimate
+Army ant swarm,4e+08,1e+10,grp,class
+Mantis shrimp,4e+08,1e+10,nerve,class
+Australopithecus afarensis,3.5e+06,2e+13,nerve,estimate
+Brittle star,1e+06,1e+09,nerve,class
+Honeyguide-human foraging mutualism,300000,1.5e+14,nerve,estimate
+Killer whale matriline,3.5e+07,1e+14,nerve,class
+Deep RL game agent (AlphaZero),50,1e+08,ai,class
+Cleaner wrasse,1e+06,1e+09,nerve,class
+Red-footed tortoise,1e+06,1e+09,nerve,class
+Coconut octopus,4.5e+08,1.2e+11,nerve,estimate
+Strawberry poison frog,1e+06,1e+09,nerve,class
+Homo erectus,1.5e+06,5e+13,nerve,estimate
+African grey parrot,6.5e+07,5e+12,nerve,estimate
+Grouper-Moray hunting mutualism,1e+06,1e+09,nerve,class
+Frontier Multimodal Foundation Model,10,1e+12,ai,class
+Siphonophore colony,1e+06,1e+09,grp,class
+Clark's nutcracker,1e+06,1e+09,nerve,class
+Giant Pacific octopus,4.5e+08,1.2e+11,nerve,estimate
+Woolly mammoth,1e+06,1e+09,nerve,class
+African wild dog pack,2e+08,1e+13,nerve,class
+Homo floresiensis,300000,1.5e+14,nerve,estimate
+Ichthyosaur,1e+06,1e+09,nerve,class
+Autonomous agentic coding system,50,1e+08,ai,class
+Naked mole-rat colony,1e+06,1e+09,grp,class
+Elephantnose fish,2e+08,1e+13,nerve,class
+Duck-billed platypus,1e+06,1e+09,nerve,class
+Asgard archaea syntrophy,3.5e+09,1000,chem,class
+Cynodont stem-mammal,2e+08,1e+13,nerve,class
+Autonomous scientific discovery agent,50,1e+08,ai,class
+North American beaver,1e+06,1e+09,nerve,class
+Acellular slime mold,8e+08,1e+06,chem,class
+Solar-powered sea slug,1e+06,1e+09,nerve,class
+Cathedral termite colony,4e+08,1e+10,grp,class
+New Caledonian crow,6.5e+07,5e+12,nerve,estimate
+Megalodon,1e+06,1e+09,nerve,class
+Ankylosaurid dinosaur,2.3e+08,5e+11,nerve,estimate
+Quantum computational optimization system,50,1e+08,sil,class
+Common cuttlefish,5e+08,1e+11,nerve,class
+Emperor penguin huddle,1e+06,1e+09,grp,class
+Desert golden mole,4e+08,1e+10,nerve,class
+Dolphin-human cooperative fishery,300000,1.5e+14,nerve,estimate
+Spinosaurus,1e+06,1e+09,nerve,class
+Archaic whale Basilosaurus,3.5e+07,1e+14,nerve,class
+Neuromorphic spiking processor,50,1e+08,sil,class
+Prebiotic self-replicating ribozyme network,1e+06,1e+09,nerve,class
+Daisyworld cybernetic regulator,1e+06,1e+09,nerve,class
+Stem bilaterian flatworm,1e+06,1e+09,nerve,class
+Sea lamprey,5e+08,1e+11,nerve,class
+Early mammaliaform Morganucodon,2e+08,1e+13,nerve,class
+Common chimpanzee,2.5e+07,3e+13,nerve,estimate
+Great golden digger wasp,4e+08,1e+10,nerve,class
+Frontier autoregressive transformer,10,1e+12,ai,class
+Anomalocaris canadensis,1e+06,1e+09,nerve,class
+Echolocating microbat,1e+06,1e+09,nerve,class
+European starling murmuration,1e+06,1e+09,nerve,class
+Sessile tunicate Ciona,1e+06,1e+09,nerve,class
+Weakly electric glass knifefish,5e+08,1e+11,nerve,class
+Sperm whale acoustic clan,3.5e+07,1e+14,nerve,class
+Early tool-making Homo habilis,1.8e+06,3.5e+13,nerve,estimate
+Synthetic DNA molecular storage,50,1e+08,sil,class
+Honeybee waggle dance communication,4e+08,1e+10,nerve,class
+Placozoan aneural coordinator,5.8e+08,1e+07,chem,class
+Ant surgical wound-care coordinator,4e+08,1e+10,nerve,class
+Domestic dog human-social cooperator,2e+08,1e+13,nerve,class
+Big-game hunting Homo heidelbergensis,1e+06,1e+09,nerve,class
+Phorusrhacid apex predator Titanis,1e+06,1e+09,nerve,class
+Hydrodynamic flagellar coordinator,1e+06,1e+09,nerve,class
+Test-time search reasoning model,2,1e+13,ai,class
+Upper Paleolithic symbolic tally system,300000,1.5e+14,nerve,estimate
+Sumerian cuneiform clay archive,5100,0.1,exo,class
+Alexandrian papyrus scroll library,2250,2,exo,estimate
+Gutenberg movable type print network,571,100,exo,class
+Planetary digital datasphere,50,1e+08,sil,class
+Devonian tetrapod pioneer Tiktaalik,1e+06,1e+09,nerve,class
+Amphibious stem cetacean Pakicetus,1e+06,1e+09,nerve,class
+Hyperspectral predator Odontodactylus,1e+06,1e+09,nerve,class
+Antikythera mechanical analog computer,50,1e+08,sil,class
+Babbage Analytical Engine & Lovelace program,180,100,sil,class
+Electronic stored-program computer (ENIAC / EDVAC),80,100000,sil,class
+Permian synapsid predator Dimetrodon,1e+06,1e+09,nerve,class
+Mesozoic aerobatic pterosaur Anhanguera,4e+08,1e+10,nerve,class
+Carboniferous giant dragonfly Meganeura,2.3e+08,5e+11,nerve,estimate
+Symbiotic lichen holobiont,4e+08,1e+10,chem,class
+Subterranean biosonar navigator oilbird,1e+06,1e+09,nerve,class
+Optical semaphore telegraph network,50,1e+08,sil,class
+Electromagnetic telegraph & Morse network,50,1e+08,sil,class
+Precambrian Ediacaran organism Fractofusus,1e+06,1e+09,nerve,class
+Middle Pleistocene shell engraving (Trinil),500000,0.001,exo,class
+Western scrub-jay episodic cache cognition,1e+06,1e+09,nerve,class
+Bullhorn acacia-ant defense holobiont,4e+08,1e+10,nerve,class
+Electric ray high-voltage electrogenesis,1e+06,1e+09,nerve,class
+Echolocating micro-carnivorous shrew,1e+06,1e+09,nerve,class
+ARPANET packet-switching network,55,1e+08,sil,class
+World Wide Web hypertext graph,30,1e+13,sil,class
+Early Cambrian craniate pioneer Haikouichthys,1e+06,1e+09,nerve,class
+Devonian armored placoderm apex predator Dunkleosteus,1e+06,1e+09,nerve,class
+Jurassic armored herbivore Stegosaurus,2.3e+08,5e+11,nerve,estimate
+Triassic apex terrestrial pseudosuchian Postosuchus,1e+06,1e+09,nerve,class
+Antarctic extreme cryobiotic tardigrade Acutuncus,4e+08,1e+10,nerve,class
+Desert low-frequency biosonar rodent Dipodomys,1e+06,1e+09,nerve,class
+Steam cylinder rotary printing press,50,1e+08,sil,class
+Intel 4004 single-chip microprocessor,55,1e+08,sil,class
+Oligocene stem catarrhine primate Aegyptopithecus,2.5e+07,3e+13,nerve,estimate
+Early Eocene dawn horse perissodactyl Eohippus,1e+06,1e+09,nerve,class
+Carboniferous giant terrestrial myriapod Arthropleura,4e+08,1e+10,nerve,class
+Legume-rhizobia root nodule holobiont,3.5e+09,1000,chem,class
+Social spider cooperative megacolony Anelosimus,4e+08,1e+10,grp,class
+Five-eyed Cambrian stem-arthropod predator Opabinia,1e+06,1e+09,nerve,class
+Bacteriophage T4 nanomotor,3.5e+09,1000,chem,class
+Giant pandoravirus,4e+08,1e+10,chem,class
+RNA mutational quasispecies,1e+06,1e+09,nerve,class
+Blue whale infrasonic brain,3.5e+07,1e+14,nerve,class
+Amazon river dolphin biosonar,3.5e+07,1e+14,nerve,class
+Von Neumann kinematic automaton,50,1e+08,sil,class
+Tierra artificial life world,50,1e+08,sil,class
+Aneural plasmodial maze solver,1e+06,1e+09,nerve,class
+Carnivorous plant calcium memory,4e+08,1e+10,chem,class
+Giant squid abyssal vision & giant axon,4.5e+08,1.2e+11,nerve,estimate
+Platypus electro-mechanoreceptive bill,1e+06,1e+09,nerve,class
+African gray parrot numerical abstraction,6.5e+07,5e+12,nerve,estimate
+Naked mole-rat eusocial colony,1e+06,1e+09,grp,class
+Archaeopteryx aerial visual navigation,6.5e+07,5e+12,chem,estimate
+Neanderthal cranial hypertrophic brain,300000,8e+13,nerve,estimate
+Sumerian Cuneiform Accounting Archive,5100,0.1,exo,class
+Library of Alexandria,2250,2,exo,estimate
+Jacquard Automated Punched-Card Loom,180,100,sil,class
+Shannon's Theseus Maze-Solving Mouse,50,1e+08,sil,class
+Rosenblatt Mark I Perceptron,50,1e+08,ai,class
+Hopfield Associative Attractor Network,50,1e+08,sil,class
+Amphioxus nerve chord,5e+08,1e+11,nerve,class
+Lamprey basal ganglia,5e+08,1e+11,nerve,class
+Peters elephantnose fish,2e+08,1e+13,nerve,class
+Morganucodon stem mammal,2e+08,1e+13,nerve,class
+Bearded dragon 3-layer cortex,2.3e+08,5e+11,nerve,estimate
+Domestic dog human gaze,2e+08,1e+13,nerve,class
+Rhesus macaque mirror system,2.5e+07,3e+13,nerve,estimate
+Homo erectus Acheulean symmetry,1.5e+06,5e+13,nerve,estimate
+Neolithic clay token archive,5100,0.1,exo,class
+Ada Lovelace Bernoulli algorithm,180,100,sil,class
+McCulloch-Pitts logical neuron,50,1e+08,sil,class
+Backpropagation MLP network,50,1e+08,sil,class
+LeNet convolutional vision net,50,1e+08,ai,class
+Rafflesia parasitic genomic transfer,1e+06,1e+09,nerve,class
+Deinococcus radiation repair machine,3.5e+09,1000,nerve,class
+Atta leafcutter agricultural colony,1e+06,1e+09,grp,class
+Mixture of Experts transformer,10,1e+12,ai,class
+Lascaux cave parietal art,35000,0.005,exo,estimate
+Incan quipu knotted register,1e+06,1e+09,exo,class
+Denisovan archaic hominin,300000,8e+13,nerve,estimate
+Oase 1 sapiens-neanderthal,300000,8e+13,nerve,estimate
+Gutenberg movable type press,571,100,exo,class
+Diderot Encyclopedie archive,10,1e+12,exo,class
+Microfilm photographic library,1e+06,1e+09,exo,class
+Vannevar Bush Memex desk,1e+06,1e+09,nerve,class
+Project Gutenberg digital library,571,100,exo,class
+Wikipedia crowdsourced graph,6.5e+07,5e+12,nerve,estimate
+Drosophila larva reinforcement,4e+08,1e+10,nerve,class
+Zebrafish whole-brain imaging,5e+08,1e+11,nerve,class
+New Caledonian crow tool crafting,6.5e+07,5e+12,nerve,estimate
+Kanzi bonobo lexigram language,2.5e+07,3e+13,nerve,estimate
+Protocell RNA world autopoiesis,1e+06,1e+09,chem,class
+Dictyostelium cAMP superorganism,8e+08,1e+06,grp,class
+Turing 1950 imitation game,80,100000,sil,class
+LSTM recurrent memory network,50,1e+08,sil,class
+DeepMind DQN Atari agent,10,1e+12,sil,class
+Thermodynamic diffusion model,50,1e+08,ai,class
+Linear B Mycenaean clay archive,4500,0.5,exo,estimate
+Nineveh Ashurbanipal library,2670,1,exo,class
+Dead Sea Scrolls Qumran archive,2250,2,exo,estimate
+Diamond Sutra woodblock print,1e+06,1e+09,nerve,class
+UNISERVO magnetic tape storage,1e+06,1e+09,nerve,class
+Archaeopteryx stem bird endocast,6.5e+07,5e+12,chem,estimate
+Zebra finch vocal learning circuit,6.5e+07,5e+12,nerve,estimate
+Honeybee waggle dance vector,4e+08,1e+10,nerve,class
+Sima de los Huesos hominin,1e+06,1e+09,nerve,class
+Flores island hominin endocast,300000,1.5e+14,nerve,estimate
+SAR11 marine ultramicrobacterium,3.5e+09,1000,chem,class
+Paper wasp individual facial vision,4e+08,1e+10,nerve,class
+Sensitive plant thigmonastic action,4e+08,1e+10,chem,class
+Pyrococcus extreme DNA proofreading,3.5e+09,1000,nerve,class
+Hopfield associative memory network,50,1e+08,sil,class
+AlphaFold 2 protein structure engine,10,1e+12,ai,class
+CLIP vision-language contrastive AI,50,1e+08,sil,class
+Whisper multilingual speech model,50,1e+08,sil,class
+Maya hieroglyphic bark codex,2000,1,exo,class
+Medieval vellum scriptorium,2000,1,exo,class
+Ottoman imperial paper archives,2000,1,exo,class
+Hollerith punch card tabulator,180,100,sil,class
+Aplysia gill-withdrawal reflex,1e+06,1e+09,nerve,class
+Tawny owl auditory space map,6.5e+07,5e+12,nerve,estimate
+Capuchin monkey anvil nut-cracking,2.5e+07,3e+13,nerve,estimate
+Broken Hill Rhodesian hominin,300000,8e+13,nerve,estimate
+Gran Dolina hominin endocast,850000,6e+13,nerve,estimate
+Mycoplasma minimal cellular genome,3.5e+09,1000,nerve,class
+Subterranean termite gallery mesh,4e+08,1e+10,nerve,class
+Desert parasitic plant gene graft,4e+08,1e+10,chem,class
+Bottlenose dolphin sponge culture,3.5e+07,1e+14,chem,class
+Conway Game of Life automaton,50,1e+08,sil,class
+Variational Autoencoder engine,50,1e+08,sil,class
+Mixture-of-Depths adaptive compute,10,1e+12,ai,class
+RLHF alignment policy optimizer,50,1e+08,sil,class
+Clay bullae and accounting tokens,5100,0.1,nerve,class
+Trajan's Column narrative relief,2000,1,nerve,class
+Tripitaka Koreana woodblocks,2000,1,nerve,class
+Chappe optical semaphore network,1e+06,1e+09,nerve,class
+Hydra nerve net and morphallaxis,5.8e+08,1e+07,nerve,class
+Electric eel electrolocation,5e+08,1e+11,nerve,class
+Australian magpie song & mobbing,6.5e+07,5e+12,nerve,estimate
+Dmanisi early hominin endocast,1.8e+06,3.5e+13,nerve,estimate
+Lucy Australopithecus endocast,3.5e+06,2e+13,nerve,estimate
+Sulfolobus CRISPR array memory,3.5e+09,1000,nerve,class
+Leafcutter ant fungus farm,4e+08,1e+10,chem,class
+Sperm whale coda clan culture,3.5e+07,1e+14,nerve,class
+Rosenblatt Mark I Perceptron,50,1e+08,ai,class
+U-Net biomedical segmentation,50,1e+08,sil,class
+Vision Transformer architecture,10,1e+12,ai,class
+Direct Preference Optimization AI,50,1e+08,sil,class
+Vinca symbols & Tartaria tablets,8000,0.02,exo,estimate
+Nag Hammadi Gnostic papyri,1680,5,exo,estimate
+Bayeux Tapestry narrative cloth,2000,1,nerve,class
+Gutenberg movable type press,571,100,exo,class
+Williams-Kilburn CRT RAM tube,1e+06,1e+09,nerve,class
+IBM 726 magnetic tape drive,1e+06,1e+09,nerve,class
+Pleurobrachia ctenophore nerve net,5.8e+08,1e+07,nerve,class
+Knifefish active electrolocation,5e+08,1e+11,nerve,class
+New Caledonian crow stepped tools,6.5e+07,5e+12,nerve,estimate
+Homo floresiensis LB1 endocast,300000,1.5e+14,nerve,estimate
+Zinj Paranthropus boisei endocast,2e+06,2.5e+13,nerve,estimate
+Nanoarchaeum minimal symbiont,1e+06,1e+09,chem,class
+Army ant living bivouac,4e+08,1e+10,nerve,class
+Dodder host-targeting microRNAs,1e+06,1e+09,nerve,class
+Boltzmann machine stochastic net,50,1e+08,sil,class
+ResNet deep residual network,50,1e+08,sil,class
+FlashAttention exact tiled attention,50,1e+08,sil,class
+Constitutional AI scalable alignment,5,1e+14,sil,class
+Jiahu tortoise plastron symbols,8000,0.02,exo,estimate
+Ebla royal archive tablets,4500,0.5,exo,estimate
+Derveni carbonized papyrus,2250,2,exo,estimate
+Diamond Sutra block-printed scroll,1e+06,1e+09,exo,class
+Atanasoff-Berry capacitor drum,80,100000,sil,class
+UNIVAC mercury acoustic delay line,1e+06,1e+09,nerve,class
+Holographic Versatile Disc (HVD),1e+06,1e+09,nerve,class
+Staurocladia walking medusa net,5.8e+08,1e+07,nerve,class
+Mormyrid gigantocerebellar brain,2e+08,1e+13,nerve,class
+Brown thornbill deceptive mimicry,6.5e+07,5e+12,nerve,estimate
+Sima Cranium 5 Miguelon endocast,1e+06,1e+09,nerve,class
+Little Foot StW 573 endocast,3.5e+06,2e+13,nerve,estimate
+Carsonella minimal endosymbiont,1e+06,1e+09,nerve,class
+Argentine ant global supercolony,4e+08,1e+10,grp,class
+European mistletoe Complex I loss,1e+06,1e+09,chem,class
+Pilot whale post-reproductive pod,3.5e+07,1e+14,nerve,class
+Kohonen self-organizing map (SOM),50,1e+08,sil,class
+LSTM gated recurrent architecture,50,1e+08,sil,class
+DeepSeek-MoE dual-routing network,2,1e+13,ai,class
+Self-Rewarding Language Models,50,1e+08,ai,class
+Indus Valley steatite seals,4500,0.5,nerve,estimate
+Ashurbanipal library catalogues,2670,1,exo,class
+Codex Sinaiticus parchment,1680,5,exo,estimate
+Bi Sheng ceramic movable type,980,50,exo,estimate
+Tripedalia rhopalial lens eyes,5e+08,1e+11,nerve,class
+Gymnarchus low-frequency EOD,5e+08,1e+11,nerve,class
+Zebra finch vocal song circuit,6.5e+07,5e+12,nerve,estimate
+Gran Dolina ATD6-69 endocast,850000,6e+13,nerve,estimate
+Sahelanthropus TM 266 endocast,7e+06,1e+13,nerve,class
+SAR11 Pelagibacter genome,3.5e+09,1000,chem,class
+Harvester ant anarchic foraging,4e+08,1e+10,nerve,class
+Striga host germination sensor,1e+06,1e+09,nerve,class
+Sperm whale dialect clans,3.5e+07,1e+14,nerve,class
+Extreme Learning Machine (ELM),50,1e+08,sil,class
+Gated Recurrent Unit (GRU),50,1e+08,sil,class
+Mistral-7B Sliding Window LLM,5,1e+14,ai,class
+Quiet-STaR Self-Taught Reasoner,2,1e+13,sil,class
+Human Vertebrate Retina,300000,1.5e+14,nerve,estimate
+Mammalian Cochlea Organ of Corti,2e+08,1e+13,nerve,class
+Octopus Optic Lobe Cortex,4.5e+08,1.2e+11,nerve,estimate
+Drosophila Lobula Plate Motion Circuit,4e+08,1e+10,nerve,class
+Volvox carteri Multicellularity,8e+08,1e+06,chem,class
+Xenopus Embryonic Bioelectric Field,3.5e+08,1e+11,nerve,class
+Human Broca-Wernicke Language Engine,300000,1.5e+14,nerve,estimate
+UK Biobank Total Brain Volume Reference,300000,1.5e+14,nerve,estimate
+Human EEG Evoked Potential & Alpha Speed,300000,1.5e+14,nerve,estimate
+Trichoplax adhaerens Aneural Animal,5.8e+08,1e+07,chem,class
+Dictyostelium discoideum Slug,8e+08,1e+06,chem,class
+Human Frontopolar Cortex BA10,300000,1.5e+14,nerve,estimate
+Human Superior Longitudinal Fasciculus,300000,1.5e+14,nerve,estimate
+Sumerian Archaic Lexical Word Lists,5100,0.1,exo,class
+Gutenberg 42-Line Bible Printing,571,100,exo,class
+ENIAC Vacuum Tube Computer,80,100000,sil,class
+Intel 4004 Single-Chip Microprocessor,55,1e+08,sil,class
+Google Sycamore Quantum Processor,5,1e+14,sil,class
+AlphaProof Formal Mathematical Reasoner,2,1e+13,sil,class
+Mantis shrimp apposition eye,4e+08,1e+08,nerve,class
+Pigeon optic tectum / rotundus,1.5e+08,2.5e+10,nerve,estimate
+Rat whisker barrel pathway,6.5e+07,5e+08,nerve,estimate
+Bat biosonar cochlear fovea,5.2e+07,5e+08,nerve,estimate
+Planarian regenerative memory,5.4e+08,1e+06,nerve,class
+Glass sponge syncytial conduction,5.8e+08,10000,chem,class
+Human arcuate fasciculus,200000,1e+12,nerve,class
+Chimpanzee termite fishing culture,7e+06,100,nerve,class
+Human default mode network (DMN),300000,2.5e+12,nerve,estimate
+Egyptian Middle Kingdom papyrus,3950,0.1,exo,class
+Clymer Columbian iron hand press,213,250,nerve,estimate
+Diderot's Encyclopedie corpus,275,10,exo,class
+Williams-Kilburn CRT memory,79,120000,sil,estimate
+Homunculus patagonicus endocast,1.75e+07,1e+12,nerve,class
+Homo erectus Dmanisi Skull 3,1.8e+06,4.5e+13,nerve,estimate
+IBM TrueNorth neuromorphic chip,12,4.6e+10,sil,estimate
+Google TPU v4 AI Pod cluster,5,1.1e+18,sil,estimate
+Cerebras Wafer-Scale Engine 3,2,1.25e+17,sil,estimate
+DeepSeek-R1 open reasoning model,1,1.5e+14,ai,estimate
+Drosophila adult connectome,2.5e+08,1e+09,nerve,class
+Blowfly gyroscopic aeronavigation,6.5e+07,5e+08,nerve,estimate
+Hawkmoth turbulent pheromone tracking,1.4e+08,2e+08,nerve,estimate
+Silkmoth bistable anemotaxis engine,5000,1e+06,nerve,class
+Magnetic termite compass mound,5e+07,1000,grp,class
+Subterranean termite vibrational relay,1.3e+08,5000,grp,estimate
+Snapping shrimp cavitation claw,5e+07,1e+06,nerve,class
+Eusocial sponge-dwelling shrimp,2e+07,1e+06,grp,class
+Domestic cat visual cortex columns,10000,5e+12,nerve,estimate
+Domestic pig spatial cognition,9000,8e+12,nerve,estimate
+Guinea pig precocial auditory cortex,5000,1e+12,nerve,class
+Tiger solitary apex infrasonic roar,2e+06,1.5e+13,nerve,estimate
+Lion pride cooperative hunting,1.5e+06,1.4e+13,grp,estimate
+Mallard duck unihemispheric sleep,2e+07,2e+11,nerve,estimate
+Barn owl auditory space map,2.5e+07,5e+11,nerve,estimate
+Hummingbird episodic flower memory,2.2e+07,8e+10,nerve,estimate
+Emperor penguin huddle wave physics,4e+07,5e+12,grp,estimate
+Wandering albatross dynamic soaring,3e+07,2e+12,nerve,estimate
+Superb lyrebird acoustic mimicry,3e+07,3e+12,nerve,estimate
+Raven perspective-taking & caching,1e+07,1.2e+13,nerve,estimate
+Sulfolobus acidocaldarius thermoacidophile,3.5e+09,1e+06,chem,class
+Halobacterium salinarum bacteriorhodopsin engine,3.2e+09,1e+06,chem,class
+Geobacter sulfurreducens microbial nanowire grid,2e+09,1e+06,chem,class
+Marine Stromatolite phototactic metabolic grid,3.48e+09,1e+06,chem,class
+Pyrococcus furiosus hyperthermophile network,3.6e+09,1e+06,chem,class
+Dragonfly target interception steering,3.2e+08,1e+06,nerve,class
+Trap-jaw ant mandibular latch spring,1e+08,1e+06,nerve,class
+Desert locust looming visual collision detector,3e+08,1e+06,nerve,class
+Archerfish optical refraction ballistic jet,4.5e+07,1e+06,nerve,class
+Tiger beetle intermittent chasing & optical gating,1.1e+08,1e+06,nerve,class
+Mimic octopus skin chromatophore array,1.5e+07,1e+06,nerve,class
+Humboldt squid bioluminescent flashing grid,1.8e+07,1e+06,nerve,class
+Broadclub cuttlefish dynamic polarized camouflage,3e+07,1e+06,nerve,class
+Chambered nautilus primitive pinhole eye,5e+08,1e+06,nerve,class
+Blue-ringed octopus flashing warning valve,5e+06,1e+06,nerve,class
+Tiktaalik roseae fin-limb transition endocast,3.75e+08,1e+06,nerve,class
+Dimetrodon limbatus early synapsid endocast,2.8e+08,1e+06,nerve,class
+Allosaurus fragilis theropod dinosaur endocast,1.5e+08,1e+06,nerve,class
+Australopithecus sediba MH1 cranial endocast,1.98e+06,1e+06,nerve,class
+Rodhocetus kasrani transitional whale endocast,4.7e+07,1e+06,nerve,class
+Killer whale resident vs transient vocal pod,2e+06,1e+06,nerve,class
+Beluga whale vocal mimicry engine,4e+06,1e+06,nerve,class
+Harbor seal vibrissal hydrodynamic wake tracker,1e+07,1e+06,exo,class
+Walrus benthic tactile vibrissal foraging array,3e+06,1e+06,nerve,class
+Amazon river dolphin turbid biosonar,1.5e+07,1e+06,nerve,class
+Goffin cockatoo combinatorial tool crafting,1.2e+07,1e+06,nerve,class
+African grey parrot symbolic conceptual engine,2.5e+07,1e+06,nerve,class
+New Zealand kea cooperative string-pulling puzzle,1.5e+07,1e+06,nerve,class
+Great tit cultural innovator transmission network,4e+06,1e+06,nerve,class
+Acorn woodpecker social granary tree sorting,8e+06,1e+06,chem,class
+Spotted hyena clan matrilineal coalition,1.5e+06,1e+06,nerve,class
+Gray wolf pack cooperative endurance hunting,1e+06,1e+06,nerve,class
+Bonobo fission-fusion socio-sexual network,1.5e+06,1e+06,nerve,class
+Gelada baboon lip-smacking speech rhythm,3.5e+06,1e+06,nerve,class
+Meerkat sentinel acoustic alarm guarding relay,3e+06,1e+06,nerve,class
+Antikythera mechanism astronomical gear predictor,2150,1e+06,sil,class
+Incan decimal quipu knotted-cord accounting grid,550,1e+06,exo,class
+ENIAC vacuum tube high-speed electronic integrator,81,1e+06,sil,class
+Photonic reservoir computing core,6,1e+06,sil,class
+DNA strand displacement molecular logic cascade,15,1e+06,sil,class
+Analog electronic AC network analyzer,97,1e+06,sil,class
+Memristive crossbar neuromorphic matrix,8,1e+06,sil,class
+Superconducting quantum annealer spin lattice,6,1e+06,sil,class
+OpenAI o3-mini deliberative reasoning engine,1,1e+06,ai,class
+Anthropic Claude 3.7 Sonnet hybrid reasoning architecture,1,1e+06,ai,class
+Groq LPU tensor streaming deterministic architecture,2,1e+06,sil,class
+Frontier exascale supercomputing system,4,1e+06,sil,class
+DishBrain biological organoid neuromorphic interface,4,1e+06,sil,class
+Monarch butterfly sun compass navigation,7.5e+07,1e+06,nerve,class
+Drosophila whole-brain electron connectome,2e+07,1e+06,nerve,class
+Praying mantis stereoscopic 3D vision,1.5e+08,1e+06,nerve,class
+Saharan desert ant path integration pedometer,5e+07,1e+06,nerve,class
+Firefly collective phase synchronization network,1e+08,1e+06,grp,class
+Termite mound stigmergic climate reactor,1.3e+08,1e+06,nerve,class
+Bombardier beetle pulsed explosive reactor,1e+08,1e+06,nerve,class
+Robber fly 30G aerial visual interceptor,1.1e+08,1e+06,nerve,class
+Leafcutter ant fungal agriculture bioreactor,1.5e+07,1e+06,chem,class
+Periodical cicada 17-year prime period resonance,2e+06,1e+06,nerve,class
+Dung beetle Milky Way celestial compass,9e+07,1e+06,nerve,class
+Army ant living self-assembled dynamic bridge,1.8e+07,1e+06,nerve,class
+Water strider surface wave ripple triangulation,1e+08,1e+06,nerve,class
+Hawk moth turbulent odor plume zigzag casting,4.5e+07,1e+06,nerve,class
+Adleman DNA Hamiltonian Path Computer,32,1e+06,sil,class
+Qian-Winfree DNA strand displacement cascade,15,1e+06,sil,class
+Synthetic DNA Fountain data storage archive,9,1e+06,sil,class
+Hopfield kinetic proofreading in DNA polymerase,3.8e+09,1e+06,nerve,class
+Chromatin histone code & methylation epigenetic memory,1.6e+09,1e+06,nerve,class
+Bacterial restriction-modification pattern recognizer,3e+09,1e+06,chem,class
+Autonomous DNA origami bipedal walker nanorobot,16,1e+06,sil,class
+Mitochondrial genome bioenergetic feedback regulator,1.8e+09,1e+06,chem,class
+Ribosomal mRNA translation decoding machine,3.8e+09,1e+06,chem,class
+Calyx of Held giant auditory brainstem synapse,2.2e+08,1e+06,nerve,class
+Electric fish Jamming Avoidance Response phase comparator,1e+08,1e+06,nerve,class
+Star-nosed mole ultra-fast tactile foveator,4e+07,1e+06,nerve,class
+Peregrine falcon 320 km/h dive visual interceptor,1.5e+07,1e+06,nerve,class
+Mustached bat Doppler-shifted echo-delay computational map,3e+07,1e+06,nerve,class
+Humboldt squid unmyelinated giant axon escape system,1.6e+08,1e+06,nerve,class
+Duck-billed platypus electro-mechanosensory bill locator,1.1e+08,1e+06,nerve,class
+Common cuttlefish dynamic chromatophore array,8e+07,1e+06,nerve,class
+Bottlenose dolphin acoustic phonic lips biosonar projector,1.8e+07,1e+06,nerve,class
+Pacific electric ray synchronous electrocyte stack,5e+07,1e+06,nerve,class
+Shen et al. Integrated Coherent Nanophotonic Processor,9,1e+06,sil,class
+Lightmatter Envise Photonic AI Accelerator,5,1e+06,sil,class
+Brunner et al. Photonic Reservoir Computer with Optical Delay Lo,13,1e+06,sil,class
+Nozaki et al. Ultralow-Energy Photonic Crystal All-Optical Switc,16,1e+06,sil,class
+Wang et al. Thin-Film Lithium Niobate Integrated Electro-Optic M,8,1e+06,sil,class
+Takeuchi et al. Adiabatic Quantum-Flux-Parametron AQFP Microproc,5,1e+06,sil,class
+Likharev-Mukhanov Rapid Single Flux Quantum RSFQ Logic,35,1e+06,sil,class
+Yao et al. 128x128 Fully-Integrated Memristive Crossbar Accelera,6,1e+06,sil,class
+IBM NorthPole Brain-Inspired Neural Inference Architecture,3,1e+06,sil,class
+Cerebras Wafer-Scale Engine 3 WSE-3 AI Processor,2,1e+06,sil,class
+DeepSeek-R1 Incentivized Test-Time Reasoning Engine,1,1e+06,ai,class
+OpenAI o3 Frontier Deliberative Reasoning Model,1,1e+06,ai,class
+Tree-of-Thoughts Deliberative Problem Solver,3,1e+06,sil,class
+AlphaZero Monte Carlo Tree Search Deliberation Engine,8,1e+06,ai,class
+Hippocampal Sharp-Wave Ripple Replay Deliberator,2.2e+08,1e+06,nerve,class
+Intel Hala Point 1.15-Billion Neuron Neuromorphic System,2,1e+06,sil,class
+SpiNNaker 2 10-Million Core Neuromorphic Supercomputer,2,1e+06,sil,class
+Tenstorrent Blackhole Standalone RISC-V Tensix AI Processor,2,1e+06,sil,class
+Google TPU v5p AI Pod with Optical Circuit Switches,2,1e+06,sil,class
+Claude 3.7 Sonnet Hybrid Reasoning Architecture,1,1e+06,ai,class
+Australopithecus afarensis (AL 288-1 'Lucy') Endocast,3.2e+06,1e+06,nerve,class
+Homo floresiensis (LB1 'The Hobbit') Endocast,60000,1e+06,nerve,class
+Archaeopteryx lithographica (London Specimen) Endocast,1.5e+08,1e+06,chem,class
+Tyrannosaurus rex (AMNH 5027 / Sue) Endocast,6.6e+07,1e+06,nerve,class
+Triceratops horridus Endocast,6.6e+07,1e+06,nerve,class
+Bathyphysa conifera ('Flying Spaghetti Monster') Siphonophore,5e+08,1e+06,nerve,class
+Coenobita clypeatus (Terrestrial Hermit Crab) Olfactory System,2.5e+08,1e+06,nerve,class
+Sternopygus macrurus High-Frequency Medullary Pacemaker,1e+08,1e+06,nerve,class
+Reticulitermes speratus Subterranean Swarm Colony,1.4e+08,1e+06,grp,class
+Heterocephalus glaber Hypoxia-Tolerant Brain,3e+07,1e+06,nerve,class
+IBM Heron 156-Qubit Heavy-Hex Quantum Processor,3,1e+06,sil,class
+Quantinuum H2-1 Trapped-Ion Quantum Engine,2,1e+06,sil,class
+"D-Wave Advantage2 7,000+ Qubit Quantum Annealing Processor",2,1e+06,sil,class
+BrainScaleS-2 Accelerated Analog Neuromorphic System,4,1e+06,sil,class
+NTT Coherent Ising Machine (CIM) Optical Processor,10,1e+06,sil,class
+Trap-jaw spider ballistic chelicerae latch,1.6e+08,1e+06,nerve,class
+Dragonfly target interception flight circuit,3e+08,1e+06,nerve,class
+Star-nosed mole 11th ray tactile foveation,3.5e+07,1e+06,nerve,class
+Electric eel variable conduction compensation,8e+07,1e+06,nerve,class
+Locust lobula giant movement detector looming neuron,3.1e+08,1e+06,nerve,class
+Fairyfly micro-wasp anucleate nervous system,1e+08,1e+06,nerve,class
+Etruscan pygmy shrew cortical barrel cortex,1.5e+07,1e+06,nerve,class
+Bowhead whale extreme conduction cable,1.8e+07,1e+06,nerve,class
+Common ostrich cursorial sensorimotor tract,2e+07,1e+06,nerve,class
+Giant Gippsland earthworm median giant fiber,4e+07,1e+06,nerve,class
+Memristive RRAM in-memory computing crossbar,2020,1e+06,sil,class
+Programmable nanophotonic matrix processor,2017,1e+06,sil,class
+Groq LPU deterministic tensor streaming processor,2020,1e+06,sil,class
+Phase-change memory (PCM) deep learning accelerator,2020,1e+06,ai,class
+Geobacter sulfurreducens conductive cytochrome biofilm,1.8e+09,1e+06,grp,class
+Claude 3.7 Sonnet hybrid reasoning architecture,2025,1e+06,ai,class
+QwQ-32B open deliberative reasoning model,2025,1e+06,ai,class
+Grandmaster classical vs blitz chess deliberative search,1851,1e+06,nerve,class
+Human Go dual-process intuition vs MCTS deliberation,2500,1e+06,nerve,class
+Cell-free synthetic transcriptional toggle switch,2012,1e+06,sil,class
+Mammalian synthetic biology CRISPR logic classifier,2014,1e+06,sil,class
+DNA strand displacement neural winner-take-all network,2018,1e+06,sil,class
+Mitochondrial bioenergetic ATP-synthase feedback oscillator,1.5e+09,1e+06,chem,class
+Neuronal microtubule tryptophan resonance energy transfer networ,2e+09,1e+06,nerve,class
+Cryogenic silicon spin qubit quantum processor core,3,1e+06,sil,class
+Cryogenic superconducting transmon quantum processor,7,1e+06,sil,class
+Fungal mycelium spike-train electrical communication network,7e+08,1e+06,chem,class
+Venus flytrap electrical trigger and action potential counter,4e+07,1e+06,chem,class
+Sensitive plant rapid hydraulic-electrical pinna motor collapse,3e+07,1e+06,chem,class
+Physarum polycephalum plasmodial calcium wave pacemaker,1e+09,1e+06,chem,class
+Cyanobacterial lens-guided phototactic micro-steering,2.7e+09,1e+06,chem,class
+Sperm whale biosonar acoustic spermaceti projector,2.5e+07,1e+06,nerve,class
+Pistol shrimp cavitation snap acoustic shockwave,5e+07,1e+06,nerve,class
+Bacterial quorum sensing autoinducer diffusion channel,1.5e+09,1e+06,chem,class
+Leafcutter ant chemical stigmergy pheromone trail network,1.5e+07,1e+06,grp,class
+Common cuttlefish dynamic camouflage chromatophore array,1e+08,1e+06,nerve,class
+OpenAI o3 deliberative reasoning model,1,1e+06,ai,class
+DeepSeek-R1-Zero pure RL emergent reasoning engine,1,1e+06,ai,class
+AlphaZero Monte Carlo Tree Search self-play engine,8,1e+06,ai,class
+MuZero learned latent-model planning architecture,6,1e+06,sil,class
+Tree-of-Thoughts heuristic deliberate search framework,3,1e+06,ai,class
+Voyager 1 interstellar deep-space communication channel,49,1e+06,sil,class
+Transatlantic Amitie submarine fiber-optic cable network,3,1e+06,sil,class
+Advanced LIGO gravitational-wave computational interferometer,11,1e+06,sil,class
+Chicago-New York high-frequency trading microwave link,14,1e+06,sil,class
+Bitcoin global thermodynamic proof-of-work consensus network,17,1e+06,sil,class
+Argentinosaurus huinculensis,9.5e+07,8.5e+09,nerve,estimate
+Tyrannosaurus rex,6.7e+07,3.2e+10,nerve,estimate
+Didelphodon vorax,6.65e+07,1.1e+09,nerve,estimate
+Purgatorius ceratops,6.59e+07,8.5e+07,nerve,estimate
+Lystrosaurus murrayi,2.51e+08,3.2e+09,nerve,estimate
+Gorgonops torvus,2.55e+08,4.1e+09,nerve,estimate
+Opabinia regalis,5.08e+08,8.5e+06,nerve,estimate
+Haikouichthys ercaicunensis,5.18e+08,450000,nerve,estimate
+DeepSeek-V3 Frontier MoE Reasoning Engine,1,2.5e+17,ai,estimate
+Frontier AI Cloud Datacenter Cluster,1,1.2e+21,ai,estimate
+Homo floresiensis,60000,6.5e+10,nerve,estimate
+Homo luzonensis,67000,7e+10,nerve,estimate
+Homo naledi,300000,7.8e+10,nerve,estimate
+Anomalocaris canadensis,5.08e+08,6e+06,nerve,estimate
+Dunkleosteus terrelli,3.6e+08,5.4e+08,nerve,estimate
+Arthropleura armata,3.15e+08,7e+07,nerve,estimate
+Quetzalcoatlus northropi,6.8e+07,1.8e+09,nerve,estimate
+Nvidia Blackwell B200 NVL72 Rack,1,7.2e+17,ai,estimate
+Google Trillium TPU v6e Pod,1,9.2e+17,ai,estimate
+Cerebras CS-3 Wafer-Scale Supercomputer,1,1.25e+17,ai,estimate
+Mimosa pudica,5e+07,2.5e+07,chem,estimate
+Dionaea muscipula,6.5e+07,1e+07,chem,class
+Physarum polycephalum,7.5e+08,5e+07,chem,estimate
+Trichoplax adhaerens,5.8e+08,850000,chem,estimate
+Mnemiopsis leidyi,6e+08,1.2e+07,nerve,estimate
+Octopus vulgaris,2.75e+08,2.5e+11,nerve,estimate
+Hydra vulgaris,5.5e+08,280000,nerve,estimate
+Paramecium tetraurelia,1.2e+09,200000,chem,estimate
+Arabidopsis thaliana,2.5e+07,1.5e+06,chem,estimate
+Vespa mandarinia,3.5e+07,4.75e+08,nerve,estimate
+Methanocaldococcus jannaschii,3.8e+09,1.5e+11,chem,estimate
+Thermotoga maritima,3.5e+09,1.8e+11,chem,estimate
+Riftia pachyptila endosymbiont,4e+08,5e+14,chem,estimate
+Alvinella pompejana,3.5e+08,240000,chem,estimate
+Pyrodictium occultum,3.6e+09,8e+10,chem,estimate
+Aurelia aurita ephyra,5.6e+08,17000,nerve,estimate
+Tripedalia cystophora (Box Jellyfish),5.4e+08,36000,nerve,estimate
+Acropora millepora (Staghorn Coral),5.2e+08,1e+07,nerve,class
+Pleurobrachia bachei (Sea Gooseberry),5.5e+08,24000,nerve,estimate
+Suberites domuncula (Demosponge),5.8e+08,120000,chem,estimate
+Isoxys volucris,5.18e+08,130000,nerve,estimate
+Hurdia victoria,5.08e+08,360000,nerve,estimate
+Marrella splendens,5.08e+08,48000,nerve,estimate
+Canadaspis perfecta,5.08e+08,96000,nerve,estimate
+Fuxianhuia protensa,5.2e+08,144000,nerve,estimate
+Cameroceras trentonense (Giant Endocerid),4.6e+08,2.4e+07,nerve,estimate
+Bothriolepis canadensis (Placoderm),3.85e+08,5e+06,nerve,estimate
+Birkenia elegans (Anaspid Agnathan),4.3e+08,900000,nerve,estimate
+Pterygotus anglicus (Giant Sea Scorpion),4.2e+08,6.4e+06,nerve,estimate
+Guiyu oneiros (Early Sarcopterygian),4.19e+08,7.6e+06,nerve,estimate
+Tiktaalik roseae (Fishapod),3.75e+08,2.8e+07,nerve,estimate
+Acanthostega gunnari,3.65e+08,1.04e+07,nerve,estimate
+Ichthyostega stensioei,3.6e+08,3.6e+07,nerve,estimate
+Meganeura monyi (Giant Dragonfly),3e+08,2.2e+06,nerve,estimate
+Pulmonoscorpius kirktonensis,3.35e+08,1.7e+06,nerve,estimate
+Dimetrodon grandis,2.8e+09,7e+07,nerve,estimate
+Biarmosuchus tener,2.68e+08,4.4e+07,nerve,estimate
+Inostrancevia alexandri,2.55e+08,1.3e+08,nerve,estimate
+Diictodon feliceps,2.53e+08,1.9e+07,nerve,estimate
+Moschops capensis,2.6e+08,1.9e+08,nerve,estimate
+Shonisaurus sikanniensis,2.15e+08,8.4e+08,nerve,estimate
+Pliosaurus funkei (Predator X),1.5e+08,1.16e+09,nerve,estimate
+Mosasaurus hoffmannii,7e+07,9.6e+08,nerve,estimate
+Elasmosaurus platyurus,8e+07,2.4e+08,nerve,estimate
+Henodus chelyops,2.25e+08,3.6e+07,nerve,estimate
+Deinonychus antirrhopus,1.15e+08,3.9e+08,nerve,estimate
+Troodon formosus,7.5e+07,6.2e+08,nerve,estimate
+Allosaurus fragilis,1.5e+08,7.6e+08,nerve,estimate
+Struthiomimus altus,7.5e+07,4.4e+08,nerve,estimate
+Microraptor gui,1.2e+08,9.6e+07,nerve,estimate
+Morganucodon watsoni,2.05e+08,2.8e+07,nerve,estimate
+Hadrocodium wui,1.95e+08,8.4e+06,nerve,estimate
+Castorocauda lutrasimilis,1.64e+08,9.6e+07,nerve,estimate
+Repenomamus robustus,1.25e+08,3.7e+08,nerve,estimate
+Kuehneotherium praecursoris,2e+08,1.9e+07,nerve,estimate
+Archaeopteryx lithographica,1.5e+08,1.24e+08,chem,estimate
+Confuciusornis sanctus,1.25e+08,1.56e+08,nerve,estimate
+Hesperornis regalis,8e+07,2.9e+08,nerve,estimate
+Ichthyornis dispar,8.5e+07,3.7e+08,nerve,estimate
+Gastornis parisiensis (Giant Paleocene Bird),5.5e+07,9e+08,nerve,estimate
+Pakicetus inachus,5e+07,5.6e+08,nerve,estimate
+Ambulocetus natans (Walking Whale),4.8e+07,9e+08,nerve,estimate
+Basilosaurus cetoides,4e+07,2.8e+09,nerve,estimate
+Squalodon calvertensis (Shark-Toothed Dolphin),2.8e+07,5.6e+09,nerve,estimate
+Dorudon atrox,3.8e+07,1.96e+09,nerve,estimate
+Atta cephalotes (Leafcutter Ant Supercolony),2e+07,5e+12,grp,estimate
+Eciton burchellii (Army Ant Nomadic Swarm),1.5e+07,7e+11,grp,estimate
+Macrotermes bellicosus (Mound-Building Termite),3e+07,1.2e+12,nerve,estimate
+Apis mellifera (European Honeybee Colony),3.5e+07,1.2e+11,grp,estimate
+Linepithema humile (Argentine Ant Supercolony),1e+07,2e+14,grp,estimate
+Sepia officinalis (European Cuttlefish),4.5e+07,4e+08,nerve,estimate
+Metasepia pfefferi (Flamboyant Cuttlefish),3e+07,1.7e+08,nerve,estimate
+Thaumoctopus mimicus (Mimic Octopus),2e+07,6.4e+08,nerve,estimate
+Dosidicus gigas (Humboldt Squid),3.5e+07,7.6e+08,nerve,estimate
+Nautilus pompilius (Chambered Nautilus),4.5e+08,3.6e+07,nerve,estimate
+Crocuta crocuta (Spotted Hyena Clan),1e+07,2.5e+09,nerve,estimate
+Lycaon pictus (African Wild Dog Pack),8e+06,4.4e+10,nerve,estimate
+Panthera leo (African Lion Pride),5e+06,2.8e+10,grp,estimate
+Enhydra lutris (Sea Otter),5e+06,1.7e+09,nerve,estimate
+Acinonyx jubatus (Cheetah),4e+06,1.56e+09,nerve,estimate
+Aegyptopithecus zeuxis,3.3e+07,6.4e+08,nerve,estimate
+Proconsul africanus,1.8e+07,2.2e+09,nerve,estimate
+Sivapithecus indicus,1.2e+07,3.6e+09,nerve,estimate
+Pierolapithecus catalaunicus,1.25e+07,2.8e+09,nerve,estimate
+Oreopithecus bambolii (Swamp Ape),8e+06,2.4e+09,nerve,estimate
+Sahelanthropus tchadensis (Toumaï),7e+06,4.4e+09,nerve,estimate
+Ardipithecus ramidus (Ardi),4.4e+06,4.2e+09,nerve,estimate
+Australopithecus afarensis (Lucy),3.2e+06,6.2e+09,nerve,estimate
+Paranthropus boisei (Nutcracker Man),2e+06,7e+09,nerve,estimate
+Homo habilis (KNM-ER 1813 / Handy Man),1.9e+06,1.04e+10,nerve,estimate
+Homo heidelbergensis (Atapuerca SH),430000,2.3e+10,nerve,estimate
+Homo floresiensis (LB1 / The Hobbit),60000,7.6e+09,nerve,estimate
+Homo luzonensis,50000,8.2e+09,nerve,estimate
+Homo naledi (Dinaledi Chamber),250000,9.6e+09,nerve,estimate
+Denisovan archaic human (Denisova 3),75000,2.84e+10,nerve,estimate
+Pinus longaeva (Great Basin Bristlecone Pine),1.4e+08,8e+09,chem,estimate
+Sequoiadendron giganteum (Giant Sequoia),6e+07,2.5e+11,chem,estimate
+Populus tremuloides (Pando Clonal Colony),14000,1.2e+12,grp,estimate
+Cuscuta pentagona (Parasitic Dodder Vine),4e+07,85000,chem,estimate
+Antikythera Mechanism,2150,120,sil,estimate
+Ctesibius Clepsydra (Water Clock),2270,5,nerve,estimate
+Babbage Analytical Engine,189,7,sil,estimate
+Belousov-Zhabotinsky Chemical Computer,75,15000,sil,estimate
+IBM Eagle 127-Qubit Quantum Processor,5,1.27e+08,sil,estimate
+Google Sycamore 53-Qubit Quantum Engine,7,5.3e+07,sil,estimate
+Intel Loihi 2 Neuromorphic Chip,5,1e+09,sil,class
+SpiNNaker 2 Million-Core Neural Engine,6,1e+11,sil,class
+Cerebras Wafer-Scale Engine 3 (WSE-3),2,1.25e+17,sil,estimate
+Dickinsonia costata,5.58e+08,50000,nerve,estimate
+Kimberella quadrata,5.55e+08,12000,nerve,estimate
+Charnia masoni,5.7e+08,10000,nerve,class
+Yorgia hennickei,5.55e+08,65000,nerve,estimate
+Spriggina floundersi,5.5e+08,20000,nerve,estimate
+Caenorhabditis elegans (N2 Hermaphrodite),5.4e+08,600,nerve,estimate
+Pristionchus pacificus,5.3e+08,750,nerve,estimate
+Schmidtea mediterranea (Planarian),5.3e+08,25000,nerve,estimate
+Macrostomum lignano,5.2e+08,7000,nerve,estimate
+Schistosoma mansoni (Blood Fluke),4e+08,12000,nerve,estimate
+Ophiocoma wendtii (Brittle Star),4.8e+08,500000,nerve,estimate
+Asterias rubens (Common Sea Star),4.7e+08,2.4e+06,nerve,estimate
+Strongylocentrotus purpuratus (Purple Sea Urchin),4.5e+08,1.6e+06,nerve,estimate
+Holothuria scabra (Sea Cucumber),4.4e+08,800000,nerve,estimate
+Antedon mediterranea (Feather Star),5e+08,600000,nerve,estimate
+Vampyroteuthis infernalis (Vampire Squid),1.65e+08,1.6e+08,chem,estimate
+Abralia veranyi (Eye-Flash Squid),5e+07,7e+07,nerve,estimate
+Histioteuthis bonnellii (Cock-eyed Squid),4.5e+07,1.9e+08,nerve,estimate
+Bathothauma lyra (Telescope-Eye Cranchiid),3.5e+07,9e+07,nerve,estimate
+Stauroteuthis syrtensis (Bioluminescent Dumbo Octopus),6e+07,2.2e+08,nerve,estimate
+Palaeocharinus rhyniensis (Rhynie Trigonotarbid),4.07e+08,36000,nerve,estimate
+Pneumodesmus newmani,4.28e+08,24000,nerve,estimate
+Attercopus fimbriunguis (Stem-Spider),3.86e+08,44000,nerve,estimate
+Eoarthropleura devonica,3.9e+08,90000,nerve,estimate
+Rhyniella praecursor,4.07e+08,11000,nerve,estimate
+Akmonistion zangerli (Bearsden Anvil Shark),3.3e+08,5e+07,nerve,estimate
+Falcatus falcatus (Sword-Spine Shark),3.25e+08,9e+06,nerve,estimate
+Helicoprion bessonowi,2.9e+08,9e+08,chem,estimate
+Belantsea montana,3.25e+08,3.6e+07,nerve,estimate
+Cladoselache fyleri,3.6e+08,1.9e+08,nerve,estimate
+Postosuchus kirkpatricki,2.15e+08,3.6e+08,nerve,estimate
+Effigia okeeffeae,2.05e+08,1.9e+08,nerve,estimate
+Herrerasaurus ischigualastensis,2.31e+08,3e+08,nerve,estimate
+Eoraptor lunensis,2.31e+08,9.6e+07,nerve,estimate
+Desmatosuchus spurensis,2.1e+08,1.7e+08,nerve,estimate
+Argentinosaurus huinculensis,9.5e+07,5.6e+08,nerve,estimate
+Diplodocus carnegii,1.52e+08,4.2e+08,nerve,estimate
+Brachiosaurus altithorax,1.53e+08,5e+08,nerve,estimate
+Camarasaurus supremus,1.5e+08,4.4e+08,nerve,estimate
+Europasaurus holgeri (Dwarf Sauropod),1.54e+08,2.6e+08,nerve,estimate
+Quetzalcoatlus northropi (Giant Azhdarchid),6.8e+07,8.4e+08,nerve,estimate
+Rhamphorhynchus muensteri,1.5e+08,1.3e+08,nerve,estimate
+Pteranodon longiceps,8.5e+07,4.8e+08,nerve,estimate
+Anurognathus ammoni,1.5e+08,5.6e+07,nerve,estimate
+Tupandactylus navigans,1.15e+08,2.2e+08,nerve,estimate
+Ornithorhynchus anatinus (Platypus),1.6e+08,2.4e+08,nerve,estimate
+Tachyglossus aculeatus (Short-beaked Echidna),1.6e+08,6.2e+08,nerve,estimate
+Didelphis virginiana (Virginia Opossum),6.5e+07,1.7e+08,nerve,estimate
+Macropus rufus (Red Kangaroo),2.5e+07,1.4e+09,nerve,estimate
+Sarcophilus harrisii (Tasmanian Devil),2e+07,4.4e+08,nerve,estimate
+Gnathonemus petersii (Elephantnose Fish),1e+08,3e+08,nerve,estimate
+Apteronotus albifrons (Black Ghost Knifefish),8e+07,1.9e+08,nerve,estimate
+Electrophorus voltai (High-Voltage Electric Eel),6e+07,3.6e+08,nerve,estimate
+Danio rerio (Zebrafish Larva),5e+07,200000,nerve,estimate
+Porichthys notatus (Plainfin Midshipman),4.5e+07,9e+07,nerve,estimate
+Drosophila melanogaster (Mushroom Body),4e+07,40000,nerve,estimate
+Apis mellifera carnica (Honeybee Brain),1e+08,1.9e+06,nerve,estimate
+Cataglyphis fortis (Sahara Desert Ant),3e+07,500000,nerve,estimate
+Manduca sexta (Tobacco Hawkmoth),5e+07,800000,nerve,estimate
+Periplaneta americana (American Cockroach),3e+08,600000,nerve,estimate
+Corvus moneduloides (New Caledonian Crow),1.5e+07,1.3e+09,nerve,estimate
+Psittacus erithacus (African Grey Parrot),2e+07,2.2e+09,nerve,estimate
+Corvus corone (Carrion Crow),1.8e+07,1.6e+09,nerve,estimate
+Nestor notabilis (Kea),3e+07,2.5e+09,nerve,estimate
+Corvus corax (Common Raven),1.2e+07,2.4e+09,nerve,estimate
+Orcinus orca (Killer Whale),1e+07,2.1e+10,nerve,estimate
+Physeter macrocephalus (Sperm Whale),2e+07,2.4e+10,nerve,estimate
+Tursiops truncatus (Bottlenose Dolphin),1.5e+07,1.2e+10,nerve,estimate
+Megaptera novaeangliae (Humpback Whale),1.8e+07,1.7e+10,nerve,estimate
+Globicephala melas (Long-finned Pilot Whale),1.2e+07,7.4e+10,nerve,estimate
+Pan paniscus (Bonobo / Kanzi Lexigrams),6e+06,1.6e+10,nerve,estimate
+Pan troglodytes (Chimpanzee Working Memory / Ayumu),7e+06,1.7e+10,nerve,estimate
+Pongo abelii (Sumatran Orangutan),1.2e+07,1.5e+10,nerve,estimate
+Gorilla beringei beringei (Mountain Gorilla),8e+06,1.8e+10,nerve,estimate
+Hylobates lar (Lar Gibbon),1.8e+07,4.4e+09,nerve,estimate
+Chauvet Cave Artists (Homo sapiens sapiens),36000,1.7e+11,exo,estimate
+Sunghir Burial Individuals (Homo sapiens),34000,1.7e+11,nerve,estimate
+Hohlenstein-Stadel Lion-Man (Homo sapiens),40000,5e+07,nerve,estimate
+Blombos Cave Engraved Ochre (Homo sapiens),75000,1e+07,exo,class
+Denisova Cave Chlorite Bracelet & Bone Needle,45000,2e+07,nerve,estimate
+Armillaria ostoyae (Humongous Fungus),2400,5e+06,chem,estimate
+Neurospora crassa (Hyphal Syncytium),4e+08,80000,chem,estimate
+Bacillus subtilis Pellicle Biofilm,3e+09,150000,grp,estimate
+Pseudomonas aeruginosa Biofilm,2.5e+09,120000,grp,estimate
+Trametes versicolor (Turkey Tail Mycelium),3e+08,250000,chem,estimate
+Zuse Z3 Electromechanical Computer (1941),85,2,sil,estimate
+Colossus Mark 1 Cryptanalytic Engine (1944),82,5000,sil,estimate
+ENIAC (Electronic Numerical Integrator and Computer),81,5000,sil,estimate
+Manchester Baby (SSEM 1948),78,833,sil,estimate
+UNIVAC I (Universal Automatic Computer 1951),75,1905,sil,estimate
+IBM System/360 Model 91 (1967),59,1.66e+07,sil,estimate
+Intel 4004 Microprocessor (1971),55,92000,sil,estimate
+Cray-1 Vector Supercomputer (1976),50,1.33e+08,sil,estimate
+Thinking Machines CM-5 (1991),35,1.31e+11,sil,estimate
+IBM Deep Blue (1997),29,2e+08,sil,estimate
+NVIDIA H100 Hopper Tensor Core GPU (2022),4,4e+15,sil,estimate
+NVIDIA Blackwell B200 GPU (2024),2,2e+16,sil,estimate
+Google TPU v5p Pod (2023),3,4.1e+18,sil,estimate
+Groq LPU Language Processing Unit (2024),2,7.5e+14,sil,estimate
+Lightmatter Envise Electro-Photonic AI Engine,3,3.2e+15,sil,estimate
+Methanocaldococcus jannaschii Hydrothermal Chemolithoautotroph,3.8e+09,150,chem,estimate
+Synechococcus elongatus KaiABC Post-Translational Circadian Cloc,2.9e+09,250,nerve,estimate
+Nostoc punctiforme Heterocystous Diazotrophic Filament Network,2.1e+09,5000,nerve,estimate
+Lokiarchaeum ossiferum Asgard Archaeal Cytoskeletal Host Lineage,1.8e+09,800,chem,estimate
+Chlamydomonas reinhardtii Channelrhodopsin Phototactic Navigator,1.5e+09,5000,chem,estimate
+Bangiomorpha pubescens Stenian Sexual Meiotic Red Alga,1.047e+09,10000,chem,class
+Salpingoeca rosetta Colonial Choanoflagellate Ciliary Mechanosen,6.5e+08,15000,grp,estimate
+Charnia masoni Avalon Ediacaran Fractal Rangeomorph,5.75e+08,5000,nerve,estimate
+Ikaria wariootia White Sea Ediacaran Peristaltic Bilaterian,5.55e+08,25000,nerve,estimate
+Treptichnus pedum Fortunian 3D Subsurface Foraging Trace Maker,5.41e+08,250000,nerve,estimate
+Fuxianhuia protensa Chengjiang Cambrian Arthropod Brain,5.18e+08,8e+06,nerve,estimate
+Endoceras proteiforme Ordovician Giant Cameroceratid Nautiloid,4.6e+08,1.5e+09,nerve,estimate
+Entelognathus primordialis Silurian Jawed Placoderm Predator,4.25e+08,6e+08,nerve,estimate
+Rhynia gwynne-vaughanii Early Devonian Vascular Land Plant,4.07e+08,50000,chem,estimate
+Acanthostega gunnari Late Devonian Tetrapod Limb-Bearing Navigat,3.65e+08,1.8e+09,nerve,estimate
+Hylonomus lyelli Pennsylvanian Amniote Terrestrial Insectivore,3.12e+08,1.2e+09,nerve,estimate
+Herrerasaurus ischigualastensis Carnian Basal Theropod Predator,2.31e+08,2.5e+10,nerve,estimate
+Hadrocodium wui Early Jurassic Mammaliaform Encephalized Insecti,1.95e+08,1.5e+09,nerve,estimate
+Sphecomyrma freyi Mid-Cretaceous Basal Eusocial Stem-Ant,9.9e+07,2.5e+07,grp,estimate
+Purgatorius unio Earliest Paleocene Basal Plesiadapiform Primate,6.59e+07,4.5e+09,nerve,estimate
+Squalodon calvertensis Oligocene-Miocene Echolocation Odontocete,2.8e+07,4.5e+11,nerve,estimate
+Proconsul heseloni Early Miocene Basal Hominoidea Frugivore,1.8e+07,3.8e+11,nerve,estimate
+Homo heidelbergensis (Atapuerca Sima de los Huesos Hominin),430000,7.6e+14,nerve,estimate
+Pascaline & Leibniz Stepped Reckoner Mechanical Calculators,354,2,sil,estimate
+Frontier 100k-GPU Test-Time Reasoning AI Cluster (o1/R1/Blackwel,1,2e+20,sil,estimate
+Archaeopteryx lithographica Avian Stem Endocast & Flight Cerebel,1.5e+08,1.8e+11,chem,estimate
+Triceratops horridus Ornithischian Megaherbivore Cranial Endocas,6.8e+07,4.2e+11,nerve,estimate
+Macrotermes bellicosus Cathedral Mound Termite Superorganism,1.4e+08,5e+14,grp,estimate
+Australopithecus afarensis ('Lucy') Bipedal Hominin Endocast,3.2e+06,5.12e+13,nerve,estimate
+Homo erectus Pleistocene Acheulean Toolmaker Endocast,1.8e+06,1e+14,nerve,class
+Homo neanderthalensis Late Pleistocene Sister Hominin Endocast,250000,1.49e+14,nerve,estimate
+Praya dubia / Physalia Colonial Siphonophore Superorganism,5.4e+08,2e+07,grp,estimate
+Cheilostome Bryozoan & Scleractinian Coral Modular Reef Colony,4.8e+08,5e+09,grp,estimate
+Clupea harengus Pelagic Teleost Fish School & Hydrodynamic Shoal,4e+08,1e+16,grp,class
+Sturnus vulgaris Starling Murmuration Topological Flock (k=7),1.2e+08,1.9e+15,grp,estimate
+Connochaetes taurinus Serengeti Wildebeest Migratory Megaherd,2.5e+07,3.75e+17,grp,estimate
+Göbekli Tepe & Çatalhöyük Neolithic Sedentary Village & Ritual N,11500,2.58e+16,nerve,estimate
+Ubaid & Cahokia Hierarchical Chiefdom & Irrigation Polity,6000,1.72e+17,grp,estimate
+Uruk & Old Kingdom Memphis Literate Bronze Age City-State,5200,6.88e+17,grp,estimate
+Roman & Han Continental Agrarian Mega-Empire,2000,5.16e+20,grp,estimate
+19th-Century Constitutional Nation-State & Global Telegraph Grid,175,2.58e+21,sil,estimate
+United Nations & Global Broadcast-Mainframe-Satellite Network (1,50,3.44e+22,sil,estimate
+Grypania spiralis Paleoproterozoic Macroscopic Eukaryotic Ribbon,1.87e+09,25000,nerve,estimate
+Dickinsonia costata Ediacaran Mobile Epithelio-Muscular Mat-Graz,5.58e+08,500000,nerve,estimate
+Sacabambaspis janvieri Ordovician Armored Jawless Agnathan,4.6e+08,1.5e+09,nerve,estimate
+Stenonychosaurus inequalis (Troodon) Paravian Theropod Endocast,7.5e+07,1.2e+12,nerve,estimate
+Heterocephalus glaber Naked Mole-Rat Eusocial Mammalian Colony,3e+07,6.4e+12,grp,estimate
+Incan Tawantinsuyu Quipu Knotted-Cord Imperial Bureaucratic Netw,550,8.6e+19,exo,estimate
+DishBrain Human Cortical Organoid + High-Density CMOS MEA Hybrid,4,1.6e+09,sil,estimate

@@ -1,0 +1,10 @@
+key,name,short,question,bacterium,you,laptop
+power,Power supply,Power,Where does the energy come from?,ATP from respiration,"Food, about 20 W for the brain",Battery or wall socket
+io,Senses & actions,Senses,"What can it sense, and how does it act?","Chemical sensors, a flagellum","Eyes, ears, hands","Camera, keyboard, screen"
+wire,Wiring,Wiring,How fast do signals travel?,Diffusion,"Insulated nerves, up to ~100 m/s",Copper traces and fiber
+cpu,Processor,Processor,What does the computing?,Enzymes and ribosomes,86 billion neurons,Silicon chip
+ram,Working memory,Memory,What can it hold in mind right now?,Protein on/off switches,A few things at once,RAM
+prog,Program,Program,What new trick can it run?,Swim toward food,"Plan, imagine, talk",Software
+store,Storage,Storage,What is kept inside the body?,"Genome, ~3 million letters",Genome and synapse strengths,SSD
+backup,Outside memory,Archive,What survives outside the body?,Nothing,"Books, notes, the cloud",Backups and archives
+net,Network,Network,How many can act as one?,Biofilm,Family to nation,The internet

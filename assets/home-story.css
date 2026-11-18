@@ -1,0 +1,80 @@
+/* Home: tell the story first (five floors of thinking), then let readers inspect the model.
+   Floor colours reuse the stack's layer tokens, so a floor and its layer in the detailed chart match. */
+.hero.story-home { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'text' 'fig'; gap: 30px; }
+.story-home .hero-text { max-width: 900px; }
+.story-home .lede { max-width: 68ch; }
+/* one column that cannot be widened by a wide child (the to-scale bars scroll inside their own frame) */
+.hero-fig.story-figure { grid-template-columns: minmax(0, 1fr); }
+.story-figure > * { min-width: 0; }
+.story-figure .fig-title { font: 800 clamp(1.4rem, 2.8vw, 1.9rem)/1.2 var(--display); margin: 0; }
+.story-figure .fig-sub { color: var(--ink-2); max-width: 72ch; margin: 0 0 8px; }
+/* the building: floors in the order they were built, drawn ground-up (the DOM runs oldest to newest) */
+.bld { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 0 22px; }
+.floors { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--line-2); }
+.floor { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 4px 16px; align-items: center; min-height: 44px; padding: 12px 12px 12px 16px; border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0; background: transparent; text-align: left; color: var(--ink); cursor: pointer; box-shadow: inset 4px 0 0 var(--k); }
+.floor:hover { background: var(--surface-2); }
+.floor[aria-pressed="true"] { background: var(--surface); box-shadow: inset 4px 0 0 var(--k), inset 0 0 0 1.5px var(--ink); }
+.floor .ph { width: 112px; aspect-ratio: 4 / 3; border-radius: var(--r-sm); overflow: hidden; background: var(--surface-3); display: block; }
+.floor .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.floor .what b { font: 800 1.15rem/1.2 var(--display); display: block; }
+.floor .one { display: block; color: var(--ink-2); font-size: 15px; line-height: 1.4; margin-top: 2px; }
+.floor .when { text-align: right; font-variant-numeric: tabular-nums lining-nums; }
+.floor .when b { font: 700 1.05rem/1.2 var(--display); display: block; }
+.floor .when span { display: block; font-size: 13px; color: var(--ink-2); }
+.ground { font: 700 12px/1.3 var(--body); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); padding: 8px 0 0 16px; }
+/* one day beside the building: midnight at the bottom and again at the top; three of the five marks land on the top edge */
+.clock { position: relative; border-left: 2px solid var(--ink); margin-block: 0 26px; }
+.clock .hr { position: absolute; left: 8px; transform: translateY(50%); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.clock .hr::before { content: ''; position: absolute; left: -8px; top: 50%; width: 5px; border-top: 1px solid var(--ink-3); }
+.clock .mk { position: absolute; left: -7px; width: 12px; height: 12px; border-radius: 50%; background: var(--k); border: 2px solid var(--bg); transform: translateY(50%); }
+.clock .cap { position: absolute; left: 58px; right: 0; font-size: 12.5px; line-height: 1.3; color: var(--ink-2); }
+.clock .cap b { color: var(--ink); display: block; }
+.floor-detail { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px 36px; align-items: start; margin-top: 18px; padding: 20px 22px; border-radius: var(--r-lg); background: var(--surface-2); }
+.floor-detail > * { min-width: 0; }
+.floor-detail .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.floor-detail .kbar { width: 10px; height: 10px; border-radius: 2px; background: var(--k); flex: none; }
+.floor-detail h3 { font: 700 clamp(1.3rem, 2.4vw, 1.7rem)/1.2 var(--display); margin: 0 0 10px; }
+.floor-detail p { color: var(--ink-2); }
+.floor-detail p + p { margin-top: 8px; }
+.floor-detail .today { display: grid; gap: 6px; align-content: start; padding: 14px 16px; border-radius: var(--r-md); background: var(--surface); }
+.floor-detail .today b { font: 700 1.05rem/1.4 var(--display); color: var(--ink); }
+.floor-detail .today span { font-size: 14px; color: var(--ink-2); }
+.floor-detail .floor-actions { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 14px; }
+.floor-detail .floor-actions a { font-weight: 700; font-size: 14.5px; }
+.floor-detail .plate-credit { margin-top: 10px; }
+.day-zoom { margin-top: 4px; }
+.zoom-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); padding: 14px 16px; }
+.zoom-wrap svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.zm .lane { stroke: var(--surface); stroke-width: 1.5; }
+.zm .bt { fill: var(--ink); font: 800 15px var(--display); }
+.zm .bs { fill: var(--ink-2); font: 13px var(--body); }
+.zm .ln { fill: var(--ink); font: 700 12.5px var(--body); }
+.zm .tk { fill: var(--ink-3); font: 11.5px var(--body); font-variant-numeric: tabular-nums; }
+.zm .frame-l { stroke: var(--line-2); fill: none; }
+.zm .zl { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+.zm .zf { fill: var(--ink); opacity: .05; }
+.zm .nt { fill: var(--ink-2); font: italic 12.5px var(--body); }
+.story-figure .caption { color: var(--ink-2); font-size: 13px; line-height: 1.5; margin: 6px 0 0; max-width: 100ch; }
+.home-evidence { padding-block: 0; border-block: 1px solid var(--line-2); }
+.home-evidence > summary { padding-block: 22px; cursor: pointer; font: 700 22px/1.4 var(--display); }
+.home-evidence > summary small { display: block; font: 400 14px/1.5 var(--body); color: var(--ink-2); margin-top: 4px; }
+.home-evidence-body { display: grid; gap: 28px; padding-bottom: 30px; }
+.home-evidence-body > .note { margin: 0; }
+.home-evidence .stats { grid-area: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.evidence-fig { margin: 0; display: grid; gap: 10px; }
+.evidence-fig figcaption { font-size: 14px; color: var(--ink-2); }
+.evidence-readout .sec-head { margin-bottom: 24px; }
+@media (max-width: 760px) {
+  .bld { grid-template-columns: minmax(0, 1fr); }
+  .clock { display: none; }
+  .floor { grid-template-columns: 84px minmax(0, 1fr); padding-right: 8px; }
+  .floor .ph { width: 84px; }
+  .floor .when { grid-column: 2; text-align: left; }
+  .floor-detail { grid-template-columns: minmax(0, 1fr); }
+  .home-evidence .stats { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  .floor { break-inside: avoid; box-shadow: inset 4px 0 0 var(--k) !important; background: transparent !important; }
+  .floor-detail .floor-actions, .day-zoom > summary { display: none; }
+  .day-zoom > :not(summary) { display: revert !important; }
+}

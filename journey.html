@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Journey · Systema Intelligentiae</title>
+<meta name="description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta property="og:title" content="The Journey · Systema Intelligentiae">
+<meta property="og:description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta property="og:image" content="assets/og/EP01a.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Journey · Systema Intelligentiae">
+<meta name="twitter:description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta name="twitter:image" content="assets/og/EP01a.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html" aria-current="page">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">This page draws its charts and stories with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <span class="eyebrow">The journey</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">4.1 billion years in <span class="n-stops">40</span> stops</h1>
+    <p>Each stop has one star creature. The board shows the best parts on Earth at that moment, and the parts that just got upgraded light up. Use the buttons<span class="v-ptr"> or the arrow keys</span> to travel.</p>
+    <p class="resume" id="resume" hidden></p>
+  </div>
+  <div class="journey-stack" id="explorer">
+    <div class="act-rail" id="actRail" role="group" aria-label="Acts"></div>
+    <p class="act-now" id="actNow" aria-hidden="true"></p>
+    <div class="controls">
+      <button class="btn sm" id="prev" type="button">← Back</button>
+      <span class="pos" id="pos" aria-live="polite"></span>
+      <button class="btn sm" id="next" type="button">Next →</button>
+      <button class="btn sm ghost" id="first" type="button">Beginning</button>
+      <button class="btn sm ghost" id="today" type="button">Today</button>
+      <label class="toggle" for="stopsOnly"><input type="checkbox" id="stopsOnly" checked> Story stops only</label>
+    </div>
+    <article class="card" id="card" aria-live="polite"></article>
+    <span class="sr-only" id="shareMsg" aria-live="polite"></span>
+    <div style="display:grid;gap:10px;margin-top:18px">
+      <h2 style="font-size:1.4rem">Where this moment sits</h2>
+      <div class="legend" id="legend"></div>
+      <div class="chart-wrap"><svg id="chart" role="img" aria-label="Operations per second on Earth across 64 moments, log scale"></svg></div>
+      <input type="range" class="time-slider" id="slider" aria-label="Moment in Earth’s history">
+      <div class="readout" id="readout">Click any column or drag the slider to jump there. Each step up is ten times more.</div>
+    </div>
+  </div>
+</main>
+
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/journey.js"></script>
+</body>
+</html>
