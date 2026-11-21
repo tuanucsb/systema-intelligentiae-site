@@ -49,12 +49,11 @@
   ];
   $('eqs').innerHTML = EQ.map(q => '<div class="eq"><h3>' + q[0] + '</h3><pre>' + esc(q[1]) + '</pre><p>' + q[2] + '</p></div>').join('');
 
-  const key = ['2', '3', '4', '5', '6'];
-  const want = /Bar-On|Whitman|Kallmeyer|Magnabosco|Landenmark|Herculano|Olkowicz|Caspar|Coup|Hilbert|MacIver|Lane|Bennett|Gould/;
+  const key = ['1', '2', '3', '4', '5', '13', '20', '23', '25', '27', '39', '47', '68', '86'];
   const refs = X.SI.refs;
   const nums = Object.keys(refs).map(Number).sort((a, b) => a - b);
-  const keyNums = nums.filter(n => want.test(refs[n])).slice(0, 14);
-  $('keySrc').innerHTML = (keyNums.length ? keyNums : key.map(Number)).map(n => '<li value="' + n + '">' + esc(refs[n]) + '</li>').join('');
+  const keyNums = key.map(Number).filter(n => refs[n]);
+  $('keySrc').innerHTML = keyNums.map(n => '<li value="' + n + '">' + esc(refs[n]) + '</li>').join('');
   $('allSrc').innerHTML = nums.map(n => '<li value="' + n + '">' + esc(refs[n]) + '</li>').join('');
 
   /* ---------- test today's numbers: two estimates make each headline number ---------- */

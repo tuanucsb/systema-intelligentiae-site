@@ -1,41 +1,65 @@
-epoch_id,protagonist,taxon,glyph,scale,hook
-EP01a,Vent protocell,Iron-sulfur micropore,protocell,pores ~1–100 µm,"A mineral wall with a battery across it. Warm vent fluid meets acid ocean, and chemistry starts keeping score."
-EP01b,LUCA,Last universal common ancestor,cell,~1 µm,The ribosome arrives: a machine that reads a tape of codons and builds what it reads.
-EP02a,Swimming bacterium,E. coli-style chemotaxis,rod,~2 µm,A cell compares now with four seconds ago and swims toward food. Earth's first working memory.
-EP02b,Cyanobacterium,Synechococcus,cyano,~1 µm,A protein clock ticks once a day. The planning horizon jumps from seconds to 24 hours.
-EP03a,The big freeze,Huronian glaciation,ice,planet-wide,Oxygen poisons the old world and the planet freezes.
-EP03b,Oxygen-breathing bacterium,Alpha-proteobacteria,aerobe,~1–2 µm,Breathing oxygen yields 15–18× more energy from each sugar.
-EP04a,First complex cell,Asgard archaeon + bacterium,euk,~10–20 µm,One cell swallows another and keeps it as a power plant.
-EP04b,Green alga,Chlamydomonas,chlamy,~10 µm,An eyespot wired to two flagella steers toward light in milliseconds.
-EP05a,Red alga,Bangiomorpha pubescens,filament,filaments ~2 mm,Sex turns evolution into a parallel search.
-EP05b,Choanoflagellate colony,Collared cells,rosette,cells ~10 µm,Synapse proteins show up long before any synapse.
-EP06a,Snowball Earth,Sturtian glaciation,snowball,planet-wide,Ice from pole to equator for 55 million years. Living biomass falls 86%.
-EP07a,Trichoplax & Charnia,Nerveless animals,frond,1 mm – 0.6 m,"Bodies without nerves still coordinate, using peptides and voltage."
-EP07b,First worm,Ikaria wariootia,worm,2–7 mm,Neurons switch on. Planet-wide synaptic activity goes from zero to 10²⁰ events per second.
-EP08a,Burrowing worm,Maker of Treptichnus burrows,burrow,burrows ~cm,"Steering: approach the good, avoid the bad, in three dimensions."
-EP08b,Anomalocaris,Anomalocaris and Fuxianhuia,arthropod,~10 cm – 1 m,"Eyes with 16,000 lenses start an arms race. Neural activity hits 800× its earlier level."
-EP09b,Jawless fish,Ostracoderms,fish,~20 cm,Dopamine teaches by surprise. Brains learn from reward.
-EP10a,First mass extinction,End-Ordovician ice age,trilobite,85% of sea species lost,Ice returns. Most sea species die and neural activity falls 90%.
-EP11a,Jawed fish,Entelognathus,jawfish,~20 cm,Myelin insulates nerves: 50× faster signals for a hundredth of the energy.
-EP11b,Early land plant,Rhynia,plant,~20 cm tall,"Plants climb onto land and start piling up wood, a huge carbon store with almost no living cells."
-EP12b,Walking fish,Tiktaalik and Acanthostega,tetrapod,~1–3 m,"Eyes leave the water. Visible space grows a millionfold, and planning starts to pay."
-EP13a,Giant dragonfly,Meganeura,dragonfly,~70 cm wingspan,Oxygen near 33% powers giant insects over the coal forests.
-EP14a,The Great Dying,Lystrosaurus survives,lystro,~1 m,Super-volcanoes erupt. Biomass falls 76% and neural activity 94%.
-EP15b,Night-shift mammal,Morganucodon,mammal,~10 cm,Warm blood and a layered cortex let small animals hunt at night and replay their routes.
-EP16b,Paperclip-sized mammal,Hadrocodium wui,hadrocodium,"~3 cm, ~2 g",Old jaw bones become a three-bone middle ear for high-pitched hearing.
-EP17a,Feathered flyer,Archaeopteryx,bird,~50 cm,"Flight needs a fast 3D controller, so the brain's balance centers grow."
-EP17b,T. rex and ant colonies,Tyrannosaurus and Formicidae,trex,12 m / 3 mm,Ant and bee colonies act as superorganisms. Neural activity peaks at 2×10²⁶ events per second.
-EP18a,Asteroid impact,Chicxulub,impact,10 km asteroid,Impact winter. Neural activity falls 92.5% and the big dinosaurs are gone.
-EP18b,Early primate,Purgatorius,primate,~15 cm,Small warm-blooded survivors inherit an emptied world.
-EP19b,Echolocating whale & songbird,Squalodon and songbirds,whale,~3 m / ~20 g,Whales see with sound; songbirds pack 240 million neurons into each gram of brain.
-EP20a,Great ape,Miocene apes,ape,~1 m,Reading minds: a prefrontal cortex that models what others know.
-EP21a,Australopithecus,First stone toolmakers,stone,~1.2 m,"A struck stone keeps a plan for 10,000 years at zero watts. Memory leaves the body."
-EP22a,Homo erectus,Handaxes and fire,fire,brain ~950 cm³,Cooking digests food outside the body and frees energy for a bigger brain.
-EP23b,Homo sapiens,Ice-age artists,speech,"brain ~1,350 cm³","Language at ~39 bits per second, cave art and tally bones."
-EP25a,Sumerian scribe,Uruk cuneiform,tablet,tablet ~10 cm,Baked clay keeps records for thousands of years without power.
-EP28a,Printing press,Gutenberg's movable type,book,~20 million books in 50 years,Copying cost falls 300× and science becomes shared memory.
-EP29a,Telegraph,"Morse, Babbage and Lovelace",telegraph,continents at 0.7× light speed,Signals cross continents two million times faster than a nerve.
-EP30a,ENIAC,First electronic computers,tube,~30 tonnes,Computing goes electronic and software becomes data.
-EP31a,The Web,Microchips and fiber optics,chip,~1 billion processors,"Digital storage passes every paper, film and vinyl archive ever made."
-EP31b,Deep learning,AlexNet on GPUs,gpu,5×10¹⁸ operations/s worldwide,Graphics chips get repurposed to learn.
-EP32b,AI supercomputer,"~100,000 GPUs",rack,3×10²⁰ operations/s,"One machine runs 3×10²⁰ operations per second. All silicon together is still 0.006% of animal brain activity, and the typical cell is still a bacterium."
+epoch_id,protagonist,taxon,glyph,scale,hook,tour
+EP01a,Vent protocell,Iron-sulfur micropore,protocell,pores ~1–100 µm,"A mineral wall with a battery across it. Warm vent fluid meets acid ocean, and chemistry starts keeping score.",1
+EP01b,LUCA,Last universal common ancestor,cell,~1 µm,The ribosome arrives: a machine that reads a tape of codons and builds what it reads.,1
+EP02a,Swimming bacterium,E. coli-style chemotaxis,rod,~2 µm,A cell compares now with four seconds ago and swims toward food. Earth's first working memory.,1
+EP02b,Cyanobacterium,Synechococcus,cyano,~1 µm,A protein clock ticks once a day. The planning horizon jumps from seconds to 24 hours.,1
+EP03a,The big freeze,Huronian glaciation,ice,planet-wide,Oxygen poisons the old world and the planet freezes.,0
+EP03b,Oxygen-breathing bacterium,Alpha-proteobacteria,aerobe,~1–2 µm,Breathing oxygen yields 15–18× more energy from each sugar.,1
+EP04a,First complex cell,Asgard archaeon + bacterium,euk,~10–20 µm,One cell swallows another and keeps it as a power plant.,1
+EP04b,Green alga,Chlamydomonas,chlamy,~10 µm,An eyespot wired to two flagella steers toward light in milliseconds.,0
+EP05a,Red alga,Bangiomorpha pubescens,filament,filaments ~2 mm,Sex turns evolution into a parallel search.,1
+EP05b,Choanoflagellate colony,Collared cells,rosette,cells ~10 µm,Synapse proteins show up long before any synapse.,0
+EP06a,Snowball Earth,Sturtian glaciation,snowball,planet-wide,Ice from pole to equator for 55 million years. Living biomass falls 86%.,0
+EP06b,Demosponge,Porifera & post-glacial bloom,sponge,~1–20 cm,Melting ice washes ground-up rock into the sea. Sponges coordinate pumping across a whole body with chemical waves and no nerves.,0
+EP07a,Trichoplax & Charnia,Nerveless animals,frond,1 mm – 0.6 m,"Bodies without nerves still coordinate, using peptides and voltage.",0
+EP07b,First worm,Ikaria wariootia,worm,2–7 mm,Neurons are at work by now. Planet-wide synaptic activity goes from zero to 10²⁰ events per second.,1
+EP08a,Burrowing worm,Maker of Treptichnus burrows,burrow,burrows ~cm,"Steering: approach the good, avoid the bad, in three dimensions.",0
+EP08b,Anomalocaris,Anomalocaris and Fuxianhuia,arthropod,~10 cm – 1 m,"Eyes with 16,000 lenses start an arms race. Neural activity hits 800× its earlier level.",1
+EP09a,Giant orthocone,Cameroceras & coral reefs,nautiloid,shell up to ~6 m,Jet-propelled squid cousins hunt open water while coral clones wire vast reefs. Sea animal families triple and nerve activity jumps sixfold.,0
+EP09b,Jawless fish,Ostracoderms,fish,~20 cm,Dopamine teaches by surprise. Brains learn from reward.,1
+EP10a,First mass extinction,End-Ordovician ice age,trilobite,85% of sea species lost,Ice returns. Most sea species die and neural activity falls 90%.,0
+EP10b,Sea scorpion,Eurypterus & early fishes,eurypterid,~20 cm – 2 m,Life refills the post-ice seas. Early fishes sense water ripples along their flanks and fire split-second escape flips.,0
+EP11a,Jawed fish,Entelognathus,jawfish,~20 cm,Myelin insulates nerves: 50× faster signals for a hundredth of the energy.,1
+EP11b,Early land plant,Rhynia,plant,~20 cm tall,"Plants spread across the land and start piling up wood, a huge carbon store with almost no living cells.",0
+EP12a,Armored fish collapse,Dunkleosteus & anoxic seas,placoderm,up to ~6 m,"Runoff from the first forests starves the sea of oxygen. About 75% of marine species die, including giant armored fish, and nerve activity drops 70%.",0
+EP12b,Walking fish,Tiktaalik and Acanthostega,tetrapod,~1–3 m,"Eyes leave the water. Visible space grows a millionfold, and planning starts to pay.",1
+EP13a,Giant dragonfly,Meganeura,dragonfly,~70 cm wingspan,Oxygen near 30% powers giant insects over the coal forests.,0
+EP13b,First land reptile,Hylonomus & sail-backed synapsids,amniote,~20 cm,"A waterproof shelled egg frees vertebrates from water, and a three-layered forebrain maps dry inland Pangaea.",0
+EP14a,The Great Dying,Lystrosaurus survives,lystro,~1 m,Super-volcanoes erupt. Biomass falls 76% and neural activity 94%.,1
+EP14b,Burrowing cynodont,Thrinaxodon liorhinus,cynodont,~40 cm,"In thin 14%-oxygen air, mammal ancestors grow tactile whiskers and warm nose scrolls while dinosaur cousins evolve one-way lungs.",0
+EP15a,Two-legged dinosaur,Herrerasaurus ischigualastensis,biped_dino,~3–5 m,"A two-million-year rainy spell reshapes the land. Fast-running early dinosaurs balance on two legs, and global nerve signaling quadruples.",0
+EP15b,Night-shift mammal,Morganucodon,mammal,~10 cm,Warm blood and a layered cortex let small animals hunt at night and replay their routes.,1
+EP16a,Rift volcanoes,Central Atlantic eruptions,volcano,continent-scale lava floods,"Huge eruptions along the opening Atlantic fill the air with carbon dioxide. About 76% of species die, clearing the stage for giant dinosaurs.",0
+EP16b,Paperclip-sized mammal,Hadrocodium wui,hadrocodium,"~3 cm, ~2 g",Old jaw bones begin to become a three-bone middle ear for high-pitched hearing.,0
+EP17a,Feathered flyer,Archaeopteryx,bird,~50 cm,"Flight needs a fast 3D controller, so the brain's balance centers grow.",0
+EP17b,T. rex and ant colonies,Tyrannosaurus and Formicidae,trex,12 m / 3 mm,Ant and bee colonies act as superorganisms. Neural activity peaks at 2×10²⁶ events per second.,1
+EP18a,Asteroid impact,Chicxulub,impact,10 km asteroid,Impact winter. Neural activity falls 92.5% and the big dinosaurs are gone.,1
+EP18b,Early primate,Purgatorius,primate,~15 cm,Small warm-blooded survivors inherit an emptied world.,0
+EP19a,Leaping primate,Darwinius & Eocene mammals,euprimate,"~50 cm, ~600 g","Forward-facing eyes spread through hothouse forests, some mammal brains begin to fold, and global nerve signaling more than doubles.",0
+EP19b,Echolocating whale & songbird,Squalodon and songbirds,whale,~3 m / ~20 g,Whales see with sound; songbirds pack 240 million neurons into each gram of brain.,1
+EP20a,Great ape,Miocene apes,ape,~1 m,Reading minds: a prefrontal cortex that models what others know.,1
+EP20b,Upright hominin,Sahelanthropus & savanna clans,biped_ape,~1.1 m,"Drying African grasslands reward walking on two legs, freeing hands to carry while elephant and ape families coordinate across kilometers.",0
+EP21a,Australopithecus,First stone toolmakers,stone,~1.2 m,"A struck stone keeps a plan for 10,000 years at zero watts. Memory leaves the body.",1
+EP21b,Stone-flake maker,Homo habilis,habilis,brain ~610 cm³,"Sharp Oldowan stone flakes butcher meat and marrow, co-evolving with hand-eye brain circuits and multiplying memory outside bodies tenfold.",0
+EP22a,Homo erectus,Handaxes and fire,fire,brain ~950 cm³,Possibly tending fire already: cooking digests food outside the body and frees energy for a bigger brain.,0
+EP22b,Spear-hunting band,Homo heidelbergensis & Neanderthals,spear,"brain ~1,250–1,450 cm³","Modern-sized brains plan multi-step stone cores and balanced wooden spears, hunting big game in tight cooperative families.",0
+EP23a,Ochre engraver,Blombos Cave Homo sapiens,ochre,plaque ~8 cm,"Cross-hatched red ochre and pierced shell beads hold shared meaning outside the skull, multiplying external memory tenfold.",0
+EP23b,Homo sapiens,Ice-age artists,speech,"brain ~1,350 cm³","Language at ~39 bits per second, cave art and tally bones.",1
+EP24a,First villagers,Fertile Crescent farmers & Göbekli Tepe,wheat,"villages of 500–3,000","Domesticated grain and herds turn sunlight into stored surplus, anchoring permanent villages of thousands of people.",0
+EP24b,Clay token envelope,Uruk accounting bulla,bulla,clay ball ~7 cm,Traders seal counting tokens inside hollow clay balls and press their shapes outside: three-dimensional objects become flat signs.,0
+EP25a,Sumerian scribe,Uruk cuneiform,tablet,tablet ~10 cm,Baked clay keeps records for thousands of years without power.,1
+EP25b,Alphabet & oracle bone,Sinai letters & Shang diviners,alphabet,22 sound-letters,Shrinking ~800 word-signs down to 22 sound-letters makes reading far easier to learn and spreads literacy along Bronze Age trade routes.,0
+EP26a,Grammar & proof,"Panini, Greek geometry & coins",scroll_rule,"~4,000 grammar rules","Panini writes ~4,000 exact rules for Sanskrit, Greeks prove geometry step by step, and stamped coins coordinate markets through prices.",0
+EP26b,Antikythera & Alexandria,Bronze sky-gears & scroll catalogs,gears,30+ bronze gears,"Cataloged libraries hold tens of thousands of scrolls or more, bronze gears predict eclipses, and road-linked empires grow toward ~60 million people each.",0
+EP27a,The bound book,Codex Sinaiticus,codex,stitched parchment pages,"Bound pages with numbers and tables of contents replace scrolls, letting readers jump straight to any passage instead of unrolling.",0
+EP27b,Paper mills & zero,"Baghdad, Samarkand & Hindu-Arabic digits",zero,10 digits + rag paper,"Rag-paper mills spread across Eurasia while numbers with a zero turn hard arithmetic into quick, repeatable written algorithms.",0
+EP28a,Printing press,Gutenberg's movable type,book,~20 million books in 50 years,Copying cost falls 300× and science becomes shared memory.,1
+EP28b,Stepped Reckoner & journal,"Leibniz, Pascal & early journals",calculator,8-digit brass drum,"Geared calculators add and multiply by turning drums, while the first science journals make discoveries public and checkable.",0
+EP29a,Telegraph,"Morse, Babbage and Lovelace",telegraph,continents at 0.7× light speed,Signals cross continents two million times faster than a nerve.,0
+EP29b,Punch-card tabulator,Hollerith census machine & radio,punchcard,electric pin reader,"Electric pins read holes in paper cards to count 63 million people in the 1890 US census, while radio sends signals without wires.",0
+EP30a,ENIAC,First electronic computers,tube,~30 tonnes,Computing goes electronic and software becomes data.,1
+EP30b,Microchips & ARPANET,"Silicon ICs, DRAM & packet networks",wafer,thousands of transistors/chip,"Whole circuits etched onto single silicon chips launch Moore's law, paired with electronic DRAM memory and packet-switched ARPANET.",0
+EP31a,The Web,Microchips and fiber optics,chip,~1 billion processors,"Digital storage nears every paper, film and vinyl archive ever made, and passes it two years later.",0
+EP31b,Deep learning,AlexNet on GPUs,gpu,5×10¹⁸ operations/s worldwide,Graphics chips get repurposed to learn.,0
+EP32a,Transformer & AlphaFold,Self-attention foundation models,transformer,175B+ weights / 200M proteins,One self-attention neural architecture learns to write text and code and predicts the 3D shapes of 200 million biological proteins.,0
+EP32b,AI supercomputer,"~100,000 GPUs",rack,3×10²⁰ operations/s,"One machine runs 3×10²⁰ operations per second. All silicon together is still 0.006% of animal brain activity, and the typical cell is still a bacterium.",1

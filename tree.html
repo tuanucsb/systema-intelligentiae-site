@@ -30,14 +30,15 @@
     <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Everything rests on something older</h1>
     <p class="muted" style="max-width:62ch;font-size:1.08rem">Each box is an invention. Columns are the nine parts, and time runs downward. <span class="v-ptr">Click</span><span class="v-touch">Tap</span> any box to see what made it possible and what it led to.</p>
     <div class="row">
-      <div class="search">
+      <search class="search">
         <svg viewBox="0 0 24 24" class="picon" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <input id="q" type="search" placeholder="Search: myelin, fire, T. rex…" aria-label="Search inventions, creatures and parts" autocomplete="off">
+        <input id="q" type="search" placeholder="Search: myelin, whale pods, octopus, zero…" aria-label="Search inventions, creatures and parts" autocomplete="off">
         <div class="results" id="results" hidden></div>
-      </div>
+      </search>
       <div class="act-jump" id="actJump" role="group" aria-label="Jump to an act"></div>
     </div>
-    <div class="howto"><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a box to follow its links</span><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a column title to follow one part</span><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a creature to visit its moment</span></div>
+    <div class="guided-paths" id="guidedPaths" role="group" aria-label="Follow a guided story path"></div>
+    <div class="howto"><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a box to trace links</span><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a guided path above to walk step by step</span><span><b><span class="v-ptr">Click</span><span class="v-touch">Tap</span></b> a creature to visit its stop</span></div>
     <p class="time-key" data-time-key=""></p>
     <div class="lane-chips" id="laneChips" role="group" aria-label="Show or hide parts"></div>
   </div>

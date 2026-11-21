@@ -4,95 +4,120 @@ contact-chem,EP01a,io,Contact chemistry,Reacts only to molecules that bump into 
 diffusion,EP01a,wire,Diffusion,Molecules wander. Crossing 1 µm takes ~0.5 ms; crossing 1 mm takes ~8 minutes.,27; 48; 50
 autocatalysis,EP01a,cpu,Self-feeding chemistry,"Carbon fixation inside mineral pores, ~100 reactions per second per protocell.",27; 47; 67; 81
 chem-state,EP01a,ram,Chemical levels,About 100 bits of short-lived state per protocell.,27; 47; 50
-self-copying,EP01a,prog,Self-copying,Whatever copies itself best persists.,47; 67; 68; 81
-rna,EP01a,store,RNA templates,"Ribozymes stuck to mineral surfaces: about 20,000 unique bits on the whole planet.",67; 68; 81
+self-copying,EP01a,prog,Self-copying,Whatever copies itself best persists.,47; 67; 68; 81; 86; 87
+rna,EP01a,store,RNA templates,"Ribozymes stuck to mineral surfaces: about 20,000 unique bits on the whole planet.",67; 68; 81; 86; 87
 pore-clusters,EP01a,net,Pore clusters,Thousands of mineral micro-compartments share one vent.,27; 48; 68
-ribosome,EP01b,cpu,Ribosome,A tape reader: reads three-letter codons and builds 15–20 amino acids per second.,28; 29; 30; 66; 68
-genetic-code,EP01b,prog,Genetic code,"One codon table for all life, with proofreading that catches most copying errors.",21; 28; 30; 66; 68
-dna,EP01b,store,DNA genome,"LUCA carried ~2.5 million DNA letters coding ~2,600 proteins, copied with about one error per billion.",20; 21; 28; 68
-gene-swapping,EP01b,net,Gene swapping,Microbial mats share genes sideways between cells.,3; 20; 68
+ribosome,EP01b,cpu,Ribosome,A tape reader: reads three-letter codons and builds 15–20 amino acids per second.,28; 29; 30; 66; 68; 86; 87
+genetic-code,EP01b,prog,Genetic code,"One codon table for nearly all life, with proofreading that catches most copying errors.",21; 28; 30; 47; 66; 68; 86
+dna,EP01b,store,DNA genome,"Early cells carried millions of DNA letters, copied by proofreading enzymes with tiny error rates.",20; 21; 28; 47; 68
+gene-swapping,EP01b,net,Gene swapping,"Early microbes swap genes sideways between neighbors, turning microbial communities into shared gene libraries.",3; 20; 68
 anoxy-photo,EP02a,power,Early photosynthesis,"Sunlight harvested with sulfur and iron, no oxygen released. Planet power: 0.44 TW.",16; 17; 27
 chemoreceptors,EP02a,io,Smell + swim,Chemical sensors read the water; a spinning flagellum runs and tumbles.,13; 50; 80
 four-second-memory,EP02a,ram,Four-second memory,Receptor tags compare the present with about 4 seconds ago.,13; 50
-gradient-climbing,EP02a,prog,Swim toward food,Tumble less when things are getting better.,13; 49; 50
-syntrophy,EP02a,net,Partner microbes,Different species trade waste for food.,3; 4; 5; 7
-oxy-photo,EP02b,power,Oxygen photosynthesis,Splits water with sunlight and releases oxygen.,16; 17; 27
-day-clock,EP02b,prog,24-hour clock,A three-protein clock anticipates dawn. The planning horizon grows from 4 seconds to 24 hours.,13; 16; 50
+gradient-climbing,EP02a,prog,Swim toward food,Tumble less when things are getting better.,13; 49; 50; 86
+syntrophy,EP02a,net,Partner microbes,Different species trade waste for food.,3; 4; 5; 7; 86
+oxy-photo,EP02b,power,Oxygen photosynthesis,Splits water with sunlight and releases oxygen.,16; 17; 27; 47
+day-clock,EP02b,prog,24-hour clock,A three-protein clock anticipates dawn. The planning horizon grows from 4 seconds to 24 hours.,13; 16; 50; 86
 quorum,EP02b,net,Quorum sensing,Microbial mats vote by chemical signal across up to ~10¹⁰ cells.,3; 13; 68
-aerobic,EP03b,power,Breathing oxygen,Burning sugar with oxygen yields 30–36 ATP instead of 2. Planet power: 3.5 TW.,15; 17; 27
-mitochondria,EP04a,power,Mitochondria,"An engulfed bacterium becomes a power plant: ~10,000× more energy per gene.",22; 27; 68
+aerobic,EP03b,power,Breathing oxygen,Burning sugar with oxygen yields 30–36 ATP instead of 2. Planet power: 3.5 TW.,15; 17; 27; 47
+mitochondria,EP04a,power,Mitochondria,"An engulfed bacterium becomes a power plant: ~10,000× more energy per gene.",22; 27; 68; 86
 euk-signaling,EP04a,cpu,Complex-cell signaling,"Signal cascades and an internal skeleton, ~100,000 operations per second per cell.",13; 22; 27; 69
 chromatin,EP04a,store,Packed chromosomes,DNA wound on protein spools lets genomes grow large.,20; 22; 27; 68
-endosymbiosis,EP04a,net,Cells inside cells,Two cells become one.,22; 27; 68
-chloroplast,EP04b,power,Chloroplast,A swallowed cyanobacterium becomes a built-in solar panel.,2; 16; 27; 68
+endosymbiosis,EP04a,net,Cells inside cells,Two cells become one.,22; 27; 68; 86
+chloroplast,EP04b,power,Chloroplast,A swallowed cyanobacterium becomes a built-in solar panel.,2; 16; 27; 68; 86
 eyespot,EP04b,io,Eyespot,A light-sensitive spot steers two flagella within milliseconds.,16; 50; 69
 sex,EP05a,prog,Sex,Shuffling two genomes lets good mutations combine and bad ones get purged.,21; 22; 68
-multicellular,EP05a,net,Many-celled bodies,Clones stick together and split the work.,22; 68; 69
+multicellular,EP05a,net,Many-celled bodies,Clones stick together and split the work.,22; 68; 69; 86
 synapse-kit,EP05b,wire,Synapse parts (spare),"Proteins later used in synapses already exist, used for gluing cells together.",43; 74; 75
 mycelia,EP05b,net,Fungal networks,Fungal threads and colonial rosettes.,2; 68; 73
 tissue-waves,EP06b,wire,Chemical tissue waves,Sponges coordinate pumping with nitric oxide and glutamate.,69; 74; 75
-bioelectric,EP07a,cpu,Bioelectric tissue,"Six cell types coordinate with peptides and voltage, with no synapses.",69; 74; 75
+bioelectric,EP07a,cpu,Bioelectric tissue,Sheet-like bodies without synapses coordinate movement and feeding using peptides and voltage.,69; 74; 75
 head,EP07b,io,A front end,Sensors cluster at the front of a two-sided body.,39; 74; 75
 bare-axons,EP07b,wire,Bare nerve fibers,Signals travel ~1 m/s; speed grows only with the square root of fiber width.,18; 19; 39; 75
-neurons,EP07b,cpu,Neurons,"Nerve nets switch on: 10²⁰ synaptic events per second, planet-wide.",18; 19; 39; 74; 75
+neurons,EP07b,cpu,Neurons,"Nerve nets are in use by now: 10²⁰ synaptic events per second, planet-wide.",18; 19; 39; 74; 75
 neural-activity,EP07b,ram,Firing patterns,Spikes hold state for milliseconds to seconds.,14; 18; 39
 steering,EP08a,prog,Steering,"Approach good, avoid bad, in three dimensions. The first of five great brain breakthroughs.",39; 49; 50
 compound-eyes,EP08b,io,Compound eyes,"Anomalocaris had more than 16,000 lenses per eye.",39; 50; 51
-three-part-brain,EP08b,cpu,Three-part brain,"Early arthropods already had a fore-, mid- and hindbrain with layered visual centers.",39; 51; 76
+three-part-brain,EP08b,cpu,Three-part brain,"Early arthropods already had front, middle and rear brain parts with layered visual centers.",39; 51; 76
+distributed-arms,EP09a,cpu,Distributed arm brains,Cephalopod ancestors split computing between optic lobes and semi-independent arm cords.,39; 51; 76
+reef-colonies,EP09a,net,Reef colonies,Millions of coral and bryozoan clones share food and warning pulses across a living reef.,39; 51; 68
 reinforcing,EP09b,prog,Learning from reward,"Dopamine signals surprise, so the brain learns from trial and error. Breakthrough two.",39; 49
-synaptic-weights,EP09b,store,Synaptic memory,Lessons from one lifetime get written into synapse strengths (~4.7 bits each).,14; 24; 39
-schools,EP09b,net,Fish schools,Jawless fish move as one.,39; 51
+synaptic-weights,EP09b,store,Synaptic memory,Lessons from one lifetime get written into synapse strengths (~4–5 bits each).,14; 24; 39
+schools,EP09b,net,Fish schools,"Early fish likely move as one, sensing neighbors in open water.",39; 51
+lateral-line,EP10b,io,Water-ripple sense,Hair cells and electric sensors along a fish's flank map unseen motion in murky water.,39; 50; 64
+escape-reflex,EP10b,cpu,Split-second escape,Giant command neurons flip a fish's tail within about 5 to 10 thousandths of a second of a threat.,18; 39; 50
 myelin,EP11a,wire,Myelin,"Insulated fibers carry signals 50–100 m/s, at ~1% of the energy per centimeter.",18; 19; 39
-land-plants,EP11b,power,Land plants,"Photosynthesis moves onto the continents, and wood appears.",2; 16; 63; 70; 72
-wood-wide-web,EP11b,net,Wood-wide web,Fungi link plant roots across whole forests.,2; 63; 70; 71
+land-plants,EP11b,power,Land plants,"Plants spread across the continents, and tall woody stems appear.",2; 16; 63; 70; 72
+wood-wide-web,EP11b,net,Wood-wide web,Fungal threads link the roots of neighboring plants and trade nutrients.,2; 63; 70; 71
 eyes-in-air,EP12b,io,Eyes in air,"Out of water, sight range grows ~100× and visible volume ~1,000,000×.",39; 64
-planning,EP12b,prog,Look-ahead planning,Prey seen minutes away rewards weighing future paths.,39; 64
-hyperoxia,EP13a,power,Oxygen-rich air,Oxygen near 33% fuels giant flying insects.,9; 37; 63
+planning,EP12b,prog,Look-ahead planning,Seeing prey minutes away may reward weighing future paths.,39; 64
+hyperoxia,EP13a,power,Oxygen-rich air,Oxygen surges toward ~30% and fuels giant flying insects.,9; 37; 63
+mushroom-bodies,EP13a,cpu,Sparse insect brains,Mushroom bodies fan smells across thousands of cells so a sparse handful tags each scent.,9; 37; 39
+three-layer-pallium,EP13b,cpu,Three-layer forebrain,Early land reptiles and synapsids build a three-layered forebrain that maps dry territories.,39; 64; 65
+amniote-egg,EP13b,store,Shelled egg,"A waterproof egg carries its own pond and food supply, freeing land vertebrates from water.",54; 64; 68
+whiskers-turbinals,EP14b,io,Whiskers and scent scrolls,Sensitive facial whiskers and scroll-shaped nose bones map the dark by touch and stereo smell.,39; 56; 65
+balance-cerebellum,EP15a,cpu,Two-leg balance brain,Fast inner-ear and cerebellar loops keep upright running dinosaurs balanced at speed.,39; 59; 61
 endothermy,EP15b,power,Warm blood,"A 37 °C body keeps the brain fast, even at night.",15; 39; 56; 65
 neocortex,EP15b,cpu,Six-layer cortex,"The mammal cortex forms, wired to the hippocampus.",18; 39; 65
 hippocampal-maps,EP15b,ram,Mental maps,Place cells hold where-am-I.,14; 39; 65
-simulating,EP15b,prog,Imagining,Replay rehearses paths not yet taken. Breakthrough three.,39; 49; 65
-middle-ear,EP16b,io,Three-bone ear,Old jaw bones become ear bones for high-pitched hearing.,43; 65
+simulating,EP15b,prog,Imagining,Replay rehearses paths not yet taken. Breakthrough three.,39; 49; 65; 86
+middle-ear,EP16b,io,Three-bone ear,Old jaw bones begin to become ear bones for high-pitched hearing.,43; 65
 flight-controller,EP17a,cpu,Flight controller,A bigger cerebellum and pallium steer in three dimensions.,43; 61
-eusocial,EP17b,net,Insect superorganisms,"Ants, bees and termites coordinate ~1,000,000 workers by scent and dance.",9; 12; 37; 68
+flocks,EP19a,net,Flocks and V-formations,"Birds likely flock by now; living starlings each track their seven nearest neighbors, passing turns across thousands with no leader.",43; 61; 68
+eusocial,EP17b,net,Insect superorganisms,"Ants, bees and termites coordinate ~1,000,000 workers by scent and dance.",9; 12; 37; 68; 86
+family-care,EP18b,net,Family bonds,"Warm-blooded parents nurse, feed and call to their young, passing learned habits across generations.",23; 58; 68
+color-fovea,EP19a,io,Sharp forward-facing eyes,Early primates bring both eyes forward for depth; three-color vision follows about 30 to 40 million years ago.,23; 39; 50
+folded-cortex,EP20a,cpu,Folded neocortex,"By now monkeys' and apes' larger brains are folded, packing far more visual and social columns inside the skull.",18; 23; 39; 65
 echolocation,EP19b,io,Echolocation,Toothed whales see with sound.,10; 62
 dense-pallium,EP19b,cpu,Dense bird brains,Songbirds pack ~240 million neurons per gram.,23; 61
+vocal-pods,EP19b,net,Vocal pods and dialects,"Whale pods and songbirds learn family dialects, coordinating hunts and territories over kilometers.",10; 61; 62; 68
 mentalizing,EP20a,prog,Reading minds,A prefrontal cortex models what others know. Breakthrough four.,23; 39
+primate-troops,EP20a,net,Troops and coalitions,Apes and monkeys track allies and rivals in groups of ~50–80 through grooming and alarm calls.,23; 39; 68
+bipedal-gait,EP20b,io,Upright walking,"Balancing on two legs frees the hands from walking so fingers can carry, gesture and build.",23; 39; 43
+matriarch-clans,EP20b,net,Matriarch clans,Long-lived elders lead nested elephant and savanna herds via low rumbles and ground vibrations.,10; 23; 68
 tool-hands,EP21a,io,Tool-using hands,Striking stone extends what hands can do.,23; 39; 43
 stone-tools,EP21a,backup,Stone tools,"The first memory outside a body: a knapped stone keeps a plan for 10,000+ years at zero watts.",23; 25; 39
-fire,EP22a,power,Fire and cooking,"Cooking digests food outside the body, freeing energy for a bigger brain.",23; 39
+parietal-visuomotor,EP21b,cpu,Hand-eye tool circuits,Expanded parietal-premotor loops aim stone strikes at exact angles as hominin brains jump 50%.,23; 39; 43
+fire,EP22a,power,Fire and cooking,"Possibly tending fire already; cooking digests food outside the body, freeing energy for a bigger brain.",23; 39
+hierarchical-planning,EP22b,prog,Multi-step tool plans,Modern-sized brains hold nested sub-goals to shape stone cores and hafted wooden spears.,23; 39; 68
+hunting-bands,EP22b,net,Cooperative bands,Hominin families share childcare across grandparents and coordinate team hunts of big game.,23; 39; 68
 engraved-symbols,EP23a,backup,Engraved symbols,Ochre plaques and shell beads carry meaning.,23; 25; 39
 speech,EP23b,wire,Speech,"About 39 bits per second, across all 17 languages measured.",23; 39; 44
-speaking,EP23b,prog,Language,Nested grammar moves plans and stories between minds. Breakthrough five.,23; 39; 68
-cave-art,EP23b,backup,Cave art and tallies,"Painted walls, notched bones and songlines.",23; 25; 39
+speaking,EP23b,prog,Language,By now nested grammar moves plans and stories between minds. Breakthrough five.,23; 39; 68
+cave-art,EP23b,backup,Cave art and tallies,Painted walls and notched bones store stories and counts outside the head.,23; 25; 39
 tribes,EP23b,net,Tribes,"Groups of ~1,500 bound by a shared language.",23; 39; 68
 agriculture,EP24a,power,Farming,Crops and herds turn sunlight into a dependable surplus.,2; 6; 35
 villages,EP24a,net,Villages,"Settled villages of 500–2,000 people.",6; 23; 39
+clay-tokens,EP24b,backup,Clay tokens,"Counters sealed inside hollow clay balls get pressed into the surface, turning objects into signs.",25; 68; 83
 cuneiform,EP25a,backup,Clay writing,Baked clay tablets last thousands of years with no power.,25; 83
 city-states,EP25a,net,City-states,"Uruk: ~50,000 people coordinated by written ledgers.",25; 68
 alphabet,EP25b,backup,Alphabet,About 22 letters replace thousands of signs (~5 bits per letter).,25; 44
+formal-rules,EP26a,prog,Formal logic and grammar,"Panini's ~4,000 grammar rules and Greek step-by-step proofs turn reasoning into written rules.",25; 29; 44
+coinage-markets,EP26a,net,Coins and markets,"Stamped metal coins put a shared number on value, coordinating trade across strangers.",25; 68
 gear-computer,EP26b,cpu,Gear computer,The Antikythera mechanism predicts the sky with bronze gears.,25; 29
-empires,EP26b,net,Empires,Rome and Han China each govern ~60 million people.,25; 68
+empires,EP26b,net,Empires,Over the next three centuries Rome and Han China each come to govern ~60 million people.,25; 68
 codex,EP27a,backup,The book,Pages replace scrolls: jump straight to any passage.,25; 44
+written-algorithms,EP27b,prog,Zero and algorithms,Place-value numbers with zero turn hard arithmetic into step-by-step recipes on paper.,25; 29; 44
+paper-mills,EP27b,backup,Rag-paper mills,"Water-powered mills turn linen rags into affordable sheets, multiplying books before print.",25; 44
 printing,EP28a,backup,Printing press,Copying cost falls ~300×; ~20 million books in 50 years.,25; 44
 calculators,EP28b,cpu,Mechanical calculators,Pascal and Leibniz build adding machines.,25; 29
-journals,EP28b,net,Scientific journals,"Peer review turns science into a shared, self-correcting memory.",25; 44; 79
-coal-steam,EP29a,power,Coal and steam,Technology's power use reaches 1.5 TW.,17; 25; 79
+journals,EP28b,net,Scientific journals,"Public journals launch checkable, shared scientific memory across countries.",25; 44; 79
+coal-steam,EP29a,power,Coal and steam,Coal-fired steam engines push human power use past 0.85 TW.,17; 25; 79
 telegraph,EP29a,wire,Telegraph,"Signals cross continents at ~70% of light speed, two million times faster than a nerve.",25; 44
 tabulators,EP29b,cpu,Punch-card machines,Hollerith's machines count the 1890 US census.,25; 29
 electronic-computers,EP30a,cpu,Electronic computers,"ENIAC and EDVAC: ~100,000 operations per second worldwide.",25; 28; 29; 45
-stored-programs,EP30a,prog,Stored programs,"Instructions live in memory as data, so machines can be reprogrammed.",28; 29; 46
+stored-programs,EP30a,prog,Stored programs,"Instructions live in memory as data, so machines can be reprogrammed.",28; 29; 46; 86; 87
 integrated-circuits,EP30b,cpu,Microchips,Many transistors on one silicon chip; Moore's law begins.,25; 45; 80
 dram,EP30b,ram,Electronic memory,"Magnetic cores, then DRAM, hold a running program's state.",25; 45; 85
 arpanet,EP30b,net,ARPANET,Computers start talking to each other in packets.,25; 44
 fiber,EP31a,wire,Fiber optics,Light in glass carries the web.,25; 26; 44
-digital-storage,EP31a,backup,Digital storage,"Digital storage passes all paper, film and vinyl combined.",25; 26; 85
-web,EP31a,net,World Wide Web,6.1 billion people and about a billion processors.,25; 26; 44
-gpus,EP31b,cpu,GPUs that learn,Graphics chips get repurposed to train neural networks.,77; 80
-transformers,EP32a,prog,Transformers,"One AI architecture for language, code and proteins.",77; 78
-power-today,EP32b,power,84.5 TW,Life uses 65 TW; technology adds 19.5 TW.,16; 17; 79; 80
+digital-storage,EP31a,backup,Digital storage,"Digital storage nears and soon passes all paper, film and vinyl combined.",25; 26; 85
+web,EP31a,net,World Wide Web,"Nearly 400 million people go online across a world of 6.1 billion, linked to ~1 billion chips.",25; 26; 44
+gpus,EP31b,cpu,GPUs that learn,Graphics chips get repurposed to train neural networks.,39; 77; 80; 86
+transformers,EP32a,prog,Transformers,"One AI architecture for language, code and proteins.",39; 77; 78; 86
+power-today,EP32b,power,84.5 TW,Living cells and animals burn ~65 TW to stay alive (a bottom-up estimate); human technology adds 19.5 TW.,16; 17; 47; 79; 80
 ai-clusters,EP32b,cpu,AI supercomputers,One cluster runs 3×10²⁰ operations per second.,26; 77; 78; 80
 hbm,EP32b,ram,Memory everywhere,Refreshed every 64 ms; refreshing alone uses ~11 GW worldwide.,26; 45; 85
-reasoning,EP32b,prog,Machines that deliberate,Models think step by step before answering.,39; 77; 78
+reasoning,EP32b,prog,Machines that deliberate,Models think step by step before answering.,39; 77; 78; 86
 zettabytes,EP32b,backup,15 zettabytes,"1.2×10²³ bits stored, kept alive by ~20 GW of power.",25; 26; 85
-planetary-net,EP32b,net,Planetary network,8.1 billion people and 6.5 billion devices.,25; 26; 44; 79
+planetary-net,EP32b,net,Planetary network,8.1 billion people and 6.5 billion devices.,25; 26; 44; 79; 86

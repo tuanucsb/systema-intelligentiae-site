@@ -1,15 +1,15 @@
 from,to,why,refs
 vent-gradient,autocatalysis,The vent battery powers the first carbon fixation.,27; 47; 48; 67
-autocatalysis,self-copying,Reactions that make more of themselves.,27; 47; 67; 81
-self-copying,genetic-code,Copying chemistry becomes a code.,47; 67; 68; 81
+autocatalysis,self-copying,Reactions that make more of themselves.,27; 47; 67; 81; 86; 87
+self-copying,genetic-code,Copying chemistry becomes a code.,47; 67; 68; 81; 86; 87
 ribosome,chemoreceptors,Proteins built by ribosomes become sensors.,28; 29; 30; 66
 genetic-code,gene-swapping,A shared code lets cells swap genes.,21; 28; 30; 66
 chem-state,four-second-memory,Chemical state becomes a deliberate memory.,13; 27; 47; 50
-chemoreceptors,gradient-climbing,Sensors feed the first navigation rule.,13; 49; 50; 80
-four-second-memory,gradient-climbing,Comparing now with then is what makes climbing possible.,13; 49; 50
-oxy-photo,day-clock,Sun-powered cells need to anticipate dawn.,13; 16; 17; 27
-oxy-photo,aerobic,Oxygen from photosynthesis becomes fuel.,15; 16; 17; 27
-quorum,multicellular,Cells that coordinate can stick together.,3; 13; 22; 68
+chemoreceptors,gradient-climbing,Sensors feed the first navigation rule.,13; 49; 50; 80; 86
+four-second-memory,gradient-climbing,Comparing now with then is what makes climbing possible.,13; 49; 50; 86
+oxy-photo,day-clock,Sun-powered cells need to anticipate dawn.,13; 16; 17; 27; 86
+oxy-photo,aerobic,Oxygen from photosynthesis becomes fuel.,15; 16; 17; 27; 47
+quorum,multicellular,Cells that coordinate can stick together.,3; 13; 22; 68; 86
 aerobic,mitochondria,An oxygen-breathing bacterium becomes the mitochondrion.,15; 17; 22; 27
 mitochondria,chromatin,Spare energy per gene lets genomes grow.,20; 22; 27; 68
 mitochondria,euk-signaling,Spare energy pays for complex signaling.,13; 22; 27; 68
@@ -56,17 +56,17 @@ telegraph,arpanet,Electrical signaling grows into computer networks.,25; 44
 integrated-circuits,dram,Chips make electronic memory cheap.,25; 45; 80; 85
 integrated-circuits,digital-storage,Cheap chips make digital storage cheap.,25; 26; 45; 80
 fiber,web,Light in glass carries the traffic.,25; 26; 44
-gpus,transformers,GPU power makes large models trainable.,77; 78; 80
-web,transformers,The web becomes training text.,25; 26; 44; 77
+gpus,transformers,GPU power makes large models trainable.,39; 77; 78; 80; 86
+web,transformers,The web becomes training text.,25; 26; 44; 77; 86
 transformers,ai-clusters,Big models need giant clusters.,26; 77; 78; 80
 vent-gradient,pore-clusters,One vent feeds thousands of mineral pores.,27; 47; 48; 68
 diffusion,contact-chem,Molecules reach the walls only by drifting there.,27; 48; 50; 81
 diffusion,neurons,"Diffusion takes minutes to cross a millimeter, too slow for a body. Nerves fix that.",18; 27; 48; 50
-rna,ribosome,The ribosome's core is still an RNA machine.,28; 67; 68; 81
-dna,gene-swapping,Stable DNA can be handed from cell to cell.,20; 21; 28; 68
-anoxy-photo,syntrophy,Sunlight-fed microbes feed whole partner communities.,3; 16; 17; 27
-endosymbiosis,mitochondria,Living inside another cell is how the mitochondrion began.,22; 27; 68
-endosymbiosis,chloroplast,"The same trick, done again with a cyanobacterium.",2; 22; 27; 68
+rna,ribosome,The ribosome's core is still an RNA machine.,28; 47; 67; 68; 81; 86
+dna,gene-swapping,Stable DNA can be handed from cell to cell.,20; 21; 28; 47; 68
+anoxy-photo,syntrophy,Sunlight-fed microbes feed whole partner communities.,3; 16; 17; 27; 86
+endosymbiosis,mitochondria,Living inside another cell is how the mitochondrion began.,22; 27; 68; 86
+endosymbiosis,chloroplast,"The same trick, done again with a cyanobacterium.",2; 22; 27; 68; 86
 mycelia,land-plants,Fungal partners help the first plants settle on land.,2; 16; 68; 73
 neurons,bare-axons,Neurons send their signals down long fibers.,18; 19; 39; 74
 compound-eyes,three-part-brain,Big eyes need a brain to make sense of the picture.,39; 50; 51; 76
@@ -79,6 +79,53 @@ calculators,stored-programs,Leibniz's binary arithmetic becomes the language of 
 electronic-computers,stored-programs,EDVAC's design keeps the program in memory beside the data.,25; 28; 29; 45
 ai-clusters,power-today,Data centers now draw about 50–80 GW of the total.,26; 77; 78; 80
 ai-clusters,hbm,AI chips sit on stacks of fast memory.,26; 77; 78; 80
-ai-clusters,reasoning,Giant clusters make step-by-step thinking affordable.,26; 77; 78; 80
+ai-clusters,reasoning,Giant clusters make step-by-step thinking affordable.,26; 39; 77; 78; 80; 86
 web,zettabytes,"The web's photos, videos and messages fill the world's drives.",25; 26; 44; 85
 fiber,planetary-net,Undersea fiber carries almost all traffic between continents.,25; 26; 44; 79
+three-part-brain,distributed-arms,Centralized optic lobes pair with semi-autonomous arm cords in early cephalopods.,39; 51; 76
+multicellular,reef-colonies,Budding clones stay wired together across stony coral and bryozoan reefs.,39; 51; 68
+reef-colonies,schools,Three-dimensional reefs shelter and concentrate early schooling fishes.,39; 51
+bare-axons,escape-reflex,Making one nerve fiber giant speeds escape signals before myelin arrives.,18; 39; 50
+lateral-line,escape-reflex,Flank pressure sensors trigger the giant tail-flip neurons.,39; 50
+lateral-line,myelin,"Long bodies reading distant ripples reward fast, insulated nerve trunks.",18; 39; 64
+three-part-brain,mushroom-bodies,Arthropod brains add sparse-coding mushroom bodies for scent memory.,9; 39; 51
+mushroom-bodies,eusocial,Expanded mushroom bodies let ants and bees learn hundreds of nestmate scents.,9; 12; 39
+planning,three-layer-pallium,Land navigation builds a three-layered forebrain map in early amniotes.,39; 64; 65
+sex,amniote-egg,"Internal fertilization makes a sealed, dry-land shelled egg possible.",54; 64; 68
+amniote-egg,three-layer-pallium,Yolk-fed embryos wire fuller forebrains before hatching on land.,54; 64; 65
+three-layer-pallium,neocortex,A three-layer forebrain reorganizes into the six-layer mammal cortex.,39; 65
+whiskers-turbinals,endothermy,Scroll-shaped nose bones conserve heat and moisture for warm-blooded breathers.,15; 56; 65
+whiskers-turbinals,neocortex,Night touch from whiskers and stereo smell drive the first six-layer maps.,39; 65
+three-layer-pallium,balance-cerebellum,Land reptiles add fast inner-ear and cerebellar balance loops to run on two legs.,39; 59; 61
+balance-cerebellum,flight-controller,Two-legged dinosaur balance circuits get repurposed for powered 3D flight.,43; 61
+flight-controller,flocks,Fast visual-balance brains let thousands of birds match seven neighbors in flight.,43; 61; 68
+endothermy,family-care,"Warm-blooded young need milk, warmth and feeding, binding parent and child.",15; 23; 68
+family-care,folded-cortex,Safe parental care buys young brains a longer window to wire up.,23; 39; 65
+color-fovea,folded-cortex,Sharp forward-facing eyes pour rich visual streams into a folded neocortex.,23; 39; 50
+folded-cortex,mentalizing,"Extra cortical columns model social allies, gaze and intentions.",23; 39; 65
+echolocation,vocal-pods,Active sound sense doubles as a long-range family dialect channel underwater.,10; 62; 68
+dense-pallium,vocal-pods,Songbird forebrains learn regional songs from elders.,23; 61; 68
+family-care,vocal-pods,Multi-year mother-calf bonds pass whale dialects and hunting traditions down.,10; 23; 68
+mentalizing,primate-troops,Tracking what others know lets apes build grooming coalitions of ~50–80.,23; 39; 68
+primate-troops,matriarch-clans,Layered family memories scale savanna clans and herds across kilometers.,10; 23; 68
+synaptic-weights,matriarch-clans,Decades of lifetime memory in one elder guide a whole clan through drought.,14; 23; 39
+bipedal-gait,tool-hands,Walking upright on two legs frees the hands to strike stone.,23; 39; 43
+stone-tools,parietal-visuomotor,Flaking sharp edges selects for tighter hand-eye parietal brain loops.,23; 25; 39
+parietal-visuomotor,hierarchical-planning,Hand-eye stone circuits grow into multi-step core and spear planning.,23; 39
+fire,hunting-bands,Shared hearths and cooked meat bind multi-generation family bands.,23; 39; 68
+hierarchical-planning,speaking,Nesting sub-goals in toolmaking scaffolds nested grammar in language.,23; 39; 68
+hunting-bands,tribes,Cooperative bands link up through shared language and symbols into tribes.,23; 39; 68
+engraved-symbols,clay-tokens,Meaningful marks evolve into countable tokens for grain and herds.,23; 25; 83
+villages,clay-tokens,Settled granaries need tamper-proof envelopes to track shares.,6; 25; 68
+clay-tokens,cuneiform,Token shapes pressed into wet clay flatten into wedge-shaped writing.,25; 68; 83
+alphabet,formal-rules,Phonetic writing lets Panini and Greek thinkers write down rules of grammar and proof.,25; 29; 44
+city-states,coinage-markets,Urban trade replaces temple rations with stamped metal price signals.,25; 68
+coinage-markets,empires,Shared coinage and tax ledgers knit distant provinces into one empire.,25; 68
+formal-rules,written-algorithms,Explicit rules meet place-value zero to create step-by-step paper algorithms.,25; 29; 44
+paper-mills,printing,Affordable rag paper gives movable metal type a cheap sheet to print on.,25; 44
+written-algorithms,calculators,Step-by-step carry rules get built directly into brass gears.,25; 29
+tabulators,electronic-computers,Punch-card census sorting scales up into vacuum-tube digital computing.,25; 29; 45
+arpanet,web,Packet-switched computer networks become the global World Wide Web.,25; 26; 44
+stored-programs,transformers,General-purpose software lets chips switch from hand-coded rules to learned weights.,28; 39; 46; 77; 86
+dram,hbm,Capacitor memory cells stack vertically into high-bandwidth AI memory.,26; 45; 85
+digital-storage,zettabytes,Magnetic and flash drives scale planetary archives to 15 zettabytes.,25; 26; 85

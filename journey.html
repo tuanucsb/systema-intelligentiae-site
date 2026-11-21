@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Journey · Systema Intelligentiae</title>
-<meta name="description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta name="description" content="4.1 billion years of thinking matter in 64 stops, one star creature or invention at a time.">
 <meta property="og:title" content="The Journey · Systema Intelligentiae">
-<meta property="og:description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta property="og:description" content="4.1 billion years of thinking matter in 64 stops, one star creature or invention at a time.">
 <meta property="og:image" content="assets/og/EP01a.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Journey · Systema Intelligentiae">
-<meta name="twitter:description" content="4.1 billion years of thinking matter in 40 stops, one creature at a time.">
+<meta name="twitter:description" content="4.1 billion years of thinking matter in 64 stops, one star creature or invention at a time.">
 <meta name="twitter:image" content="assets/og/EP01a.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -27,8 +27,8 @@
 <main id="main" class="wrap">
   <div class="page-head">
     <span class="eyebrow">The journey</span>
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">4.1 billion years in <span class="n-stops">40</span> stops</h1>
-    <p>Each stop has one star creature. The board shows the best parts on Earth at that moment, and the parts that just got upgraded light up. Use the buttons<span class="v-ptr"> or the arrow keys</span> to travel.</p>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">4.1 billion years in <span class="n-stops">64</span> stops</h1>
+    <p>Every moment in the census has a star protagonist, a specimen plate, and the nine-part board on Earth at that time. Switch on <b>Key milestones (24)</b> for a shorter tour, or step through all 64<span class="v-ptr"> with the buttons or arrow keys</span>.</p>
     <p class="resume" id="resume" hidden></p>
   </div>
   <div class="journey-stack" id="explorer">
@@ -40,7 +40,7 @@
       <button class="btn sm" id="next" type="button">Next →</button>
       <button class="btn sm ghost" id="first" type="button">Beginning</button>
       <button class="btn sm ghost" id="today" type="button">Today</button>
-      <label class="toggle" for="stopsOnly"><input type="checkbox" id="stopsOnly" checked> Story stops only</label>
+      <label class="toggle" for="tourOnly" data-tip="Step through 24 landmark moments (~10 minutes), or leave unchecked to visit all 64 stops. Board upgrades and deltas adjust automatically."><input type="checkbox" id="tourOnly"> Key milestones (24)</label>
     </div>
     <article class="card" id="card" aria-live="polite"></article>
     <span class="sr-only" id="shareMsg" aria-live="polite"></span>

@@ -22,8 +22,11 @@
 
   const STOPS = SI.stops.map((s, n) => Object.assign({}, s, { i: IDX[s.epoch], n }));
   const STOP = {}; STOPS.forEach(s => { STOP[s.epoch] = s; });
+  const TOUR = STOPS.filter(s => s.tour);
   const PLATES = SI.plates || {};
   const MYTHS = SI.myths;
+  const NEURAL = {}; (SI.neural || []).forEach(r => { (NEURAL[r.ep] || (NEURAL[r.ep] = [])).push(r); });
+  const NETWORKS = {}; (SI.networks || []).forEach(r => { (NETWORKS[r.ep] || (NETWORKS[r.ep] = [])).push(r); });
   // every moment has a plain title; between stops it also has its own hook
   const MOM = {}; (SI.moments || []).forEach(m => { MOM[m.epoch] = m; });
   const titleOf = i => (MOM[E[i].id] || {}).title || fmtTime(E[i].t);
@@ -187,15 +190,39 @@
     hadrocodium: () => '<path class="f" d="M26 46 C34 38 44 34 56 34 C70 34 80 38 84 46 C86 51 80 54 72 54 L42 54 C34 54 30 50 26 46 Z"/><circle class="a" cx="44" cy="37" r="4.2"/><circle class="d" cx="35" cy="42" r="1.8"/><path class="as" d="M84 48 C96 50 104 44 110 34"/><path class="t" d="M26 46 l-7 -2 M26 47 l-7 2 M46 54 v5 M54 54 v5 M68 54 v5 M76 54 v5"/><rect class="t" x="18" y="16" width="34" height="8" rx="4"/>',
     primate: () => '<path class="t" d="M10 64 L110 48"/><path class="f" d="M34 46 C40 36 54 32 68 34 C78 36 84 42 82 50 L48 54 C38 54 32 50 34 46 Z"/><circle class="f" cx="34" cy="38" r="8"/><circle class="d" cx="31" cy="37" r="2"/><circle class="a" cx="39" cy="33" r="2.2"/><path class="as" d="M82 44 C96 36 106 22 102 12 C99 6 92 10 94 16"/><path d="M44 53 l-4 8 M54 53 l-2 7 M72 50 l2 6 M78 49 l4 6"/>',
     rack: () => { let s = ''; for (let j = 0; j < 4; j++) { const y = 8 + j * 17; s += '<rect class="f" x="30" y="' + y + '" width="60" height="13" rx="2"/><path class="t" d="M36 ' + (y + 4) + ' h28 M36 ' + (y + 9) + ' h28"/><circle class="d" cx="76" cy="' + (y + 6.5) + '" r="1.8"/><circle class="a" cx="83" cy="' + (y + 6.5) + '" r="2"/>'; } return s + '<path class="t as" d="M90 14 C104 14 104 31 90 31 M90 48 C104 48 104 65 90 65 M30 22 C16 22 16 56 30 56"/>'; },
+    sponge: () => '<path class="f" d="M44 68 C40 48 42 26 50 18 C54 14 66 14 70 18 C78 26 80 48 76 68 Z"/><ellipse class="a" cx="60" cy="18" rx="9" ry="3.5"/><path class="t as" d="M60 12 v-6 M54 14 l-4 -5 M66 14 l4 -5"/><circle class="d" cx="50" cy="34" r="1.6"/><circle class="d" cx="68" cy="38" r="1.6"/><circle class="d" cx="54" cy="48" r="1.6"/><circle class="d" cx="66" cy="54" r="1.6"/><path class="t" d="M26 68 H94"/>',
+    nautiloid: () => '<polygon class="f" points="108,40 46,27 46,53"/><path class="t" d="M58 30 v20 M70 32 v16 M82 34.5 v11 M94 37 v6"/><path class="f" d="M46 31 C36 31 32 35 32 40 C32 45 36 49 46 49 Z"/><circle class="d" cx="38" cy="37" r="2.2"/><path class="as" d="M32 35 C20 30 14 32 8 28 M32 39 H8 M32 43 C20 46 14 48 8 52 M32 46 C22 52 16 56 12 60"/>',
+    eurypterid: () => '<ellipse class="f" cx="56" cy="40" rx="24" ry="12"/><polygon class="f" points="80,36 108,40 80,44"/><path class="t" d="M46 29 v22 M56 28 v24 M66 30 v20"/><path class="f" d="M44 29 L30 16 L38 24 Z M44 51 L30 64 L38 56 Z"/><path class="as" d="M33 35 L18 28 L22 34 M33 45 L18 52 L22 46"/><circle class="d" cx="38" cy="35" r="1.8"/><circle class="d" cx="38" cy="45" r="1.8"/>',
+    placoderm: () => '<path class="f" d="M16 42 L34 24 L64 26 L94 38 L64 54 L34 56 Z"/><path class="f" d="M92 38 L110 26 L104 40 L110 52 Z"/><path class="as" d="M16 42 L32 44 L28 49 L20 47"/><path class="t" d="M46 26 L42 54 M58 27 L56 52"/><circle class="d" cx="30" cy="35" r="2.6"/>',
+    amniote: () => '<path class="f" d="M18 48 C28 38 54 36 78 44 C92 48 102 44 112 36 C102 48 88 54 72 52 L32 52 Z"/><circle class="d" cx="26" cy="44" r="1.8"/><path d="M38 52 l-4 9 M66 52 l-3 9"/><ellipse class="f" cx="56" cy="22" rx="10" ry="7"/><path class="as" d="M52 22 c2 -3 6 -3 8 0"/>',
+    cynodont: () => '<path class="f" d="M18 46 C26 34 48 30 74 34 C86 36 94 44 90 52 L34 52 C24 52 18 49 18 46 Z"/><path d="M90 48 C102 50 108 46 112 40 M38 52 v9 M48 52 v9 M72 52 v9 M82 52 v9"/><circle class="d" cx="30" cy="40" r="2"/><path class="as" d="M18 44 l-9 -4 M18 46 h-10 M18 48 l-9 4"/><path class="t" d="M36 33 q4 -6 8 0"/>',
+    biped_dino: () => '<path class="f" d="M18 28 L38 26 L44 34 C56 32 72 34 86 40 L112 36 C96 46 78 48 64 46 L42 44 L36 34 L20 34 Z"/><circle class="d" cx="26" cy="30" r="1.8"/><path d="M58 46 L52 60 L58 70 h7 M66 46 L66 58 L74 68 h6 M44 42 l-4 8"/>',
+    volcano: () => '<polygon class="f" points="16,70 46,30 74,30 104,70"/><path class="as" d="M52 30 C48 18 36 14 28 18 M60 30 V10 M68 30 C72 18 84 14 92 18"/><path class="a" d="M50 30 L44 48 L56 42 L62 54 L70 30 Z"/>',
+    euprimate: () => '<path class="t" d="M12 66 L108 32"/><ellipse class="f" cx="54" cy="42" rx="18" ry="10" transform="rotate(-16 54 42)"/><circle class="f" cx="36" cy="36" r="8"/><circle class="a" cx="33" cy="35" r="2.6"/><circle class="a" cx="39" cy="35" r="2.6"/><path class="as" d="M70 38 C88 30 98 16 106 18"/><path d="M44 50 l-4 10 M64 44 l4 9"/>',
+    biped_ape: () => '<circle class="f" cx="60" cy="16" r="7"/><path class="f" d="M54 24 H66 L68 46 H52 Z"/><path d="M55 46 L50 70 M65 46 L68 70 M54 27 L42 42 M66 27 L78 38"/><circle class="a" cx="80" cy="38" r="3"/><path class="t dash" d="M24 70 H96"/>',
+    habilis: () => '<path class="f" d="M32 48 C30 28 46 16 66 18 C80 20 86 32 82 44 L86 52 L76 54 L74 62 H46 L44 50 Z"/><circle class="d" cx="72" cy="36" r="2.4"/><polygon class="a" points="96,26 108,38 98,52 90,40"/>',
+    spear: () => '<path d="M14 62 L98 22"/><polygon class="a" points="110,16 94,19 99,28"/><polygon class="f" points="36,20 52,14 58,28 44,36"/><path class="t" d="M44 18 L48 32 M38 26 L54 22"/>',
+    ochre: () => '<polygon class="f" points="22,26 92,20 100,56 28,62"/><path class="as" d="M36 28 L58 56 M52 26 L74 54 M68 24 L88 52 M34 52 L58 26 M50 54 L74 24 M66 54 L88 26"/>',
+    wheat: () => '<path d="M42 70 V22 M78 70 V26"/><g class="f">' + [24, 32, 40, 48].map(y => '<ellipse cx="37" cy="' + y + '" rx="4" ry="2.5" transform="rotate(-30 37 ' + y + ')"/><ellipse cx="47" cy="' + y + '" rx="4" ry="2.5" transform="rotate(30 47 ' + y + ')"/>').join('') + '</g><polygon class="f" points="64,70 64,50 78,38 92,50 92,70"/><rect class="d" x="74" y="56" width="8" height="14"/>',
+    bulla: () => '<circle class="f" cx="52" cy="42" r="24"/><path class="t" d="M36 34 l5 -3 l3 5 Z M48 30 h6 v6 h-6 Z"/><circle class="t" cx="44" cy="48" r="3.5"/><circle class="a" cx="88" cy="30" r="4.5"/><polygon class="a" points="84,48 94,48 89,39"/><rect class="a" x="84" y="54" width="9" height="9" rx="1.5"/>',
+    alphabet: () => '<rect class="f" x="20" y="14" width="80" height="52" rx="6"/><path class="as" d="M32 48 L40 26 L48 48 M35 41 H45 M58 26 V48 Q70 48 70 37 Q70 26 58 26 M78 28 L88 48 M88 28 L78 48"/>',
+    scroll_rule: () => '<rect class="f" x="26" y="16" width="68" height="48" rx="4"/><circle class="f" cx="26" cy="40" r="6"/><circle class="f" cx="94" cy="40" r="6"/><path class="as" d="M38 30 H56 L52 27 M66 30 L78 48 L56 48 Z"/><path class="t" d="M38 42 H50 M38 50 H50"/>',
+    gears: () => '<circle class="f" cx="50" cy="40" r="20"/><circle class="d" cx="50" cy="40" r="5"/><path d="' + rays(50, 40, 20, 25, 12) + '"/><circle class="f" cx="82" cy="28" r="11"/><circle class="a" cx="82" cy="28" r="3"/><path d="' + rays(82, 28, 11, 14.5, 8) + '"/><path class="t" d="M36 40 H64 M50 26 V54"/>',
+    codex: () => '<rect class="f" x="26" y="12" width="68" height="56" rx="4"/><path d="M36 12 V68"/><path class="t" d="M46 24 H82 M46 32 H82 M46 40 H82 M46 48 H74"/><polygon class="a" points="74,12 82,12 82,26 78,22 74,26"/>',
+    zero: () => '<rect class="f" x="20" y="14" width="80" height="52" rx="6"/><ellipse class="as" cx="46" cy="40" rx="11" ry="16" style="fill:none;stroke-width:3.5"/><path d="M68 28 H86 L72 52 H88"/><circle class="a" cx="46" cy="40" r="2.5"/>',
+    calculator: () => '<rect class="f" x="22" y="22" width="76" height="38" rx="4"/>' + [36, 52, 68, 84].map(x => '<circle class="a" cx="' + x + '" cy="41" r="6"/><path class="t" d="M' + x + ' 35 v12 M' + (x - 6) + ' 41 h12"/><rect class="d" x="' + (x - 4) + '" y="26" width="8" height="5"/>').join(''),
+    punchcard: () => '<polygon class="f" points="18,18 94,18 102,26 102,62 18,62"/>' + [28, 38, 48, 58, 68, 78, 88].map((x, k) => '<rect class="' + (k % 2 ? 'a' : 'd') + '" x="' + x + '" y="' + (28 + (k % 3) * 9) + '" width="4" height="6"/><rect class="d" x="' + x + '" y="' + (37 + ((k + 1) % 2) * 9) + '" width="4" height="6"/>').join(''),
+    wafer: () => '<circle class="f" cx="60" cy="40" r="27"/><path class="t" d="M36 28 H84 M33 40 H87 M36 52 H84 M48 16 V64 M60 13 V67 M72 16 V64"/><rect class="a" x="49" y="29" width="10" height="10"/><rect class="a" x="61" y="41" width="10" height="10"/>',
+    transformer: () => { const L = [22, 40, 58], R = [22, 40, 58]; let s = ''; L.forEach(y1 => R.forEach(y2 => { s += '<line class="' + (y1 === y2 ? 'as' : 't') + '" x1="34" y1="' + y1 + '" x2="86" y2="' + y2 + '"/>'; })); L.forEach(y => { s += '<circle class="f" cx="30" cy="' + y + '" r="5.5"/><circle class="a" cx="90" cy="' + y + '" r="5.5"/>'; }); return s; },
     generic: () => '<circle class="t dash" cx="60" cy="40" r="24"/><circle class="a" cx="60" cy="40" r="3"/>'
   };
   const glyph = g => '<svg viewBox="0 0 120 80" class="gl" aria-hidden="true">' + (G[g] || G.generic)() + '</svg>';
-  function plateArt(epochId, glyphKey, alt) {
+  function plateArt(epochId, glyphKey, alt, eager) {
     const pl = PLATES[epochId];
     if (!pl || !pl.file) return '<div class="plate-art">' + glyph(glyphKey) + '</div>';
     return '<div class="plate-art has-photo">' +
-      '<img class="plate-img" src="' + esc(pl.file) + '" alt="' + esc(alt || pl.caption || '') + '" loading="lazy" onerror="this.parentElement.classList.remove(\'has-photo\');this.remove()">' +
-      (pl.phylopic ? '<span class="plate-phylopic" title="PhyloPic body-plan silhouette"><img src="' + esc(pl.phylopic) + '" alt="" loading="lazy"></span>' : '') +
+      '<img class="plate-img" src="' + esc(pl.file) + '" alt="' + esc(alt || pl.caption || '') + '" width="640" height="480"' + (eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' onerror="this.parentElement.classList.remove(\'has-photo\');this.remove()">' +
+      (pl.phylopic ? '<span class="plate-phylopic" title="PhyloPic body-plan silhouette"><img src="' + esc(pl.phylopic) + '" alt="" width="36" height="28" loading="lazy"></span>' : '') +
       '<span class="plate-glyph" title="Field-guide glyph">' + glyph(glyphKey) + '</span>' +
       '</div>';
   }
@@ -237,7 +264,7 @@
       foot.innerHTML = '<div class="wrap">' +
         '<div class="colo" data-url="' + esc(location.href.split('#')[0]) + '"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' + mark + '</span>Systema Intelligentiae</a>' +
         '<p>A natural history of thinking matter: how Earth built memory, wiring and computing over 4.1 billion years, from one open census.</p>' +
-        '<p class="upd">Last updated 8 Nov 2026</p></div>' +
+        '<p class="upd">Last updated 21 Nov 2026</p></div>' +
         '<nav aria-labelledby="footExplore"><h2 id="footExplore">Explore</h2>' + footLinks.map(l => cur(l[0], l[1]) + l[2] + '</a>').join('') + '</nav>' +
         '<nav aria-labelledby="footAbout"><h2 id="footAbout">About</h2>' + cur('about.html', 'about') + 'About this project</a><a href="about.html#cite">How to cite</a>' +
         cur('credits.html', 'credits') + 'Image credits</a><a href="about.html#licence">Data licence</a><a href="data.html">Download the data</a></nav></div>';
@@ -606,9 +633,16 @@
       numDlg = document.createElement('dialog');
       numDlg.className = 'num-dlg';
       numDlg.setAttribute('aria-labelledby', 'numDlgH');
+      numDlg.setAttribute('closedby', 'any');
       document.body.appendChild(numDlg);
-      numDlg.addEventListener('click', ev => { if (ev.target === numDlg || ev.target.closest('.num-x')) numDlg.close(); });
-      numDlg.addEventListener('close', () => { if (numLast && numLast.focus) numLast.focus(); });
+      numDlg.addEventListener('click', ev => { if (ev.target.closest('.num-x')) numDlg.close(); });
+      if (!('closedBy' in HTMLDialogElement.prototype)) {
+        const outside = (ev, d) => { const r = d.getBoundingClientRect(); return ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom; };
+        let pressedOut = false;
+        numDlg.addEventListener('pointerdown', ev => { pressedOut = outside(ev, numDlg); });
+        numDlg.addEventListener('pointerup', ev => { if (pressedOut && outside(ev, numDlg)) numDlg.close(); });
+      }
+      numDlg.addEventListener('close', () => { numDlg.returnValue = ''; });
     }
     const when = i === N - 1 ? 'today' : momentText(i);
     const epi = EPI[e.epi] || null, kd = R ? NUMKIND[R.kind] : null;
@@ -731,7 +765,7 @@
   const numBtn = (col, html, i) => '<button type="button" class="num" data-num="' + col + '"' + (i != null ? ' data-i="' + i + '"' : '') + ' data-tip="Where this number comes from: its equation, inputs and sources">' + html + '</button>';
 
   window.SIX = {
-    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, PLATES, MYTHS, MOM, titleOf, hookOf, stopsAround,
+    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, TOUR, PLATES, MYTHS, NEURAL, NETWORKS, MOM, titleOf, hookOf, stopsAround,
     IN, OUT, closure, EPI, GAUGES, RANGE, sup, esc, plain, sci, watts, fmtTime, fmtShort, delta, icon, glyph, plateArt, plateCredit, plateThumb, chrome, chart, LEGEND, stack, LAYERS, LK, DIGITS, stackHeight, loadAtlas, KINDS, KIND, yearsAgo,
     loadCensus, loadLedgers, readLast, writeLast, placeOf, momentText, readExpert, numPanel, numBtn, numName, COLOF, invMore, timeKeys
   };

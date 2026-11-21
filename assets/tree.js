@@ -7,10 +7,43 @@
   const canvas = $('canvas'), wrapC = $('wrapC'), headInner = $('laneHeadInner'), drawer = $('drawer'), shell = document.querySelector('.tree-shell');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let visible = new Set(window.innerWidth < 640 ? ['cpu', 'prog', 'backup'] : X.ORDER);
+  const PATHS = [
+    {
+      key: 'neural',
+      label: 'How neural computation evolved',
+      color: 'var(--c-cpu)',
+      about: 'From spare synapse proteins and jellyfish nerve nets to octopus arm cords, bird forebrains, human cortex and reasoning AI.',
+      steps: ['synapse-kit', 'bioelectric', 'neurons', 'three-part-brain', 'distributed-arms', 'reinforcing', 'escape-reflex', 'myelin', 'mushroom-bodies', 'three-layer-pallium', 'neocortex', 'flight-controller', 'dense-pallium', 'folded-cortex', 'mentalizing', 'parietal-visuomotor', 'hierarchical-planning', 'speaking', 'gpus', 'transformers', 'reasoning'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'networks',
+      label: 'Animal & human communication networks',
+      color: 'var(--c-net)',
+      about: 'How separate cells, coral clones, fish schools, bird flocks, insect colonies, animal families, whale pods and human societies wire up as one.',
+      steps: ['quorum', 'multicellular', 'reef-colonies', 'schools', 'wood-wide-web', 'eusocial', 'family-care', 'flocks', 'vocal-pods', 'primate-troops', 'matriarch-clans', 'hunting-bands', 'tribes', 'villages', 'city-states', 'coinage-markets', 'empires', 'journals', 'arpanet', 'web', 'planetary-net'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'memory',
+      label: 'How memory left the body',
+      color: 'var(--c-backup)',
+      about: 'From RNA and DNA inside cells to synapse weights, struck stone, ochre, clay tokens, alphabets, rag paper, print and 15 zettabytes.',
+      steps: ['rna', 'dna', 'chromatin', 'synaptic-weights', 'stone-tools', 'engraved-symbols', 'cave-art', 'clay-tokens', 'cuneiform', 'alphabet', 'codex', 'paper-mills', 'printing', 'digital-storage', 'zettabytes'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'senses',
+      label: 'Senses & edge computing',
+      color: 'var(--c-io)',
+      about: 'From molecules bumping a wall to 16,000-lens compound eyes, water-ripple sensors, whiskers, 100:1 retinal edge compression and sonar.',
+      steps: ['contact-chem', 'chemoreceptors', 'eyespot', 'compound-eyes', 'lateral-line', 'eyes-in-air', 'whiskers-turbinals', 'middle-ear', 'color-fovea', 'echolocation', 'bipedal-gait', 'tool-hands'].filter(id => X.INVK[id])
+    }
+  ];
+  const PATHK = {}; PATHS.forEach(p => { PATHK[p.key] = p; });
+
+  let visible = new Set(window.innerWidth < 640 ? ['cpu', 'prog', 'net'] : X.ORDER);
   let sel = null;          // { type: 'inv', id } | { type: 'lane', key } | { type: 'epoch', i }
   let mode = 'near';       // near | back | forward
-  let peek = false;        // phone sheet folded down to a bar
+  let activePath = null;   // key in PATHK
+  let peek = false;
   let trail = [];
   let L = null;
   try { trail = JSON.parse(sessionStorage.getItem('si-trail') || '[]').filter(id => X.INVK[id]); } catch (e) { trail = []; }
@@ -23,7 +56,6 @@
     const narrow = W < 640;
     const lanes = X.ORDER.filter(k => visible.has(k));
     const n = Math.max(1, lanes.length);
-    // full gutter while columns get 112 px; otherwise a slimmer gutter and columns down to 92 px
     const G = narrow ? 70 : (W - 196) / n >= 112 ? 196 : 150;
     const laneW = Math.max(92, (W - G) / n);
     const compact = laneW < 140;
@@ -47,8 +79,11 @@
     return { W, narrow, compact, G, lanes, laneW, laneX, totalW, totalH: y + 40, rows, actY, pos };
   }
 
-  // soft hyphens in long words so labels wrap cleanly in narrow columns (value = break position)
-  const SOFT = { photosynthesis: 5, mitochondria: 4, chromosomes: 6, chloroplast: 6, superorganisms: 5, echolocation: 4, mechanical: 4, microchips: 5, transformers: 5, supercomputers: 5, everywhere: 5, electronic: 4 };
+  const SOFT = {
+    photosynthesis: 5, mitochondria: 4, chromosomes: 6, chloroplast: 6, superorganisms: 5,
+    echolocation: 4, mechanical: 4, microchips: 5, transformers: 5, supercomputers: 5,
+    everywhere: 5, electronic: 4, distributed: 6, formations: 5, coalitions: 5, algorithms: 4
+  };
   const soft = t => esc(t).replace(/[A-Za-z]{10,}/g, w => { const k = SOFT[w.toLowerCase()]; return k ? w.slice(0, k) + '\u00ad' + w.slice(k) : w; });
 
   function curve(a, b) {
@@ -71,7 +106,6 @@
     X.ACTS.forEach(a => {
       h += '<div class="act-row" id="act-' + a.n + '" style="top:' + L.actY[a.n] + 'px;height:54px;--ac:' + a.color + ';--ao:' + a.on + '"><div class="act-lbl"><span class="num">' + a.n + '</span><b>' + a.name + '</b><span>' + a.span + '</span></div></div>';
     });
-    // the time-and-creature gutter sits in its own layer so it can stay put while the columns scroll sideways
     let gut = '';
     for (let i = 0; i < X.N; i++) {
       const e = X.E[i], r = L.rows[i], st = X.STOP[e.id], a = X.actOf(i);
@@ -83,7 +117,7 @@
         continue;
       }
       let g = '<span class="time">' + X.fmtShort(e.t) + '</span>';
-      if (st) g += '<a class="who" href="journey.html#' + e.id + '" style="--g:' + (X.CRISIS[e.id] ? 'var(--crisis)' : a.color) + '" title="' + esc(st.who + ' · visit this moment') + '"><span class="mini">' + X.glyph(st.glyph) + '</span><b>' + esc(st.who) + '</b></a>';
+      if (st) g += '<a class="who" href="journey.html#' + e.id + '" style="--g:' + (X.CRISIS[e.id] ? 'var(--crisis)' : a.color) + '" title="' + esc(st.who + ' · visit this stop') + '"><span class="mini">' + X.glyph(st.glyph) + '</span><b>' + esc(st.who) + '</b></a>';
       else if (X.CRISIS[e.id]) g += '<span class="crisis-lbl">' + esc(X.CRISIS[e.id]) + '</span>';
       else g += '<a class="mo" href="journey.html#' + e.id + '">' + esc(X.titleOf(i)) + '</a>';
       gut += box + g + '</div>';
@@ -94,6 +128,7 @@
       const hist = X.HIST[k];
       for (let j = 1; j < hist.length; j++) {
         const a = L.pos[hist[j - 1].id], b = L.pos[hist[j].id];
+        if (!a || !b) continue;
         const x = (a.x + a.w / 2).toFixed(1);
         s += '<line class="lane-track" data-a="' + hist[j - 1].id + '" data-b="' + hist[j].id + '" style="--pc:' + X.PK[k].color + '" x1="' + x + '" y1="' + (a.y + a.h) + '" x2="' + x + '" y2="' + b.y + '"/>';
       }
@@ -128,6 +163,11 @@
 
   /* ---------- highlight ---------- */
   function currentSet() {
+    if (activePath && PATHK[activePath]) {
+      const steps = PATHK[activePath].steps;
+      const set = new Set(steps);
+      return { set, edge: (a, b) => set.has(a) && set.has(b) };
+    }
     if (!sel) return null;
     if (sel.type === 'inv') {
       if (mode === 'near') {
@@ -163,12 +203,13 @@
     const tip = refs.map(n => '[' + n + '] ' + (X.SI.refs[n] || 'Reference ' + n)).join(' | ');
     return ' <span class="x-only mono" style="font-size:12px;color:var(--ink-3)" title="' + esc(tip) + '">[' + refs.join(', ') + ']</span>';
   };
-  const relItem = (id, why, refs) => {
+  const relItem = (id, why, refs, kind) => {
     const u = X.INVK[id];
     const r = refs && refs.length ? refs : (u.refs || []);
-    return '<li><button type="button" data-go="' + id + '" style="--pc:' + X.PK[u.part].color + '"><i class="dot"></i><b>' + esc(u.label) + '</b><span>' + X.fmtShort(X.E[u.i].t) + ' · ' + esc(why) + refBadge(r) + '</span></button></li>';
+    const tag = kind === 'lane' ? '<em class="rel-kind">same part</em> ' : '';
+    return '<li><button type="button" data-go="' + id + '" style="--pc:' + X.PK[u.part].color + '"><i class="dot"></i><b>' + esc(u.label) + '</b><span>' + X.fmtShort(X.E[u.i].t) + ' · ' + tag + esc(why) + refBadge(r) + '</span></button></li>';
   };
-  const relList = (title, items) => '<div class="rel"><span class="sub">' + title + '</span>' + (items.length ? '<ul>' + items.join('') + '</ul>' : '<p class="none">Nothing in the tree yet.</p>') + '</div>';
+  const relList = (title, items) => '<div class="rel"><span class="sub">' + title + '</span>' + (items.length ? '<ul>' + items.join('') + '</ul>' : '<p class="none">None recorded in the tree.</p>') + '</div>';
   function citations(e) {
     const nums = (e.cites.match(/\d+/g) || []);
     if (!nums.length) return '';
@@ -177,8 +218,8 @@
   function invSourcesBlock(u) {
     const nums = (u.refs || []).slice();
     if (!nums.length) return '';
-    return '<div class="lab x-only"><h3><span class="tag">EXPERT</span>Sources for ' + esc(u.label) + '</h3>' +
-      '<ol class="refs">' + nums.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></div>';
+    return '<details class="evid-disc sm-disc"><summary>Sources for ' + esc(u.label) + ' (' + nums.length + ')</summary>' +
+      '<ol class="refs">' + nums.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>';
   }
   function expertBlock(e) {
     const epi = X.EPI[e.epi] || { label: e.epi };
@@ -191,26 +232,53 @@
     if (trail.length < 2) return '';
     return '<div class="trail"><span class="sub">Your trail</span>' + trail.map((id, k) => (k ? '<span aria-hidden="true">→</span>' : '') + '<button type="button" data-go="' + id + '" class="' + (sel && sel.id === id ? 'now' : '') + '">' + esc(X.INVK[id].label) + '</button>').join('') + '</div>';
   }
+  function pathBarHtml(curId) {
+    if (!activePath || !PATHK[activePath]) return '';
+    const P = PATHK[activePath], idx = P.steps.indexOf(curId);
+    const prevId = idx > 0 ? P.steps[idx - 1] : null;
+    const nextId = idx >= 0 && idx < P.steps.length - 1 ? P.steps[idx + 1] : null;
+    return '<div class="path-bar" style="--pc:' + P.color + '"><div class="pb-head"><span class="sub">Guided path' + (idx >= 0 ? ' · Step ' + (idx + 1) + ' / ' + P.steps.length : '') + '</span><button type="button" class="pb-exit" data-clear-path="1">Exit path</button></div>' +
+      '<b>' + esc(P.label) + '</b><p>' + esc(P.about) + '</p>' +
+      '<div class="pb-nav"><button type="button" class="btn sm ghost" data-step="' + (prevId || '') + '"' + (prevId ? '' : ' disabled') + '>← Earlier</button>' +
+      '<button type="button" class="btn sm" data-step="' + (nextId || '') + '"' + (nextId ? '' : ' disabled') + '>Next in path →</button></div></div>';
+  }
+  // Ledger rows that illustrate this invention (matched by the row's `inv`, not by moment, since rows carry their own dates).
+  function invLedgerHtml(u) {
+    const when = t => !(t > 0) ? 'today' : (t * 1e6 < 10000 ? 'in ' : 'about ') + X.fmtTime(t);
+    const neu = (X.SI.neural || []).filter(r => r.inv === u.id).map(n =>
+      '<div class="dr-spot" style="--sc:var(--c-cpu)"><span class="sub">A brain or sense example · ' + when(n.t) + '</span><b>' + esc(n.pt) + '</b><p>' + esc(n.px) + '</p>' +
+      '<p class="x-only">' + esc(n.name) + ' · Circuit: ' + esc(n.motif) + (n.neu > 0 ? ' · ' + X.sci(n.neu) + ' neurons' : '') + '</p>' +
+      '<a href="data.html#neural">See all ' + (X.SI.neural || []).length + ' in the Data Lab →</a></div>');
+    const net = (X.SI.networks || []).filter(r => r.inv === u.id).map(g =>
+      '<div class="dr-spot" style="--sc:var(--c-net)"><span class="sub">A group example · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
+      '<p class="x-only">' + esc(g.name) + ' · Channel: ' + esc(g.chan) + (g.size ? ' · ~' + X.sci(g.size) + ' members' : '') + '</p>' +
+      '<a href="data.html#networks">See all ' + (X.SI.networks || []).length + ' in the Data Lab →</a></div>');
+    return neu.concat(net).join('');
+  }
   const top = (chip, title) => '<button type="button" class="dr-handle" aria-expanded="' + !peek + '" aria-label="' + (peek ? 'Show details' : 'Fold details down') + '"><i aria-hidden="true"></i><span>' + esc(title) + '</span></button>' +
     '<div class="dr-top">' + chip + '<button type="button" class="x" id="drClose" aria-label="Close details">×</button></div>';
 
   function drawInv(u) {
     const p = X.PK[u.part], e = X.E[u.i], a = X.actOf(u.i), st = X.STOP[e.id];
     const cs = currentSet();
-    const count = mode === 'near' ? X.IN[u.id].length + ' direct causes, ' + X.OUT[u.id].length + ' direct results'
-      : mode === 'back' ? 'Rests on ' + (cs.set.size - 1) + ' earlier inventions' : 'Led to ' + (cs.set.size - 1) + ' later inventions';
-    const who = st
-      ? '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '"><span class="mini">' + X.plateThumb(e.id, st.glyph) + '</span><span><b>' + esc(st.who) + '</b><span>' + esc(st.taxon) + ' · visit this moment →</span></span></a>'
-      : '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '"><span><b>' + esc(X.titleOf(u.i)) + '</b><span>' + esc(X.hookOf(u.i)) + ' Visit this moment →</span></span></a>';
+    const count = activePath && PATHK[activePath]
+      ? 'Highlighting ' + PATHK[activePath].steps.length + ' steps in "' + PATHK[activePath].label + '"'
+      : mode === 'near' ? X.IN[u.id].length + ' linked predecessors, ' + X.OUT[u.id].length + ' linked developments'
+      : mode === 'back' ? 'Builds on ' + (cs.set.size - 1) + ' earlier inventions' : 'Connected to ' + (cs.set.size - 1) + ' later developments';
+    const fig = st
+      ? '<figure class="dr-plate" style="--g:' + a.color + '">' + X.plateArt(e.id, st.glyph, st.who) +
+        '<figcaption><a class="dr-who-link" href="journey.html#' + e.id + '"><b>' + esc(st.who) + '</b> · ' + esc(st.taxon) + ' · Visit stop →</a>' + X.plateCredit(e.id) + '</figcaption></figure>'
+      : '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '"><span><b>' + esc(X.titleOf(u.i)) + '</b><span>' + esc(X.hookOf(u.i)) + ' Visit this stop →</span></span></a>';
     const byTime = list => list.slice().sort((x, y) => X.INVK[x.id].i - X.INVK[y.id].i);
     drawer.innerHTML = top('<span class="part-chip" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</span>', u.label) +
+      pathBarHtml(u.id) +
       '<div><h2>' + esc(u.label) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + ' · Act ' + a.n + ': ' + a.name + '</p></div>' +
-      '<p class="dr-detail">' + esc(u.detail) + '</p>' + X.invMore(u) + who +
+      '<p class="dr-detail">' + esc(u.detail) + '</p>' + X.invMore(u) + fig + invLedgerHtml(u) +
       '<div style="display:grid;gap:6px"><div class="modes" role="group" aria-label="What to highlight">' +
-      [['near', 'Neighbors', 'Highlight only what this invention directly needed and what it directly made possible'], ['back', 'Rests on', 'Highlight everything earlier that this invention depends on, all the way back'], ['forward', 'Led to', 'Highlight everything later that grew out of this invention']].map(m => '<button type="button" data-mode="' + m[0] + '" data-tip="' + m[2] + '" aria-pressed="' + (mode === m[0]) + '">' + m[1] + '</button>').join('') +
-      '</div><span class="muted" style="font-size:14px">' + count + '</span></div>' +
-      relList('Made possible by', byTime(X.IN[u.id]).map(x => relItem(x.id, x.why, x.refs))) +
-      relList('Led to', byTime(X.OUT[u.id]).map(x => relItem(x.id, x.why, x.refs))) +
+      [['near', 'Neighbors', 'Highlight linked predecessors and linked developments'], ['back', 'Rests on', 'Highlight all earlier inventions connected to this one'], ['forward', 'Led to', 'Highlight all later developments connected to this one']].map(m => '<button type="button" data-mode="' + m[0] + '" data-tip="' + m[2] + '" aria-pressed="' + (!activePath && mode === m[0]) + '">' + m[1] + '</button>').join('') +
+      '</div><span class="muted" style="font-size:14px">' + esc(count) + '</span></div>' +
+      relList('Linked predecessors', byTime(X.IN[u.id]).map(x => relItem(x.id, x.why, x.refs, x.kind))) +
+      relList('Linked developments', byTime(X.OUT[u.id]).map(x => relItem(x.id, x.why, x.refs, x.kind))) +
       '<div style="display:grid;gap:8px"><span class="sub">Earth at that moment</span><div class="mini-stats">' +
       [['cells', 'living cells'], ['cneu', 'nerve signals per second'], ['cdig', 'silicon operations per second'], ['ptot', 'power used']].map(([k, lbl]) => '<div><b>' + (k === 'ptot' ? X.watts(e[k]) : X.sci(e[k])) + '</b><span>' + lbl + '</span></div>').join('') +
       '</div></div>' + invSourcesBlock(u) + expertBlock(e) + trailHtml();
@@ -226,7 +294,7 @@
     const e = X.E[i], a = X.actOf(i), st = X.STOP[e.id];
     drawer.innerHTML = top('<span class="chip" style="background:color-mix(in srgb,' + a.color + ' 20%,var(--surface))">Act ' + a.n + ' · ' + a.name + '</span>', st ? st.who : X.titleOf(i)) +
       '<div><h2>' + esc(st ? st.who : X.titleOf(i)) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + (st ? ' · ' + esc(X.titleOf(i)) : '') + '</p></div>' +
-      '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '">' + (st ? '<span class="mini">' + X.plateThumb(e.id, st.glyph) + '</span>' : '') + '<span><b>' + esc(X.hookOf(i)) + '</b><span>Visit this moment →</span></span></a>' +
+      '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '">' + (st ? '<span class="mini">' + X.plateThumb(e.id, st.glyph) + '</span>' : '') + '<span><b>' + esc(X.hookOf(i)) + '</b><span>Visit this stop →</span></span></a>' +
       relList('New at this moment', X.newAt(i).map(u => relItem(u.id, u.detail, u.refs))) + expertBlock(e);
   }
   function drawDrawer() {
@@ -246,20 +314,20 @@
     peek = false; drawer.classList.remove('peek');
     document.body.classList.remove('drawer-open');
     sel = null;
+    activePath = null;
+    renderPaths();
     render();
     setHash('');
   }
 
   /* ---------- selection ---------- */
   const sheetH = () => window.innerWidth <= 900 && !drawer.hidden ? drawer.offsetHeight : 0;
-  // y is in canvas coordinates; the target lands a quarter of the way down the area the sheet leaves free
   function scrollToY(y) {
     const rect = canvas.getBoundingClientRect();
     const head = $('laneHead').offsetHeight;
     const avail = window.innerHeight - sheetH() - head;
     window.scrollTo({ top: Math.max(0, window.scrollY + rect.top + y - head - avail * 0.25), behavior: reduced ? 'auto' : 'smooth' });
   }
-  // bring a box into view, beside the sticky gutter and above the phone sheet; always, or only if it is covered
   function reveal(id, always) {
     const p = L.pos[id]; if (!p) return;
     const run = () => {
@@ -269,7 +337,6 @@
       const left = p.x - wrapC.scrollLeft;
       if (always || left < L.G || left + p.w > wrapC.clientWidth) wrapC.scrollLeft = Math.max(0, p.x + p.w / 2 - L.G - (wrapC.clientWidth - L.G) / 2);
     };
-    // wait two frames so the sheet has its final height before measuring
     requestAnimationFrame(() => requestAnimationFrame(run));
   }
   function setPeek(v) {
@@ -284,28 +351,52 @@
     if (!visible.has(u.part)) { visible.add(u.part); chips(); }
     sel = { type: 'inv', id };
     trail = trail.filter(t => t !== id); trail.push(id); if (trail.length > 10) trail.shift(); saveTrail();
-    openDrawer(); render(); drawDrawer(); setHash(id);
+    openDrawer(); render(); drawDrawer();
+    setHash(activePath ? 'path=' + activePath + ':' + id : id);
     reveal(id, scroll !== false);
     if (scroll !== false && !reduced) {
       const el = $('n-' + id);
       if (el) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 2500); }
     }
   }
+  function startPath(key, stepId) {
+    const P = PATHK[key]; if (!P || !P.steps.length) return;
+    activePath = key;
+    P.steps.forEach(id => visible.add(X.INVK[id].part));
+    chips();
+    renderPaths();
+    selectInv(stepId && P.steps.indexOf(stepId) >= 0 ? stepId : P.steps[0], true);
+  }
   function selectLane(k) {
+    activePath = null; renderPaths();
     if (!visible.has(k)) { visible.add(k); chips(); }
     sel = { type: 'lane', key: k }; mode = 'near';
     openDrawer(); render(); drawDrawer(); setHash('lane-' + k);
   }
   function selectEpoch(i) {
+    activePath = null; renderPaths();
     sel = { type: 'epoch', i };
     openDrawer(); render(); drawDrawer(); setHash(X.E[i].id);
     requestAnimationFrame(() => requestAnimationFrame(() => scrollToY(L.rows[i].y)));
   }
 
   /* ---------- controls ---------- */
+  function renderPaths() {
+    const box = $('guidedPaths'); if (!box) return;
+    box.innerHTML = '<span class="sub" style="align-self:center;margin-right:4px">Guided paths</span>' +
+      PATHS.map(p => '<button type="button" class="path-chip" data-path="' + p.key + '" aria-pressed="' + (activePath === p.key) + '" style="--pc:' + p.color + '" data-tip="' + esc(p.about) + '"><i class="dot"></i>' + esc(p.label) + ' <small>(' + p.steps.length + ')</small></button>').join('');
+  }
+  $('guidedPaths').addEventListener('click', ev => {
+    const b = ev.target.closest('[data-path]'); if (!b) return;
+    if (activePath === b.dataset.path) { activePath = null; renderPaths(); highlight(); drawDrawer(); if (sel && sel.type === 'inv') setHash(sel.id); }
+    else startPath(b.dataset.path);
+  });
+
   function chips() {
-    $('laneChips').innerHTML = '<span class="sub" style="align-self:center;margin-right:4px">Parts shown</span>' + X.PARTS.map(p => '<button type="button" class="part-chip" data-toggle="' + p.key + '" data-tip="Show or hide this column. ' + esc(p.name) + ' answers: ' + esc(p.question) + '" aria-pressed="' + visible.has(p.key) + '" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</button>').join('') +
-      '<button type="button" class="chip" data-toggle="all" style="cursor:pointer">Show all</button>';
+    const partial = visible.size < X.ORDER.length;
+    $('laneChips').innerHTML = '<span class="sub" style="align-self:center;margin-right:4px">Parts shown' + (partial ? ' (' + visible.size + ' of ' + X.ORDER.length + ')' : '') + '</span>' +
+      X.PARTS.map(p => '<button type="button" class="part-chip" data-toggle="' + p.key + '" data-tip="Show or hide this column. ' + esc(p.name) + ' answers: ' + esc(p.question) + '" aria-pressed="' + visible.has(p.key) + '" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</button>').join('') +
+      (partial ? '<button type="button" class="chip" data-toggle="all" style="cursor:pointer;font-weight:700">Show all ' + X.ORDER.length + '</button>' : '');
   }
   $('laneChips').addEventListener('click', ev => {
     const b = ev.target.closest('[data-toggle]'); if (!b) return;
@@ -320,10 +411,14 @@
   $('actJump').addEventListener('click', ev => { const b = ev.target.closest('[data-act]'); if (b) scrollToY(L.actY[b.dataset.act] + 40); });
 
   canvas.addEventListener('click', ev => {
-    const n = ev.target.closest('.node'); if (n) selectInv(n.dataset.id, false);
+    const n = ev.target.closest('.node');
+    if (n) {
+      if (activePath && PATHK[activePath] && PATHK[activePath].steps.indexOf(n.dataset.id) < 0) { activePath = null; renderPaths(); }
+      selectInv(n.dataset.id, false);
+    }
   });
   headInner.addEventListener('click', ev => { const b = ev.target.closest('[data-lane]'); if (b) selectLane(b.dataset.lane); });
-  // phone sheet handle: tap to fold or unfold, or swipe it down and up
+
   let swipeY = null, swiped = false;
   drawer.addEventListener('pointerdown', ev => {
     const hd = ev.target.closest('.dr-handle'); if (!hd) return;
@@ -338,8 +433,14 @@
   drawer.addEventListener('click', ev => {
     if (ev.target.closest('.dr-handle')) { if (!swiped) setPeek(!peek); swiped = false; return; }
     if (ev.target.closest('#drClose')) { closeDrawer(); return; }
-    const m = ev.target.closest('[data-mode]'); if (m) { mode = m.dataset.mode; highlight(); drawDrawer(); return; }
-    const g = ev.target.closest('[data-go]'); if (g) { if (sel && sel.type === 'inv') mode = 'near'; selectInv(g.dataset.go); }
+    if (ev.target.closest('[data-clear-path]')) { activePath = null; renderPaths(); highlight(); drawDrawer(); if (sel && sel.type === 'inv') setHash(sel.id); return; }
+    const stp = ev.target.closest('[data-step]'); if (stp && stp.dataset.step) { selectInv(stp.dataset.step, true); return; }
+    const m = ev.target.closest('[data-mode]'); if (m) { activePath = null; renderPaths(); mode = m.dataset.mode; highlight(); drawDrawer(); if (sel && sel.type === 'inv') setHash(sel.id); return; }
+    const g = ev.target.closest('[data-go]'); if (g) {
+      if (activePath && PATHK[activePath] && PATHK[activePath].steps.indexOf(g.dataset.go) < 0) { activePath = null; renderPaths(); }
+      if (sel && sel.type === 'inv') mode = 'near';
+      selectInv(g.dataset.go);
+    }
   });
   document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !drawer.hidden) closeDrawer(); });
   wrapC.addEventListener('scroll', syncX);
@@ -349,9 +450,9 @@
   /* ---------- search ---------- */
   const index = [].concat(
     X.INV.map(u => ({ kind: 'inv', id: u.id, label: u.label, hay: (u.label + ' ' + u.detail).toLowerCase(), sub: X.PK[u.part].name + ' · ' + X.fmtShort(X.E[u.i].t), color: X.PK[u.part].color })),
-    X.STOPS.map(s => ({ kind: 'stop', i: s.i, label: s.who, hay: (s.who + ' ' + s.taxon + ' ' + X.titleOf(s.i)).toLowerCase(), sub: 'Creature · ' + X.fmtShort(X.E[s.i].t), color: X.actOf(s.i).color })),
-    X.E.map((e, i) => i).filter(i => !X.STOP[X.E[i].id]).map(i => ({ kind: 'stop', i, label: X.titleOf(i), hay: (X.titleOf(i) + ' ' + X.hookOf(i)).toLowerCase(), sub: 'Moment · ' + X.fmtShort(X.E[i].t), color: X.actOf(i).color })),
-    X.PARTS.map(p => ({ kind: 'lane', key: p.key, label: p.name, hay: (p.name + ' ' + p.question).toLowerCase(), sub: 'Part', color: p.color }))
+    X.STOPS.map(s => ({ kind: 'stop', i: s.i, label: s.who, hay: (s.who + ' ' + s.taxon + ' ' + X.titleOf(s.i)).toLowerCase(), sub: 'Stop · ' + X.fmtShort(X.E[s.i].t), color: X.actOf(s.i).color })),
+    X.PARTS.map(p => ({ kind: 'lane', key: p.key, label: p.name, hay: (p.name + ' ' + p.question).toLowerCase(), sub: 'Part', color: p.color })),
+    PATHS.map(p => ({ kind: 'path', key: p.key, label: p.label, hay: (p.label + ' ' + p.about).toLowerCase(), sub: 'Guided path · ' + p.steps.length + ' steps', color: p.color }))
   );
   const q = $('q'), res = $('results');
   let hits = [], cur = 0;
@@ -360,13 +461,14 @@
     if (!v) { res.hidden = true; return; }
     hits = index.filter(x => x.hay.includes(v)).sort((a, b) => (b.label.toLowerCase().startsWith(v) ? 1 : 0) - (a.label.toLowerCase().startsWith(v) ? 1 : 0)).slice(0, 8);
     cur = 0;
-    res.innerHTML = hits.length ? hits.map((x, k) => '<button type="button" data-k="' + k + '" class="' + (k === 0 ? 'on' : '') + '"><i class="dot" style="background:' + x.color + '"></i>' + esc(x.label) + '<small>' + esc(x.sub) + '</small></button>').join('') : '<p class="none" style="padding:8px 10px;margin:0">No matches. Try “eye”, “fire” or “chip”.</p>';
+    res.innerHTML = hits.length ? hits.map((x, k) => '<button type="button" data-k="' + k + '" class="' + (k === 0 ? 'on' : '') + '"><i class="dot" style="background:' + x.color + '"></i>' + esc(x.label) + '<small>' + esc(x.sub) + '</small></button>').join('') : '<p class="none" style="padding:8px 10px;margin:0">No matches. Try “whale”, “myelin” or “zero”.</p>';
     res.hidden = false;
   }
   function go(x) {
     res.hidden = true; q.value = '';
     if (x.kind === 'inv') selectInv(x.id);
     else if (x.kind === 'stop') selectEpoch(x.i);
+    else if (x.kind === 'path') startPath(x.key);
     else selectLane(x.key);
   }
   q.addEventListener('input', showResults);
@@ -382,13 +484,16 @@
   document.addEventListener('click', ev => { if (!ev.target.closest('.search')) res.hidden = true; });
 
   /* ---------- start ---------- */
+  renderPaths();
   chips();
   render();
   const h = decodeURIComponent((location.hash || '').slice(1));
-  if (X.INVK[h]) selectInv(h);
+  if (h.indexOf('path=') === 0) {
+    const parts = h.slice(5).split(':');
+    if (PATHK[parts[0]]) startPath(parts[0], parts[1]);
+  } else if (X.INVK[h]) selectInv(h);
   else if (h.indexOf('lane-') === 0 && X.PK[h.slice(5)]) selectLane(h.slice(5));
   else if (X.IDX[h] !== undefined) selectEpoch(X.IDX[h]);
-  // arriving from a search box elsewhere (the 404 page): ?q=myelin opens the results
   const sq = new URLSearchParams(location.search).get('q');
   if (sq) { q.value = sq; showResults(); q.focus(); }
 })();

@@ -8,8 +8,10 @@
   let cur = 0;
   let selPart = null;
   let openMyth = null;
-  let stopsOnly = true;
+  let tourOnly = false;
   let allGauges = false;
+  let cmpIdx = 0;
+  let cmpOpen = false;
 
   document.querySelectorAll('.n-stops').forEach(el => { el.textContent = X.STOPS.length; });
 
@@ -17,12 +19,15 @@
   $('actRail').innerHTML = X.ACTS.map(a => {
     const stops = X.STOPS.filter(s => s.i >= a.i0 && s.i <= a.i1);
     return '<button type="button" class="act-seg" data-act="' + a.n + '" style="--ac:' + a.color + ';--w:' + Math.max(2, stops.length) + '" title="Act ' + a.n + ': ' + esc(a.name) + '" aria-label="Act ' + a.n + ': ' + esc(a.name) + '">' +
-      '<span class="an">' + a.n + '<span class="full"> · ' + esc(a.name) + '</span></span><span class="dots">' + stops.map(s => '<i data-i="' + s.i + '"></i>').join('') + '</span></button>';
+      '<span class="an">' + a.n + '<span class="full"> · ' + esc(a.name) + '</span></span><span class="dots">' + stops.map(s => '<i data-i="' + s.i + '"' + (s.tour ? ' data-tour="1"' : '') + '></i>').join('') + '</span></button>';
   }).join('');
   $('actRail').addEventListener('click', ev => {
+    const dot = ev.target.closest('i[data-i]');
+    if (dot) { ev.stopPropagation(); select(Number(dot.dataset.i), false, true); return; }
     const b = ev.target.closest('[data-act]'); if (!b) return;
     const a = X.ACTS.find(x => x.n === b.dataset.act);
-    const first = X.STOPS.find(s => s.i >= a.i0 && s.i <= a.i1);
+    const pool = tourOnly ? X.TOUR : X.STOPS;
+    const first = pool.find(s => s.i >= a.i0 && s.i <= a.i1);
     select(first ? first.i : a.i0, false, true);
   });
 
@@ -37,9 +42,17 @@
     onHover: i => { $('readout').textContent = i == null ? READ : X.fmtTime(X.E[i].t) + ' · ' + (X.STOP[X.E[i].id] ? X.STOP[X.E[i].id].who + ': ' : '') + X.titleOf(i); }
   });
 
+  // When "Key milestones (24)" is active, compare board upgrades and deltas against the previous milestone
+  function prevBaseIdx(i) {
+    if (i <= 0) return -1;
+    if (!tourOnly) return i - 1;
+    const prev = X.TOUR.filter(s => s.i < i).pop();
+    return prev ? prev.i : 0;
+  }
+
   /* ---------- card pieces ---------- */
-  function gaugeRow(g, i) {
-    const v = X.E[i][g.k], p = i > 0 ? X.E[i - 1][g.k] : null;
+  function gaugeRow(g, i, pIdx) {
+    const v = X.E[i][g.k], p = pIdx >= 0 ? X.E[pIdx][g.k] : null;
     const [lo, hi] = X.RANGE[g.k];
     const w = v > 0 ? Math.max(3, (Math.log10(v) - lo) / ((hi - lo) || 1) * 100) : 0;
     const d = X.delta(v, p);
@@ -48,23 +61,24 @@
       '<div class="g-val">' + (X.COLOF[g.k] ? X.numBtn(X.COLOF[g.k], (g.fmt ? g.fmt(v) : X.sci(v)) + (g.unit ? ' <span class="g-unit">' + g.unit + '</span>' : ''), i) : (g.fmt ? g.fmt(v) : X.sci(v))) + '</div>' +
       '<div class="g-bar"><span style="width:' + w.toFixed(1) + '%;background:' + g.color + '"></span></div><div class="g-delta ' + cls + '">' + (d === 'same' ? '' : d) + '</div></div>';
   }
-  // the three numbers that moved most since the last moment lead; ties keep the fixed gauge order
-  function moved(g, i) {
-    if (i === 0) return 0;
-    const v = X.E[i][g.k], p = X.E[i - 1][g.k];
+  function moved(g, i, pIdx) {
+    if (pIdx < 0 || i === pIdx) return 0;
+    const v = X.E[i][g.k], p = X.E[pIdx][g.k];
     if (v > 0 && p > 0) return Math.abs(Math.log10(v / p));
     return (v > 0) !== (p > 0) ? 99 : 0;
   }
-  function citations(e) {
-    const nums = e.cites.match(/\d+/g) || [];
+  function citations(e, i) {
+    const set = new Set((e.cites.match(/\d+/g) || []).map(Number));
+    if (i != null) X.newAt(i).forEach(u => (u.refs || []).forEach(r => set.add(Number(r))));
+    const nums = Array.from(set).filter(Boolean).sort((a, b) => a - b);
     return nums.length ? '<ol class="refs">' + nums.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol>' : '';
   }
   function rawTable(i) {
     const CEN = window.SI_CENSUS;
     if (!CEN) return '<p class="note">Loading all 72 census columns…</p>';
     const row = CEN.rows[i];
-    return '<details><summary style="cursor:pointer;font-weight:700">All ' + CEN.columns.length + ' census columns for this moment</summary><div class="raw" style="margin-top:8px"><table><tbody>' +
-      CEN.columns.map((c, k) => '<tr><th>' + esc(c) + '</th><td>' + esc(row[k]) + '</td></tr>').join('') + '</tbody></table></div></details>';
+    return '<details class="evid-disc"><summary>All ' + CEN.columns.length + ' census columns for this moment</summary><div class="raw" style="margin-top:8px"><table><tbody>' +
+      CEN.columns.map((c, k) => '<tr><th scope="row">' + esc(c) + '</th><td>' + esc(row[k]) + '</td></tr>').join('') + '</tbody></table></div></details>';
   }
   function needRaw() {
     if (!document.body.classList.contains('expert') || window.SI_CENSUS) return;
@@ -72,9 +86,6 @@
   }
   document.addEventListener('si:expert', needRaw);
 
-  // "Also around" lists the moment's other life, so it drops entries that name the star: its name, its
-  // taxon, or a proper name inside either ("Lystrosaurus" in "Lystrosaurus survives", "Charnia" in
-  // "Trichoplax & Charnia"; the name's first word is skipped, since "Early" or "Walking" are too generic)
   const norm = t => t.toLowerCase().replace(/[^a-z0-9 ]+/g, '');
   const proper = t => t.match(/\b[A-Z][a-z]{4,}\b/g) || [];
   function othersOf(e, st) {
@@ -86,16 +97,81 @@
     }).join(', ');
   }
 
-  // a small copy of the board, for the finale's then-and-now
   function miniBoard(i, label) {
-    return '<figure class="mini"><figcaption>' + label + '</figcaption><div class="mini-board">' + X.ORDER.map(k => {
-      const p = X.PK[k], s = X.stateAt(k, i);
-      return '<span class="' + (s ? '' : 'off') + '" style="--pc:' + p.color + '" title="' + p.name + '">' + (s ? esc(s.label) : 'Not yet') + '</span>';
-    }).join('') + '</div></figure>';
+    const e = X.E[i];
+    return '<figure class="mini"><figcaption>' + label + '</figcaption>' +
+      '<div class="mini-nums"><span><b>' + X.sci(e.cells) + '</b> cells</span><span><b>' + X.sci(e.cneu) + '</b> nerve/s</span><span><b>' + X.sci(e.mexo) + '</b> outside bits</span><span><b>' + X.watts(e.ptot) + '</b></span></div>' +
+      '<div class="mini-board">' + X.ORDER.map(k => {
+        const p = X.PK[k], s = X.stateAt(k, i);
+        return '<span class="' + (s ? '' : 'off') + '" style="--pc:' + p.color + '" title="' + p.name + '">' + (s ? esc(s.label) : 'Not yet') + '</span>';
+      }).join('') + '</div></figure>';
+  }
+
+  function fmtRadius(m) {
+    if (!m || m <= 0) return '';
+    if (m >= 1000) return X.plain(m / 1000) + ' km';
+    if (m >= 1) return X.plain(m) + ' m';
+    return X.plain(m * 100) + ' cm';
+  }
+
+  // Each milestone card shows its own date: it may sit at a stop a little before or after it.
+  function whenOf(t) {
+    if (!(t > 0)) return 'Today';
+    return (t * 1e6 < 10000 ? 'In ' : 'About ') + X.fmtTime(t);
+  }
+
+  // Plain title, date and sentence for everyone (principle 1); the formal name, circuit, counts and source in Expert view.
+  function spotCard(r, neural) {
+    const pills = [];
+    if (neural) {
+      if (r.neu > 0) pills.push('<b>' + X.sci(r.neu) + '</b> neurons');
+      if (r.syn > 0) pills.push('<b>' + X.sci(r.syn) + '</b> synapses');
+      if (r.vel > 0) pills.push('<b>' + (r.vel >= 1e5 ? X.sci(r.vel) + ' m/s' : X.plain(r.vel) + ' m/s') + '</b> signal speed');
+      if (r.comp > 1) pills.push('<b>' + X.plain(r.comp) + ':1</b> sensory compression');
+      if (r.tau > 0) pills.push('<b>' + (r.tau >= 3600 ? X.plain(r.tau / 3600) + ' hr' : X.plain(r.tau) + ' s') + '</b> horizon');
+    } else {
+      if (r.size > 0) pills.push('<b>' + X.sci(r.size) + '</b> members' + (r.range ? ' (' + esc(r.range) + ')' : ''));
+      if (r.neu > 0) pills.push('<b>' + X.sci(r.neu) + '</b> collective neurons');
+      if (r.rad > 0) pills.push('<b>' + fmtRadius(r.rad) + '</b> reach');
+      if (r.ops > 0) pills.push('<b>' + X.sci(r.ops) + '/s</b> collective ops');
+    }
+    const all = neural ? (X.SI.neural || []).length : (X.SI.networks || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-' + (neural ? 'cpu' : 'net') + ')">' +
+      '<span class="sub">' + (neural ? 'Brains and senses · ' + esc(r.stage) : 'Groups that coordinate · ' + esc(r.cat)) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>' + (neural ? 'Circuit: ' + esc(r.motif) : 'Channel: ' + esc(r.chan)) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      '<p>' + esc(r.why) + '</p><p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#' + (neural ? 'neural' : 'networks') + '">All ' + all + (neural ? ' brain and sense milestones' : ' group networks') + ' →</a></p></div>';
+  }
+
+  function renderSpotlights(ep) {
+    const cards = (X.NEURAL[ep] || []).map(n => spotCard(n, true)).concat((X.NETWORKS[ep] || []).map(g => spotCard(g, false)));
+    if (!cards.length) return '';
+    const SHOW = 3;
+    return '<div class="spotlights">' + cards.slice(0, SHOW).join('') + '</div>' +
+      (cards.length > SHOW ? '<details class="evid-disc sm-disc spot-more"><summary>' + (cards.length - SHOW) + ' more from around this time</summary><div class="spotlights">' + cards.slice(SHOW).join('') + '</div></details>' : '');
+  }
+
+  function renderCompare(i) {
+    const other = cmpIdx === i ? (i > 0 ? 0 : X.N - 1) : cmpIdx;
+    const opts = X.E.map((ep, k) => {
+      const s = X.STOP[ep.id];
+      return '<option value="' + k + '"' + (k === other ? ' selected' : '') + '>' + esc(X.fmtShort(ep.t) + ' · ' + (s ? s.who : X.titleOf(k))) + '</option>';
+    }).join('');
+    return '<details class="evid-disc compare-disc"' + (cmpOpen ? ' open' : '') + '><summary>Compare this stop side by side with another moment</summary>' +
+      '<div class="cmp-body"><div class="cmp-pick"><label for="cmpSel">Compare against</label><select id="cmpSel">' + opts + '</select></div>' +
+      '<div class="then-now">' +
+      miniBoard(other, esc((X.STOP[X.E[other].id] ? X.STOP[X.E[other].id].who : X.titleOf(other)) + ' · ' + X.fmtShort(X.E[other].t))) +
+      miniBoard(i, esc((X.STOP[X.E[i].id] ? X.STOP[X.E[i].id].who : X.titleOf(i)) + ' · ' + X.fmtShort(X.E[i].t))) +
+      '</div></div></details>';
   }
 
   function renderCard() {
-    const i = cur, e = X.E[i], a = X.actOf(i), st = X.STOP[e.id], news = X.newAt(i), crisis = X.CRISIS[e.id];
+    const i = cur, e = X.E[i], a = X.actOf(i), st = X.STOP[e.id], crisis = X.CRISIS[e.id];
+    const pIdx = prevBaseIdx(i);
+    const news = X.INV.filter(u => u.i > pIdx && u.i <= i).sort((p, q) => X.ORDER.indexOf(p.part) - X.ORDER.indexOf(q.part));
     if (news.length && (!selPart || !news.some(u => u.part === selPart))) selPart = news[0].part;
     if (!selPart) selPart = 'cpu';
     const epi = X.EPI[e.epi] || { label: e.epi, lvl: 0, about: '' };
@@ -104,45 +180,43 @@
     card.className = 'card' + (crisis ? ' is-crisis' : '');
     card.style.setProperty('--ac', a.color);
 
-    // the band names the moment once: who, what, how big
     const band = '<div class="card-band"><span class="eyebrow">Act ' + a.n + ' · ' + esc(a.name) + ' · ' + X.fmtTime(e.t) + '</span>' +
       '<h2>' + esc(st ? st.who : X.titleOf(i)) + '</h2>' +
       (st ? '<p class="formal k-only"><i>' + esc(st.taxon) + '</i> · ' + esc(st.scale) + '</p>' : '') +
       '<p class="formal x-only mono" style="font-size:13px">' + e.id + ' · ' + esc(e.name) + ' · ' + esc(e.period) + '</p>' +
       '<div class="chips"><span class="chip" title="' + esc(epi.about) + '">' + meter + 'How sure: ' + esc(epi.label) + '</span>' +
+      (st && st.tour ? '<span class="chip">Key milestone</span>' : '') +
       (crisis ? '<span class="chip crisis">Crisis: ' + esc(crisis) + '</span>' : '') +
       '<button type="button" class="btn sm ghost share" data-share="' + e.id + '">Copy link</button></div></div>';
 
-    // between stops, the plate shows the next stop's creature faded, with hops to the stops on either side
     const near = X.stopsAround(i), nx = near.next || near.prev;
     const others = st ? othersOf(e, st) : e.clade;
     const around = others ? '<p class="dom"><b>Also around:</b> ' + esc(others) + '</p>' : '';
     const plate = st
-      ? '<figure class="plate" style="--g:' + (crisis ? 'var(--crisis)' : a.color) + '">' + X.plateArt(e.id, st.glyph, st.who) + '<figcaption>' + X.plateCredit(e.id) + around + '</figcaption></figure>'
-      : '<figure class="plate between" style="--g:' + X.actOf(nx.i).color + '">' + X.plateArt(nx.epoch, nx.glyph, nx.who) + '<figcaption>' +
+      ? '<figure class="plate" style="--g:' + (crisis ? 'var(--crisis)' : a.color) + '">' + X.plateArt(e.id, st.glyph, st.who, true) + '<figcaption>' + X.plateCredit(e.id) + around + '</figcaption></figure>'
+      : '<figure class="plate between" style="--g:' + X.actOf(nx.i).color + '">' + X.plateArt(nx.epoch, nx.glyph, nx.who, true) + '<figcaption>' +
         '<span class="sub">' + (near.next ? 'Next stop' : 'Last stop') + ' · ' + X.fmtShort(X.E[nx.i].t) + '</span><span class="who">' + esc(nx.who) + '</span>' +
-        '<span class="hop">' + (near.prev ? '<button type="button" class="btn ghost sm" data-jump="' + near.prev.i + '" title="' + esc(near.prev.who) + '" aria-label="Last stop: ' + esc(near.prev.who) + '">← Last stop</button>' : '') +
-        (near.next ? '<button type="button" class="btn ghost sm" data-jump="' + near.next.i + '" title="' + esc(near.next.who) + '" aria-label="Next stop: ' + esc(near.next.who) + '">Next stop →</button>' : '') + '</span>' +
         X.plateCredit(nx.epoch) + around + '</figcaption></figure>';
 
-    // story first: what happened, and what is new, right beside the creature
+    const newLabel = tourOnly && pIdx < i - 1 ? 'Upgraded since the last milestone' : 'New right now';
     const lead = '<div class="lead">' + plate + '<div class="lead-story"><p class="hook">' + esc(X.hookOf(i)) + '</p>' +
-      (news.length ? '<div class="new-now"><span class="sub">New right now</span><div class="new-list">' + news.map(u => '<a class="part-chip" href="tree.html#' + u.id + '" style="--pc:' + X.PK[u.part].color + '">' + X.icon(u.part) + esc(u.label) + '</a>').join('') + '</div></div>' : '') +
+      (news.length ? '<div class="new-now"><span class="sub">' + newLabel + '</span><div class="new-list">' + news.map(u => '<a class="part-chip" href="tree.html#' + u.id + '" style="--pc:' + X.PK[u.part].color + '">' + X.icon(u.part) + esc(u.label) + '</a>').join('') + '</div></div>' : '') +
       '</div></div>';
 
     const board = '<div class="board-col"><span class="sub">The best parts on Earth right now</span><div class="board">' +
       X.ORDER.map(k => {
-        const p = X.PK[k], s = X.stateAt(k, i), isNew = s && s.i === i;
+        const p = X.PK[k], s = X.stateAt(k, i), isNew = s && s.i > pIdx && s.i <= i;
         return '<button type="button" class="slot' + (s ? '' : ' off') + (isNew ? ' new' : '') + (selPart === k ? ' sel' : '') + '" data-part="' + k + '" aria-pressed="' + (selPart === k) + '" style="--pc:' + p.color + ';--po:' + p.on + '">' +
           '<span class="sn">' + X.icon(k) + p.name + '</span><span class="sv">' + (s ? esc(s.label) : 'Not yet') + '</span>' + (isNew ? '<span class="pill">New</span>' : '') + '</button>';
       }).join('') + '</div><div class="pp" id="pp"></div></div>';
 
-    const ranked = X.GAUGES.map((g, k) => ({ g, k, m: moved(g, i) })).sort((p, q) => q.m - p.m || p.k - q.k);
+    const ranked = X.GAUGES.map((g, k) => ({ g, k, m: moved(g, i, pIdx) })).sort((p, q) => q.m - p.m || p.k - q.k);
     const top = ranked.slice(0, 3).sort((p, q) => p.k - q.k), rest = ranked.slice(3).sort((p, q) => p.k - q.k);
     const sg = e.gould, pct = Math.max(0, Math.min(100, sg / 18 * 100));
-    const planet = '<div class="planet"><span class="sub">Earth at this moment <span class="k-only" style="text-transform:none;letter-spacing:0;font-weight:400">· biggest changes since the last moment</span></span>' +
-      '<div class="gauges">' + top.map(x => gaugeRow(x.g, i)).join('') + '</div>' +
-      '<details class="more-g"' + (allGauges ? ' open' : '') + '><summary>Show all ' + X.GAUGES.length + ' numbers</summary><div class="gauges">' + rest.map(x => gaugeRow(x.g, i)).join('') + '</div></details>' +
+    const sinceTxt = tourOnly && pIdx < i - 1 ? 'biggest changes since the last milestone' : 'biggest changes since the last moment';
+    const planet = '<div class="planet"><span class="sub">Earth at this moment <span class="k-only" style="text-transform:none;letter-spacing:0;font-weight:400">· ' + sinceTxt + '</span></span>' +
+      '<div class="gauges">' + top.map(x => gaugeRow(x.g, i, pIdx)).join('') + '</div>' +
+      '<details class="more-g"' + (allGauges ? ' open' : '') + '><summary>Show all ' + X.GAUGES.length + ' numbers</summary><div class="gauges">' + rest.map(x => gaugeRow(x.g, i, pIdx)).join('') + '</div></details>' +
       '<div class="tail"><span class="sub">The long tail</span><div class="tail-track"><span class="tail-dot" style="left:' + pct.toFixed(1) + '%"></span></div>' +
       '<div class="tail-scale"><span>typical cell</span><span>10¹⁸× more</span></div>' +
       '<p>Most cells are still simple microbes doing about 850 operations a second. The most capable single thing alive does ' + X.sci(e.cmax) + (sg > 0 ? ', about ' + X.sci(Math.pow(10, sg)) + ' times more.' : ', no more than a typical microbe today.') + '<span class="x-only"> σ_Gould = ' + sg.toFixed(2) + ' dex.</span></p></div>' +
@@ -151,27 +225,34 @@
 
     const myths = X.MYTHS.filter(m => m.epochs.indexOf(e.id) >= 0);
     if (openMyth && !myths.some(m => m.id === openMyth)) openMyth = null;
+    const evid = '<details class="evid-disc"><summary>Evidence &amp; sources for this stop (' + esc(epi.label) + ')</summary>' +
+      '<div class="evid-body"><p class="note"><b>What happened:</b> ' + esc(e.key) + (e.shock ? '<br><b>Context:</b> ' + esc(e.shock) : '') + '<br><b>Span:</b> ' + esc(e.dur) + ' · <b>How sure:</b> ' + esc(epi.label) + ' — ' + esc(epi.about) + '</p>' +
+      citations(e, i) + '<p class="evid-links"><a href="data.html#' + e.id + '">Inspect this row in the Data Lab →</a></p></div></details>';
+
     const story = '<div class="story">' +
+      renderSpotlights(e.id) +
       (myths.length ? '<div class="know"><span class="sub">Myth busters</span>' + myths.map(m => '<button type="button" class="myth-chip" data-myth="' + m.id + '" aria-expanded="' + (openMyth === m.id) + '">' + esc(m.title) + '</button>').join('') + '</div><div id="mythbox"></div>' : '') +
-      '<div class="lab x-only"><h3><span class="tag">EXPERT</span>Census row ' + e.id + '</h3>' +
-      '<p class="note"><b>Key event:</b> ' + esc(e.key) + '<br><b>Shock note:</b> ' + esc(e.shock) + '<br><b>Duration:</b> ' + esc(e.dur) + ' · <b>Evidence class:</b> ' + esc(e.epi) + '</p>' +
-      '<pre class="formula">' + esc(e.formula.split('; ').join('\n')) + '</pre>' + citations(e) + '<div id="rawBox">' + rawTable(i) + '</div>' +
-      '<a href="data.html#' + e.id + '">Open in the Data Lab →</a></div></div>';
+      renderCompare(i) +
+      evid +
+      '<div class="lab x-only"><h3><span class="tag">EXPERT</span>Derivation &amp; raw census row ' + e.id + '</h3>' +
+      '<pre class="formula">' + esc(e.formula.split('; ').join('\n')) + '</pre><div id="rawBox">' + rawTable(i) + '</div></div></div>';
 
     const finale = i === X.N - 1
-      ? '<section class="finale" aria-labelledby="finH"><h3 id="finH">You crossed 4.1 billion years in ' + X.STOPS.length + ' stops.</h3>' +
+      ? '<section class="finale" aria-labelledby="finH"><h3 id="finH">You crossed 4.1 billion years across ' + (tourOnly ? X.TOUR.length + ' key milestones' : X.STOPS.length + ' stops') + '.</h3>' +
         '<p>The same nine parts, then and now. Every box on the right rests on something older on the left.</p>' +
         '<div class="then-now">' + miniBoard(0, 'Then · ' + X.fmtTime(X.E[0].t)) + miniBoard(i, 'Now · ' + X.fmtTime(e.t)) + '</div>' +
-        '<div class="cta"><a class="btn" href="tree.html">Follow a thread in the tree →</a><a class="btn ghost" href="how.html">Check our numbers</a></div></section>'
+        '<div class="cta"><a class="btn" href="tree.html">Follow a guided path in the tree →</a><a class="btn ghost" href="how.html">Check our numbers</a></div></section>'
       : '';
 
     card.innerHTML = band + '<div class="card-body">' + lead + '<div class="card-grid">' + board + planet + '</div>' + story + '<div class="minds" id="minds" hidden></div>' + finale + '</div>';
+    const sel = $('cmpSel');
+    if (sel) sel.addEventListener('change', ev => { cmpIdx = Number(ev.target.value); cmpOpen = true; renderCard(); $('cmpSel').focus(); });
     renderMinds();
     renderPart();
     renderMyth();
     needRaw();
   }
-  // three catalog systems whose kind first appeared in this act, nearest in time to this moment
+
   function renderMinds() {
     const at = cur;
     X.loadAtlas(A => {
@@ -189,12 +270,13 @@
         '</ul><a href="atlas.html#kind=' + pick[0][3] + '">See all ' + A.systems.length + ' in the atlas of minds →</a>';
     });
   }
+
   function renderPart() {
     const k = selPart, p = X.PK[k], s = X.stateAt(k, cur);
     const pp = $('pp');
     pp.style.setProperty('--pc', p.color);
     const invRefs = s && s.refs && s.refs.length
-      ? '<div class="inv-refs x-only"><span class="sub">Sources for ' + esc(s.label) + '</span><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></div>'
+      ? '<details class="evid-disc sm-disc"><summary>Sources for ' + esc(s.label) + ' (' + s.refs.length + ')</summary><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>'
       : '';
     pp.innerHTML = '<div class="pp-head"><strong>' + p.name + '</strong><span>' + p.question + '</span></div>' +
       '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' + X.invMore(s) +
@@ -203,6 +285,7 @@
       (s ? '<a href="tree.html#' + s.id + '">Follow ' + esc(s.label) + ' in the tree →</a>' : '');
     document.querySelectorAll('.slot').forEach(b => { const on = b.dataset.part === k; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', String(on)); });
   }
+
   function renderMyth() {
     const box = $('mythbox'); if (!box) return;
     document.querySelectorAll('.myth-chip').forEach(b => b.setAttribute('aria-expanded', String(b.dataset.myth === openMyth)));
@@ -212,14 +295,12 @@
 
   /* ---------- navigation ---------- */
   function posText() {
-    const st = X.STOP[X.E[cur].id];
-    if (stopsOnly) return st ? 'Stop ' + (st.n + 1) + ' / ' + X.STOPS.length : 'Moment ' + (cur + 1) + ' / ' + X.N;
-    return 'Moment ' + (cur + 1) + ' / ' + X.N;
+    if (tourOnly) {
+      const idx = X.TOUR.findIndex(s => s.i === cur);
+      return idx >= 0 ? 'Milestone ' + (idx + 1) + ' / ' + X.TOUR.length : 'Stop ' + (cur + 1) + ' / ' + X.N;
+    }
+    return 'Stop ' + (cur + 1) + ' / ' + X.STOPS.length;
   }
-  // jumps (rail, chart, slider, history strip) push a history entry so browser Back returns to the last stop;
-  // stepping with Next/Back replaces it, so 40 clicks don't fill the history; while the slider is
-  // being dragged ('live') the URL waits for the drag to end, and a run of slider moves ('slide',
-  // e.g. arrow keys) shares one entry so Back returns to where the sliding started
   function setMeta(prop, val) {
     const el = document.querySelector('meta[property="' + prop + '"], meta[name="' + prop + '"]');
     if (el) el.setAttribute('content', val);
@@ -238,11 +319,14 @@
     setMeta('og:description', mDesc); setMeta('twitter:description', mDesc);
     setMeta('og:image', mImg); setMeta('twitter:image', mImg);
     document.querySelectorAll('.act-seg').forEach(b => b.classList.toggle('on', b.dataset.act === a.n));
-    document.querySelectorAll('.act-seg .dots i').forEach(d => d.classList.toggle('on', Number(d.dataset.i) === cur));
+    document.querySelectorAll('.act-seg .dots i').forEach(d => {
+      d.classList.toggle('on', Number(d.dataset.i) === cur);
+      d.classList.toggle('dim', tourOnly && !d.dataset.tour && Number(d.dataset.i) !== cur);
+    });
     $('actNow').textContent = 'Act ' + a.n + ' · ' + a.name;
     const hash = '#' + X.E[cur].id;
     try {
-      if (push === 'live') { /* wait for the drag to end */ }
+      if (push === 'live') { /* wait for drag end */ }
       else if (push === 'slide') {
         if (history.state && history.state.slide) history.replaceState({ slide: true }, '', hash);
         else if (location.hash !== hash) history.pushState({ slide: true }, '', hash);
@@ -257,8 +341,8 @@
     }
   }
   function move(dir) {
-    if (stopsOnly) {
-      const list = X.STOPS.map(s => s.i);
+    if (tourOnly) {
+      const list = X.TOUR.map(s => s.i);
       const t = dir > 0 ? list.find(x => x > cur) : list.slice().reverse().find(x => x < cur);
       if (t !== undefined) select(t);
     } else select(cur + dir);
@@ -267,26 +351,29 @@
   $('next').addEventListener('click', () => move(1));
   $('first').addEventListener('click', () => select(0));
   $('today').addEventListener('click', () => select(X.N - 1));
-  $('stopsOnly').addEventListener('change', ev => { stopsOnly = ev.target.checked; $('pos').textContent = posText(); });
+  $('tourOnly').addEventListener('change', ev => { tourOnly = ev.target.checked; select(cur, true); });
   $('card').addEventListener('click', ev => {
     const slot = ev.target.closest('.slot'); if (slot) { selPart = slot.dataset.part; renderPart(); return; }
     const j = ev.target.closest('[data-jump]'); if (j) { select(Number(j.dataset.jump), true, true); return; }
     const m = ev.target.closest('.myth-chip'); if (m) { openMyth = openMyth === m.dataset.myth ? null : m.dataset.myth; renderMyth(); return; }
     const sh = ev.target.closest('[data-share]'); if (sh) copyLink(sh);
   });
-  // share pages (s/<moment>.html) carry that moment's own title, hook and preview card, then forward here
   function copyLink(btn) {
     const url = new URL('s/' + btn.dataset.share + '.html', location.href).href;
     const done = ok => {
       $('shareMsg').textContent = ok ? 'Link copied' : 'Copy failed. The link is ' + url;
       btn.textContent = ok ? 'Link copied ✓' : 'Copy link';
-      if (!ok) { try { window.prompt('Copy this link:', url); } catch (e) { /* prompts blocked: the live region already carries the link */ } }
+      if (!ok) { try { window.prompt('Copy this link:', url); } catch (e) { /* prompts blocked */ } }
       setTimeout(() => { if (btn.isConnected) btn.textContent = 'Copy link'; }, 2200);
     };
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(() => done(true), () => done(false));
     else done(false);
   }
-  $('card').addEventListener('toggle', ev => { if (ev.target.classList && ev.target.classList.contains('more-g')) allGauges = ev.target.open; }, true);
+  $('card').addEventListener('toggle', ev => {
+    if (!ev.target.classList) return;
+    if (ev.target.classList.contains('more-g')) allGauges = ev.target.open;
+    if (ev.target.classList.contains('compare-disc')) cmpOpen = ev.target.open;
+  }, true);
   document.addEventListener('keydown', ev => {
     if (ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight') return;
     const ae = document.activeElement;
@@ -298,7 +385,6 @@
     if (k !== undefined && k !== cur) select(k, true);
   });
 
-  // with no moment in the URL, start at the beginning and offer the last place this reader stopped
   const h = (location.hash || '').slice(1);
   const last = X.readLast();
   if (X.IDX[h] === undefined && last) {
