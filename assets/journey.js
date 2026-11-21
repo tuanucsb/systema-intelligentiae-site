@@ -225,7 +225,7 @@
 
     const myths = X.MYTHS.filter(m => m.epochs.indexOf(e.id) >= 0);
     if (openMyth && !myths.some(m => m.id === openMyth)) openMyth = null;
-    const evid = '<details class="evid-disc"><summary>Evidence &amp; sources for this stop (' + esc(epi.label) + ')</summary>' +
+    const evid = '<details class="evid-disc x-only"><summary>Evidence &amp; sources for this stop (' + esc(epi.label) + ')</summary>' +
       '<div class="evid-body"><p class="note"><b>What happened:</b> ' + esc(e.key) + (e.shock ? '<br><b>Context:</b> ' + esc(e.shock) : '') + '<br><b>Span:</b> ' + esc(e.dur) + ' · <b>How sure:</b> ' + esc(epi.label) + ' — ' + esc(epi.about) + '</p>' +
       citations(e, i) + '<p class="evid-links"><a href="data.html#' + e.id + '">Inspect this row in the Data Lab →</a></p></div></details>';
 
@@ -276,7 +276,7 @@
     const pp = $('pp');
     pp.style.setProperty('--pc', p.color);
     const invRefs = s && s.refs && s.refs.length
-      ? '<details class="evid-disc sm-disc"><summary>Sources for ' + esc(s.label) + ' (' + s.refs.length + ')</summary><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>'
+      ? '<details class="evid-disc sm-disc x-only"><summary>Sources for ' + esc(s.label) + ' (' + s.refs.length + ')</summary><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>'
       : '';
     pp.innerHTML = '<div class="pp-head"><strong>' + p.name + '</strong><span>' + p.question + '</span></div>' +
       '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' + X.invMore(s) +

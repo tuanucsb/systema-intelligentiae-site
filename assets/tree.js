@@ -218,7 +218,7 @@
   function invSourcesBlock(u) {
     const nums = (u.refs || []).slice();
     if (!nums.length) return '';
-    return '<details class="evid-disc sm-disc"><summary>Sources for ' + esc(u.label) + ' (' + nums.length + ')</summary>' +
+    return '<details class="evid-disc sm-disc x-only"><summary>Sources for ' + esc(u.label) + ' (' + nums.length + ')</summary>' +
       '<ol class="refs">' + nums.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>';
   }
   function expertBlock(e) {
