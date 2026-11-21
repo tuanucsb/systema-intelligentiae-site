@@ -989,6 +989,82 @@ body.expert .k-only { display: none !important; }
 .iq-caps b { color: var(--ink); }
 
 /* ---------- print: light, one column, no controls, sources legible ---------- */
+/* tooltips (common.js): one bubble for every [data-tip] */
+.tip { position: fixed; z-index: 1000; max-width: min(320px, calc(100vw - 16px)); padding: 8px 11px; border-radius: var(--r-md); background: var(--ink); color: var(--bg); font: 14px/1.45 var(--body); box-shadow: 0 6px 18px rgba(10, 12, 30, .22); pointer-events: none; }
+.tip[hidden] { display: none; }
+dialog .tip { position: fixed; }
+
+/* time labels key under charts ([data-time-key]) */
+.time-key { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 8px 0 0; font-size: 13.5px; color: var(--ink-2); }
+.time-key .tk-h { font: 700 11.5px/1.3 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.time-key .tk-i { cursor: help; text-decoration: underline dotted var(--ink-3); text-underline-offset: 3px; }
+.time-key b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Expert view: the calculation graph and the history line in the number panel */
+.num-cap { font-size: 13.5px !important; color: var(--ink-2); margin-bottom: 6px !important; }
+.num-calc { overflow-x: auto; padding-bottom: 4px; }
+.num-calc svg { display: block; max-width: none; }
+.num-hist svg { width: 100%; height: auto; display: block; }
+.num-calc .ce path { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.num-calc .cn rect { fill: var(--surface-2); stroke: var(--line-2); stroke-width: 1.2; }
+.num-calc .cn.leaf rect { stroke-dasharray: 4 3; }
+.num-calc .cn.root rect { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.num-calc .cn[role="button"] { cursor: pointer; }
+.num-calc .cn[role="button"]:hover rect, .num-calc .cn[role="button"]:focus rect { stroke: var(--focus); stroke-width: 2; }
+.num-calc .cn:focus { outline: none; }
+.num-calc text { font: 600 12px var(--body); fill: var(--ink-2); }
+.num-calc text.v { font: 700 13.5px var(--body); fill: var(--ink); font-variant-numeric: tabular-nums; }
+.num-hist .hl { fill: none; stroke: var(--ink); stroke-width: 2; }
+.num-hist .hr { fill: var(--surface); stroke: var(--focus); stroke-width: 2.5; }
+.num-hist .ab { stroke: var(--line-2); stroke-dasharray: 3 3; }
+.num-hist .tk { font: 13px var(--body); fill: var(--ink-3); }
+
+/* an invention's longer explanation and "learn more" links (tree drawer, journey part panel) */
+.inv-more { display: grid; gap: 10px; }
+.inv-more p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--ink); }
+.inv-learn ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; font-size: 14.5px; }
+.inv-learn li span { color: var(--ink-3); font-size: 13px; }
+.inv-learn a::after { content: " ↗"; font-size: .85em; }
+
+/* "Where this number comes from": any census number opens one shared panel (common.js numPanel) */
+.num { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; text-decoration: underline dotted var(--ink-3); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.num:hover { text-decoration-style: solid; text-decoration-color: currentColor; }
+.num-i { display: inline-grid; place-items: center; width: 17px; height: 17px; margin-left: 4px; padding: 0; vertical-align: 1px; border: 1px solid var(--line-2); border-radius: 50%; background: var(--surface); color: var(--ink-2); font: 700 10.5px/1 var(--body); cursor: pointer; }
+.num-i:hover { border-color: var(--ink-2); color: var(--ink); }
+.num-link { font: inherit; font-size: 14px; color: var(--link); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.num-dlg { width: min(580px, calc(100vw - 32px)); max-height: 86vh; overflow: auto; padding: 20px 22px 22px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); color: var(--ink); box-shadow: 0 18px 50px rgba(10, 12, 30, .25); }
+.num-dlg::backdrop { background: rgba(14, 16, 34, .45); }
+.num-dlg h2 { font-size: 1.35rem; margin: 4px 0 0; }
+.num-dlg h3 { font-size: 1rem; margin: 18px 0 6px; }
+.num-dlg p { margin: 0; font-size: 15px; }
+.num-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.num-x { flex: none; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; }
+.num-val { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-top: 12px !important; }
+.num-val b { font: 800 1.9rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.num-val span { color: var(--ink-2); }
+.num-range p { margin-top: 4px; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.num-how { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface-2); }
+.num-how p { flex-basis: 100%; font-size: 14.5px; color: var(--ink-2); margin-top: 4px; }
+.num-kind { font: 700 12px/1.2 var(--body); padding: 4px 8px; border-radius: var(--r-sm); background: var(--surface); border: 1px solid var(--line-2); }
+.num-in { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14.5px; }
+.num-in caption { text-align: left; font-size: 13px; color: var(--ink-2); padding-bottom: 4px; }
+.num-in th { text-align: left; font-weight: 400; padding: 5px 10px 5px 0; border-top: 1px solid var(--line); }
+.num-in td { text-align: right; padding: 5px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.num-in code { display: block; font: 11.5px var(--mono); color: var(--ink-3); }
+.num-src { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.num-src li { display: grid; gap: 2px; padding-left: 12px; border-left: 3px solid var(--line-2); }
+.num-src b { font-size: 14.5px; }
+.num-src span { font-size: 14px; color: var(--ink-2); }
+.num-src small { font: 11.5px/1.4 var(--mono); color: var(--ink-3); }
+.num-refs { margin-top: 14px; }
+.num-refs summary { cursor: pointer; font-weight: 700; font-size: 14.5px; }
+.num-refs .refs { margin-top: 8px; font-size: 13px; }
+.num-cite { list-style: disc; padding-left: 1.3em; font-size: 13.5px; }
+.num-go { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--line); font-weight: 700; font-size: 14.5px; }
+@media (max-width: 680px) {
+  .num-dlg { width: 100%; max-width: 100%; max-height: 88vh; margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 16px 16px 20px; }
+}
+
 @media print {
   :root, :root[data-theme="dark"] {
     --bg: #fff; --surface: #fff; --surface-2: #f3f4f8; --surface-3: #e8eaf2; --ink: #000; --ink-2: #333; --ink-3: #555; --line: #d6d9e3; --line-2: #b9bfcf; --link: #000;

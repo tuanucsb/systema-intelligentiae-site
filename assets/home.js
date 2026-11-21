@@ -133,10 +133,10 @@
 
   // today's numbers
   $('stats').innerHTML = [
-    [X.sci(now.cells), 'living cells on Earth today', 'N_cells', 'chem'],
-    [X.sci(now.cneu), 'nerve signals fired every second', 'C_neural', 'neuro'],
-    [X.sci(now.cdig), 'silicon operations every second', 'C_digital,exec', 'silicon']
-  ].map(s => '<div class="stat" style="--sc:var(--s-' + s[3] + ')"><b>' + s[0] + '</b><span>' + s[1] + '<span class="x-only mono"> · ' + s[2] + '</span></span></div>').join('');
+    [X.sci(now.cells), 'living cells on Earth today', 'N_cells', 'chem', 'total_cells'],
+    [X.sci(now.cneu), 'nerve signals fired every second', 'C_neural', 'neuro', 'c_neural_ops_sec'],
+    [X.sci(now.cdig), 'silicon operations every second', 'C_digital,exec', 'silicon', 'c_digital_ops_sec']
+  ].map(s => '<div class="stat" style="--sc:var(--s-' + s[3] + ')"><b>' + X.numBtn(s[4], s[0]) + '</b><span>' + s[1] + '<span class="x-only mono"> · ' + s[2] + '</span></span></div>').join('');
 
   // one thread
   const thread = ['vent-gradient', 'ribosome', 'four-second-memory', 'mitochondria', 'neurons', 'myelin', 'neocortex', 'speaking', 'cuneiform', 'printing', 'telegraph', 'electronic-computers', 'ai-clusters'];

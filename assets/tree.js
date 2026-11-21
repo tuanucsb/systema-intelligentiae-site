@@ -205,9 +205,9 @@
     const byTime = list => list.slice().sort((x, y) => X.INVK[x.id].i - X.INVK[y.id].i);
     drawer.innerHTML = top('<span class="part-chip" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</span>', u.label) +
       '<div><h2>' + esc(u.label) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + ' · Act ' + a.n + ': ' + a.name + '</p></div>' +
-      '<p class="dr-detail">' + esc(u.detail) + '</p>' + who +
+      '<p class="dr-detail">' + esc(u.detail) + '</p>' + X.invMore(u) + who +
       '<div style="display:grid;gap:6px"><div class="modes" role="group" aria-label="What to highlight">' +
-      [['near', 'Neighbors'], ['back', 'Rests on'], ['forward', 'Led to']].map(m => '<button type="button" data-mode="' + m[0] + '" aria-pressed="' + (mode === m[0]) + '">' + m[1] + '</button>').join('') +
+      [['near', 'Neighbors', 'Highlight only what this invention directly needed and what it directly made possible'], ['back', 'Rests on', 'Highlight everything earlier that this invention depends on, all the way back'], ['forward', 'Led to', 'Highlight everything later that grew out of this invention']].map(m => '<button type="button" data-mode="' + m[0] + '" data-tip="' + m[2] + '" aria-pressed="' + (mode === m[0]) + '">' + m[1] + '</button>').join('') +
       '</div><span class="muted" style="font-size:14px">' + count + '</span></div>' +
       relList('Made possible by', byTime(X.IN[u.id]).map(x => relItem(x.id, x.why, x.refs))) +
       relList('Led to', byTime(X.OUT[u.id]).map(x => relItem(x.id, x.why, x.refs))) +
@@ -304,7 +304,7 @@
 
   /* ---------- controls ---------- */
   function chips() {
-    $('laneChips').innerHTML = '<span class="sub" style="align-self:center;margin-right:4px">Parts shown</span>' + X.PARTS.map(p => '<button type="button" class="part-chip" data-toggle="' + p.key + '" aria-pressed="' + visible.has(p.key) + '" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</button>').join('') +
+    $('laneChips').innerHTML = '<span class="sub" style="align-self:center;margin-right:4px">Parts shown</span>' + X.PARTS.map(p => '<button type="button" class="part-chip" data-toggle="' + p.key + '" data-tip="Show or hide this column. ' + esc(p.name) + ' answers: ' + esc(p.question) + '" aria-pressed="' + visible.has(p.key) + '" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</button>').join('') +
       '<button type="button" class="chip" data-toggle="all" style="cursor:pointer">Show all</button>';
   }
   $('laneChips').addEventListener('click', ev => {

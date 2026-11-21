@@ -1,0 +1,27 @@
+/* Figures for Papers 1 to 5 on research.html (assets/paper-figs.js). Shared figure styles (.frame, .fig-say, .fig-sub,
+   .fig-src, .pf text and fills) live in site.css; this file adds only what these figures need. Colours are tokens. */
+.pfx { margin: 6px 0 0; grid-template-columns: minmax(0, 1fr); }
+.pfx > * { min-width: 0; }
+.pfx .pfw { min-width: 0; overflow: hidden; }
+.pfx .pfw svg { display: block; width: 100%; height: auto; }
+.pf .trk { stroke: var(--line); stroke-width: 1; }
+.pf .gapl { stroke: var(--ink); stroke-width: 1.4; fill: none; }
+.pf .hollow { fill: var(--surface); stroke: var(--ink); stroke-width: 1.8; }
+.pf .cold { fill: color-mix(in srgb, var(--ink) 72%, var(--surface)); }
+.pf .grp { fill: var(--l-grp); }
+.pf .cpu { fill: var(--c-cpu); } .pf .hl { fill: var(--ink); }
+.pf .gh { fill: var(--ink-3); font: 700 11.5px var(--body); letter-spacing: .08em; }
+.pf .flat { stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 5 4; fill: none; }
+.pf .exoline { stroke: var(--l-exo); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.pf .say { stroke: var(--c-cpu); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.fig-note { font-size: 14px; color: var(--ink-2); padding: 2px 0 2px 12px; border-left: 3px solid var(--line-2); max-width: 84ch; }
+.fig-note b { color: var(--ink); font-weight: 700; }
+.fig-note ul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 3px; }
+.fig-nums summary { cursor: pointer; font-size: 14px; color: var(--ink-2); min-height: 32px; display: flex; align-items: center; }
+.fig-nums summary:hover { color: var(--ink); }
+.pfx-tw { overflow-x: auto; margin-top: 6px; }
+.pfx-tbl { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
+.pfx-tbl th { text-align: left; font: 700 12px/1.3 var(--body); color: var(--ink-3); padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line-2); vertical-align: bottom; }
+.pfx-tbl td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pfx-tbl td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 680px) { .pfx-tbl { font-size: 12.5px; } .pfx-tbl td.n { white-space: normal; } }

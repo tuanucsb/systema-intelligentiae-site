@@ -45,7 +45,7 @@
     const d = X.delta(v, p);
     const cls = d.charAt(0) === '−' ? 'down' : (d.charAt(0) === '×' || d === 'new') ? 'up' : '';
     return '<div class="g-row"><div class="g-label">' + g.label + '<span class="sym x-only">' + g.sym + '</span></div>' +
-      '<div class="g-val" title="' + v + '">' + (g.fmt ? g.fmt(v) : X.sci(v)) + (g.unit ? ' <span class="g-unit">' + g.unit + '</span>' : '') + '</div>' +
+      '<div class="g-val">' + (X.COLOF[g.k] ? X.numBtn(X.COLOF[g.k], (g.fmt ? g.fmt(v) : X.sci(v)) + (g.unit ? ' <span class="g-unit">' + g.unit + '</span>' : ''), i) : (g.fmt ? g.fmt(v) : X.sci(v))) + '</div>' +
       '<div class="g-bar"><span style="width:' + w.toFixed(1) + '%;background:' + g.color + '"></span></div><div class="g-delta ' + cls + '">' + (d === 'same' ? '' : d) + '</div></div>';
   }
   // the three numbers that moved most since the last moment lead; ties keep the fixed gauge order
@@ -146,7 +146,7 @@
       '<div class="tail"><span class="sub">The long tail</span><div class="tail-track"><span class="tail-dot" style="left:' + pct.toFixed(1) + '%"></span></div>' +
       '<div class="tail-scale"><span>typical cell</span><span>10¹⁸× more</span></div>' +
       '<p>Most cells are still simple microbes doing about 850 operations a second. The most capable single thing alive does ' + X.sci(e.cmax) + (sg > 0 ? ', about ' + X.sci(Math.pow(10, sg)) + ' times more.' : ', no more than a typical microbe today.') + '<span class="x-only"> σ_Gould = ' + sg.toFixed(2) + ' dex.</span></p></div>' +
-      '<dl class="world"><div><dt>Surface</dt><dd>' + X.plain(e.temp) + ' °C</dd></div><div><dt>Oxygen</dt><dd>' + X.sci(e.o2) + '%</dd></div><div><dt>CO₂</dt><dd>' + Math.round(e.co2).toLocaleString('en-US') + ' ppm</dd></div>' +
+      '<dl class="world"><div><dt>Surface</dt><dd>' + X.numBtn('surface_temp_c', X.plain(e.temp) + ' °C', i) + '</dd></div><div><dt>Oxygen</dt><dd>' + X.numBtn('atm_o2_pct', X.sci(e.o2) + '%', i) + '</dd></div><div><dt>CO₂</dt><dd>' + X.numBtn('atm_co2_ppm', Math.round(e.co2).toLocaleString('en-US') + ' ppm', i) + '</dd></div>' +
       '<div class="wide"><dt>The map</dt><dd>' + esc(e.cont) + '</dd></div></dl></div>';
 
     const myths = X.MYTHS.filter(m => m.epochs.indexOf(e.id) >= 0);
@@ -197,7 +197,7 @@
       ? '<div class="inv-refs x-only"><span class="sub">Sources for ' + esc(s.label) + '</span><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></div>'
       : '';
     pp.innerHTML = '<div class="pp-head"><strong>' + p.name + '</strong><span>' + p.question + '</span></div>' +
-      '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' +
+      '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' + X.invMore(s) +
       '<ol class="pp-hist" aria-label="History of this part">' + X.HIST[k].map(u => '<li><button type="button" data-jump="' + u.i + '" class="' + (u.i > cur ? 'future' : '') + (s === u ? ' now' : '') + '"><span class="when">' + X.fmtShort(X.E[u.i].t) + '</span>' + esc(u.label) + '</button></li>').join('') + '</ol>' +
       invRefs +
       (s ? '<a href="tree.html#' + s.id + '">Follow ' + esc(s.label) + ' in the tree →</a>' : '');

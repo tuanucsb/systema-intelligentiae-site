@@ -44,7 +44,7 @@
       const j = (opts.allCols || cols).indexOf(opts.sortCol), n = nums.has(opts.sortCol);
       rs.sort((a, b) => { const va = a.r[j], vb = b.r[j]; return (n ? (Number(va) - Number(vb)) : String(va).localeCompare(String(vb))) * opts.sortDir; });
     }
-    return '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + cols.map(c => '<th scope="col" data-sort="' + esc(c) + '"' + (opts.sortCol === c ? ' aria-sort="' + (opts.sortDir > 0 ? 'ascending' : 'descending') + '"' : '') + '>' + esc(c) + '</th>').join('') + '</tr></thead><tbody>' +
+    return '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + cols.map(c => '<th scope="col" data-sort="' + esc(c) + '"' + (opts.sortCol === c ? ' aria-sort="' + (opts.sortDir > 0 ? 'ascending' : 'descending') + '"' : '') + '>' + esc(c) + (opts.allCols && (X.SI.numrefs || {})[c] ? ' <button type="button" class="num-i" data-num="' + esc(c) + '"' + (opts.hi != null ? ' data-i="' + opts.hi + '"' : '') + ' aria-label="Where ' + esc(c) + ' comes from" data-tip="Where this column comes from: equation, inputs and sources">i</button>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
       rs.map(x => '<tr' + (opts.hi != null && x.k === opts.hi ? ' class="cur" id="hiRow" style="outline:3px solid var(--c-cpu);outline-offset:-3px"' : '') + '>' + idx.map((j, c) => { const v = x.r[j]; const n = nums.has(cols[c]) && isNum(v); return '<td class="' + (n ? 'n' : '') + '"' + (n ? ' title="' + esc(v) + '"' : '') + '>' + (n ? fmtCell(v) : esc(v)) + '</td>'; }).join('') + '</tr>').join('') +
       (!rs.length && opts.filter ? '<tr><td class="empty" colspan="' + cols.length + '"><div class="em"><span>No moments match “' + esc(opts.filter) + '”. Try a period (Cambrian) or an epoch ID (EP14).</span><button type="button" class="btn sm ghost" id="clearFilt">Clear filter</button></div></td></tr>' : '') +
       '</tbody></table></div><p class="readout">' + rs.length + ' rows × ' + cols.length + ' columns. Click a column title to sort. Hover a number for its exact value.</p>';
@@ -66,7 +66,8 @@
     const r = $('hiRow'); if (r) requestAnimationFrame(() => r.scrollIntoView({ block: 'center' }));
   }
   function bindSort(redraw) {
-    $('panel').querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
+    $('panel').querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', ev => {
+      if (ev.target.closest('[data-num]')) return;   // the info button opens "Where this number comes from" instead
       const c = th.dataset.sort; if (sortCol === c) sortDir = -sortDir; else { sortCol = c; sortDir = 1; } redraw();
     }));
   }
@@ -78,7 +79,7 @@
   function drawPlot() {
     $('panel').innerHTML = '<div class="lab-tools">' + [0, 1, 2].map(k => '<select data-s="' + k + '" aria-label="Series ' + (k + 1) + '" style="border-color:' + PC[k] + '"><option value="">(none)</option>' + PLOTCOLS.map(c => '<option' + (plotSel[k] === c ? ' selected' : '') + '>' + c + '</option>').join('') + '</select>').join('') +
       '<label class="toggle"><input type="checkbox" id="logY"' + (logY ? ' checked' : '') + '> Log scale</label></div>' +
-      '<div class="plot-wrap"><svg id="plot" class="plot" viewBox="0 0 1000 400" role="img" aria-label="Plot of selected census columns"></svg></div><p class="readout" id="pread">Hover the plot to read values. X axis: the 64 moments in order (time not to scale).</p>';
+      '<div class="plot-wrap"><svg id="plot" class="plot" viewBox="0 0 1000 400" role="img" aria-label="Plot of selected census columns"></svg></div><p class="time-key" data-time-key="moments"></p><p class="readout" id="pread">Hover the plot to read values. X axis: the 64 moments in order (time not to scale).</p>';
     $('panel').querySelectorAll('select[data-s]').forEach(s => s.addEventListener('change', () => { plotSel[Number(s.dataset.s)] = s.value; drawPlot(); }));
     $('logY').addEventListener('change', ev => { logY = ev.target.checked; drawPlot(); });
     const W = 1000, H = 400, Lm = 70, R = 20, T = 20, B = 46, N = CEN.rows.length;
@@ -108,6 +109,7 @@
     });
     s += '<line id="phov" x1="0" x2="0" y1="' + T + '" y2="' + (H - B) + '" stroke="var(--ink-3)" stroke-dasharray="2 3" visibility="hidden"/><rect id="phit" x="' + Lm + '" y="' + T + '" width="' + (W - Lm - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
     const svg = $('plot'); svg.innerHTML = s;
+    X.timeKeys();
     $('phit').addEventListener('mousemove', ev => {
       const r = svg.getBoundingClientRect(); const x = (ev.clientX - r.left) / r.width * W;
       const i = Math.max(0, Math.min(N - 1, Math.round((x - Lm) / ((W - Lm - R) / (N - 1)))));

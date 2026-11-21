@@ -214,6 +214,7 @@
   /* ---------- header, footer, expert switch ---------- */
   function readExpert() { try { return localStorage.getItem('si-expert') === '1'; } catch (e) { return false; } }
   function writeExpert(v) { try { localStorage.setItem('si-expert', v ? '1' : '0'); } catch (e) { /* storage blocked */ } }
+  const EXPERT_TIP = 'Expert view is for researchers and teachers. It adds the symbols behind each number (like C_neural), the equations, every source and citation, the raw census rows, calculation graphs and uncertainty ranges. Switch it off to go back to the plain story. Your choice is remembered.';
   function chrome(page) {
     const mark = ORDER.map(k => '<i style="background:var(--c-' + k + ')"></i>').join('');
     const links = [['journey.html', 'journey', 'Journey'], ['tree.html', 'tree', 'Tree'], ['how.html', 'how', 'How we know'], ['data.html', 'data', 'Data Lab']];
@@ -222,12 +223,12 @@
     const tools = head && head.querySelector('.head-tools');
     if (tools) {
       // the header and nav are static HTML so they work without scripts; only the switch needs JS
-      tools.innerHTML = '<label class="switch" title="Show symbols, equations, sources and raw data"><input type="checkbox" id="expertToggle"><span class="track"></span><span>Expert<span class="sw-more"> view</span></span><span class="tag">PhD</span></label>';
+      tools.innerHTML = '<label class="switch" data-tip="' + EXPERT_TIP + '"><input type="checkbox" id="expertToggle"><span class="track"></span><span>Expert<span class="sw-more"> view</span></span><span class="tag">PhD</span></label>';
     } else if (head) {
       head.className = 'site-head';
       head.innerHTML = '<div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' + mark + '</span>Systema Intelligentiae</a>' +
         '<nav class="site-nav" aria-label="Main">' + links.map(l => '<a href="' + l[0] + '"' + (l[1] === page ? ' aria-current="page"' : '') + '>' + l[2] + '</a>').join('') + '</nav>' +
-        '<div class="head-tools"><label class="switch" title="Show symbols, equations, sources and raw data"><input type="checkbox" id="expertToggle"><span class="track"></span>Expert view <span class="tag">PhD</span></label></div></div>';
+        '<div class="head-tools"><label class="switch" data-tip="' + EXPERT_TIP + '"><input type="checkbox" id="expertToggle"><span class="track"></span>Expert view <span class="tag">PhD</span></label></div></div>';
     }
     const foot = document.getElementById('siteFoot');
     if (foot) {
@@ -241,6 +242,7 @@
         '<nav aria-labelledby="footAbout"><h2 id="footAbout">About</h2>' + cur('about.html', 'about') + 'About this project</a><a href="about.html#cite">How to cite</a>' +
         cur('credits.html', 'credits') + 'Image credits</a><a href="about.html#licence">Data licence</a><a href="data.html">Download the data</a></nav></div>';
     }
+    timeKeys();
     const on = readExpert();
     document.body.classList.toggle('expert', on);
     const t = document.getElementById('expertToggle');
@@ -499,9 +501,238 @@
 
   const LEGEND = '<span><i style="background:var(--s-chem)"></i>Chemistry in cells</span><span><i style="background:var(--s-neuro)"></i>Nerve signals</span><span><i style="background:var(--s-silicon)"></i>Silicon chips</span><span><i class="dash"></i>Biggest single thinker</span><span><i class="tri"></i>Crisis</span>';
 
+  /* ---------- "Where this number comes from": one panel for every census number ----------
+     Any element with data-num="<census column>" (and optional data-i="<moment index>", default today) opens it.
+     Content comes from content/number_sources.csv (SI.numrefs): equation, inputs, kind, sources. */
+  let ledgerWaiters = null;
+  function loadLedgers(cb) {
+    if (window.SI_LEDGERS) { cb(window.SI_LEDGERS); return; }
+    if (ledgerWaiters) { ledgerWaiters.push(cb); return; }
+    ledgerWaiters = [cb];
+    const s = document.createElement('script');
+    s.src = 'assets/ledgers.js';
+    s.onload = () => { const w = ledgerWaiters; ledgerWaiters = null; w.forEach(f => f(window.SI_LEDGERS)); };
+    s.onerror = () => { const w = ledgerWaiters; ledgerWaiters = null; w.forEach(f => f(null)); };
+    document.head.appendChild(s);
+  }
+  const W_ = 'W';
+  const NUMNAME = {
+    total_biomass_gt_c: ['Living matter', 'billion tonnes of carbon'], total_cells: ['Living cells', ''],
+    h_copy_bits: ['DNA stored, every copy', 'bits'], h_sel_bits: ['DNA kept by selection', 'bits'], h_unique_bits: ['DNA, each sequence once', 'bits'],
+    m_active_bits: ['Working memory', 'bits'], m_passive_bits: ['Long-term memory', 'bits'], m_exo_installed_bits: ['Memory outside the body', 'bits'],
+    c_biochem_ops_sec: ['Reactions in cells', 'a second'], c_neural_ops_sec: ['Nerve signals', 'a second'], c_digital_ops_sec: ['Chip operations', 'a second'],
+    c_digital_ai_ops_sec: ['AI chip operations', 'a second'], c_bioelectric_ops_sec: ['Electrical signals without nerves', 'a second'],
+    c_max_entity_ops_sec: ['Most capable single thinker', 'operations a second'], gould_variance_right_tail: ['Lead of the top thinker over a typical cell', 'digits'],
+    n_neurons_global: ['Neurons on Earth', ''], n_synapses_global: ['Synapses on Earth', ''],
+    p_metabolic_watts: ['Power used by life and technology', W_], p_bio_watts: ['Power used by life', W_], p_tech_primary_watts: ['Power used by technology', W_],
+    p_animal_watts: ['Power used by animals', W_], p_digital_it_watts: ['Power used by computers', W_], p_prok_watts: ['Power used by microbes', W_], p_euk_watts: ['Power used by other cells', W_],
+    phi_persistence_bit_years: ['DNA memory × how long it lasts', 'bit-years'], tau_bio_lineage_years: ['How long a lineage lasts', 'years'],
+    surface_temp_c: ['Surface temperature', '°C'], atm_o2_pct: ['Oxygen in the air', '%'], atm_co2_ppm: ['CO₂ in the air', 'parts per million'],
+    max_collective_group_size: ['Largest group acting as one', 'individuals'],
+    prokaryotic_biomass_gt_c: ['Carbon in microbes', 'billion tonnes'], phytomass_structural_gt_c: ['Carbon in wood', 'billion tonnes'],
+    eukaryotic_active_biomass_gt_c: ['Carbon in other living cells', 'billion tonnes'], metazoan_biomass_gt_c: ['Carbon in animals', 'billion tonnes'],
+    mean_prok_cell_mass_fg_c: ['Carbon in one microbe', 'femtograms'], n_euk_active_cells: ['Other active cells (plants, fungi, protists)', ''],
+    f_deep_subsurface: ['Share of microbes deep in rock', ''], f_oligotrophic_maint: ['Share of microbes starving', ''], f_active_surface: ['Share of microbes at the surface', ''],
+    m_dram_bits: ['Computer working memory (DRAM)', 'bits']
+  };
+  const NUMKIND = {
+    inventory: ['From counts', 'Today’s value comes from surveys and inventories. Earlier moments are estimates.'],
+    calc: ['Calculated', 'Worked out from other numbers in the census with the equation below.'],
+    assume: ['Model assumption', 'Rests on a rule of thumb chosen for the model, not on a measurement.'],
+    hand: ['Set by hand', 'Entered moment by moment by the model’s builder, guided by the studies listed below.']
+  };
+  const NUMUNC = { total_cells: 'N_prok', c_biochem_ops_sec: 'C_biochem', c_neural_ops_sec: 'C_neural (', c_digital_ops_sec: 'C_digital (' };
+  const numName = c => (NUMNAME[c] || [c.replace(/_/g, ' '), ''])[0];
+  const COLOF = {}; Object.keys(SI.numrefs || {}).forEach(c => { const k = SI.numrefs[c].k; if (k) COLOF[k] = c; });
+  function numFmt(c, v) {
+    if (v == null || v === '' || isNaN(v)) return '—';
+    const u = (NUMNAME[c] || ['', ''])[1];
+    if (u === W_) return watts(Number(v));
+    if (/^f_/.test(c)) return Math.round(Number(v) * 1000) / 10 + '%';
+    return sci(Number(v)) + (u ? ' ' + u : '');
+  }
+  let numDlg = null, numLast = null;
+  // the calculation as a graph: the number on the right, what feeds it to the left (two levels deep)
+  function calcGraph(col, i, C) {
+    const box = numDlg && numDlg.querySelector('#numCalc'); if (!box) return;
+    const NR = SI.numrefs || {}, valOf = c => { const j = C.columns.indexOf(c); return j >= 0 ? C.rows[i][j] : null; };
+    const tree = (c, d) => { const R = NR[c]; return { c, R, kids: R && d < 2 ? R.in.map(k => tree(k, d + 1)) : [] }; };
+    const root = tree(col, 0);
+    let leaves = 0, depth = 0;
+    const lay = (n, d) => { depth = Math.max(depth, d); if (!n.kids.length) { n.y = leaves++; } else { n.kids.forEach(k => lay(k, d + 1)); n.y = (n.kids[0].y + n.kids[n.kids.length - 1].y) / 2; } n.d = d; };
+    lay(root, 0);
+    const BW = 154, BH = 46, GX = 30, GY = 10, W = (depth + 1) * BW + depth * GX + 8, H = Math.max(1, leaves) * (BH + GY) + 8;
+    const xOf = d => 4 + (depth - d) * (BW + GX), yOf = y => 4 + y * (BH + GY);
+    const short = s => (s.length > 23 ? s.slice(0, 22) + '…' : s);
+    let edges = '', nodes = '';
+    const draw = n => {
+      const x = xOf(n.d), y = yOf(n.y), open = !n.R || n.R.kind === 'hand' || n.R.kind === 'assume' || (!n.R.in.length);
+      n.kids.forEach(k => {
+        const x1 = xOf(k.d) + BW, y1 = yOf(k.y) + BH / 2, x2 = x, y2 = y + BH / 2, mx = (x1 + x2) / 2;
+        edges += '<path d="M' + x1 + ' ' + y1 + ' C' + mx + ' ' + y1 + ' ' + mx + ' ' + y2 + ' ' + (x2 - 6) + ' ' + y2 + '"/><path class="hd" d="M' + (x2 - 7) + ' ' + (y2 - 4) + ' L' + (x2 - 1) + ' ' + y2 + ' L' + (x2 - 7) + ' ' + (y2 + 4) + '"/>';
+        draw(k);
+      });
+      nodes += '<g class="cn' + (n.d === 0 ? ' root' : '') + (open ? ' leaf' : '') + '"' + (n.d ? ' data-num="' + n.c + '" data-i="' + i + '" role="button" tabindex="0"' : '') + '><title>' + esc(numName(n.c)) + (n.R ? ' · ' + esc(NUMKIND[n.R.kind][0]) : '') + '</title>' +
+        '<rect x="' + x + '" y="' + y + '" width="' + BW + '" height="' + BH + '" rx="6"/>' +
+        '<text x="' + (x + 10) + '" y="' + (y + 18) + '">' + esc(short(numName(n.c))) + '</text>' +
+        '<text class="v" x="' + (x + 10) + '" y="' + (y + 36) + '">' + esc(numFmt(n.c, valOf(n.c))) + '</text></g>';
+    };
+    draw(root);
+    box.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Calculation graph for ' + esc(numName(col)) + '"><g class="ce">' + edges + '</g>' + nodes + '</svg>' +
+      (leaves > 1 || root.kids.length ? '<p class="num-cap">Click a box on the left to open that number.</p>' : '<p class="num-cap">This number is not calculated from others in the census: it is entered directly.</p>');
+  }
+  // the number at every moment, on a log scale, with the opened moment ringed
+  function histChart(col, i) {
+    const box = numDlg && numDlg.querySelector('#numHist'), R = (SI.numrefs || {})[col]; if (!box || !R || !R.k) return;
+    const lin = /^(surface_temp_c|atm_o2_pct|gould_variance_right_tail)$/.test(col);
+    const vals = E.map(e => Number(e[R.k])), ok = v => isFinite(v) && (lin || v > 0), tr = v => (lin ? v : Math.log10(v));
+    const ys = vals.filter(ok).map(tr); if (!ys.length) { box.innerHTML = ''; return; }
+    const lo = Math.min(...ys), hi = Math.max(...ys), span = hi - lo || 1, W = 520, H = 150, L = 8, Rr = 8, T = 14, B = 30;
+    const xp = k => L + k / (N - 1) * (W - L - Rr), yp = v => T + (1 - (tr(v) - lo) / span) * (H - T - B);
+    let d = '', pen = false;
+    vals.forEach((v, k) => { if (ok(v)) { d += (pen ? 'L' : 'M') + xp(k).toFixed(1) + ' ' + yp(v).toFixed(1); pen = true; } else pen = false; });
+    const acts = ACTS.map(a => '<line class="ab" x1="' + xp(a.i0).toFixed(1) + '" x2="' + xp(a.i0).toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tk" x="' + (xp(a.i0) + 3).toFixed(1) + '" y="' + (H - 12) + '">' + a.n + '</text>').join('');
+    const fmtA = v => (lin ? numFmt(col, v) : '10' + sup(Math.round(v)));
+    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(numName(col)) + ' across the 64 moments">' + acts +
+      '<text class="tk" x="' + (W - Rr) + '" y="' + (T - 3) + '" text-anchor="end">' + fmtA(hi) + '</text><text class="tk" x="' + (W - Rr) + '" y="' + (H - B + 12) + '" text-anchor="end">' + fmtA(lo) + '</text>' +
+      '<path class="hl" d="' + d + '"/>' + (ok(vals[i]) ? '<circle class="hr" cx="' + xp(i).toFixed(1) + '" cy="' + yp(vals[i]).toFixed(1) + '" r="5"/>' : '') + '</svg>' +
+      '<p class="num-cap">Roman numerals mark the seven acts, from the first chemistry (I) to silicon (VII).' + (lin ? ' This one is drawn on an ordinary scale.' : '') + '</p>';
+  }
+  function numPanel(col, i) {
+    const R = (SI.numrefs || {})[col];
+    if (i == null || isNaN(i)) i = N - 1;
+    const e = E[i], key = R && R.k, val = key && e[key] != null ? e[key] : null;
+    if (!numDlg) {
+      numDlg = document.createElement('dialog');
+      numDlg.className = 'num-dlg';
+      numDlg.setAttribute('aria-labelledby', 'numDlgH');
+      document.body.appendChild(numDlg);
+      numDlg.addEventListener('click', ev => { if (ev.target === numDlg || ev.target.closest('.num-x')) numDlg.close(); });
+      numDlg.addEventListener('close', () => { if (numLast && numLast.focus) numLast.focus(); });
+    }
+    const when = i === N - 1 ? 'today' : momentText(i);
+    const epi = EPI[e.epi] || null, kd = R ? NUMKIND[R.kind] : null;
+    let h = '<div class="num-top"><div><span class="eyebrow">Where this number comes from</span><h2 id="numDlgH">' + esc(numName(col)) + '</h2></div><button type="button" class="num-x" aria-label="Close">×</button></div>';
+    h += '<p class="num-val"><b>' + (val != null ? numFmt(col, val) : '—') + '</b><span>' + esc(when) + '</span></p><div class="num-range" id="numRange"></div>';
+    if (!R) {
+      h += '<p class="muted">No source record exists for this number yet.</p>';
+    } else {
+      h += '<div class="num-how"><span class="num-kind" tabindex="0" data-tip="How the number is made. ' + esc(kd ? kd[1] : '') + '">' + esc(kd ? kd[0] : R.kind) + '</span>' + (epi ? '<span class="num-kind" tabindex="0" data-tip="How sure we are at this moment: ' + esc(epi.about) + '">' + esc(epi.label) + '</span>' : '') +
+        '<p>' + esc(kd ? kd[1] : '') + (epi ? ' ' + esc(epi.about) : '') + '</p></div>';
+      h += '<h3>How it is worked out</h3><pre class="formula">' + esc(R.eq) + '</pre><div id="numIn"></div>';
+      h += '<div class="x-only num-graphs"><h3>The calculation as a graph</h3><p class="num-cap">Each box is one number at this moment; arrows show what feeds what. Boxes with a dashed edge are set by hand or are model assumptions, so the chain stops there.</p><div id="numCalc" class="num-calc"></div>' +
+        '<h3>This number across all 64 moments</h3><p class="num-cap">Each step up is ten times more. Each column is one moment, not one year. The ring marks the moment you opened.</p><div id="numHist" class="num-hist"></div></div>';
+      if (R.basis) h += '<h3>What it rests on</h3><p>' + esc(R.basis) + '</p>';
+      h += '<div id="numSrc"></div>';
+      const cites = (e.cites.match(/\d+/g) || []).map(Number), here = R.f.filter(n => cites.indexOf(n) >= 0), refs = here.length ? here : R.f;
+      if (refs.length) h += '<details class="num-refs"><summary>' + refs.length + ' reference' + (refs.length > 1 ? 's' : '') + (here.length ? ' cited at this moment' : ' behind this number') + '</summary><ol class="refs">' + refs.map(n => '<li value="' + n + '">' + esc(SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>';
+      if (R.cite && R.cite.length) h += '<h3>Outside studies</h3><ul class="refs num-cite">' + R.cite.map(c => '<li>' + esc(c) + '</li>').join('') + '</ul>';
+    }
+    h += '<p class="num-go"><a href="data.html#' + e.id + '">See every moment in the Data Lab →</a>' + (/^(total_cells|c_neural_ops_sec|c_digital_ops_sec)$/.test(col) && i === N - 1 ? '<a href="how.html#test">Test this number yourself →</a>' : '') + '</p>';
+    numDlg.innerHTML = h;
+    numLast = document.activeElement;
+    if (!numDlg.open) { if (numDlg.showModal) numDlg.showModal(); else numDlg.setAttribute('open', ''); }
+    if (!R) return;
+    // Expert view: the calculation graph and the number's history
+    const drawGraphs = () => { if (document.body.classList.contains('expert')) loadCensus(C => { if (C && numDlg.open) { calcGraph(col, i, C); histChart(col, i); } }); };
+    drawGraphs();
+    document.removeEventListener('si:expert', numDlg._g || (() => {}));
+    numDlg._g = drawGraphs; document.addEventListener('si:expert', drawGraphs);
+    // inputs need the full census; key sources and the 95% range need the ledgers
+    if (R.in.length) loadCensus(C => {
+      if (!C || !numDlg.open) return;
+      const box = numDlg.querySelector('#numIn'); if (!box) return;
+      box.innerHTML = '<table class="num-in"><caption>With the numbers ' + esc(i === N - 1 ? 'for today' : 'at this moment') + '</caption><tbody>' +
+        R.in.map(c => { const j = C.columns.indexOf(c); return '<tr><th scope="row">' + esc(numName(c)) + '<code class="x-only">' + esc(c) + '</code></th><td>' + numFmt(c, j >= 0 ? C.rows[i][j] : null) + '</td></tr>'; }).join('') + '</tbody></table>';
+    });
+    loadLedgers(L => {
+      if (!L || !numDlg.open) return;
+      const S = L.sources, box = numDlg.querySelector('#numSrc');
+      if (S && box && R.s.length) {
+        const c = S.columns, iR = c.indexOf('primary_reference'), iC = c.indexOf('verified_empirical_constraint'), iA = c.indexOf('reconciliation_and_audit_status');
+        const rows = R.s.map(id => S.rows.find(r => r[0] === id)).filter(Boolean);
+        box.innerHTML = '<h3>Key studies</h3><ul class="num-src">' + rows.map(r => '<li><b>' + esc(r[iR]) + '</b><span>' + esc(r[iC]) + '</span><small class="x-only">' + esc(r[0]) + ' · ' + esc(r[iA]) + '</small></li>').join('') + '</ul>';
+      }
+      const U = L.uncertainty, tok = NUMUNC[col], rg = numDlg.querySelector('#numRange');
+      if (U && tok && i === N - 1 && rg) {
+        const r = U.rows.find(x => String(x[0]).indexOf(tok) >= 0);
+        if (r) rg.innerHTML = '<p>95% range: ' + numFmt(col, Number(r[3])) + ' to ' + numFmt(col, Number(r[5])) + ' <span class="muted">(10,000 random draws of the inputs)</span></p>';
+      }
+    });
+  }
+  document.addEventListener('click', ev => {
+    const t = ev.target.closest && ev.target.closest('[data-num]');
+    if (!t) return;
+    ev.preventDefault();
+    numPanel(t.getAttribute('data-num'), t.hasAttribute('data-i') ? Number(t.getAttribute('data-i')) : null);
+  });
+  document.addEventListener('keydown', ev => {
+    const t = (ev.key === 'Enter' || ev.key === ' ') && ev.target.closest && ev.target.closest('[data-num][role="button"]');
+    if (t) { ev.preventDefault(); t.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+  });
+
+  /* ---------- tooltips: any element with data-tip (or a title) gets a styled tip on hover, keyboard focus or tap ---------- */
+  let tipEl = null, tipFor = null, tipT = null;
+  function tipOf(el) {
+    if (el.hasAttribute('title') && !(el instanceof SVGElement)) { const t = el.getAttribute('title'); el.removeAttribute('title'); if (t && !el.hasAttribute('data-tip')) el.setAttribute('data-tip', t); }
+    return el.getAttribute('data-tip');
+  }
+  function showTip(el) {
+    const t = tipOf(el); if (!t) return;
+    if (!tipEl) { tipEl = document.createElement('div'); tipEl.className = 'tip'; tipEl.id = 'siTip'; tipEl.setAttribute('role', 'tooltip'); document.body.appendChild(tipEl); }
+    const dlg = el.closest('dialog'); if (dlg && tipEl.parentNode !== dlg) dlg.appendChild(tipEl); else if (!dlg && tipEl.parentNode !== document.body) document.body.appendChild(tipEl);
+    tipEl.textContent = t; tipEl.hidden = false; tipFor = el; el.setAttribute('aria-describedby', 'siTip');
+    const r = el.getBoundingClientRect(), w = tipEl.offsetWidth, h = tipEl.offsetHeight;
+    let x = r.left + r.width / 2 - w / 2, y = r.bottom + 8, below = true;
+    if (y + h > innerHeight - 8) { y = r.top - h - 8; below = false; }
+    x = Math.max(8, Math.min(innerWidth - w - 8, x));
+    tipEl.style.left = x + 'px'; tipEl.style.top = Math.max(8, y) + 'px'; tipEl.classList.toggle('above', !below);
+  }
+  function hideTip() { clearTimeout(tipT); if (tipEl) tipEl.hidden = true; if (tipFor) tipFor.removeAttribute('aria-describedby'); tipFor = null; }
+  const tipTarget = n => n && n.closest && n.closest('[data-tip],[title]:not(svg *):not(title)');
+  document.addEventListener('pointerover', ev => {
+    if (ev.pointerType === 'touch') return;
+    const el = tipTarget(ev.target);
+    if (el === tipFor) return;
+    hideTip();
+    if (el) tipT = setTimeout(() => showTip(el), 300);
+  });
+  document.addEventListener('pointerout', ev => { const el = tipTarget(ev.target); if (el && !(ev.relatedTarget && el.contains(ev.relatedTarget))) hideTip(); });
+  document.addEventListener('focusin', ev => { const el = tipTarget(ev.target); if (el && el.matches(':focus-visible')) showTip(el); });
+  document.addEventListener('focusout', hideTip);
+  document.addEventListener('keydown', ev => { if (ev.key === 'Escape') hideTip(); });
+  addEventListener('scroll', hideTip, { passive: true });
+  // on touch screens, tapping something that is not itself a control shows its tip
+  document.addEventListener('click', ev => {
+    const el = tipTarget(ev.target);
+    if (!el || el.matches('a, button, input, select, textarea, summary, label, [data-num]')) return;
+    if (tipFor === el) hideTip(); else showTip(el);
+  });
+
+  /* ---------- time labels: one key for Ma, Ga, ka, BCE and CE, placed under every chart with [data-time-key] ---------- */
+  const TIME_TIPS = [['ka', 'thousand years ago', 'Kilo-annum: thousands of years before today. 10 ka is 10,000 years ago.'],
+    ['Ma', 'million years ago', 'Mega-annum: millions of years before today. 66 Ma is when the asteroid hit.'],
+    ['Ga', 'billion years ago', 'Giga-annum: billions of years before today. Earth formed about 4.5 Ga.'],
+    ['BCE / CE', 'before / after year 1', 'Before Common Era and Common Era: the same count as BC and AD. Plain years like 1945 are CE.']];
+  function timeKeys() {
+    document.querySelectorAll('[data-time-key]').forEach(el => {
+      if (el.dataset.done) return; el.dataset.done = '1';
+      el.innerHTML = '<span class="tk-h">Time labels</span>' + TIME_TIPS.map(t => '<span class="tk-i" data-tip="' + esc(t[2]) + '" tabindex="0"><b>' + t[0] + '</b> = ' + t[1] + '</span>').join('') +
+        (el.dataset.timeKey === 'moments' ? '<span class="tk-i" data-tip="The census has 64 moments, spaced far apart in deep time and close together recently. Drawing each one the same width keeps the recent ones visible." tabindex="0">Each column is one moment, not one year</span>' : '');
+    });
+  }
+  // an invention's longer explanation and "learn more" links (content/invention_more.csv)
+  function invMore(u) {
+    if (!u || (!u.more && !(u.learn && u.learn.length))) return '';
+    return '<div class="inv-more">' + (u.more ? '<p>' + esc(u.more) + '</p>' : '') +
+      (u.learn && u.learn.length ? '<div class="inv-learn"><span class="sub">Learn more</span><ul>' + u.learn.map(l =>
+        '<li><a href="' + esc(l[2]) + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a><span> · ' + esc(l[1]) + '</span></li>').join('') + '</ul></div>' : '') + '</div>';
+  }
+  const numBtn = (col, html, i) => '<button type="button" class="num" data-num="' + col + '"' + (i != null ? ' data-i="' + i + '"' : '') + ' data-tip="Where this number comes from: its equation, inputs and sources">' + html + '</button>';
+
   window.SIX = {
     SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, PLATES, MYTHS, MOM, titleOf, hookOf, stopsAround,
     IN, OUT, closure, EPI, GAUGES, RANGE, sup, esc, plain, sci, watts, fmtTime, fmtShort, delta, icon, glyph, plateArt, plateCredit, plateThumb, chrome, chart, LEGEND, stack, LAYERS, LK, DIGITS, stackHeight, loadAtlas, KINDS, KIND, yearsAgo,
-    loadCensus, readLast, writeLast, placeOf, momentText, readExpert
+    loadCensus, loadLedgers, readLast, writeLast, placeOf, momentText, readExpert, numPanel, numBtn, numName, COLOF, invMore, timeKeys
   };
 })();

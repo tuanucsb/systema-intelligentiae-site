@@ -137,12 +137,12 @@
 
   /* ---------- ingredients table ---------- */
   const ING_ROWS = [
-    ['P', 'Power used by life and technology', X.watts(now.P)], ['T', 'Surface temperature', Math.round(eNow.temp) + ' °C'],
-    ['C<sub>chem</sub>', 'Reactions in cells', sci(eNow.cbio) + ' a second'], ['C<sub>nerve</sub>', 'Nerve signals', sci(eNow.cneu) + ' a second'], ['C<sub>silicon</sub>', 'Chip operations', sci(eNow.cdig) + ' a second'],
-    ['H<sub>DNA</sub>', 'DNA storage, every copy', sci(eNow.hcopy) + ' bits'], ['H<sub>unique</sub>', 'DNA storage, each sequence once', sci(eNow.hdiv) + ' bits'], ['M<sub>outside</sub>', 'Memory outside the body', sci(eNow.mexo) + ' bits'],
-    ['N<sub>group</sub>', 'Largest group acting as one', sci(eNow.grp) + ' individuals'], ['C<sub>max</sub>', 'Most capable single thing', sci(eNow.cmax) + ' operations a second']
+    ['P', 'Power used by life and technology', X.watts(now.P), 'p_metabolic_watts'], ['T', 'Surface temperature', Math.round(eNow.temp) + ' °C', 'surface_temp_c'],
+    ['C<sub>chem</sub>', 'Reactions in cells', sci(eNow.cbio) + ' a second', 'c_biochem_ops_sec'], ['C<sub>nerve</sub>', 'Nerve signals', sci(eNow.cneu) + ' a second', 'c_neural_ops_sec'], ['C<sub>silicon</sub>', 'Chip operations', sci(eNow.cdig) + ' a second', 'c_digital_ops_sec'],
+    ['H<sub>DNA</sub>', 'DNA storage, every copy', sci(eNow.hcopy) + ' bits', 'h_copy_bits'], ['H<sub>unique</sub>', 'DNA storage, each sequence once', sci(eNow.hdiv) + ' bits', 'h_unique_bits'], ['M<sub>outside</sub>', 'Memory outside the body', sci(eNow.mexo) + ' bits', 'm_exo_installed_bits'],
+    ['N<sub>group</sub>', 'Largest group acting as one', sci(eNow.grp) + ' individuals', 'max_collective_group_size'], ['C<sub>max</sub>', 'Most capable single thing', sci(eNow.cmax) + ' operations a second', 'c_max_entity_ops_sec']
   ];
-  $('ingBody').innerHTML = ING_ROWS.map(r => '<tr><td class="iq-symc"><span class="iq-sym">' + r[0] + '</span></td><th scope="row">' + esc(r[1]) + '</th><td>' + r[2] + '</td></tr>').join('');
+  $('ingBody').innerHTML = ING_ROWS.map(r => '<tr><td class="iq-symc"><span class="iq-sym">' + r[0] + '</span></td><th scope="row">' + esc(r[1]) + '</th><td>' + X.numBtn(r[3], r[2]) + '</td></tr>').join('');
 
   /* ---------- the price of one event, today ---------- */
   const PRICE = [['Landauer’s floor for one bit', now.bit, ''], ['One reaction in a cell', eNow.pbio / eNow.cbio, 'all of life’s power ÷ all reactions'], ['One nerve signal', eNow.pani / eNow.cneu, 'upper bound: all animal metabolism ÷ nerve signals'], ['One chip operation', eNow.pit / eNow.cdig, 'all computing power ÷ all operations']];

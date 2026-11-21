@@ -30,7 +30,7 @@
       '<div class="frame"><p class="fig-say">Twice, Earth lost more than nine tenths of its nerve signalling almost overnight.</p><p class="fig-sub">Red: the fall in animal nerve signalling across each extinction. Grey: the fall in living biomass over the same step. Whiskers: 95% ranges, where the paper gives one.</p><div class="fw"><svg id="fig2" class="pf" role="img" aria-label="Five mass extinctions with the share of nerve signalling and biomass lost at each."></svg></div></div>' +
       '<div class="frame"><p class="fig-say" id="say3"></p><p class="fig-sub">A ladder of events per second; each rung up is a hundred times more. Pink: nervous systems. Blue: chips. A nerve signal and a chip operation are different kinds of event.</p><div class="fw"><svg id="fig3" class="pf" role="img" aria-label="A ladder from one human brain up to all animal nervous systems, with the largest AI cluster, all chips and all human brains between them."></svg></div></div>' +
       '<div class="frame"><p class="fig-say">The newer the medium, the sooner it forgets.</p><p class="fig-sub">How long each medium keeps its contents if nobody maintains it. Each step along the axis is ten times longer.</p><div class="fw"><svg id="fig4" class="pf" role="img" aria-label="Retention lifetimes of memory media without maintenance, from computer working memory to fired clay."></svg></div></div><p class="note">Does this add up to rising intelligence? <a href="intelligence.html">Six formulas tested on the same census →</a></p></section>'
-      : '<section><h2>Figures</h2><p class="muted">New figures for this paper wait on the corrections listed below: a figure must be drawn from the project’s data, and here the data and the manuscript do not yet agree.</p></section>';
+      : (X.paperFigureSection ? X.paperFigureSection(p.id) : '<section><h2>Figures</h2><p class="muted">New figures for this paper wait on the corrections listed below: a figure must be drawn from the project’s data, and here the data and the manuscript do not yet agree.</p></section>');
     return '<header class="pd-head"><span class="eyebrow">' + label(p) + '</span><h2>' + esc(p.plain_title) + '</h2><p class="pd-full">' + esc(p.title) + '</p>' +
       '<p class="pd-thesis">' + esc(p.thesis) + '</p><p>' + esc(p.summary) + '</p>' +
       (p.revised ? '<p class="pd-rev"><b>Revised.</b> ' + esc(p.revised) + '</p>' : '') +
@@ -56,6 +56,7 @@
     if (p) {
       document.title = p.plain_title + ' · Papers · Systema Intelligentiae';
       if (p.id === 0 && X.paper0Figures) X.paper0Figures();
+      else if (p.id !== 0 && X.paperFigures) X.paperFigures(p.id);
       if (scroll) $('pdoc').scrollIntoView({ block: 'start' });
     } else document.title = 'Papers · Systema Intelligentiae';
   }

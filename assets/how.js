@@ -33,7 +33,7 @@
     ptot: 'All power used by life plus all power used by human technology.',
     grp: 'The largest group that coordinates as one: a biofilm, an ant colony, a city, a planet.'
   };
-  $('gloss').innerHTML = X.GAUGES.map(g => '<div class="gloss"><b><span class="dot" style="background:' + g.color + ';margin-right:8px"></span>' + g.label + '</b><p>' + GL[g.k] + '</p><code class="x-only">' + g.sym + (g.unit ? ' · ' + g.unit : '') + '</code></div>').join('');
+  $('gloss').innerHTML = X.GAUGES.map(g => '<div class="gloss"><b><span class="dot" style="background:' + g.color + ';margin-right:8px"></span>' + g.label + '</b><p>' + GL[g.k] + (X.COLOF[g.k] ? ' <button type="button" class="num-link" data-num="' + X.COLOF[g.k] + '">Where today’s value comes from</button>' : '') + '</p><code class="x-only">' + g.sym + (g.unit ? ' · ' + g.unit : '') + '</code></div>').join('');
 
   const EQ = [
     ['State of the planet', 'Ψ(t) = ( H_copy, H_div, H_sel, M_active, M_passive, C_biochem, C_neural, C_digital,exec, P_total, Φ_persist )', 'Ten quantities in four unit families, never summed into one score.'],
