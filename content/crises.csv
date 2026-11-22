@@ -1,8 +1,8 @@
-epoch_id,name
-EP03a,Great Oxidation & big freeze
-EP06a,Snowball Earth
-EP10a,End-Ordovician extinction
-EP12a,Late Devonian extinction
-EP14a,The Great Dying
-EP16a,End-Triassic extinction
-EP18a,Asteroid impact
+epoch_id,name,species_lost,lost,detail,refs
+EP03a,Great Oxidation & big freeze,,Oxygen poisons many surface microbes; ice spreads,"Oxygen made by cyanobacteria built up in the air and sea. For the many microbes that live without oxygen it was a poison, and they retreated to oxygen-free mud and deep water. Oxygen probably also destroyed much of the methane that kept the planet warm, and ice sheets spread. No fossils allow a count of what was lost.",91
+EP06a,Snowball Earth,,Ice to the tropics; sunlit life shrinks to refuges,"Ice covered the oceans to the tropics, more than once, between about 717 and 635 million years ago. Light and food under the ice fell, and life held on in refuges such as open water and meltwater ponds. The losses cannot be counted, but complex life recovered and spread after the thaw.",90
+EP10a,End-Ordovician extinction,86%,"About 86% of sea species: many trilobites, lamp shells and graptolites","Ice sheets grew over the south pole, shallow seas drained and then warmed again. About 86% of sea species died, among them many trilobites, lamp shells (brachiopods), graptolites and early relatives of fish.",88; 52
+EP12a,Late Devonian extinction,75%,About 75% of sea species: the great reefs and many armoured fish,"A series of crises, with seas starved of oxygen, wiped out the great reefs built by sponges and corals and most armoured jawless fish. The armoured placoderms were gone by the end of the Devonian. About 75% of sea species died.",88; 53
+EP14a,The Great Dying,81%,About 81% of sea species and many land animals; the last trilobites,"Huge eruptions in Siberia heated the planet and stripped oxygen from the seas. About 81% of sea species died (older estimates say up to 96%), with many land animals, in the only mass extinction known for insects. Trilobites, after some 270 million years, vanished.",89; 88; 55
+EP16a,End-Triassic extinction,80%,About 80% of sea species; most large crocodile-line reptiles,"Eruptions as the supercontinent split filled the air with carbon dioxide and turned the seas acidic. About 80% of sea species died, and on land most large crocodile-line reptiles disappeared; the last conodonts went too, leaving room for the dinosaurs.",88
+EP18a,Asteroid impact,76%,"About 76% of sea species; big dinosaurs, pterosaurs, ammonites","An asteroid about 10 km wide struck Chicxulub, in Mexico. Dust and soot dimmed the Sun and food chains collapsed. About 76% of sea species died, among them the ammonites and the great sea reptiles, and on land all dinosaurs except birds died out, as did the pterosaurs.",57; 88

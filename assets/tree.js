@@ -86,6 +86,8 @@
   };
   const soft = t => esc(t).replace(/[A-Za-z]{10,}/g, w => { const k = SOFT[w.toLowerCase()]; return k ? w.slice(0, k) + '\u00ad' + w.slice(k) : w; });
 
+  const LOSS = {}; (X.SI.crises || []).forEach(c => { LOSS[c.epoch_id] = c; });
+
   function curve(a, b) {
     const ax = a.x + a.w / 2, bx = b.x + b.w / 2;
     if (b.y > a.y + 1) {
@@ -111,7 +113,12 @@
       const e = X.E[i], r = L.rows[i], st = X.STOP[e.id], a = X.actOf(i);
       const cls = 'gut' + (L.narrow ? ' narrow' : '') + (X.CRISIS[e.id] ? ' crisis' : '');
       const box = '<div class="' + cls + '" style="top:' + r.y + 'px;height:' + r.h + 'px;width:' + L.G + 'px">';
-      if (X.CRISIS[e.id]) h += '<div class="crisis-row" style="top:' + r.y + 'px;height:' + r.h + 'px"></div>';
+      if (X.CRISIS[e.id]) {
+        h += '<div class="crisis-row" style="top:' + r.y + 'px;height:' + r.h + 'px"></div>';
+        // What the crisis wiped out, across the part columns; opens the moment panel.
+        const c = LOSS[e.id];
+        if (c && c.lost) h += '<button type="button" class="loss-band" data-ep="' + i + '" style="top:' + (r.y + 14) + 'px;height:' + (r.h - 28) + 'px;left:' + (L.G + 8) + 'px;width:' + (L.totalW - L.G - 16) + 'px"><span class="tri" aria-hidden="true"></span><span class="lb-txt"><b>Lost</b> ' + esc(c.lost) + '</span></button>';
+      }
       if (r.h < 40) {
         gut += box + (L.narrow ? '' : '<span class="time" style="opacity:.7">' + X.fmtShort(e.t) + '</span>') + '</div>';
         continue;
@@ -290,12 +297,27 @@
       '<dl class="trio"><dt>Bacterium</dt><dd>' + p.bacterium + '</dd><dt>You</dt><dd>' + p.you + '</dd><dt>Laptop</dt><dd>' + p.laptop + '</dd></dl>' +
       relList(X.HIST[k].length + ' upgrades, oldest first', X.HIST[k].map(u => relItem(u.id, u.detail, u.refs)));
   }
+  // Crisis moments: what was lost, the census's own before-and-after, and sources (Expert view).
+  function lossHtml(i) {
+    const e = X.E[i], c = LOSS[e.id];
+    if (!c || !c.detail || i === 0) return '';
+    const p = X.E[i - 1], drops = [];
+    if (p.bio > 0 && e.bio < p.bio * 0.9) drops.push('living carbon fell from ' + X.plain(p.bio) + ' to ' + X.numBtn('total_biomass_gt_c', X.plain(e.bio), i) + ' billion tonnes');
+    if (p.cneu > 0 && e.cneu < p.cneu * 0.9) drops.push('nerve signals fell from ' + X.sci(p.cneu) + ' to ' + X.numBtn('c_neural_ops_sec', X.sci(e.cneu), i) + ' a second');
+    const refs = String(c.refs || '').split(';').map(x => x.trim()).filter(Boolean);
+    return '<section class="dr-loss"><span class="sub"><span class="tri" aria-hidden="true"></span>What was lost</span>' +
+      (c.species_lost ? '<p class="loss-big"><b>' + esc(c.species_lost) + '</b> of sea species</p>' : '<p class="loss-big"><b>Not countable</b> · no fossils record it</p>') +
+      '<p>' + esc(c.detail) + '</p>' +
+      (drops.length ? '<p class="loss-census"><b>Census estimate</b>, against the moment before: ' + drops.join('; ') + '.</p>' : '') +
+      (refs.length ? '<details class="evid-disc sm-disc x-only"><summary>Sources for these losses (' + refs.length + ')</summary><ol class="refs">' + refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>' : '') +
+      '</section>';
+  }
   function drawEpoch(i) {
     const e = X.E[i], a = X.actOf(i), st = X.STOP[e.id];
     drawer.innerHTML = top('<span class="chip" style="background:color-mix(in srgb,' + a.color + ' 20%,var(--surface))">Act ' + a.n + ' · ' + a.name + '</span>', st ? st.who : X.titleOf(i)) +
       '<div><h2>' + esc(st ? st.who : X.titleOf(i)) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + (st ? ' · ' + esc(X.titleOf(i)) : '') + '</p></div>' +
       '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '">' + (st ? '<span class="mini">' + X.plateThumb(e.id, st.glyph) + '</span>' : '') + '<span><b>' + esc(X.hookOf(i)) + '</b><span>Visit this stop →</span></span></a>' +
-      relList('New at this moment', X.newAt(i).map(u => relItem(u.id, u.detail, u.refs))) + expertBlock(e);
+      lossHtml(i) + relList('New at this moment', X.newAt(i).map(u => relItem(u.id, u.detail, u.refs))) + expertBlock(e);
   }
   function drawDrawer() {
     if (!sel) return;
@@ -411,6 +433,8 @@
   $('actJump').addEventListener('click', ev => { const b = ev.target.closest('[data-act]'); if (b) scrollToY(L.actY[b.dataset.act] + 40); });
 
   canvas.addEventListener('click', ev => {
+    const lb = ev.target.closest('.loss-band');
+    if (lb) { selectEpoch(Number(lb.dataset.ep)); return; }
     const n = ev.target.closest('.node');
     if (n) {
       if (activePath && PATHK[activePath] && PATHK[activePath].steps.indexOf(n.dataset.id) < 0) { activePath = null; renderPaths(); }

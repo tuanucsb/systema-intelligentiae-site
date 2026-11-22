@@ -120,6 +120,14 @@
     return (t * 1e6 < 10000 ? 'In ' : 'About ') + X.fmtTime(t);
   }
 
+  // How a milestone's date is known (N1): evidence type, range and note, in the Expert block.
+  const EVID = { fossil: 'Fossil', molecular_clock: 'Gene clock', living_inference: 'Inferred from living species', measured: 'Measured', estimate: 'Estimate' };
+  function dateHtml(r) {
+    if (!r.ev) return '';
+    const range = (r.lo > 0 && r.hi > 0 && r.lo !== r.hi) ? ', between ' + X.fmtTime(r.hi) + ' and ' + X.fmtTime(r.lo) : '';
+    return '<p class="spot-src">Date: ' + esc(EVID[r.ev] || r.ev) + range + (r.dn ? '. ' + esc(r.dn) : '') + (r.ds ? ' (' + esc(r.ds) + ')' : '') + '</p>';
+  }
+
   // Plain title, date and sentence for everyone (principle 1); the formal name, circuit, counts and source in Expert view.
   function spotCard(r, neural) {
     const pills = [];
@@ -142,7 +150,7 @@
       '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
       '<p class="spot-sys"><span>' + (neural ? 'Circuit: ' + esc(r.motif) : 'Channel: ' + esc(r.chan)) + '</span></p>' +
       (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
-      '<p>' + esc(r.why) + '</p><p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p>' + esc(r.why) + '</p>' + dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
       '<p class="spot-foot"><a href="data.html#' + (neural ? 'neural' : 'networks') + '">All ' + all + (neural ? ' brain and sense milestones' : ' group networks') + ' →</a></p></div>';
   }
 

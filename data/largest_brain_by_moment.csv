@@ -1,0 +1,65 @@
+epoch_id,time_mya,animal,neurons,low,high,evidence,method,source
+EP01a,4100.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP01b,3800.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP02a,3200.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP02b,2900.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP03a,2450.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP03b,2100.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP04a,1800.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP04b,1500.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP05a,1100.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP05b,900.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP06a,650.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP06b,635.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP07a,575.0,No neurons yet,0,,,fossil,No animal with neurons before about 560 million years ago,This file
+EP07b,555.0,Box-jellyfish-like cnidarians and small worms,10000.0,3000.0,30000.0,living_inference,"Living box jellyfish carry about 10,000 neurons","Garm, O'Connor, Parkefelt & Nilsson (2007) J. Exp. Biol. 210:3616"
+EP08a,541.0,Box-jellyfish-like cnidarians and small worms,10000.0,3000.0,30000.0,living_inference,"Living box jellyfish carry about 10,000 neurons","Garm, O'Connor, Parkefelt & Nilsson (2007) J. Exp. Biol. 210:3616"
+EP08b,518.0,Radiodonts such as Anomalocaris,500000.0,100000.0,1000000.0,living_inference,"By analogy with living arthropods of similar size (crayfish to honeybee, 10^5-10^6); brains fossilise rarely (Fuxianhuia, 520 Ma)",Ma et al. (2012) Nature 490:258; Witthöft (1967) Z. Morphol. Tiere 61:160
+EP09a,470.0,Large shelled cephalopods and early fish,10000000.0,1000000.0,100000000.0,estimate,No living relative's neurons have been counted for nautiloids; range spans jawless fish to small octopus,This file
+EP09b,455.0,Large shelled cephalopods and early fish,10000000.0,1000000.0,100000000.0,estimate,No living relative's neurons have been counted for nautiloids; range spans jawless fish to small octopus,This file
+EP10a,445.0,Large shelled cephalopods and early fish,10000000.0,1000000.0,100000000.0,estimate,No living relative's neurons have been counted for nautiloids; range spans jawless fish to small octopus,This file
+EP10b,440.0,Large shelled cephalopods and early fish,10000000.0,1000000.0,100000000.0,estimate,No living relative's neurons have been counted for nautiloids; range spans jawless fish to small octopus,This file
+EP11a,425.0,Early jawed fish (placoderms),30000000.0,10000000.0,100000000.0,estimate,Fish brain-to-neuron scaling; few fish brains have been counted,"Zalc, Goujet & Colman (2008) Curr. Biol. 18:R511"
+EP11b,400.0,Early jawed fish (placoderms),30000000.0,10000000.0,100000000.0,estimate,Fish brain-to-neuron scaling; few fish brains have been counted,"Zalc, Goujet & Colman (2008) Curr. Biol. 18:R511"
+EP12a,375.0,Early jawed fish (placoderms),30000000.0,10000000.0,100000000.0,estimate,Fish brain-to-neuron scaling; few fish brains have been counted,"Zalc, Goujet & Colman (2008) Curr. Biol. 18:R511"
+EP12b,365.0,Early jawed fish (placoderms),30000000.0,10000000.0,100000000.0,estimate,Fish brain-to-neuron scaling; few fish brains have been counted,"Zalc, Goujet & Colman (2008) Curr. Biol. 18:R511"
+EP13a,320.0,Early jawed fish (placoderms),30000000.0,10000000.0,100000000.0,estimate,Fish brain-to-neuron scaling; few fish brains have been counted,"Zalc, Goujet & Colman (2008) Curr. Biol. 18:R511"
+EP13b,253.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP14a,251.9,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP14b,247.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP15a,230.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP15b,205.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP16a,201.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP16b,185.0,Large synapsids and early reptiles,100000000.0,50000000.0,500000000.0,estimate,Reptile neuron densities applied to fossil braincase volumes,Kverková et al. (2022) PNAS 119:e2121624119
+EP17a,150.0,Large theropod dinosaurs,1000000000.0,250000000.0,3300000000.0,estimate,"Disputed: 3.3 billion forebrain neurons with bird densities, 0.25-0.36 billion with reptile densities",Herculano-Houzel (2023) J. Comp. Neurol. 531:962; Caspar et al. (2024) Anat. Rec. 307:3685
+EP17b,66.05,Large theropod dinosaurs,1000000000.0,250000000.0,3300000000.0,estimate,"Disputed: 3.3 billion forebrain neurons with bird densities, 0.25-0.36 billion with reptile densities",Herculano-Houzel (2023) J. Comp. Neurol. 531:962; Caspar et al. (2024) Anat. Rec. 307:3685
+EP18a,66.0,Crocodilians and large birds that survived the asteroid,300000000.0,100000000.0,1000000000.0,estimate,Reptile and bird densities,Kverková et al. (2022) PNAS 119:e2121624119; Olkowicz et al. (2016) PNAS 113:7255
+EP18b,64.5,Crocodilians and large birds that survived the asteroid,300000000.0,100000000.0,1000000000.0,estimate,Reptile and bird densities,Kverková et al. (2022) PNAS 119:e2121624119; Olkowicz et al. (2016) PNAS 113:7255
+EP19a,50.0,Crocodilians and large birds that survived the asteroid,300000000.0,100000000.0,1000000000.0,estimate,Reptile and bird densities,Kverková et al. (2022) PNAS 119:e2121624119; Olkowicz et al. (2016) PNAS 113:7255
+EP19b,34.0,Early toothed whales and big early mammals,5000000000.0,1000000000.0,10000000000.0,estimate,Endocast volumes with mammal neuron scaling,"Herculano-Houzel (2016) The Human Advantage, MIT Press"
+EP20a,10.0,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP20b,7.0,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP21a,3.3,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP21b,2.5,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP22a,1.5,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP22b,0.4,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP23a,0.075,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP23b,0.045,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP24a,0.01,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP24b,0.006,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP25a,0.005,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP25b,0.0033,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP26a,0.0025,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP26b,0.0023,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP27a,0.0016,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP27b,0.001,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP28a,0.000576,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP28b,0.000361,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP29a,0.000182,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP29b,0.000136,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP30a,8.1e-05,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP30b,6e-05,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP31a,2.6e-05,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP31b,1.4e-05,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP32a,6e-06,Elephant relatives and sperm-whale relatives,100000000000.0,30000000000.0,300000000000.0,estimate,Scaled from the counted African elephant by endocast size,Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46
+EP32b,0.0,African elephant,257000000000.0,257000000000.0,257000000000.0,measured,"Counted (isotropic fractionator). 98% of its neurons sit in the cerebellum; a pilot whale has the most cortical neurons counted, 37 billion, against our 16 billion",Herculano-Houzel et al. (2014) Front. Neuroanat. 8:46; Mortensen et al. (2014) Front. Neuroanat. 8:132; Azevedo et al. (2009) J. Comp. Neurol. 513:532

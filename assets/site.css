@@ -662,6 +662,30 @@ body.expert .k-only { display: none !important; }
 .plot-wrap svg { display: block; width: 100%; min-width: 680px; height: auto; }
 .plot .axis { stroke: var(--line-2); } .plot .grid { stroke: var(--line); } .plot .tick { fill: var(--ink-3); font: 11px var(--body); }
 .plot .ln { fill: none; stroke-width: 2.6; stroke-linejoin: round; } .plot .pt { stroke: var(--surface); stroke-width: 1.5; }
+/* Data Lab story figures: genomes through time, biggest brain at each moment (21 Nov 2026) */
+.lab-fig { margin: 0; display: grid; gap: 10px; }
+.lab-fig figcaption h3 { font-size: 1.25rem; margin: 0 0 4px; }
+.lab-fig figcaption p { margin: 0; color: var(--ink-2); max-width: 72ch; }
+.fig-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.fig-tools .part-chip { cursor: pointer; padding: 5px 11px; }
+.fig-tools .part-chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.plot.fig .flab { fill: var(--ink-2); font: 12px var(--body); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
+.plot.fig .fp { stroke: var(--surface); stroke-width: 1.5; }
+.plot.fig .fpt { cursor: pointer; outline: none; transition: opacity .2s ease-out; }
+.plot.fig .fpt.dim { opacity: .16; pointer-events: none; }
+.plot.fig .fpt.cur .fp, .plot.fig .fpt:focus-visible .fp { stroke: var(--ink); stroke-width: 2.2; }
+.plot.fig .fref { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.fband { fill: var(--c-cpu); opacity: .16; }
+.fstep { fill: none; stroke: var(--c-cpu); stroke-width: 2.4; stroke-linejoin: round; }
+.fcrisis { fill: var(--crisis); }
+.plot.fig .fhov { stroke: var(--ink-3); stroke-dasharray: 2 3; }
+#bigSvg:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.fig-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; font-size: 13.5px; color: var(--ink-2); align-items: center; }
+.fig-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.fig-legend span:first-child { font-weight: 700; }
+.fig-read { min-height: 4.2em; }
+.fig-read .fig-src { color: var(--ink-3); font-size: 12.5px; }
+@media (prefers-reduced-motion: reduce) { .plot.fig .fpt { transition: none; } }
 .dl { display: flex; flex-wrap: wrap; gap: 8px; }
 .note-box { padding: 14px 16px; border-radius: var(--r-lg); background: var(--surface-2); font-size: 14.5px; color: var(--ink-2); }
 
@@ -1120,6 +1144,19 @@ dialog .tip { position: fixed; }
 .dr-who-link:hover { text-decoration: underline; }
 .dr-spot { --sc: var(--c-cpu); display: grid; gap: 3px; padding: 10px 12px; border-radius: var(--r-md); background: var(--surface-2); box-shadow: inset 3px 0 0 var(--sc); font-size: 13.5px; }
 .dr-spot b { font: 700 14px/1.25 var(--display); }
+/* Crisis losses on the tree: a band across the part columns and a section in the moment panel. Red means crisis (principle 5); the triangle and the word "Lost" carry it without colour. */
+.loss-band { position: absolute; z-index: 6; display: flex; align-items: center; gap: 10px; padding: 6px 14px; border-radius: var(--r-md); background: var(--surface); border: 1.5px solid var(--crisis); box-shadow: inset 4px 0 0 var(--crisis); color: var(--ink); font: 400 14px/1.3 var(--body); text-align: left; cursor: pointer; overflow: hidden; }
+.loss-band:hover { background: color-mix(in srgb, var(--crisis-soft) 60%, var(--surface)); }
+.loss-band:focus-visible { outline: 2px solid var(--crisis); outline-offset: 2px; }
+.loss-band .lb-txt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.loss-band b { color: var(--crisis-ink); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 12px; margin-right: 4px; }
+.loss-band .tri, .dr-loss .tri { flex: none; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--crisis); }
+.dr-loss { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface-2); box-shadow: inset 3px 0 0 var(--crisis); font-size: 14px; }
+.dr-loss .sub { display: flex; align-items: center; gap: 6px; color: var(--crisis-ink); }
+.dr-loss p { margin: 0; color: var(--ink-2); }
+.dr-loss .loss-big { color: var(--ink); font-size: 15px; }
+.dr-loss .loss-big b { font: 800 1.35rem/1 var(--display); color: var(--crisis-ink); margin-right: 4px; }
+.dr-loss .loss-census { font-size: 13px; }
 .dr-spot p { margin: 0; color: var(--ink-2); }
 .dr-spot a { font-weight: 700; font-size: 13px; margin-top: 2px; }
 .rel-kind { font-style: normal; font-weight: 700; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); padding: 1px 5px; border-radius: var(--r-sm); background: var(--surface-2); }
