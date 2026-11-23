@@ -1,0 +1,704 @@
+system_name,group,taxon_or_entity,organization_scale,computing_paradigm,first_appeared_years_ago,single_system_ops_sec,neurons,brain_or_core_cm3,rate_type
+E. coli cell,"Microbes, plants & fungi",Escherichia coli,Single cell,Unicellular Molecular Biochemical Computing,3.5e+09,1000,0,0,Order-of-magnitude class
+Bacterial biofilm,"Microbes, plants & fungi",Bacillus subtilis,Microbial collective,Unicellular Molecular Biochemical Computing,3e+09,150000,0,0,System estimate
+Norway spruce,"Microbes, plants & fungi",Picea abies,Multicellular plant,Cellular & Molecular Biochemical Signaling,1.3e+08,2.5e+07,0,0,System estimate
+Poplar shoot,"Microbes, plants & fungi",Populus trichocarpa,Multicellular plant,Cellular & Molecular Biochemical Signaling,5e+07,1.5e+07,0,0,System estimate
+Loblolly pine,"Microbes, plants & fungi",Pinus taeda,Multicellular plant,Cellular & Molecular Biochemical Signaling,1.4e+08,3e+07,0,0,System estimate
+C. elegans,Animals with nerves,Caenorhabditis elegans,Animal organism,Centralized Synaptic Sensorimotor Integration,5.3e+08,36000,302,5e-06,System estimate
+Fruit fly,Animals with nerves,Drosophila melanogaster,Animal organism,Arthropod Mushroom Body & Optical Flow,2.5e+08,4.9e+07,139255,0.00015,System estimate
+Mouse,Animals with nerves,Mus musculus,Animal organism,Centralized Synaptic Sensorimotor Integration,7.5e+07,8.5e+10,71000000,0.42,System estimate
+Rat hippocampal tissue,Animals with nerves,Rattus norvegicus / hippocampal CA1,Neural tissue,Centralized Synaptic Sensorimotor Integration,7.5e+07,6e+08,500000,1,System estimate
+Human individual,Animals with nerves,Homo sapiens,Animal organism,Recursive Syntactic Primate Brain,300000,1.5e+14,86060000000,1400,System estimate
+Small human group,Colonies & societies,Homo sapiens / small groups,Human collective,Recursive Syntactic Primate Brain,300000,5.25e+15,3010000000000,1350,System estimate
+Society + technology (2007),Colonies & societies,Humanity + technological infrastructure,Society + technology,Distributed Multi-Agent Collective Coordination,19,1e+24,576000000000000000000,1,System estimate
+Honeybee - individual,Animals with nerves,Apis mellifera,Individual organism,Arthropod Mushroom Body & Optical Flow,1e+08,3.4e+08,960000,0.001,System estimate
+Honeybee - collective,Animals with nerves,Apis mellifera swarm,Animal collective,Arthropod Mushroom Body & Optical Flow,3.5e+07,3.4e+08,960000,0.001,System estimate
+Tyrannosaurus rex,Animals with nerves,Tyrannosaurus rex,Individual organism (fossil),Sauropsid Archosaurian Brainstem,2.3e+08,1.3e+12,2200000000,80,System estimate
+Buriolestes schultzi,Animals with nerves,Buriolestes schultzi,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,2.31e+08,9e+10,150000000,1,System estimate
+Budding yeast cell,"Microbes, plants & fungi",Saccharomyces cerevisiae,Single eukaryotic cell,Cellular & Molecular Biochemical Signaling,1e+09,5000,0,0,System estimate
+Slime mold plasmodium,"Microbes, plants & fungi",Physarum polycephalum,Multinucleate single cell,Aneural Multicellular & Morphogenetic Computing,7.5e+08,50000,0,0,System estimate
+Sensitive plant,"Microbes, plants & fungi",Mimosa pudica,Multicellular plant,Cellular & Molecular Biochemical Signaling,3.5e+07,800000,0,0,System estimate
+House-hunting ant colony,Colonies & societies,Temnothorax spp. colony,Animal collective,Distributed Multi-Agent Collective Coordination,8e+07,2.6e+10,75000000,0.001,System estimate
+Zebrafish larva,Animals with nerves,Danio rerio,Animal organism,Vertebrate Cephalization & Retina Preprocessing,1.5e+08,6e+07,100000,0.2,System estimate
+Pigeon,Animals with nerves,Columba livia,Animal organism,Centralized Synaptic Sensorimotor Integration,3e+07,3.7e+11,310000000,2.2,System estimate
+Border collie - Chaser,Animals with nerves,Canis lupus familiaris,Animal organism,Centralized Synaptic Sensorimotor Integration,30000,2.7e+12,2250000000,135,System estimate
+Common octopus,Animals with nerves,Octopus vulgaris,Animal organism,Cephalopod Decentralized Nervous System,4.5e+08,3.8e+11,500000000,2,System estimate
+Chimpanzee,Animals with nerves,Pan troglodytes,Animal organism,Primate Stereoscopic Social Brain,2.5e+07,4.9e+13,28000000000,384,System estimate
+Halophilic archaeon cell,"Microbes, plants & fungi",Haloferax volcanii,Single cell,Unicellular Molecular Biochemical Computing,3.4e+09,1000,0,0,Order-of-magnitude class
+Giant trumpet ciliate,"Microbes, plants & fungi",Stentor coeruleus,Single-celled protist,Cellular & Molecular Biochemical Signaling,9e+08,500000,0,0,System estimate
+Slipper animalcule,"Microbes, plants & fungi",Paramecium tetraurelia,Single-celled protist,Cellular & Molecular Biochemical Signaling,1e+09,200000,0,0,System estimate
+Cellular slime mold collective,"Microbes, plants & fungi",Dictyostelium discoideum,Cellular collective,Aneural Multicellular & Morphogenetic Computing,6e+08,20000,0,0,System estimate
+Wood-decay fungal network,"Microbes, plants & fungi",Phanerochaete velutina,Multicellular fungal network,Cellular & Molecular Biochemical Signaling,3e+08,200000,0,0,System estimate
+Thale cress,"Microbes, plants & fungi",Arabidopsis thaliana,Multicellular plant,Cellular & Molecular Biochemical Signaling,2.5e+07,150000,0,0,System estimate
+Portia jumping spider,Animals with nerves,Portia fimbriata,Animal organism,Arthropod Mushroom Body & Optical Flow,6e+07,2.1e+08,600000,0.001,System estimate
+Leafcutter ant superorganism,Colonies & societies,Atta cephalotes,Animal collective,Distributed Multi-Agent Collective Coordination,5e+07,7e+14,2000000000000,0.001,System estimate
+European cuttlefish,Animals with nerves,Sepia officinalis,Animal organism,Vertebrate Cephalization & Retina Preprocessing,9e+07,7.9e+10,105000000,1.4,System estimate
+New Caledonian crow,Animals with nerves,Corvus moneduloides,Animal organism,Avian Pallial Hyperdensity Circuit,1.5e+07,1.1e+12,1150000000,7.5,System estimate
+African savanna elephant,Animals with nerves,Loxodonta africana,Animal organism,Mammalian Neocortical Lamination,5e+06,8.5e+13,257000000000,4800,System estimate
+Archaeopteryx,Animals with nerves,Archaeopteryx lithographica,Individual organism (fossil),Avian Pallial Hyperdensity Circuit,1.5e+08,1.7e+11,180000000,10,System estimate
+Stenonychosaurus / Troodon,Animals with nerves,Stenonychosaurus inequalis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,7.5e+07,1.2e+12,1200000000,1,System estimate
+Caribbean box jellyfish,Animals with nerves,Tripedalia cystophora,Non-cephalized organism,Vertebrate Cephalization & Retina Preprocessing,5.4e+08,500000,10000,0.2,System estimate
+Desert navigation ant,Animals with nerves,Cataglyphis fortis,Solitary insect navigator,Arthropod Mushroom Body & Optical Flow,8e+07,8.8e+07,250000,0.0004,System estimate
+Neanderthal,Animals with nerves,Homo neanderthalensis,Individual organism (fossil),Archaic Hyper-Encephalized Brain,300000,1.6e+14,92500000000,1600,System estimate
+Domestic pig,Animals with nerves,Sus domesticus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,9000,1.8e+12,1500000000,1,System estimate
+Rhesus macaque,Animals with nerves,Macaca mulatta,Free-living animal organism,Primate Stereoscopic Social Brain,2.5e+07,1.1e+13,6370000000,87,System estimate
+Bottlenose dolphin,Animals with nerves,Tursiops truncatus,Free-living animal organism,Cetacean High-Acoustic Encephalization,3.5e+07,7e+12,5800000000,1600,System estimate
+Mycorrhizal common mycelial network,"Microbes, plants & fungi",Pseudotsuga menziesii + Rhizopogon,Interspecific plant-fungal network,Cellular & Molecular Biochemical Signaling,1.5e+08,2e+07,0,0,System estimate
+Raven-Wolf cooperative foraging mutualism,Colonies & societies,Corvus corax + Canis lupus,Multi-species behavioral collective,Distributed Multi-Agent Collective Coordination,1e+06,7.9e+12,6600000000,1,System estimate
+Tufted capuchin monkey,Animals with nerves,Sapajus libidinosus,Free-living animal organism,Primate Stereoscopic Social Brain,2.5e+07,6.5e+12,3700000000,400,System estimate
+Army ant swarm,Animals with nerves,Eciton burchellii,Animal collective / superorganism,Arthropod Mushroom Body & Optical Flow,3.5e+07,1.2e+14,350000000000,0.001,System estimate
+Mantis shrimp,Animals with nerves,Neogonodactylus oerstedii,Free-living animal organism,Arthropod Mushroom Body & Optical Flow,1.5e+08,8.8e+08,2500000,0.001,System estimate
+Australopithecus afarensis,Animals with nerves,Australopithecus afarensis,Individual organism (fossil),Gracile Bipedal Hominin Brain,3.5e+06,5.3e+13,30500000000,445,System estimate
+Brittle star,Animals with nerves,Ophiocoma wendtii,Decentralized animal organism,Centralized Synaptic Sensorimotor Integration,4.8e+08,3e+07,250000,1,System estimate
+Honeyguide-human foraging mutualism,Colonies & societies,Indicator indicator + Homo sapiens,Multi-species behavioral mutualism,Recursive Syntactic Primate Brain,300000,3e+14,174000000000,1350,System estimate
+Killer whale matriline,Colonies & societies,Orcinus orca,Complex social matriline collective,Cetacean High-Acoustic Encephalization,3.5e+07,7.8e+14,650000000000,7000,System estimate
+Deep RL game agent (AlphaZero),AI & neural nets,Synthetic artificial neural network,Synthetic artificial agent,Synthetic Algorithmic Computing,9,2e+14,0,0,System estimate
+Cleaner wrasse,Animals with nerves,Labroides dimidiatus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,5e+07,1.2e+10,20000000,1,System estimate
+Red-footed tortoise,Animals with nerves,Chelonoidis carbonarius,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,2.2e+08,2.4e+10,40000000,1.5,System estimate
+Coconut octopus,Animals with nerves,Amphioctopus marginatus,Free-living animal organism,Cephalopod Decentralized Nervous System,4.5e+08,3.8e+11,500000000,5,System estimate
+Strawberry poison frog,Animals with nerves,Oophaga pumilio,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,5e+07,9.6e+09,16000000,1,System estimate
+Homo erectus,Animals with nerves,Homo erectus,Individual organism (fossil),Acheulean Lithic Planning Brain,1.5e+06,1.1e+14,62000000000,950,System estimate
+African grey parrot,Animals with nerves,Psittacus erithacus,Free-living animal organism,Avian Pallial Hyperdensity Circuit,2e+07,1.5e+12,1560000000,9,System estimate
+Grouper-Moray hunting mutualism,Colonies & societies,Epinephelus polyphekadion + Gymnothorax,Multi-species behavioral mutualism,Distributed Multi-Agent Collective Coordination,3e+07,4.8e+10,80000000,1,System estimate
+Frontier Multimodal Foundation Model,AI & neural nets,Synthetic transformer neural network,Synthetic artificial agent,Deep Connectionist Neural AI,3,4e+13,0,0,System estimate
+Siphonophore colony,Colonies & societies,Nanomia bijuga,Colonial animal organism,Distributed Multi-Agent Collective Coordination,5.4e+08,1e+08,2000000,1,System estimate
+Clark's nutcracker,Animals with nerves,Nucifraga columbiana,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,1.5e+07,1.2e+12,1200000000,1,System estimate
+Giant Pacific octopus,Animals with nerves,Enteroctopus dofleini,Free-living animal organism,Cephalopod Decentralized Nervous System,4.5e+08,3.8e+11,500000000,5,System estimate
+Woolly mammoth,Animals with nerves,Mammuthus primigenius,Free-living animal organism (fossil),Centralized Synaptic Sensorimotor Integration,5e+06,8.5e+13,257000000000,1,System estimate
+African wild dog pack,Colonies & societies,Lycaon pictus,Complex social pack collective,Mammalian Neocortical Lamination,3e+06,2.6e+13,22000000000,100,System estimate
+Homo floresiensis,Animals with nerves,Homo floresiensis,Individual organism (fossil),Recursive Syntactic Primate Brain,300000,5e+13,28800000000,417,System estimate
+Ichthyosaur,Animals with nerves,Ophthalmosaurus icenicus,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,1.6e+08,6e+11,1000000000,1,System estimate
+Autonomous agentic coding system,AI & neural nets,Synthetic agentic tool-using software,Synthetic artificial agent,Synthetic Algorithmic Computing,2,5e+13,0,0,System estimate
+Naked mole-rat colony,Colonies & societies,Heterocephalus glaber,Eusocial mammalian colony,Distributed Multi-Agent Collective Coordination,3e+07,9.6e+12,8000000000,32,System estimate
+Elephantnose fish,Animals with nerves,Gnathonemus petersii,Free-living animal organism,Mammalian Neocortical Lamination,8e+07,1e+11,85000000,0.6,System estimate
+Duck-billed platypus,Animals with nerves,Ornithorhynchus anatinus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,1.2e+08,3.4e+11,280000000,8.5,System estimate
+Superb lyrebird,Animals with nerves,Menura novaehollandiae,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,2.5e+07,9.1e+11,950000000,5.5,System estimate
+Sabertooth cat,Animals with nerves,Smilodon fatalis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,2e+06,4.6e+12,3800000000,470,System estimate
+Asgard archaea syntrophy,"Microbes, plants & fungi",Prometheoarchaeum syntrophicum + partner,Multi-species microbial consortium,Unicellular Molecular Biochemical Computing,2.2e+09,1200,0,0,System estimate
+Cynodont stem-mammal,Animals with nerves,Thrinaxodon liorhinus,Individual organism (fossil),Mammalian Neocortical Lamination,2.47e+08,5.4e+10,45000000,3.5,System estimate
+Autonomous scientific discovery agent,AI & neural nets,Synthetic autonomous science AI,Synthetic artificial agent,Synthetic Algorithmic Computing,2,5e+13,0,0,System estimate
+North American beaver,Animals with nerves,Castor canadensis,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,2.5e+07,6e+11,500000000,42,System estimate
+Solar-powered sea slug,Animals with nerves,Elysia chlorotica,Individual organism (symbiotic kleptoplast),Centralized Synaptic Sensorimotor Integration,2e+08,2.4e+06,20000,0.005,System estimate
+Cathedral termite colony,Colonies & societies,Macrotermes bellicosus,Complex social insect colony,Distributed Multi-Agent Collective Coordination,1e+08,1.8e+14,500000000000,600,System estimate
+Megalodon,Animals with nerves,Otodus megalodon,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,1.5e+07,1.5e+12,2500000000,1950,System estimate
+Ankylosaurid dinosaur,Animals with nerves,Euoplocephalus tutus,Individual organism (fossil),Sauropsid Archosaurian Brainstem,2.3e+08,4.8e+10,80000000,75,System estimate
+Quantum computational optimization system,Computers & chips,Synthetic quantum processor,Synthetic artificial agent,Synthetic Algorithmic Computing,6,5e+07,0,0,System estimate
+Emperor penguin huddle,Colonies & societies,Aptenodytes forsteri,Complex superorganism collective,Distributed Multi-Agent Collective Coordination,4e+07,8.6e+15,9000000000000,1.05e+05,System estimate
+Desert golden mole,Animals with nerves,Eremitalpa granti namibensis,Free-living animal organism,Arthropod Mushroom Body & Optical Flow,4e+07,4.8e+10,40000000,0.85,System estimate
+Dolphin-human cooperative fishery,Colonies & societies,Tursiops truncatus + Homo sapiens,Interspecific cooperative mutualism,Recursive Syntactic Primate Brain,300000,6.1e+14,350000000000,2950,System estimate
+Spinosaurus,Animals with nerves,Spinosaurus aegyptianus,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,9.5e+07,6e+11,1000000000,850,System estimate
+Archaic whale Basilosaurus,Animals with nerves,Basilosaurus isis,Individual organism (fossil),Cetacean High-Acoustic Encephalization,3.5e+07,3e+12,2500000000,2400,System estimate
+Evening primrose,"Microbes, plants & fungi",Oenothera drummondii,Vascular plant organism,Cellular & Molecular Biochemical Signaling,3e+07,100000,0,0,Order-of-magnitude class
+Neuromorphic spiking processor,Computers & chips,Synthetic neuromorphic architecture,Synthetic artificial agent,Synthetic Algorithmic Computing,12,4.6e+10,0,0,System estimate
+Prebiotic self-replicating ribozyme network,"Microbes, plants & fungi",RNA autocatalytic hypercycle,Prebiotic molecular network,Cellular & Molecular Biochemical Signaling,4e+09,0.2,0,0,System estimate
+Daisyworld cybernetic regulator,Computers & chips,Planetary biospheric feedback loop,Planetary cybernetic system,Engineered Physical & Digital State Switching,43,1000,0,0,Order-of-magnitude class
+Stem bilaterian flatworm,Animals with nerves,Schmidtea mediterranea,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,5.2e+08,1.2e+06,10000,0.0001,System estimate
+Sea lamprey,Animals with nerves,Petromyzon marinus,Free-living animal organism,Vertebrate Cephalization & Retina Preprocessing,4.5e+08,9e+08,1500000,0.02,System estimate
+Early mammaliaform Morganucodon,Animals with nerves,Morganucodon watsoni,Individual organism (fossil),Mammalian Neocortical Lamination,2.05e+08,1.8e+10,15000000,0.08,System estimate
+Great golden digger wasp,Animals with nerves,Sphex ichneumoneus,Free-living animal organism,Arthropod Mushroom Body & Optical Flow,1e+08,1e+08,300000,0.0008,System estimate
+Frontier autoregressive transformer,AI & neural nets,Transformer Large Language Model,Synthetic artificial agent,Deep Connectionist Neural AI,3,4e+13,0,0,System estimate
+Anomalocaris canadensis,Animals with nerves,Anomalocaris canadensis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5.08e+08,4.2e+07,120000,2.5,System estimate
+Echolocating microbat,Animals with nerves,Eptesicus fuscus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,5e+07,5.4e+10,45000000,0.95,System estimate
+European starling murmuration,Colonies & societies,Sturnus vulgaris,Complex superorganism collective,Distributed Multi-Agent Collective Coordination,3e+07,1.8e+16,19000000000000,4.8e+04,System estimate
+Sessile tunicate Ciona,Animals with nerves,Ciona intestinalis,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,5.4e+08,21000,177,1e-06,System estimate
+Weakly electric glass knifefish,Animals with nerves,Eigenmannia virescens,Free-living animal organism,Vertebrate Cephalization & Retina Preprocessing,7e+07,1.5e+10,25000000,0.35,System estimate
+Sperm whale acoustic clan,Colonies & societies,Physeter macrocephalus,Complex superorganism collective,Cetacean High-Acoustic Encephalization,3.5e+07,2.2e+15,1800000000000,3.9e+07,System estimate
+Early tool-making Homo habilis,Animals with nerves,Homo habilis,Individual organism (fossil),Early Homo Encephalization,1.8e+06,7.3e+13,42000000000,610,System estimate
+Synthetic DNA molecular storage,Writing & archives,Synthetic DNA Storage Architecture,Synthetic artificial agent,Synthetic Algorithmic Computing,12,1e+06,0,0,Order-of-magnitude class
+Placozoan aneural coordinator,"Microbes, plants & fungi",Trichoplax adhaerens,Free-living animal organism,Cellular & Molecular Biochemical Signaling,5.8e+08,25000,0,0,System estimate
+Ant surgical wound-care coordinator,Animals with nerves,Camponotus floridanus,Complex superorganism collective,Arthropod Mushroom Body & Optical Flow,8e+07,1.8e+08,500000,0.0003,System estimate
+Big-game hunting Homo heidelbergensis,Animals with nerves,Homo heidelbergensis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,450000,1.4e+14,78000000000,1250,System estimate
+Phorusrhacid apex predator Titanis,Animals with nerves,Titanis walleri,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5e+06,1.1e+12,1100000000,115,System estimate
+Hydrodynamic flagellar coordinator,"Microbes, plants & fungi",Chlamydomonas reinhardtii,Single eukaryotic cell,Cellular & Molecular Biochemical Signaling,1.2e+09,8000,0,0,System estimate
+Test-time search reasoning model,AI & neural nets,DeepSeek-R1 Architecture,Synthetic artificial agent,Self-Taught Autonomous AI,1,1.5e+14,0,0,System estimate
+Upper Paleolithic symbolic tally system,Writing & archives,Homo sapiens (Paleolithic),Sociocultural cognitive scaffold,Recursive Syntactic Primate Brain,35000,0.01,0,0,Order-of-magnitude class
+Sumerian cuneiform clay archive,Writing & archives,Homo sapiens (Sumerian),Institutional bureaucratic archive,Semantic Taxonomic Accounting Lists,5100,0.25,0,0,System estimate
+Alexandrian papyrus scroll library,Writing & archives,Bibliotheca Alexandrina,Civilizational knowledge repository,Papyrus Scroll Administrative Memory,2300,5,0,0,System estimate
+Gutenberg movable type print network,Writing & archives,Early Modern European Print,Distributed sociotechnical network,Movable Metal Type Mechanized Print,571,120,0,0,System estimate
+Planetary digital datasphere,Computers & chips,Global Cloud Technosphere,Planetary technosphere cognitive layer,Synthetic Algorithmic Computing,1,1.89e+22,0,0,System estimate
+Devonian tetrapod pioneer Tiktaalik,Animals with nerves,Tiktaalik roseae,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,3.75e+08,1.5e+10,25000000,2.2,System estimate
+Amphibious stem cetacean Pakicetus,Animals with nerves,Pakicetus inachus,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5e+07,7.2e+11,600000000,78,System estimate
+Hyperspectral predator Odontodactylus,Animals with nerves,Odontodactylus scyllarus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,1.5e+08,8.8e+08,2500000,0.015,System estimate
+Antikythera mechanical analog computer,Computers & chips,Hellenistic Bronze Mechanics,Mechanical analog computational device,Synthetic Algorithmic Computing,2126,15,0,0,System estimate
+Babbage Analytical Engine & Lovelace program,Computers & chips,Victorian Mechanical Computing,Mechanical general-purpose computer design,Mechanical Precision Computing,183,7,0,0,System estimate
+Electronic stored-program computer (ENIAC / EDVAC),Computers & chips,Electronic Digital Computing,Electronic digital stored-program computer,Stored-Program Digital Computing,81,5000,0,0,System estimate
+Permian synapsid predator Dimetrodon,Animals with nerves,Dimetrodon grandis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,2.8e+08,2.4e+10,40000000,12,System estimate
+Mesozoic aerobatic pterosaur Anhanguera,Animals with nerves,Anhanguera santanae,Individual organism (fossil),Arthropod Mushroom Body & Optical Flow,1.1e+08,6.3e+10,180000000,8.5,System estimate
+Carboniferous giant dragonfly Meganeura,Animals with nerves,Meganeura monyi,Individual organism (fossil),Sauropsid Archosaurian Brainstem,2.3e+08,3.8e+08,1100000,0.12,System estimate
+Symbiotic lichen holobiont,"Microbes, plants & fungi",Xanthoria parietina + Trebouxia,Symbiotic mutualistic consortium,Cellular & Molecular Biochemical Signaling,4e+08,5000,0,0,System estimate
+Subterranean biosonar navigator oilbird,Animals with nerves,Steatornis caripensis,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,4e+07,3.4e+11,350000000,6.2,System estimate
+Optical semaphore telegraph network,Computers & chips,Chappe Relay Network,Socio-technical communication network,Synthetic Algorithmic Computing,234,2,0,0,System estimate
+Electromagnetic telegraph & Morse network,Computers & chips,Victorian Electromagnetic Network,Technological telecommunication network,Synthetic Algorithmic Computing,182,30,0,0,System estimate
+Precambrian Ediacaran organism Fractofusus,"Microbes, plants & fungi",Fractofusus misrai,Individual organism (fossil),Cellular & Molecular Biochemical Signaling,5.7e+08,10000,0,0,Order-of-magnitude class
+Middle Pleistocene shell engraving (Trinil),Writing & archives,Homo erectus (Trinil),Individual organism / artifact,Geometric Engraving on Pseudodon Shell,500000,0.002,0,0,System estimate
+Western scrub-jay episodic cache cognition,Animals with nerves,Aphelocoma californica,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,1.5e+07,8.6e+11,900000000,3.8,System estimate
+Bullhorn acacia-ant defense holobiont,Animals with nerves,Acacia cornigera + Pseudomyrmex,Symbiotic mutualistic consortium,Arthropod Mushroom Body & Optical Flow,4e+07,8.8e+11,2500000000,0.05,System estimate
+Electric ray high-voltage electrogenesis,Animals with nerves,Torpedo marmorata,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,1.5e+08,2.7e+10,45000000,22,System estimate
+Echolocating micro-carnivorous shrew,Animals with nerves,Sorex araneus,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,4.5e+07,4.3e+10,36000000,0.22,System estimate
+ARPANET packet-switching network,Computers & chips,ARPANET IMP Network,Decentralized technological packet network,Integrated Circuit Computing,57,1e+06,0,0,Order-of-magnitude class
+World Wide Web hypertext graph,Computers & chips,CERN WWW Hypertext System,Distributed socio-technical knowledge graph,Planetary Digital Mesh,35,1e+13,0,0,Order-of-magnitude class
+Early Cambrian craniate pioneer Haikouichthys,Animals with nerves,Haikouichthys ercaicunensis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5.18e+08,2.7e+07,45000,0.003,System estimate
+Devonian armored placoderm apex predator Dunkleosteus,Animals with nerves,Dunkleosteus terrelli,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,3.6e+08,2.1e+10,35000000,18,System estimate
+Jurassic armored herbivore Stegosaurus,Animals with nerves,Stegosaurus stenops,Individual organism (fossil),Sauropsid Archosaurian Brainstem,2.3e+08,4.8e+10,80000000,56,System estimate
+Triassic apex terrestrial pseudosuchian Postosuchus,Animals with nerves,Postosuchus kirkpatricki,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,2.15e+08,9e+10,150000000,22,System estimate
+Antarctic extreme cryobiotic tardigrade Acutuncus,Animals with nerves,Acutuncus antarcticus,Free-living animal organism,Arthropod Mushroom Body & Optical Flow,5e+08,88000,250,1e-06,System estimate
+Desert low-frequency biosonar rodent Dipodomys,Animals with nerves,Dipodomys spectabilis,Free-living animal organism,Centralized Synaptic Sensorimotor Integration,2.5e+07,6.6e+10,55000000,1.45,System estimate
+Steam cylinder rotary printing press,Writing & archives,Koenig & Bauer Steam Press,Socio-technical industrial production machinery,Synthetic Algorithmic Computing,212,2500,0,0,System estimate
+Intel 4004 single-chip microprocessor,Computers & chips,Intel 4004 Microprocessor,Silicon integrated circuit computing substrate,Integrated Circuit Computing,55,92600,0,0,System estimate
+Oligocene stem catarrhine primate Aegyptopithecus,Animals with nerves,Aegyptopithecus zeuxis,Individual organism (fossil),Primate Stereoscopic Social Brain,2.5e+07,5.6e+11,320000000,27,System estimate
+Early Eocene dawn horse perissodactyl Eohippus,Animals with nerves,Eohippus angustidens,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5.2e+07,7.2e+11,600000000,22,System estimate
+Carboniferous giant terrestrial myriapod Arthropleura,Animals with nerves,Arthropleura armata,Individual organism (fossil),Arthropod Mushroom Body & Optical Flow,3.15e+08,1.8e+09,5000000,2.5,System estimate
+Legume-rhizobia root nodule holobiont,"Microbes, plants & fungi",Glycine max + Bradyrhizobium japonicum,Symbiotic plant-microbial holobiont,Unicellular Molecular Biochemical Computing,6e+07,600000,0,0,System estimate
+Social spider cooperative megacolony Anelosimus,Colonies & societies,Anelosimus eximius,Eusocial / colonial superorganism,Distributed Multi-Agent Collective Coordination,4e+07,2.1e+12,6000000000,2.5,System estimate
+Five-eyed Cambrian stem-arthropod predator Opabinia,Animals with nerves,Opabinia regalis,Individual organism (fossil),Centralized Synaptic Sensorimotor Integration,5.08e+08,9.6e+07,80000,0.015,System estimate
+Bacteriophage T4 nanomotor,"Microbes, plants & fungi",Escherichia virus T4,Acellular,Unicellular Molecular Biochemical Computing,3.5e+09,400,0,0,System estimate
+Giant pandoravirus,"Microbes, plants & fungi",Pandoravirus salinus,Acellular,Cellular & Molecular Biochemical Signaling,1.5e+09,50,0,0,System estimate
+RNA mutational quasispecies,"Microbes, plants & fungi",SARS-CoV-2,Acellular,Cellular & Molecular Biochemical Signaling,1e+08,20000,0,0,System estimate
+Blue whale infrasonic brain,Animals with nerves,Balaenoptera musculus,Eukaryota,Cetacean High-Acoustic Encephalization,3.5e+07,1.8e+13,15000000000,6800,System estimate
+Humpback whale song culture,Animals with nerves,Megaptera novaeangliae,Eukaryota,Centralized Synaptic Sensorimotor Integration,1.5e+07,1.8e+13,15000000000,6800,System estimate
+Amazon river dolphin biosonar,Animals with nerves,Inia geoffrensis,Eukaryota,Cetacean High-Acoustic Encephalization,3.5e+07,5.4e+12,4500000000,650,System estimate
+Von Neumann kinematic automaton,Computers & chips,Kinematic Automaton,Synthetic,Synthetic Algorithmic Computing,78,100,0,0,Order-of-magnitude class
+Tierra artificial life world,Computers & chips,Tierra Virtual Machine,Synthetic,Synthetic Algorithmic Computing,35,1e+07,0,0,Order-of-magnitude class
+Carnivorous plant calcium memory,"Microbes, plants & fungi",Droseraceae,Plantae > Angiosperms > Droseraceae,Cellular & Molecular Biochemical Signaling,4.5e+07,500000,0,0,System estimate
+Giant squid abyssal vision & giant axon,Animals with nerves,Oegopsida,Mollusca > Cephalopoda > Oegopsida,Cephalopod Decentralized Nervous System,4.5e+08,3.8e+11,500000000,120,System estimate
+Jacquard Automated Punched-Card Loom,Computers & chips,Automation,Technology > Industrial Revolution > Automation,Mechanical Precision Computing,222,25,0,0,System estimate
+Shannon's Theseus Maze-Solving Mouse,Computers & chips,Bell Labs,Technology > Cybernetics > Bell Labs,Synthetic Algorithmic Computing,76,20,0,0,System estimate
+Rosenblatt Mark I Perceptron,AI & neural nets,Cornell,Technology > Artificial Intelligence > Cornell,Synthetic Algorithmic Computing,68,1000,0,0,System estimate
+Hopfield Associative Attractor Network,AI & neural nets,Theoretical,Technology > Neural Networks > Theoretical,Synthetic Algorithmic Computing,44,100000,0,0,Order-of-magnitude class
+Amphioxus nerve chord,Animals with nerves,Branchiostoma lanceolatum,Biological,Vertebrate Cephalization & Retina Preprocessing,5.2e+08,180000,1500,0.0001,System estimate
+Bearded dragon 3-layer cortex,Animals with nerves,Pogona vitticeps,Biological,Sauropsid Archosaurian Brainstem,2.3e+08,1.5e+10,25000000,0.45,System estimate
+Neolithic clay token archive,Writing & archives,Neolithic Clay Accounting Tokens,Sociotechnical,Semantic Taxonomic Accounting Lists,5500,0.1,0,0,Order-of-magnitude class
+Manchester Baby electronic RAM,Computers & chips,Manchester Baby (SSEM),Technological,Stored-Program Digital Computing,78,833,0,0,System estimate
+McCulloch-Pitts logical neuron,AI & neural nets,McCulloch-Pitts Formal Neuron,Synthetic,Synthetic Algorithmic Computing,83,10,0,0,Order-of-magnitude class
+Backpropagation MLP network,AI & neural nets,Rumelhart-Hinton-Williams Backprop MLP,Synthetic,Synthetic Algorithmic Computing,40,1e+06,0,0,Order-of-magnitude class
+LeNet convolutional vision net,AI & neural nets,LeNet-5 Convolutional Neural Network,Synthetic,Synthetic Algorithmic Computing,28,2e+07,0,0,System estimate
+Chlorobium FMO quantum antenna,"Microbes, plants & fungi",Chlorobium tepidum FMO Complex,Biological,Cellular & Molecular Biochemical Signaling,3e+09,1000,0,0,Order-of-magnitude class
+Rafflesia parasitic genomic transfer,"Microbes, plants & fungi",Rafflesia arnoldii,Biological,Cellular & Molecular Biochemical Signaling,4e+07,150000,0,0,System estimate
+Deinococcus radiation repair machine,"Microbes, plants & fungi",Deinococcus radiodurans,Biological,Unicellular Molecular Biochemical Computing,2.5e+09,2500,0,0,System estimate
+Mixture of Experts transformer,AI & neural nets,Modern Sparse MoE Transformer Cluster,Synthetic,Deep Connectionist Neural AI,2,5e+12,0,0,System estimate
+Lascaux cave parietal art,Writing & archives,Upper Paleolithic Parietal Art,Sociotechnical,Parietal Visual Art Scaffolding,36000,0.01,0,0,Order-of-magnitude class
+Incan quipu knotted register,Writing & archives,Incan Khipu Decimal Textile Archive,Sociotechnical,Exosomatic Symbolic Recording & Archival Transmission,550,0.5,0,0,System estimate
+Denisovan archaic hominin,Animals with nerves,Homo denisova,Biological,Archaic Hyper-Encephalized Brain,300000,1.5e+14,88000000000,1450,System estimate
+Diderot Encyclopedie archive,Writing & archives,Encyclopedie (Diderot & d'Alembert),Sociotechnical,Exosomatic Symbolic Recording & Archival Transmission,275,350,0,0,System estimate
+Microfilm photographic library,Writing & archives,Microfilm / Microform Storage,Technological,Exosomatic Symbolic Recording & Archival Transmission,98,50000,0,0,System estimate
+Vannevar Bush Memex desk,Writing & archives,Vannevar Bush Memex (1945),Sociotechnical,Exosomatic Symbolic Recording & Archival Transmission,81,1000,0,0,Order-of-magnitude class
+Project Gutenberg digital library,Writing & archives,Project Gutenberg (1971),Sociotechnical,Movable Metal Type Mechanized Print,55,10000,0,0,Order-of-magnitude class
+Wikipedia crowdsourced graph,Writing & archives,Wikipedia Collaborative Knowledge Graph,Sociotechnical,Exosomatic Symbolic Recording & Archival Transmission,25,5e+06,0,0,System estimate
+Drosophila larva reinforcement,Animals with nerves,Drosophila melanogaster Larva,Biological,Arthropod Mushroom Body & Optical Flow,2.5e+08,3.5e+06,10000,1e-05,System estimate
+Kanzi bonobo lexigram language,Animals with nerves,Pan paniscus (Kanzi),Biological,Primate Stereoscopic Social Brain,2.5e+07,4.9e+13,28000000000,390,System estimate
+Protocell RNA world autopoiesis,"Microbes, plants & fungi",Prebiotic RNA Autopoietic Protocell,Biological,Cellular & Molecular Biochemical Signaling,4e+09,2,0,0,System estimate
+Turing 1950 imitation game,Computers & chips,Turing Machine / Imitation Game (1950),Synthetic,Stored-Program Digital Computing,76,15000,0,0,System estimate
+LSTM recurrent memory network,AI & neural nets,Long Short-Term Memory (LSTM),Synthetic,Synthetic Algorithmic Computing,29,1e+07,0,0,Order-of-magnitude class
+DeepMind DQN Atari agent,AI & neural nets,Deep Q-Network (DQN Atari 2015),Synthetic,Deep Connectionist Neural AI,11,2e+11,0,0,System estimate
+Thermodynamic diffusion model,AI & neural nets,Denoising Diffusion Probabilistic Model,Synthetic,Synthetic Algorithmic Computing,6,2e+12,0,0,System estimate
+Linear B Mycenaean clay archive,Writing & archives,Mycenaean Linear B Archives (Knossos/Pylos),Sociotechnical,Inscribed Script & Ceramic Seal Identity,3400,0.5,0,0,System estimate
+Nineveh Ashurbanipal library,Writing & archives,Ashurbanipal Royal Cuneiform Library,Sociotechnical,Cuneiform Meta-Cataloguing & Royal Library,2690,1.5,0,0,System estimate
+Dead Sea Scrolls Qumran archive,Writing & archives,Dead Sea Scrolls (Qumran Library),Sociotechnical,Papyrus Scroll Administrative Memory,2150,1,0,0,Order-of-magnitude class
+Diamond Sutra woodblock print,Writing & archives,Diamond Sutra Block Print (868 CE),Sociotechnical,Exosomatic Symbolic Recording & Archival Transmission,1158,25,0,0,System estimate
+UNISERVO magnetic tape storage,Computers & chips,UNISERVO Magnetic Tape Storage (1951),Technological,Engineered Physical & Digital State Switching,75,1905,0,0,System estimate
+Compact Disc optical ROM,Computers & chips,Compact Disc (CD-ROM 1982),Technological,Synthetic Algorithmic Computing,44,1.41e+06,0,0,System estimate
+3D NAND flash memory die,Computers & chips,3D NAND Flash Memory (232-Layer),Technological,Planetary Digital Mesh,4,1.9e+10,0,0,System estimate
+Zebra finch vocal learning circuit,Animals with nerves,Taeniopygia guttata,Biological,Avian Pallial Hyperdensity Circuit,2.5e+07,4.9e+10,51000000,0.52,System estimate
+SAR11 marine ultramicrobacterium,"Microbes, plants & fungi",Pelagibacter ubique (SAR11),Biological,Unicellular Molecular Biochemical Computing,2e+09,150,0,0,System estimate
+Paper wasp individual facial vision,Animals with nerves,Polistes fuscatus,Biological,Arthropod Mushroom Body & Optical Flow,8e+07,1.4e+08,400000,0.0008,System estimate
+Pyrococcus extreme DNA proofreading,"Microbes, plants & fungi",Pyrococcus furiosus,Biological,Unicellular Molecular Biochemical Computing,3.5e+09,1800,0,0,System estimate
+AlphaFold 2 protein structure engine,AI & neural nets,AlphaFold 2 (DeepMind 2020),Synthetic,Deep Connectionist Neural AI,6,1e+14,0,0,System estimate
+CLIP vision-language contrastive AI,AI & neural nets,Contrastive Language-Image Pretraining (CLIP),Synthetic,Synthetic Algorithmic Computing,5,5e+11,0,0,System estimate
+Whisper multilingual speech model,AI & neural nets,Whisper Multilingual Speech Model (2022),Synthetic,Synthetic Algorithmic Computing,4,3e+11,0,0,System estimate
+Maya hieroglyphic bark codex,Writing & archives,Maya Amatl Bark Codex (Dresden Codex),Sociotechnical,Externalized Symbolic Artifact,800,0.5,0,0,System estimate
+Medieval vellum scriptorium,Writing & archives,Insular Illuminated Vellum Codex (Book of Kells),Sociotechnical,Externalized Symbolic Artifact,1226,1.2,0,0,System estimate
+Ottoman imperial paper archives,Writing & archives,Ottoman Imperial Archives (Devlet Arsivleri),Sociotechnical,Externalized Symbolic Artifact,500,8,0,0,System estimate
+Transatlantic submarine cable,Computers & chips,Transatlantic Submarine Telegraph Cable (1866),Technological,Engineered Physical & Digital State Switching,160,8,0,0.001,System estimate
+Hollerith punch card tabulator,Computers & chips,Hollerith Punched Card Tabulator (1890),Technological,Mechanical Precision Computing,136,80,0,0,System estimate
+Magnetic core memory matrix,Computers & chips,Magnetic Core Memory (MIT Whirlwind 1953),Technological,Synthetic Algorithmic Computing,73,125000,0,0,System estimate
+12-High HBM3e memory stack,Computers & chips,High-Bandwidth Memory Die Stack (HBM3e 2024),Technological,Synthetic Algorithmic Computing,2,9.6e+12,0,0,System estimate
+Aplysia gill-withdrawal reflex,Animals with nerves,Aplysia californica (Kandel Circuit),Biological,Centralized Synaptic Sensorimotor Integration,4.5e+08,2.4e+06,20000,0.02,System estimate
+Tawny owl auditory space map,Animals with nerves,Strix aluco (Auditory Space Map),Biological,Avian Pallial Hyperdensity Circuit,3e+07,6.5e+11,680000000,6.5,System estimate
+Gran Dolina hominin endocast,Animals with nerves,Homo antecessor (Gran Dolina TD6),Biological,Pre-Neanderthal Lineage Brain,850000,1.2e+14,70000000000,1000,System estimate
+Mycoplasma minimal cellular genome,"Microbes, plants & fungi",Mycoplasma genitalium (Minimal Genome),Biological,Unicellular Molecular Biochemical Computing,1.5e+09,120,0,0,System estimate
+Subterranean termite gallery mesh,Animals with nerves,Reticulitermes speratus (Soil Network),Biological,Arthropod Mushroom Body & Optical Flow,1e+08,1.8e+14,500000000000,0.01,System estimate
+Desert parasitic plant gene graft,"Microbes, plants & fungi",Cistanche deserticola (Parasitic HGT),Biological,Cellular & Molecular Biochemical Signaling,3e+07,80000,0,0,System estimate
+Conway Game of Life automaton,Computers & chips,Conway's Game of Life (1970),Synthetic,Synthetic Algorithmic Computing,56,1e+06,0,0,Order-of-magnitude class
+Variational Autoencoder engine,AI & neural nets,Variational Autoencoder (VAE 2013),Synthetic,Synthetic Algorithmic Computing,13,5e+10,0,0,System estimate
+Mixture-of-Depths adaptive compute,AI & neural nets,Mixture-of-Depths Transformer (MoD 2024),Synthetic,Deep Connectionist Neural AI,2,5e+12,0,0,System estimate
+RLHF alignment policy optimizer,AI & neural nets,Reinforcement Learning from Human Feedback (RLHF),Synthetic,Synthetic Algorithmic Computing,9,2e+12,0,0,System estimate
+Trajan's Column narrative relief,Writing & archives,Trajan's Column Continuous Narrative,Sociotechnical,Externalized Symbolic Artifact,1913,0.05,0,0,System estimate
+Tripitaka Koreana woodblocks,Writing & archives,Tripitaka Koreana Haeinsa Woodblocks,Sociotechnical,Externalized Symbolic Artifact,775,60,0,0,System estimate
+Selectron electrostatic RAM tube,Computers & chips,RCA Selectron Electrostatic Memory Tube,Technological,Synthetic Algorithmic Computing,78,50000,0,0,System estimate
+RAMAC magnetic hard disk drive,Computers & chips,IBM 350 RAMAC Magnetic Hard Disk (1956),Technological,Stored-Program Digital Computing,70,8800,0,0,System estimate
+5D optical quartz nanostorage,Computers & chips,5D Optical Quartz Glass Storage (Southampton),Technological,Synthetic Algorithmic Computing,13,1e+06,0,0,Order-of-magnitude class
+Hydra nerve net and morphallaxis,Animals with nerves,Hydra vulgaris (Diffuse Nerve Net),Biological,Basal Metazoan Nerve Net & Rhopalia,5.8e+08,280000,5600,0,System estimate
+Electric eel electrolocation,Animals with nerves,Electrophorus electricus (Electrogenesis),Biological,Vertebrate Cephalization & Retina Preprocessing,6e+07,1.1e+11,180000000,8.5,System estimate
+Australian magpie song & mobbing,Animals with nerves,Gymnorhina tibicen (Cooperative Mobbing),Biological,Avian Pallial Hyperdensity Circuit,2.5e+07,7.7e+11,800000000,5.8,System estimate
+Sulfolobus CRISPR array memory,"Microbes, plants & fungi",Sulfolobus acidocaldarius (CRISPR-Cas),Biological,Unicellular Molecular Biochemical Computing,3.4e+09,1000,0,0,Order-of-magnitude class
+Telegraph plant pulvinar rhythm,"Microbes, plants & fungi",Desmodium gyrans (Pulvinar Movements),Biological,Cellular & Molecular Biochemical Signaling,3e+07,300000,0,0,System estimate
+U-Net biomedical segmentation,AI & neural nets,U-Net Architecture (Ronneberger 2015),Synthetic,Synthetic Algorithmic Computing,11,3e+11,0,0,System estimate
+Vision Transformer architecture,AI & neural nets,Vision Transformer (ViT 2020),Synthetic,Deep Connectionist Neural AI,6,1e+12,0,0,Order-of-magnitude class
+Direct Preference Optimization AI,AI & neural nets,Direct Preference Optimization (DPO 2023),Synthetic,Synthetic Algorithmic Computing,3,5e+12,0,0,System estimate
+Vinca symbols & Tartaria tablets,Writing & archives,Vinca Culture Proto-Writing Tablets,Sociotechnical,Inscribed Proto-Script Symbolic Notations,7300,0.02,0,0,System estimate
+Nag Hammadi Gnostic papyri,Writing & archives,Nag Hammadi Coptic Papyrus Codices,Sociotechnical,Parchment Codex Literary Consolidation,1680,0.8,0,0,System estimate
+Bayeux Tapestry narrative cloth,Writing & archives,Bayeux Tapestry Embroidered Linen,Sociotechnical,Externalized Symbolic Artifact,950,0.1,0,0,Order-of-magnitude class
+Williams-Kilburn CRT RAM tube,Computers & chips,Williams-Kilburn CRT Storage Tube (1947),Technological,Engineered Physical & Digital State Switching,79,83000,0,0,System estimate
+IBM 726 magnetic tape drive,Computers & chips,IBM 726 Vacuum-Column Magnetic Tape (1952),Technological,Engineered Physical & Digital State Switching,74,7500,0,0,System estimate
+Pleurobrachia ctenophore nerve net,Animals with nerves,Pleurobrachia bachei (Ctenophore Neural Net),Biological,Basal Metazoan Nerve Net & Rhopalia,5.8e+08,500000,10000,0,System estimate
+Knifefish active electrolocation,Animals with nerves,Apteronotus albifrons (Ghost Knifefish),Biological,Vertebrate Cephalization & Retina Preprocessing,7e+07,2.7e+10,45000000,0.72,System estimate
+Zinj Paranthropus boisei endocast,Animals with nerves,Paranthropus boisei (OH 5 Zinj Endocast),Biological,Robust Masticatory Hominin Brain,2e+06,6.3e+13,36000000000,530,System estimate
+Nanoarchaeum minimal symbiont,"Microbes, plants & fungi",Nanoarchaeum equitans (Minimal Symbiont),Biological,Cellular & Molecular Biochemical Signaling,2.5e+09,80,0,0,System estimate
+Dodder host-targeting microRNAs,"Microbes, plants & fungi",Cuscuta campestris (Trans-Species microRNA),Biological,Cellular & Molecular Biochemical Signaling,4e+07,85000,0,0,System estimate
+Boltzmann machine stochastic net,AI & neural nets,Boltzmann Machine (Hinton & Sejnowski 1985),Synthetic,Synthetic Algorithmic Computing,41,500000,0,0,System estimate
+ResNet deep residual network,AI & neural nets,ResNet Architecture (He et al. 2015),Synthetic,Synthetic Algorithmic Computing,11,5e+11,0,0,System estimate
+FlashAttention exact tiled attention,AI & neural nets,FlashAttention (Dao et al. 2022),Synthetic,Synthetic Algorithmic Computing,4,3e+14,0,0,System estimate
+Constitutional AI scalable alignment,AI & neural nets,Constitutional AI / RLAIF (Anthropic 2022),Synthetic,Foundation AI & Quantum,4,1e+13,0,0,Order-of-magnitude class
+Jiahu tortoise plastron symbols,Writing & archives,Jiahu Neolithic Inscribed Plastrons,Sociotechnical,Inscribed Proto-Script Symbolic Notations,8600,0.02,0,0,System estimate
+Ebla royal archive tablets,Writing & archives,Ebla Royal Palace G Cuneiform Archive,Sociotechnical,Inscribed Script & Ceramic Seal Identity,4400,0.5,0,0,System estimate
+Derveni carbonized papyrus,Writing & archives,Derveni Papyrus Philosophical Scroll,Sociotechnical,Papyrus Scroll Administrative Memory,2360,0.5,0,0,System estimate
+Atanasoff-Berry capacitor drum,Computers & chips,Atanasoff-Berry Computer Capacitor Drum (1942),Technological,Stored-Program Digital Computing,84,30,0,0,System estimate
+Holographic Versatile Disc (HVD),Computers & chips,Holographic Versatile Disc Storage (2004),Technological,Engineered Physical & Digital State Switching,22,1e+09,0,0,Order-of-magnitude class
+Staurocladia walking medusa net,Animals with nerves,Staurocladia wellingtoni (Benthic Medusa),Biological,Basal Metazoan Nerve Net & Rhopalia,5.8e+08,60000,1200,0,System estimate
+Brown thornbill deceptive mimicry,Animals with nerves,Acanthiza pusilla (Heterospecific Mimicry),Biological,Avian Pallial Hyperdensity Circuit,2.5e+07,1.7e+11,180000000,0.38,System estimate
+Little Foot StW 573 endocast,Animals with nerves,Australopithecus prometheus (StW 573),Biological,Gracile Bipedal Hominin Brain,3.5e+06,5.3e+13,30500000000,408,System estimate
+Carsonella minimal endosymbiont,"Microbes, plants & fungi",Candidatus Carsonella ruddii,Biological,Cellular & Molecular Biochemical Signaling,2e+08,40,0,0,System estimate
+Argentine ant global supercolony,Colonies & societies,Linepithema humile (Global Supercolony),Biological,Distributed Multi-Agent Collective Coordination,1e+07,3.5e+16,100000000000000,0.002,System estimate
+European mistletoe Complex I loss,"Microbes, plants & fungi",Viscum album (Mitochondrial Genome Loss),Biological,Cellular & Molecular Biochemical Signaling,1.8e+09,500,0,0,System estimate
+Pilot whale post-reproductive pod,Colonies & societies,Globicephala melas (Pilot Whale Matriarchy),Biological,Cetacean High-Acoustic Encephalization,3.5e+07,1.8e+15,1500000000000,3100,System estimate
+Kohonen self-organizing map (SOM),AI & neural nets,Self-Organizing Map (Kohonen 1982),Synthetic,Synthetic Algorithmic Computing,44,200000,0,0,System estimate
+DeepSeek-MoE dual-routing network,AI & neural nets,DeepSeek-MoE (DeepSeek-AI 2024),Synthetic,Self-Taught Autonomous AI,2,5e+12,0,0,System estimate
+Self-Rewarding Language Models,AI & neural nets,Self-Rewarding LLM / LLM-as-a-Judge (2024),Synthetic,Synthetic Algorithmic Computing,2,1e+13,0,0,Order-of-magnitude class
+Indus Valley steatite seals,Writing & archives,Indus Script Intaglio Stamp Seals,Sociotechnical,Inscribed Script & Ceramic Seal Identity,4500,0.5,0,0,System estimate
+Codex Sinaiticus parchment,Writing & archives,Codex Sinaiticus Greek Parchment Manuscript,Sociotechnical,Parchment Codex Literary Consolidation,1680,0.8,0,0,System estimate
+Bi Sheng ceramic movable type,Writing & archives,Song Movable Ceramic Type (Bi Sheng 1041),Sociotechnical,Ceramic Movable Type Print,985,40,0,0,System estimate
+Magnetic drum memory,Computers & chips,ERA 1101 / Atlas Magnetic Drum Storage (1950),Technological,Stored-Program Digital Computing,76,4000,0,0,System estimate
+Bubble memory thin-film,Computers & chips,Magnetic Bubble Memory Storage (Bell Labs 1967),Technological,Integrated Circuit Computing,59,100000,0,0,Order-of-magnitude class
+Memristive crossbar array,Computers & chips,Titanium Dioxide Memristor Array (HP Labs 2008),Technological,Synthetic Algorithmic Computing,18,1e+11,0,0,Order-of-magnitude class
+Gymnarchus low-frequency EOD,Animals with nerves,Gymnarchus niloticus (Aba Knife-Fish),Biological,Vertebrate Cephalization & Retina Preprocessing,8e+07,1.5e+11,250000000,5.2,System estimate
+Sahelanthropus TM 266 endocast,Animals with nerves,Sahelanthropus tchadensis (TM 266 Toumai),Biological,Basal Bipedal Cephalized Ape,7e+06,3.8e+13,22000000000,365,System estimate
+Harvester ant anarchic foraging,Animals with nerves,Pogonomyrmex barbatus (TCP-Like Foraging),Biological,Arthropod Mushroom Body & Optical Flow,6e+07,1.8e+12,5000000000,0.001,System estimate
+Striga host germination sensor,"Microbes, plants & fungi",Striga hermonthica (Witchweed Karrikin Sensor),Biological,Cellular & Molecular Biochemical Signaling,3e+07,60000,0,0,System estimate
+Extreme Learning Machine (ELM),AI & neural nets,Extreme Learning Machine (Huang 2006),Synthetic,Synthetic Algorithmic Computing,20,1e+09,0,0,Order-of-magnitude class
+Gated Recurrent Unit (GRU),AI & neural nets,Gated Recurrent Unit (Cho & Bengio 2014),Synthetic,Synthetic Algorithmic Computing,12,1e+11,0,0,Order-of-magnitude class
+Mistral-7B Sliding Window LLM,AI & neural nets,Mistral-7B Dense Attention (Jiang et al. 2023),Synthetic,Foundation AI & Quantum,3,1.4e+12,0,0,System estimate
+Quiet-STaR Self-Taught Reasoner,AI & neural nets,Quiet-STaR Self-Taught Reasoner (Stanford 2024),Synthetic,Self-Taught Autonomous AI,2,5e+12,0,0,System estimate
+Human Vertebrate Retina,Animals with nerves,Homo sapiens retina,Standardized,Recursive Syntactic Primate Brain,300000,1e+11,130000000,0.2,System estimate
+Mammalian Cochlea Organ of Corti,Animals with nerves,Mammalia cochlea,Standardized,Mammalian Neocortical Lamination,2e+08,5e+07,30000,0.05,System estimate
+Octopus Optic Lobe Cortex,Animals with nerves,Octopus vulgaris optic lobe,Standardized,Cephalopod Decentralized Nervous System,2.8e+08,9e+10,120000000,4.8,System estimate
+Drosophila Lobula Plate Motion Circuit,Animals with nerves,Drosophila melanogaster lobula plate,Standardized,Arthropod Mushroom Body & Optical Flow,2.5e+08,5e+06,5000,0.0001,System estimate
+Volvox carteri Multicellularity,"Microbes, plants & fungi",Volvox carteri,Standardized,Aneural Multicellular & Morphogenetic Computing,2e+08,50000,0,0,System estimate
+Xenopus Embryonic Bioelectric Field,"Microbes, plants & fungi",Xenopus laevis morphogenetic field,Standardized,Tetrapod Peripheral Sensory & Auditory,3.5e+08,100000,0,0,Order-of-magnitude class
+Human Broca-Wernicke Language Engine,Animals with nerves,Homo sapiens perisylvian language,Standardized,Recursive Syntactic Primate Brain,300000,1.75e+12,1000000000,85,System estimate
+UK Biobank Total Brain Volume Reference,Animals with nerves,Homo sapiens UK Biobank cohort,Standardized,Recursive Syntactic Primate Brain,300000,1.5e+14,86060000000,1400,System estimate
+Twin Heritability Intelligence Reference,Animals with nerves,Homo sapiens quantitative genetics,Standardized,Centralized Synaptic Sensorimotor Integration,300000,1.5e+14,86060000000,1400,System estimate
+Human EEG Evoked Potential & Alpha Speed,Animals with nerves,Homo sapiens electrophysiology,Standardized,Recursive Syntactic Primate Brain,300000,1.5e+14,86060000000,1400,System estimate
+Human Frontopolar Cortex BA10,Animals with nerves,Homo sapiens Brodmann Area 10,Standardized,Recursive Syntactic Primate Brain,300000,4.4e+11,250000000,29,System estimate
+Human Superior Longitudinal Fasciculus,Animals with nerves,Homo sapiens SLF white matter,Standardized,Recursive Syntactic Primate Brain,300000,1.4e+12,800000000,15,System estimate
+Google Sycamore Quantum Processor,Computers & chips,Google Sycamore (2019 CE),Standardized,Foundation AI & Quantum,7,5.3e+07,0,0,System estimate
+AlphaProof Formal Mathematical Reasoner,AI & neural nets,DeepMind AlphaProof (2024 CE),Standardized,Self-Taught Autonomous AI,2,3e+14,0,0,System estimate
+Mantis shrimp apposition eye,Animals with nerves,Biological / Sensory,Organ,P2: Sensory Coprocessor,2e+08,1e+08,250000,0.005,System estimate
+Pigeon optic tectum / rotundus,Animals with nerves,Biological / Sensory,Organ,P2: Sensory Coprocessor,1e+08,2e+10,20000000,0.35,System estimate
+Rat whisker barrel pathway,Animals with nerves,Biological / Sensory,Organ,P2: Sensory Coprocessor,6.5e+07,3.6e+09,3000000,0.15,System estimate
+Bat biosonar cochlear fovea,Animals with nerves,Biological / Sensory,Organ,P2: Sensory Coprocessor,5.2e+07,2.5e+08,150000,0.02,System estimate
+Glass sponge syncytial conduction,"Microbes, plants & fungi",Biological / Porifera,Organism,P1: Tissue Morphogenesis,5.8e+08,20000,0,0,System estimate
+Myxobacteria swarming ripple computer,"Microbes, plants & fungi",Biological / Eubacteria,Colony,P1: Collective Morphogenesis,2e+09,250000,0,0,System estimate
+Human arcuate fasciculus,Animals with nerves,Biological / Connectome,Module,P4: Language Faculty,300000,1e+12,600000000,14.5,System estimate
+Chimpanzee termite fishing culture,Animals with nerves,Cultural / Primatology,Tradition,P5: Behavioral Tradition,7e+06,4.9e+13,28000000000,380,System estimate
+Human default mode network (DMN),Animals with nerves,Biological / Neuroimaging,Module,P3: Cortical Encephalization,300000,2.6e+12,1500000000,120,System estimate
+Egyptian Middle Kingdom papyrus,Writing & archives,Exosomatic / Ancient Media,Archive,P5: Exosomatic Papyrus,3950,0.4,0,0,System estimate
+Clymer Columbian iron hand press,Writing & archives,Exosomatic / Print Technology,Machine,P5: Mechanized Press,213,250,0,0,System estimate
+Homunculus patagonicus endocast,Animals with nerves,Paleoneurology / Platyrrhine,Fossil,P3: Cortical Encephalization,1.75e+07,1.9e+12,1100000000,17.5,System estimate
+Google TPU v4 AI Pod cluster,Computers & chips,Synthetic / Datacenter Hardware,Supercomputer,P6: Optical Switched Supercomputing,5,1.1e+18,0,0,System estimate
+Cerebras Wafer-Scale Engine 3,Computers & chips,Synthetic / Wafer-Scale Silicon,Processor,P6: Monolithic Wafer-Scale,2,1.25e+17,0,0,System estimate
+Blowfly gyroscopic aeronavigation,Animals with nerves,Biological / Diptera,Organism,P2: Gyroscopic Sensorimotor,6.5e+07,1.2e+08,350000,0.001,System estimate
+Hawkmoth turbulent pheromone tracking,Animals with nerves,Biological / Lepidoptera,Organism,P2: Olfactory / Visual Hover,1.4e+08,4.2e+08,1200000,0.005,System estimate
+Silkmoth bistable anemotaxis engine,Animals with nerves,Biological / Lepidoptera,Organism,P2: Olfactory Anemotaxis,5000,2.8e+08,800000,0.003,System estimate
+Magnetic termite compass mound,Colonies & societies,Biological / Isoptera,Colony Architecture,P1: Stigmergic Architecture,5e+07,1.8e+14,500000000000,0,System estimate
+Subterranean termite vibrational relay,Colonies & societies,Biological / Isoptera,Colony Communication,P1: Substrate Acoustic Wave,1.3e+08,1.8e+14,500000000000,0,System estimate
+Snapping shrimp cavitation claw,Animals with nerves,Biological / Decapoda,Organ / Organism,P2: Mechanical Cavitation,5e+07,5.2e+08,1500000,0.01,System estimate
+Eusocial sponge-dwelling shrimp,Colonies & societies,Biological / Decapoda,Colony,P1: Marine Eusociality,2e+07,1e+10,30000000,0.02,System estimate
+Domestic cat visual cortex columns,Animals with nerves,Biological / Carnivora,Organ / Cortical,P3: Cortical Columns,10000,1.4e+12,1200000000,30,System estimate
+Guinea pig precocial auditory cortex,Animals with nerves,Biological / Rodentia,Organ / Organism,P3: Precocial Tonotopy,5000,2.9e+11,240000000,4,System estimate
+Tiger solitary apex infrasonic roar,Animals with nerves,Biological / Carnivora,Organism,P3: Solitary Apex Carnivore,2e+06,4.6e+12,3800000000,300,System estimate
+Lion pride cooperative hunting,Colonies & societies,Biological / Carnivora,Colony / Social Pride,P3: Social Pride Carnivore,1.5e+06,3.4e+13,28000000000,260,System estimate
+Mallard duck unihemispheric sleep,Animals with nerves,Biological / Anseriformes,Organism,P2: Asymmetric Vigilance,2e+07,3.8e+11,400000000,6.5,System estimate
+Barn owl auditory space map,Animals with nerves,Biological / Strigiformes,Organ / Organism,P2: Jeffress Coincidence,2.5e+07,6.5e+11,680000000,4.2,System estimate
+Hummingbird episodic flower memory,Animals with nerves,Biological / Trochilidae,Organism,P3: Hypermetabolic Episodic,2.2e+07,4.6e+10,48000000,0.15,System estimate
+Wandering albatross dynamic soaring,Animals with nerves,Biological / Procellariiformes,Organism,P2: Aerodynamic Harvest,3e+07,1.1e+12,1100000000,18,System estimate
+Raven perspective-taking & caching,Animals with nerves,Biological / Corvidae,Organism,P4: Theory of Mind Corvid,1e+07,2.1e+12,2170000000,14.5,System estimate
+Halobacterium salinarum bacteriorhodopsin engine,"Microbes, plants & fungi",Halobacterium salinarum,Cellular Organism,Rhodopsin photoelectric proton transport,3.2e+09,1200,0,0,System estimate
+Geobacter sulfurreducens microbial nanowire grid,"Microbes, plants & fungi",Geobacter sulfurreducens,Cellular Network,Conductive protein nanowire emergence,2e+09,150000,0,0,System estimate
+Marine Stromatolite phototactic metabolic grid,"Microbes, plants & fungi",Cyanobacteria microbial consortium,Ecological Network,Stromatolitic laminated bio-coordination,3.48e+09,1e+09,0,0,Order-of-magnitude class
+Pyrococcus furiosus hyperthermophile network,"Microbes, plants & fungi",Pyrococcus furiosus,Cellular Organism,Deep-sea hydrothermal metabolic loop,3.5e+09,1800,0,0,System estimate
+Dragonfly target interception steering,Animals with nerves,Hemicordulia tau,Biological Organism,Odonata visual predation origin,3.2e+08,1e+08,300000,0.005,System estimate
+Trap-jaw ant mandibular latch spring,Animals with nerves,Odontomachus bauri,Biological Organism,Trap-jaw spring latch mechanics,1e+08,5.2e+07,150000,0.0006,System estimate
+Desert locust looming visual collision detector,Animals with nerves,Schistocerca gregaria,Biological Subsystem / Organ,LGMD collision avoidance circuit,3e+08,1.8e+07,50000,0.002,System estimate
+Archerfish optical refraction ballistic jet,Animals with nerves,Toxotes jaculatrix,Biological Organism,Air-water ballistic optical adaptation,4.5e+07,7.2e+09,12000000,0.45,System estimate
+Tiger beetle intermittent chasing & optical gating,Animals with nerves,Cicindela repanda,Biological Organism,High-speed pursuit visual gating,1.1e+08,4.6e+12,3800000000,0.001,System estimate
+Mimic octopus skin chromatophore array,Animals with nerves,Thaumoctopus mimicus,Biological Organism,Dynamic deceptive mimicry origin,1.5e+07,3.8e+11,500000000,6.5,System estimate
+Humboldt squid bioluminescent flashing grid,Animals with nerves,Dosidicus gigas,Biological Organism,Deep-sea photophore flashing,1.8e+07,4.5e+11,600000000,28,System estimate
+Broadclub cuttlefish dynamic polarized camouflage,Animals with nerves,Sepia latimanus,Biological Organism,Polarization vision & camouflage,3e+07,1.5e+11,200000000,18,System estimate
+Chambered nautilus primitive pinhole eye,Animals with nerves,Nautilus pompilius,Biological Organism,Pinhole camera eye conservatism,5e+08,1.6e+10,40000000,0.5,System estimate
+Blue-ringed octopus flashing warning valve,Animals with nerves,Hapalochlaena maculosa,Biological Organism,Iridescent aposematic neuromuscular display,5e+06,3.8e+11,500000000,1.8,System estimate
+Allosaurus fragilis theropod dinosaur endocast,Animals with nerves,Allosaurus fragilis,Paleoneurological Fossil,Theropod vestibular balance scaling,1.5e+08,2.3e+11,380000000,150,System estimate
+Australopithecus sediba MH1 cranial endocast,Animals with nerves,Australopithecus sediba,Paleoneurological Fossil,Frontal lobe reorganization in early Homo,1.98e+06,5.1e+13,29500000000,420,System estimate
+Rodhocetus kasrani transitional whale endocast,Animals with nerves,Rodhocetus kasrani,Paleoneurological Fossil,Protocetid whale auditory adaptation,4.7e+07,2.2e+12,1800000000,350,System estimate
+Beluga whale vocal mimicry engine,Colonies & societies,Delphinapterus leucas,Biological Organism,Arctic pack ice acoustic adaptation,4e+06,3.6e+13,30000000000,2100,System estimate
+Harbor seal vibrissal hydrodynamic wake tracker,Animals with nerves,Phoca vitulina,Biological Organism,Vibrissal hydrodynamic trail following,1e+07,3.8e+12,3200000000,500,System estimate
+Walrus benthic tactile vibrissal foraging array,Animals with nerves,Odobenus rosmarus,Biological Organism,Benthic vibrissal tactile discrimination,3e+06,9e+12,15000000000,1100,System estimate
+Amazon river dolphin turbid biosonar,Animals with nerves,Inia geoffrensis,Biological Organism,Flooded forest echolocation adaptation,1.5e+07,5.4e+12,4500000000,700,System estimate
+Goffin cockatoo combinatorial tool crafting,Animals with nerves,Cacatua goffiniana,Biological Organism,Australasian parrot tool innovation,1.2e+07,5.4e+12,4500000000,8.5,System estimate
+New Zealand kea cooperative string-pulling puzzle,Animals with nerves,Nestor notabilis,Biological Organism,Alpine social puzzle cooperation,1.5e+07,2e+12,2100000000,12,System estimate
+Great tit cultural innovator transmission network,Colonies & societies,Parus major,Biological Organism,Cultural diffusion across songbird flocks,4e+06,3.8e+11,400000000,0.85,System estimate
+Acorn woodpecker social granary tree sorting,Animals with nerves,Melanerpes formicivorus,Biological Organism,Communal granary tree social caching,8e+06,6.2e+11,650000000,2.4,System estimate
+Spotted hyena clan matrilineal coalition,Colonies & societies,Crocuta crocuta,Biological Organism,Matrilineal social coalition complexity,1.5e+06,1.3e+13,11000000000,160,System estimate
+Gray wolf pack cooperative endurance hunting,Colonies & societies,Canis lupus,Biological Organism,Pack hunting cooperative stamina,1e+06,2.7e+13,22500000000,130,System estimate
+Gelada baboon lip-smacking speech rhythm,Animals with nerves,Theropithecus gelada,Biological Organism,Vocal lip-smacking speech rhythm,3.5e+06,2.1e+13,12000000000,110,System estimate
+Meerkat sentinel acoustic alarm guarding relay,Animals with nerves,Suricata suricatta,Biological Organism,Sentinel cooperative alarm signaling,3e+06,7e+14,2000000000000,6.5,System estimate
+Babbage Difference Engine No. 2,Computers & chips,Difference Engine No. 2,Exosomatic Artifact / Cultural,Difference engine finite differences,177,10,0,0,Order-of-magnitude class
+Kelvin tidal harmonic synthesizer mechanical integrator,Computers & chips,Kelvin Tide Predictor,Exosomatic Artifact / Cultural,Harmonic Fourier analog integration,154,50,0,0,System estimate
+Photonic reservoir computing core,Computers & chips,Optoelectronic Reservoir,Synthetic / Neuromorphic Hardware,Photonic reservoir computing demonstration,13,2e+10,0,0,System estimate
+DNA strand displacement molecular logic cascade,Computers & chips,Molecular DNA Circuit,Synthetic / Neuromorphic Hardware,Enzyme-free DNA digital circuit scaling,15,1e+09,0,0,Order-of-magnitude class
+Analog electronic AC network analyzer,Computers & chips,Westinghouse AC Network Calculator,Synthetic / Neuromorphic Hardware,AC network power flow analog simulation,97,200,0,0,System estimate
+Memristive crossbar neuromorphic matrix,Computers & chips,Memristor Crossbar Array,Synthetic / Neuromorphic Hardware,In-memory analog matrix multiplication,18,1e+11,0,0,Order-of-magnitude class
+OpenAI o3-mini deliberative reasoning engine,AI & neural nets,o3-mini,Synthetic / Neuromorphic Hardware,Test-time compute scaling in formal reasoning,1,8e+14,0,0,System estimate
+Anthropic Claude 3.7 Sonnet hybrid reasoning architecture,AI & neural nets,Claude 3.7 Sonnet,Synthetic / Neuromorphic Hardware,Adaptive test-time compute balancing,1,6e+13,0,0,System estimate
+Groq LPU tensor streaming deterministic architecture,Computers & chips,GroqChip LPU,Synthetic / Neuromorphic Hardware,Deterministic SRAM token streaming,2,7.5e+14,0,0,System estimate
+Frontier exascale supercomputing system,Computers & chips,HPE Cray EX235a Frontier,Synthetic / Neuromorphic Hardware,First verified exaflop scientific supercomputer,4,1.19e+18,0,0,System estimate
+DishBrain biological organoid neuromorphic interface,Computers & chips,DishBrain Organoid Interface,Synthetic / Neuromorphic Hardware,In vitro cortical electrophysiology active inference,4,1.6e+09,800000,0.001,System estimate
+Monarch butterfly sun compass navigation,Animals with nerves,Danaus plexippus,Biological Organism,Central complex polarized light integration,7.5e+07,3.3e+08,950000,0.0012,System estimate
+Drosophila whole-brain electron connectome,Animals with nerves,Drosophila melanogaster,Biological Organism,High-density optic lobe expansion,2e+07,4.9e+07,139255,0.00015,System estimate
+Praying mantis stereoscopic 3D vision,Animals with nerves,Tenodera sinensis,Biological Organism,Binocular stereoscopic disparity origin,1.5e+08,3.3e+08,950000,0.0025,System estimate
+Firefly collective phase synchronization network,Colonies & societies,Photinus pyralis,Ecological Network,Collective rhythmic bioluminescent flashing,1e+08,1.8e+10,50000000,0.05,System estimate
+Bombardier beetle pulsed explosive reactor,Animals with nerves,Brachinus crepitans,Biological Organism,Two-chamber explosive micro-reactor,1e+08,6.3e+07,180000,0.00015,System estimate
+Robber fly 30G aerial visual interceptor,Animals with nerves,Holcocephala fusca,Biological Organism,High-G visual foveate pursuit circuits,1.1e+08,1.1e+08,310000,0.00035,System estimate
+Periodical cicada 17-year prime period resonance,Animals with nerves,Magicicada septendecim,Biological Population,Prime period synchronized underground timing,2e+06,1.8e+10,50000000,0.02,System estimate
+Dung beetle Milky Way celestial compass,Animals with nerves,Scarabaeus lamarcki,Biological Organism,Nocturnal stellar polarization tracking,9e+07,1.2e+08,350000,0.0018,System estimate
+Water strider surface wave ripple triangulation,Animals with nerves,Aquarius remigis,Biological Organism,Surface tension mechanoreceptor triangulation,1e+08,4.2e+07,120000,0.00012,System estimate
+Adleman DNA Hamiltonian Path Computer,Computers & chips,Oligonucleotide ligation network,Synthetic Molecular Computer,Adleman DNA Hamiltonian graph solver,32,1e+14,0,0,Order-of-magnitude class
+CRISPR-Cas cellular chronological ticker tape,"Microbes, plants & fungi",CRISPR Cas1-Cas2 adaptation tape,Biological Subsystem / Storage,CRISPR-Cas sequential genomic movie encoding,9,2,0,0,System estimate
+Hopfield kinetic proofreading in DNA polymerase,"Microbes, plants & fungi",DNA polymerase epsilon / delta,Biological Molecular Machine,Polymerase exonuclease kinetic proofreading,3.7e+09,1000,0,0,Order-of-magnitude class
+Chromatin histone code & methylation epigenetic memory,Animals with nerves,Homo sapiens / Eukaryotic nucleus,Biological Molecular Memory,Histone code epigenetic memory origin,300000,1.5e+14,86060000000,1400,System estimate
+Bacterial restriction-modification pattern recognizer,"Microbes, plants & fungi",Escherichia coli EcoRI system,Biological Molecular Defense,Palindromic self-vs-non-self cleavage,3e+09,50,0,0,System estimate
+Autonomous DNA origami bipedal walker nanorobot,Computers & chips,Synthetic DNA molecular motor,Synthetic Molecular Machine,Autonomous DNA origami walker navigation,15,1e+09,0,0,Order-of-magnitude class
+Ribosomal mRNA translation decoding machine,"Microbes, plants & fungi",Thermus thermophilus 70S ribosome,Biological Molecular Machine,Ribosomal peptidyl transferase error selection,3.8e+09,20,0,0,System estimate
+Calyx of Held giant auditory brainstem synapse,Animals with nerves,Rattus norvegicus / Mus musculus,Biological Organism / Neural Circuit,Mammalian high-frequency binaural acoustic localization,7.5e+07,120000,1,0.002,System estimate
+Electric fish Jamming Avoidance Response phase comparator,Animals with nerves,Eigenmannia virescens,Biological Organism,Electric organ discharge and phase comparator circuit,1e+08,1.5e+10,25000000,0.00075,System estimate
+Star-nosed mole ultra-fast tactile foveator,Animals with nerves,Condylura cristata,Biological Organism,Eimer organ tactile foveation specialization,4e+07,9e+10,75000000,0.0012,System estimate
+Peregrine falcon 320 km/h dive visual interceptor,Animals with nerves,Falco peregrinus,Biological Organism,Bifoveal predatory plunge spiral control,1.5e+07,8.2e+11,850000000,0.0105,System estimate
+Mustached bat Doppler-shifted echo-delay computational map,Animals with nerves,Pteronotus parnellii,Biological Organism,FM-FM auditory cortical range mapping,3e+07,3.8e+10,32000000,0.00038,System estimate
+Humboldt squid unmyelinated giant axon escape system,Animals with nerves,Dosidicus gigas,Biological Organism,Squid third-order giant axon mantle escape,1.6e+08,3.8e+11,500000000,0.025,System estimate
+Pacific electric ray synchronous electrocyte stack,Animals with nerves,Torpedo californica,Biological Organism,Synchronous cholinergic electrocyte battery,5e+07,2.7e+10,45000000,0.012,System estimate
+Shen et al. Integrated Coherent Nanophotonic Processor,Computers & chips,Mach-Zehnder interferometer mesh,Synthetic Optical Computer,Programmable MZI mesh optical matrix multiplication,9,1e+12,0,0,Order-of-magnitude class
+Lightmatter Envise Photonic AI Accelerator,Computers & chips,Silicon photonic tensor core,Synthetic AI Accelerator,Integrated commercial photonic tensor accelerator,9,1e+12,0,0,Order-of-magnitude class
+Nozaki et al. Ultralow-Energy Photonic Crystal All-Optical Switch,Computers & chips,Photonic crystal nanocavity,Synthetic Nanophotonic Switch,Sub-femtojoule all-optical nanocavity switch,16,1e+10,0,0,Order-of-magnitude class
+Wang et al. Thin-Film Lithium Niobate Integrated Electro-Optic,Computers & chips,Lithium Niobate (TFLN) Modulator,Synthetic Optoelectronic Device,Thin-film lithium niobate 100 GHz electro-optic modulation,3,1e+11,0,0,Order-of-magnitude class
+Takeuchi et al. Adiabatic Quantum-Flux-Parametron AQFP,Computers & chips,Superconducting AQFP microprocessor,Synthetic Cryogenic Computer,Sub-nanowatt adiabatic superconducting microprocessor,3,5e+09,0,0,System estimate
+Likharev-Mukhanov Rapid Single Flux Quantum RSFQ Logic,Computers & chips,Superconducting RSFQ shift register,Synthetic Cryogenic Computer,Rapid Single Flux Quantum logic at sub-terahertz frequencies,35,3e+10,0,0,System estimate
+Yao et al. 128x128 Fully-Integrated Memristive Crossbar Accelerator,Computers & chips,TaOx/HfOx RRAM crossbar array,Synthetic Neuromorphic Processor,Hardware-implemented memristor convolutional neural network,18,1e+11,0,0,Order-of-magnitude class
+IBM NorthPole Brain-Inspired Neural Inference Architecture,Computers & chips,Monolithic 12nm digital inference chip,Synthetic Neural Processor,IBM NorthPole near-memory neural inference architecture,3,4e+14,0,0,System estimate
+Tree-of-Thoughts Deliberative Problem Solver,AI & neural nets,Tree-of-Thoughts / Search-over-Thoughts,Synthetic Algorithmic Framework,Tree of thoughts deliberate problem solving with LLMs,3,1.5e+13,0,0,System estimate
+Hippocampal Sharp-Wave Ripple Replay Deliberator,Animals with nerves,Rattus norvegicus / Mammalian CA1-CA3 hippocampus,Biological Cognitive Subsystem,Hippocampal sharp-wave ripple forward path trajectory replay,2.2e+08,2.4e+11,200000000,2,System estimate
+Intel Hala Point 1.15-Billion Neuron Neuromorphic System,Computers & chips,Intel Labs Hala Point,Synthetic / Neuromorphic Hardware,1.15-billion-neuron neuromorphic system,2,3.8e+14,0,0.05,System estimate
+SpiNNaker 2 10-Million Core Neuromorphic Supercomputer,Computers & chips,TU Dresden / Univ. Manchester SpiNNaker 2,Synthetic / Neuromorphic Hardware,10-million core neuromorphic supercomputer,2,1e+14,0,0.08,System estimate
+Tenstorrent Blackhole Standalone RISC-V Tensix AI Processor,Computers & chips,Tenstorrent Blackhole,Synthetic / Silicon Hardware,Standalone RISC-V Tensix processor,2,7.4e+14,0,0.03,System estimate
+Google TPU v5p AI Pod with Optical Circuit Switches,Computers & chips,Google TPU v5p Pod,Synthetic / Supercomputer Hardware,Optical circuit-switched AI pod,3,4.1e+18,0,15,System estimate
+Claude 3.7 Sonnet Hybrid Reasoning Architecture,AI & neural nets,Anthropic Claude 3.7 Sonnet,Synthetic / Deliberative AI,Hybrid reflex / test-time deliberative foundation model,1,6e+13,0,0,System estimate
+Triceratops horridus Endocast,Animals with nerves,Triceratops horridus,Paleoneurological Fossil,"Ceratopsian endocast (71 cm³ volume, EQ ~ 0.12)",6.6e+07,3.9e+11,650000000,0.075,System estimate
+Coenobita clypeatus (Terrestrial Hermit Crab) Olfactory System,Animals with nerves,Coenobita clypeatus,Biological Organism,Terrestrial olfactory aesthetasc microglomerular array,2.5e+08,8.8e+08,2500000,0.008,System estimate
+Sternopygus macrurus High-Frequency Medullary Pacemaker,Animals with nerves,Sternopygus macrurus,Biological Organism,Medullary pacemaker sub-microsecond firing precision,1e+08,1.3e+10,22000000,0.0012,System estimate
+Reticulitermes speratus Subterranean Swarm Colony,Colonies & societies,Reticulitermes speratus,Biological Organism / Swarm,Termite stigmergic nest building and collective intelligence,1.4e+08,1.8e+14,500000000000,0.045,System estimate
+IBM Heron 156-Qubit Heavy-Hex Quantum Processor,Computers & chips,IBM Quantum Heron,Synthetic / Quantum Hardware,156-qubit heavy-hex quantum processor,2,2.5e+08,0,0.02,System estimate
+Quantinuum H2-1 Trapped-Ion Quantum Engine,Computers & chips,Quantinuum System Model H2,Synthetic / Quantum Hardware,56-qubit all-to-all trapped-ion quantum engine,2,100000,0,0.03,System estimate
+BrainScaleS-2 Accelerated Analog Neuromorphic System,Computers & chips,Heidelberg Univ. BrainScaleS-2,Synthetic / Neuromorphic Hardware,"10,000x accelerated analog neuromorphic processor",4,2.5e+11,0,0.001,System estimate
+NTT Coherent Ising Machine (CIM) Optical Processor,Computers & chips,NTT Coherent Ising Machine,Synthetic / Optical Hardware,"2,000-node optical parametric oscillator Ising solver",10,1e+12,0,1000,Order-of-magnitude class
+Trap-jaw spider ballistic chelicerae latch,Animals with nerves,Mecysmaucheniidae sp.,Biological Organism,Power-amplified chelicerae latch mechanism,1.6e+08,1.8e+07,50000,0.00015,System estimate
+Dragonfly target interception flight circuit,Animals with nerves,Sympetrum striolatum,Biological Organism,Target-selective descending visual interception neurons,3e+08,3.5e+08,1000000,0.0018,System estimate
+Star-nosed mole 11th ray tactile foveation,Animals with nerves,Condylura cristata,Biological Organism,Eimer organ tactile fovea specialization,3.5e+07,9e+10,75000000,1.1,System estimate
+Locust lobula giant movement detector looming neuron,Animals with nerves,Locusta migratoria,Biological Organism,LGMD collision avoidance dendritic multiplier,3.1e+08,1.2e+08,350000,0.0035,System estimate
+Fairyfly micro-wasp anucleate nervous system,Animals with nerves,Megaphragma amalphitanum,Biological Organism,Nuclear lysis for somatic volume reduction,1e+08,1.6e+06,4600,2e-06,System estimate
+Etruscan pygmy shrew cortical barrel cortex,Animals with nerves,Suncus etruscus,Biological Organism,Extreme mass-specific metabolic acceleration,1.5e+07,4.3e+10,36000000,0.06,System estimate
+Bowhead whale extreme conduction cable,Animals with nerves,Balaena mysticetus,Biological Organism,Extreme body mass elongation across cetaceans,1.8e+07,1.8e+13,15000000000,2800,System estimate
+Common ostrich cursorial sensorimotor tract,Animals with nerves,Struthio camelus,Biological Organism,Cursorial giant bipedal locomotion,2e+07,9.1e+11,950000000,42,System estimate
+Giant Gippsland earthworm median giant fiber,Animals with nerves,Megascolides australis,Biological Organism,Giant unmyelinated escape fiber evolution,4e+07,1.6e+08,450000,0.015,System estimate
+Memristive RRAM in-memory computing crossbar,Computers & chips,128x64 TaOx/HfOx Crossbar,Synthetic Device,Integrated memristor RRAM analog crossbar,4,2e+13,0,0,System estimate
+Programmable nanophotonic matrix processor,Computers & chips,56 Mach-Zehnder Interferometers,Synthetic Device,Coherent silicon nanophotonic matrix processor,9,1e+12,0,0,Order-of-magnitude class
+Phase-change memory (PCM) deep learning accelerator,Computers & chips,Ge2Sb2Te5 Multilevel Array,Synthetic Device,Multilevel phase-change in-memory compute,5,1e+13,0,0,Order-of-magnitude class
+QwQ-32B open deliberative reasoning model,AI & neural nets,QwQ-32B-Preview,Synthetic Model,Open-weight deliberative chain-of-thought model,1,6.4e+12,0,0,System estimate
+Grandmaster classical vs blitz chess deliberative search,Animals with nerves,Homo sapiens (Chess Masters),Cognitive Architecture,Standardized time clock deliberative competition,1851,1.5e+14,86060000000,1400,System estimate
+Human Go dual-process intuition vs MCTS deliberation,Animals with nerves,Homo sapiens (Go Masters),Cognitive Architecture,Heuristic intuition vs deep deliberate search,2500,1.5e+14,86060000000,1400,System estimate
+Human 3D mental rotation chronometric computer,Animals with nerves,Homo sapiens (Parietal Cortex),Cognitive Architecture,Parietal spatial analog transformation faculty,40000,1.5e+14,86060000000,1400,System estimate
+Cell-free synthetic transcriptional toggle switch,"Microbes, plants & fungi",in vitro TetR/LacI Switch,Synthetic Molecular,Cell-free synthetic gene regulatory network,26,0.05,0,0,System estimate
+Mammalian synthetic biology CRISPR logic classifier,"Microbes, plants & fungi",HEK293 CRISPR Logic Gate,Synthetic Biological,CRISPR-Cas9 transcriptional logic gate,12,1,0,0,Order-of-magnitude class
+European robin cryptochrome radical-pair quantum compass,Animals with nerves,Erithacus rubecula (Cryptochrome),Biological Organism,Cryptochrome-4 radical pair magnetoreception,5e+07,1.9e+11,200000000,0.42,System estimate
+Neuronal microtubule tryptophan resonance energy transfer network,Animals with nerves,Homo sapiens (Tubulin Lattice),Subcellular Polymer,Tubulin aromatic lattice resonance energy transfer,300000,1.5e+14,86060000000,1400,System estimate
+Cryogenic silicon spin qubit quantum processor core,Computers & chips,Intel Tunnel Falls (12-dot array),Synthetic Quantum,Cryogenic silicon spin qubit processor,3,1.2e+07,0,0,System estimate
+Cryogenic superconducting transmon quantum processor,Computers & chips,Google Sycamore / Willow Processor,Synthetic Quantum,Superconducting Josephson junction transmon array,2,2e+08,0,0,System estimate
+Fungal mycelium spike-train electrical communication network,"Microbes, plants & fungi",Schizophyllum commune (Mycelium),Biological Colony,Syncytial fungal hyphal electrical spiking,4e+08,15000,0,0,System estimate
+Cyanobacterial lens-guided phototactic micro-steering,"Microbes, plants & fungi",Synechocystis sp. PCC 6803,Biological Organism,Spherical micro-optic cellular light refraction,2.7e+09,1200,0,0,System estimate
+Sperm whale biosonar acoustic spermaceti projector,Animals with nerves,Physeter macrocephalus (Biosonar),Biological Organism,Hypertrophied spermaceti acoustic biosonar lens,2.5e+07,2.2e+13,18000000000,7800,System estimate
+Bacterial quorum sensing autoinducer diffusion channel,"Microbes, plants & fungi",Vibrio fischeri (Quorum Circuit),Biological Colony,Acyl-homoserine lactone diffusion signaling,1.5e+09,1500,0,0,System estimate
+MuZero learned latent-model planning architecture,AI & neural nets,MuZero Search Engine,Synthetic System,Learned latent-model planning architecture,6,2.5e+14,0,0,System estimate
+Tree-of-Thoughts heuristic deliberate search framework,AI & neural nets,Tree-of-Thoughts (ToT),Synthetic Algorithm,Tree-of-Thoughts heuristic search framework,3,1.5e+13,0,0,System estimate
+Voyager 1 interstellar deep-space communication channel,Computers & chips,Voyager 1 Telemetry (Deep Space),Exosomatic Network,Interstellar deep-space telemetry transmission,49,24000,0,0,System estimate
+Transatlantic Amitie submarine fiber-optic cable network,Computers & chips,Amitie Subsea Cable (Bordeaux-Lynn),Exosomatic Network,Transatlantic coherent optical fiber highway,3,4e+14,0,0,System estimate
+Advanced LIGO gravitational-wave computational interferometer,Computers & chips,LIGO Hanford & Livingston Observatories,Exosomatic Sensor,Relativistic laser interferometric strain sensing,11,1e+12,0,0,Order-of-magnitude class
+Chicago-New York high-frequency trading microwave link,Computers & chips,McKay Brothers Microwave Line,Exosomatic Network,Atmospheric line-of-sight microwave trading link,14,1e+10,0,0,Order-of-magnitude class
+Bitcoin global thermodynamic proof-of-work consensus network,Computers & chips,Bitcoin Global ASIC Hash Network,Exosomatic Network,Thermodynamic proof-of-work global consensus,17,5e+23,0,0,System estimate
+Megaphragma caribea anucleated micro-wasp brain,Animals with nerves,Megaphragma caribea (Brain),Biological Organism,Miniaturized nervous system where 95% of adult neurons undergo nuclea...,1e+08,5.5e+06,4600,8e-07,System estimate
+Octopus vulgaris peripheral brachial plexus reflex loop,Animals with nerves,Octopus vulgaris (Arm Nerve Cord),Biological Organism,Decentralized peripheral motor program controlling autonomous reachin...,2.75e+08,2.25e+11,300000000,7.9,System estimate
+Pecten maximus distributed mirror-retina optical threat reflex,Animals with nerves,Pecten maximus (Visceral Loop),Biological Organism,Concave multilayer reflector eyes driving rapid adductor muscle valve...,4.8e+08,3e+07,250000,0.045,System estimate
+Giant squid delayed-rectifier potassium channel kinetics,"Microbes, plants & fungi",Loligo pealeii (Kv Channel),Subcellular Complex,Voltage-gated potassium channel macromolecular gating mediating actio...,4.5e+08,600,0,0,System estimate
+Celestial AI Photonic Fabric optical interconnect,Computers & chips,Celestial AI Photonic Fabric,Synthetic Hardware,Multi-wavelength optical interconnect fabric decoupling compute from ...,2,1.4e+13,0,0,System estimate
+Lightelligence PACE Photonic Arithmetic Computing Engine,Computers & chips,Lightelligence PACE,Synthetic Hardware,Coherent Mach-Zehnder interferometer matrix multiplier accelerating N...,3,1e+13,0,0,Order-of-magnitude class
+Carbon nanotube FET RV16X-Nano RISC-V microprocessor,Computers & chips,RV16X-Nano CNFET (MIT),Synthetic Hardware,Full 16-bit RISC-V microprocessor fabricated entirely from carbon nan...,7,1e+06,0,0,System estimate
+Bacterial chemotaxis CheA/CheY phosphorylation cascade,"Microbes, plants & fungi",Escherichia coli (Chemotaxis),Subcellular Network,Transmembrane receptor clustering and phosphorylation cascade amplify...,3.5e+09,1000,0,0,Order-of-magnitude class
+Synthetic RNA toehold switch cell-free molecular logic gate,"Microbes, plants & fungi",Synthetic RNA Toehold Cascade,Synthetic Biomolecular,Toehold-mediated RNA strand displacement executing multi-input digita...,12,5,0,0,System estimate
+Microtubule cytoskeletal bundle ionic soliton wave network,"Microbes, plants & fungi",Homo sapiens (Cytoskeleton),Subcellular Polymer,Non-linear ionic wave propagation along electrical double layers of n...,1.8e+09,20000,0,0,System estimate
+Anthropic Claude 3.5 Sonnet deliberative reasoning chain,AI & neural nets,Claude 3.5 Sonnet (CoT),Synthetic Software,Extended chain-of-thought autoregressive deliberation exploring compl...,2,3e+13,0,0,System estimate
+Google Gemini 1.5 Pro massive multimodal KV-cache attention system,AI & neural nets,Gemini 1.5 Pro (2M Context),Synthetic Software,Sparse mixture-of-experts transformer sustaining 2-million-token acti...,2,5e+13,0,0,System estimate
+Distributed autonomous multi-agent swarm orchestration network,AI & neural nets,AutoGen Multi-Agent Swarm,Synthetic Software,Multi-agent conversational orchestration resolving complex software e...,3,3e+13,0,0,System estimate
+Neural algorithmic reasoning Graph Neural Network processor,AI & neural nets,CLRS-30 Algorithmic GNN,Synthetic Software,Message-passing graph neural network executing classic algorithms (Be...,4,2e+11,0,0,System estimate
+Event Horizon Telescope global VLBI synthetic aperture array,Computers & chips,Event Horizon Telescope (EHT),Exosomatic,Earth-diameter synthetic radio telescope synthesizing 1.3 mm observat...,7,1e+14,0,0,Order-of-magnitude class
+Square Kilometre Array exascale correlator and beamformer,Computers & chips,SKA Central Signal Correlator,Exosomatic,"Exascale digital signal processing pipeline cross-correlating 131,072...",2,5e+16,0,0,System estimate
+James Webb Space Telescope Sun-Earth L2 telemetry link,Computers & chips,JWST Ka-band Telecom (L2),Exosomatic,Electromagnetic telemetry bridge across 1.5 million kilometers of int...,5,2.4e+08,0,0,System estimate
+Starlink v2 space-mesh optical inter-satellite laser link,Computers & chips,Starlink Optical ISL Mesh,Exosomatic,Free-space optical laser mesh routing data between low-Earth-orbit sa...,6,1.2e+15,0,0,System estimate
+Interplanetary Internet Delay-Tolerant Network Mars relay,Computers & chips,NASA DTN Mars-Earth Relay,Exosomatic,Bundle protocol routing scientific payloads across Mars orbiters and ...,14,1e+08,0,0,Order-of-magnitude class
+Escherichia coli 70S Ribosome,"Microbes, plants & fungi",Ribosomal Peptide Translation Complex,Biological,Macromolecular Complex,3.8e+09,20,0,0,System estimate
+Escherichia coli DNA Polymerase III,"Microbes, plants & fungi",Replisome Sliding-Clamp Complex,Biological,Macromolecular Complex,3.7e+09,1000,0,0,Order-of-magnitude class
+Mnemiopsis leidyi Syncytial Net,Animals with nerves,Ctenophore Syncytial Nerve Net,Biological,Epithelial Syncytium,6e+08,500000,10000,0.0001,System estimate
+Aeshna cyanea Visual Pursuit,Animals with nerves,Target-Selective Descending Interneuron,Biological,Insect Ventral Cord,3.2e+08,5e+06,15000,0.005,System estimate
+Locusta migratoria Looming Detector,Animals with nerves,Lobula Giant Movement Detector (LGMD),Biological,Insect Optic Lobe,2.4e+08,2e+06,5000,0.006,System estimate
+Gryllus bimaculatus Directional Hearing,Animals with nerves,Tracheal Acoustic Phase Subtraction Network,Biological,Acoustic Tracheal Organ,1.8e+08,3e+06,10000,0.002,System estimate
+Calyx of Held Giant Synapse,Animals with nerves,Auditory Brainstem Endplate Terminal,Biological,Giant Synaptic Terminal,7.5e+07,120000,1,1.8,System estimate
+Human Fast-Spiking Basket Interneuron,Animals with nerves,Cortical Parvalbumin-Positive Interneuron,Biological,Neocortical Circuit,300000,1e+06,1,1400,System estimate
+Vertebrate Neuromuscular Junction,Animals with nerves,Cholinergic Motor Endplate Synapse,Biological,Myoneural Junction,4.6e+08,40000,1,12,System estimate
+Nav1.2 Voltage-Gated Sodium Pore,"Microbes, plants & fungi",Axonal Initial Segment Channel Complex,Biological,Ion Channel Complex,6e+08,1500,0,0,System estimate
+DeepSeek-V3 MoE Architecture,AI & neural nets,671B Sparse Mixture-of-Experts Model,Artificial / In Silico,Sparse MoE GPU Cluster,2,1.5e+13,0,0,System estimate
+TSMC 3nm N3E FinFET Inverter,Computers & chips,3nm Advanced CMOS Logic Standard Cell,Solid-State,FinFET / GAA Silicon,3,5e+13,0,0,System estimate
+Mythic M1076 Analog Processor,Computers & chips,Analog Compute-in-Memory Matrix Engine,Solid-State,Multi-Level Flash Array,5,2.5e+13,0,0,System estimate
+IonQ Forte 36-Qubit Trapped Ion,Computers & chips,Barium-133 Trapped-Ion Quantum Processor,Quantum,Linear Paul Ion Trap,3,40000,0,0,System estimate
+QuEra Aquila 256 Neutral Atom,Computers & chips,Programmable Rydberg Atom Array,Quantum,Optical Tweezer Array,3,2e+06,0,0,System estimate
+Hapalochlaena lunulata Ring Flare,Animals with nerves,Neurotoxic Warning Iridophore System,Biological,Distributed Chromatophore Organ,1.5e+07,9e+10,120000000,0.8,System estimate
+Reversible Flux Quantum Core (RQL),Computers & chips,Adiabatic Reversible Superconducting Core,Superconducting,Zero Static Power Cryo Core,15,1e+10,0,0,Order-of-magnitude class
+Intel Horse Ridge II Cryo-CMOS,Computers & chips,Cryogenic Qubit Control SoC (4 Kelvin),Solid-State Cryo,22nm FinFET Cryo-CMOS,6,1e+10,0,0,Order-of-magnitude class
+SNSPD Superconducting Detector,Computers & chips,Nanowire Single-Photon Detector Array,Superconducting,WSi Nanowire Meander,13,1e+09,0,0,Order-of-magnitude class
+Solenopsis invicta Floating Raft,Colonies & societies,Viscoelastic Living Floating Metamaterial,Biological Superorganism,Interlocking Cuticular Assembly,2e+07,8.8e+12,25000000000,0,System estimate
+ECMWF IFS Weather Forecast Model,Computers & chips,Exascale 4D-Var Global Atmosphere Model,Anthropogenic Global Model,Global Spectral Grid HPC Cluster,45,1e+17,0,0,Order-of-magnitude class
+Argo Ocean Profiling Robot Float Array,Computers & chips,Global Autonomous Oceanographic Sensor Web,Robotic Sensor Network,4000 Autonomous Robotic CTD Floats,26,4e+07,0,0,System estimate
+Global Seismographic Network (GSN),Computers & chips,Planetary Real-Time Seismic Telemetry Web,Geophysical Network,150 Broadband 24-Bit Seismic Stations,35,5e+08,0,0,System estimate
+NASA Deep Space Network 70m Dishes,Computers & chips,Interplanetary High-Gain Aperture Array,Telecommunications,70-Meter Cassegrain Parabolic Antennas,63,5e+11,0,0,System estimate
+NOAA CarbonTracker Data System,Computers & chips,4D Atmospheric Carbon Flux Inversion Web,Anthropogenic Planetary Model,Atmospheric Transport & OCO-2 Satellite Inversion,19,2e+13,0,0,System estimate
+Homo sapiens Jebel Irhoud Endocast,Animals with nerves,Early Anatomically Modern Human Cranium,Biological,Archaic-Modern Transition Brain,315000,1.5e+14,86060000000,1400,System estimate
+Blombos Engraved Ochre M1-6,Writing & archives,Middle Stone Age Abstract Symbolic Engraving,Artifactual,Exosomatic Symbolic Memory,75000,0.005,0,0,System estimate
+Upper Paleolithic Atlatl System,Computers & chips,Ballistic Kinetic Spearthrower Accelerator,Artifactual,Exosomatic Mechanical Amplifier,21000,2,0,0,System estimate
+Nvidia Blackwell B200 NVL72,Computers & chips,Rack-Scale Exascale AI Superchip,Silicon / Digital,Multi-Die FinFET NVLink Architecture,2,7.2e+17,0,0,System estimate
+JCVI-syn3.0 Synthetic Minimal Cell,"Microbes, plants & fungi",De Novo Chemically Synthesized Minimal Genome,Synthetic / Biological,Synthetic Circular Chromosome,10,150,0,0,System estimate
+CRISPR-Cas12a Molecular Logic Gate,"Microbes, plants & fungi",Single-Molecule Trans-Cleavage Logic Detector,Biochemical / Enzymatic,Ribonucleoprotein / Guide RNA Complex,6,2,0,0,System estimate
+Xenobots Biological Micro-Robot,"Microbes, plants & fungi",Computer-Designed Reconfigurable Living Organism,Synthetic / Multicellular,Xenopus Stem Cell Actuator Array,6,5000,0,0,System estimate
+Desmodus rotundus Social Sharing Brain,Animals with nerves,Reciprocal Altruism Social Memory Core,Biological,Telencephalic Associative Nuclei,1e+07,5.8e+11,480000000,1.05,System estimate
+Danaus plexippus Sun Compass Circuit,Animals with nerves,Time-Compensated Navigational Sun Compass,Biological,Central Complex Navigational Array,1.5e+07,3.3e+08,950000,0.003,System estimate
+LHC Level-1 FPGA Real-Time Trigger,Computers & chips,Sub-Microsecond Hadron Collision Filter Pipeline,Silicon / FPGA,Custom FPGA Pipeline Network,10,2e+15,0,0,System estimate
+ISS Alpha Magnetic Spectrometer (AMS-02),Computers & chips,Space-Station Cosmic Ray Particle Tracker,Aerospace / Electronics,Radiation-Hardened Multiprocessor DAQ Array,15,5e+09,0,0,System estimate
+Condylura cristata Somatosensory Fovea,Animals with nerves,22-Ray Eimer Organ High-Speed Tactile Array,Biological,Specialized Nasal Tactile Organ,2e+07,9e+10,75000000,1.3,System estimate
+Noctilio leporinus Water Echolocator,Animals with nerves,140 dB High-Intensity Water Ripple Sonar,Biological,Auditory-Motor Echolocation Circuit,1.8e+07,8.2e+10,68000000,1.1,System estimate
+Anableps anableps Split Optical System,Animals with nerves,Simultaneous Aerial & Aquatic Bifocal Eye,Biological,Dual-Retina Optical System,1.2e+07,1.7e+10,28000000,0.35,System estimate
+F0F1-ATP Synthase Rotary Nanomotor,"Microbes, plants & fungi",Proton-Motive Force Rotary Molecular Engine,Biological Macromolecule,Enzymatic Rotary Complex,3.8e+09,350,0,0,System estimate
+Kinesin-1 Microtubule Stepper,"Microbes, plants & fungi",Hand-Over-Hand Nanomechanical Translocator,Biological Macromolecule,Dimeric Motor Protein,1.8e+09,122,0,0,System estimate
+Bacterial Flagellar Rotary Motor,"Microbes, plants & fungi",Proton-Driven 1000 Hz Bacterial Nanomotor,Biological Macromolecule,Supramolecular Rotary Engine,3.2e+09,1020,0,0,System estimate
+Tetrahymena Group I Splicing Ribozyme,"Microbes, plants & fungi",Catalytic RNA Self-Splicing Nanomachine,Biological Macromolecule,Catalytic RNA Intron,1.5e+09,0.5,0,0,System estimate
+CRISPR-Cas9 Interrogation Complex,"Microbes, plants & fungi",RNA-Guided DNA Scanning Search Engine,Biological Macromolecule,Ribonucleoprotein Complex,2e+09,10,0,0,System estimate
+Google Gemini 2.0 Flash,AI & neural nets,Real-Time Streaming Multimodal Model,Frontier AI,Direct Audio-Vision-Text Transformer,2,1e+13,0,0,Order-of-magnitude class
+Anthropic Claude 3.5 Haiku,AI & neural nets,High-Throughput Frontier Inference Engine,Frontier AI,Optimized Sparse Attention Architecture,2,8e+12,0,0,System estimate
+Meta Llama 3.3 70B Quantized,AI & neural nets,Knowledge-Distilled Open Weights Reasoner,Frontier AI,Quantized Transformer Architecture,2,1.4e+13,0,0,System estimate
+ALMA 66-Antenna Submillimeter Array,Computers & chips,High-Altitude Synthetic Aperture Interferometer,Planetary Telescope,66 Reconfigurable Cassegrain Dishes,13,1.7e+16,0,0,System estimate
+Vera C. Rubin LSST 3.2-Gigapixel Array,Computers & chips,Planetary Optical Time-Domain Survey,Planetary Telescope,3.2-Gigapixel Cryogenic CCD Focal Plane,2,5e+14,0,0,System estimate
+DUNE 70-Kiloton Liquid Argon Detector,Computers & chips,Underground Subatomic Neutrino Tracking Web,Particle Physics Detector,"70,000-Ton Cryogenic Liquid Argon TPC",2,1e+15,0,0,Order-of-magnitude class
+Europa Clipper REASON Radar Sounder,Computers & chips,Dual-Frequency Ice-Penetrating Radar FPGA,Spacecraft Avionics,Dual 9 MHz / 60 MHz Radar Sounder,2,5e+08,0,0,System estimate
+Argentinosaurus huinculensis,Animals with nerves,Argentinosaurus huinculensis,Whole organism,Saltatory Myelinated Peripheral Conduction,9.5e+07,5.1e+11,850000000,160,System estimate
+Didelphodon vorax,Animals with nerves,Didelphodon vorax,Whole organism,Endothermic Mammalian Auditory & Trigeminal Processing,6.65e+07,1.3e+11,110000000,7.2,System estimate
+Purgatorius ceratops,Animals with nerves,Purgatorius ceratops,Whole organism,Arboreal Stereoscopic Acuity & Omnivorous Frugivory,6.59e+07,7.8e+10,45000000,0.35,System estimate
+Lystrosaurus murrayi,Animals with nerves,Lystrosaurus murrayi,Whole organism,Semi-Fossorial Sensory Navigation & Torpor Adaptation,2.51e+08,1.9e+11,320000000,28,System estimate
+Gorgonops torvus,Animals with nerves,Gorgonops torvus,Whole organism,Stereoscopic Vision & Rapid Jaw Strike Coordination,2.55e+08,2.5e+11,410000000,35,System estimate
+Frontier AI Cloud Datacenter Cluster,Computers & chips,Planetary-Scale Silicon Computing Facility,Supercomputing Infrastructure,Distributed All-to-All Optical Tensor Fabric,1,5e+21,0,0,System estimate
+Homo luzonensis,Animals with nerves,Homo luzonensis,Whole organism,Insular Endemic Arboreal-Terrestrial Locomotor Foraging,67000,5.2e+13,30000000000,480,System estimate
+Homo naledi,Animals with nerves,Homo naledi,Whole organism,Subterranean Speleological Navigation & Mortuary Deposition,300000,5.9e+13,34000000000,560,System estimate
+Quetzalcoatlus northropi,Animals with nerves,Quetzalcoatlus northropi,Whole organism,Dynamic Soaring Flight Control & Gyroscopic Floccular Integration,6.8e+07,2.7e+11,450000000,110,System estimate
+Google Trillium TPU v6e Pod,Computers & chips,Artificial Intelligence / ASIC Pod,Silicon Accelerator Substrate,Sparse Bfloat16 / FP8 Systolic Matrix Tensor Engine,2,4.7e+17,0,0,System estimate
+Vespa mandarinia,Colonies & societies,Vespa mandarinia,Whole organism,Eusocial Chemical Stigmergy & Antennal Pheromonal Vector Calculation,3.5e+07,1.1e+09,950000,0.0042,System estimate
+Methanocaldococcus jannaschii,"Microbes, plants & fungi",Methanocaldococcus jannaschii,Whole organism,Deep-sea hydrothermal vent methanogenesis,3.8e+09,800,0,0,System estimate
+Thermotoga maritima,"Microbes, plants & fungi",Thermotoga maritima,Whole organism,Geothermal hydrogen fermentation,3.5e+09,1500,0,0,System estimate
+Riftia pachyptila endosymbiont,"Microbes, plants & fungi",Candidatus Endoriftia persephone,Cellular Network,Symbiotic sulfur chemolithoautotrophy,4e+08,5e+08,0,0,System estimate
+Alvinella pompejana,Animals with nerves,Alvinella pompejana,Whole organism,Deep-sea hydrothermal eurythermal nervous system,3.5e+08,1.4e+07,120000,0.0035,System estimate
+Pyrodictium occultum,"Microbes, plants & fungi",Pyrodictium occultum,Cellular Network,Intercellular cannula network communication,3.6e+09,1200,0,0,System estimate
+Aurelia aurita ephyra,Animals with nerves,Aurelia aurita,Whole organism,Distributed pacemaker swimming rhythm,5.6e+08,420000,8500,0.0001,System estimate
+Acropora millepora (Staghorn Coral),Colonies & societies,Acropora millepora,Colonial Organism,Circalunar synchrony and colony-wide gamete release,5.2e+08,2.5e+10,500000000,0.025,System estimate
+Suberites domuncula (Demosponge),"Microbes, plants & fungi",Suberites domuncula,Whole organism,Aneural whole-sponge peristaltic contraction waves,5.8e+08,50000,0,0,System estimate
+Isoxys volucris,Animals with nerves,Isoxys volucris,Whole organism,Pelagic visual pursuit tracking,5.18e+08,2.3e+07,65000,0.0018,System estimate
+Hurdia victoria,Animals with nerves,Hurdia victoria,Whole organism,Apex radiodont visual scanning and sediment sifting,5.08e+08,6.3e+07,180000,0.0085,System estimate
+Marrella splendens,Animals with nerves,Marrella splendens,Whole organism,Benthic sensory palp foraging and schooling,5.08e+08,8.4e+06,24000,0.0006,System estimate
+Canadaspis perfecta,Animals with nerves,Canadaspis perfecta,Whole organism,Substrate burrowing and tactile limb coordination,5.08e+08,1.7e+07,48000,0.0014,System estimate
+Fuxianhuia protensa,Animals with nerves,Fuxianhuia protensa,Whole organism,Tripartite brain with optic and antennal neuropils,5.2e+08,2.5e+07,72000,0.0022,System estimate
+Cameroceras trentonense (Giant Endocerid),Animals with nerves,Cameroceras trentonense,Whole organism,Apex pelagic nautiloid visual search,4.6e+08,4.8e+09,12000000,18.5,System estimate
+Bothriolepis canadensis (Placoderm),Animals with nerves,Bothriolepis canadensis,Whole organism,Benthic armored placoderm vestibular navigation,3.85e+08,1.5e+09,2500000,0.65,System estimate
+Birkenia elegans (Anaspid Agnathan),Animals with nerves,Birkenia elegans,Whole organism,Nektonic active filter-swimming coordination,4.3e+08,4.8e+10,400000000,0.085,System estimate
+Pterygotus anglicus (Giant Sea Scorpion),Animals with nerves,Pterygotus anglicus,Whole organism,Apex marine arthropod target interception,4.2e+08,1.1e+09,3200000,3.8,System estimate
+Guiyu oneiros (Early Sarcopterygian),Animals with nerves,Guiyu oneiros,Whole organism,Intracranial kinetic braincase articulation,4.19e+08,2.3e+09,3800000,0.95,System estimate
+Acanthostega gunnari,Animals with nerves,Acanthostega gunnari,Whole organism,Polydactylous paddling and aquatic sensory tracking,3.65e+08,3.1e+09,5200000,1.2,System estimate
+Ichthyostega stensioei,Animals with nerves,Ichthyostega stensioei,Whole organism,Terrestrial forelimb crutching and low-frequency hearing,3.6e+08,1.1e+10,18000000,5.2,System estimate
+Pulmonoscorpius kirktonensis,Animals with nerves,Pulmonoscorpius kirktonensis,Whole organism,Chela trichobothria vibration mapping,3.35e+08,3e+08,850000,0.028,System estimate
+Biarmosuchus tener,Animals with nerves,Biarmosuchus tener,Whole organism,Active stalking and binocular depth estimation,2.68e+08,1.3e+10,22000000,5.8,System estimate
+Inostrancevia alexandri,Animals with nerves,Inostrancevia alexandri,Whole organism,Apex predatory pursuit and canine jaw alignment,2.55e+08,3.9e+10,65000000,28,System estimate
+Diictodon feliceps,Animals with nerves,Diictodon feliceps,Whole organism,Subterranean navigation and burrow acoustics,2.53e+08,5.7e+09,9500000,1.8,System estimate
+Moschops capensis,Colonies & societies,Moschops capensis,Whole organism,Social herd dominance head-butting coordination,2.6e+08,5.7e+10,95000000,42,System estimate
+Shonisaurus sikanniensis,Animals with nerves,Shonisaurus sikanniensis,Whole organism,Mesopelagic bioluminescence search and deep diving,2.15e+08,6e+11,1000000000,180,System estimate
+Pliosaurus funkei (Predator X),Animals with nerves,Pliosaurus funkei,Whole organism,Underwater hydrofoil 3D pursuit steering,1.5e+08,3.5e+11,580000000,240,System estimate
+Mosasaurus hoffmannii,Animals with nerves,Mosasaurus hoffmannii,Whole organism,Underwater scent tracking and inertial swallowing,7e+07,2.9e+11,480000000,195,System estimate
+Elasmosaurus platyurus,Animals with nerves,Elasmosaurus platyurus,Whole organism,Multi-segment neck proprioception and strike control,8e+07,7.2e+10,120000000,48,System estimate
+Henodus chelyops,Animals with nerves,Henodus chelyops,Whole organism,Substrate sieving and shell crushing tactile guidance,2.25e+08,1.1e+10,18000000,4.2,System estimate
+Deinonychus antirrhopus,Animals with nerves,Deinonychus antirrhopus,Whole organism,Bipedal ballistic leaping and sickle claw stabilization,1.15e+08,1.9e+11,195000000,58,System estimate
+Struthiomimus altus,Animals with nerves,Struthiomimus altus,Whole organism,High-speed bipedal cursorial steering and evasion,7.5e+07,1.3e+11,220000000,72,System estimate
+Microraptor gui,Animals with nerves,Microraptor gui,Whole organism,Four-winged aerodynamic pitch and yaw glide control,1.2e+08,4.6e+10,48000000,8.5,System estimate
+Hadrocodium wui,Animals with nerves,Hadrocodium wui,Whole organism,Expanded neocortex precursor and high-frequency hearing,1.95e+08,2.2e+10,18000000,0.045,System estimate
+Castorocauda lutrasimilis,Animals with nerves,Castorocauda lutrasimilis,Whole organism,Semi-aquatic swimming paddling and fish tracking,1.64e+08,6e+11,500000000,2.8,System estimate
+Repenomamus robustus,Animals with nerves,Repenomamus robustus,Whole organism,Carnivorous scent tracking and bone crushing jaws,1.25e+08,1.1e+11,185000000,18,System estimate
+Kuehneotherium praecursoris,Animals with nerves,Kuehneotherium praecursoris,Whole organism,Precision dental occlusion and nocturnal navigation,2e+08,5.7e+09,9500000,0.095,System estimate
+Confuciusornis sanctus,Animals with nerves,Confuciusornis sanctus,Whole organism,Arboreal perching and beaked seed grasping,1.25e+08,7.5e+10,78000000,1.9,System estimate
+Hesperornis regalis,Animals with nerves,Hesperornis regalis,Whole organism,Underwater foot-propelled fish pursuit steering,8e+07,1.4e+11,145000000,8.5,System estimate
+Ichthyornis dispar,Animals with nerves,Ichthyornis dispar,Whole organism,Pelagic plunge-diving and soaring trajectory calculation,8.5e+07,1.8e+11,185000000,3.2,System estimate
+Gastornis parisiensis (Giant Paleocene Bird),Animals with nerves,Gastornis parisiensis,Whole organism,Hard seed and fruit cracking beak motor control,5.5e+07,4.3e+11,450000000,48,System estimate
+Ambulocetus natans (Walking Whale),Animals with nerves,Ambulocetus natans,Whole organism,Submerged mandibular bone sound conduction and ambush bite,4.8e+07,5.4e+11,450000000,160,System estimate
+Squalodon calvertensis (Shark-Toothed Dolphin),Animals with nerves,Squalodon calvertensis,Whole organism,Ultrasonic melon biosonar pulse generation and echo imaging,2.8e+07,5.4e+12,4500000000,980,System estimate
+Dorudon atrox,Animals with nerves,Dorudon atrox,Whole organism,Fluke hydrodynamic oscillation and pod swimming,3.8e+07,1.2e+12,980000000,680,System estimate
+Metasepia pfefferi (Flamboyant Cuttlefish),Animals with nerves,Metasepia pfefferi,Whole organism,Dynamic aposematic traveling wave generation,3e+07,1.5e+11,200000000,1.4,System estimate
+Dosidicus gigas (Humboldt Squid),Colonies & societies,Dosidicus gigas,Whole organism,Pack coordinated flashing and tentacular raptorial strike,3.5e+07,2.8e+11,380000000,14.5,System estimate
+Crocuta crocuta (Spotted Hyena Clan),Colonies & societies,Crocuta crocuta,Whole organism,Third-party coalition tracking and communal territory defense,1e+07,1.5e+12,1250000000,160,System estimate
+Enhydra lutris (Sea Otter),Animals with nerves,Enhydra lutris,Whole organism,Chest stone anvil abalone smashing and tool conservation,5e+06,1e+12,850000000,115,System estimate
+Acinonyx jubatus (Cheetah),Animals with nerves,Acinonyx jubatus,Whole organism,High-speed vestibulo-ocular gaze locking at 110 km/h,4e+06,9.4e+11,780000000,110,System estimate
+Proconsul africanus,Animals with nerves,Proconsul africanus,Whole organism,Arboreal clambering and spatial forest fruit mapping,1.8e+07,1.9e+12,1100000000,165,System estimate
+Sivapithecus indicus,Animals with nerves,Sivapithecus indicus,Whole organism,Heavy mastication and seasonal hard-seed foraging,1.2e+07,3.1e+12,1800000000,240,System estimate
+Pierolapithecus catalaunicus,Animals with nerves,Pierolapithecus catalaunicus,Whole organism,Vertical trunk orthograde suspension and balance,1.25e+07,2.4e+12,1400000000,190,System estimate
+Oreopithecus bambolii (Swamp Ape),Animals with nerves,Oreopithecus bambolii,Whole organism,Precision thumb pinch grip and insular plant extraction,8e+06,2.1e+12,1200000000,175,System estimate
+Ardipithecus ramidus (Ardi),Animals with nerves,Ardipithecus ramidus,Whole organism,Woodland bipedal foraging and palmigrade climbing,4.4e+06,3.7e+13,21500000000,325,System estimate
+Pinus longaeva (Great Basin Bristlecone Pine),"Microbes, plants & fungi",Pinus longaeva,Whole organism,Millennial dendrochronological memory and resin canal induction,1.4e+08,1.5e+07,0,0,System estimate
+Sequoiadendron giganteum (Giant Sequoia),"Microbes, plants & fungi",Sequoiadendron giganteum,Whole organism,Transpirational hydraulic tension lift and fire-defense resin surge,6e+07,2e+08,0,0,System estimate
+Populus tremuloides (Pando Clonal Colony),"Microbes, plants & fungi",Populus tremuloides,Colonial Organism,Subterranean root carbon routing and systemic clonal defense,14000,1.5e+09,0,0,System estimate
+Ctesibius Clepsydra (Water Clock),Computers & chips,Pneumatic/Hydraulic Inflow Clepsydra,Technological Artifact,Feedback-regulated hydraulic time integration,2276,2,0,0,System estimate
+Belousov-Zhabotinsky Chemical Computer,Computers & chips,Nonlinear Chemical Reaction Diffusion Computer,Chemical Network,Reaction-diffusion wave logic and geometric Voronoi calculation,75,15000,0,0,System estimate
+IBM Eagle 127-Qubit Quantum Processor,Computers & chips,IBM Quantum Eagle,Technological Artifact,Superconducting transmon quantum gate execution,5,1.27e+08,0,0,System estimate
+Intel Loihi 2 Neuromorphic Chip,Computers & chips,Intel Loihi 2,Technological Artifact,Event-driven asynchronous spike routing and on-chip STDP,5,3e+11,0,0,System estimate
+Dickinsonia costata,Animals with nerves,Dickinsonia costata,Whole organism,Aneural motile benthic mat grazing,5.58e+08,100000,2000,0,System estimate
+Kimberella quadrata,Animals with nerves,Kimberella quadrata,Whole organism,Targeted bilateral radular scraping,5.55e+08,250000,5000,0.0001,System estimate
+Charnia masoni,"Microbes, plants & fungi",Charnia masoni,Whole organism,Fractal diffusion and osmotrophic fluid exchange,5.7e+08,10000,0,0,Order-of-magnitude class
+Yorgia hennickei,Animals with nerves,Yorgia hennickei,Whole organism,Stepwise crawling and sequential mat digestion,5.55e+08,100000,2000,0,System estimate
+Spriggina floundersi,Animals with nerves,Spriggina floundersi,Whole organism,Cephalized directed motile crawling,5.5e+08,2.8e+06,8000,0.0002,System estimate
+Pristionchus pacificus,Animals with nerves,Pristionchus pacificus,Whole organism,Phenotypic plasticity and predatory strike selection,5.3e+08,37000,310,1.6e-07,System estimate
+Macrostomum lignano,Animals with nerves,Macrostomum lignano,Whole organism,Rapid neurogenic replenishment and phototactic steering,5.2e+08,420000,3500,2.5e-06,System estimate
+Schistosoma mansoni (Blood Fluke),Animals with nerves,Schistosoma mansoni,Whole organism,Intravascular chemosensory navigation and host evasion,4e+08,720000,6000,5e-05,System estimate
+Asterias rubens (Common Sea Star),Animals with nerves,Asterias rubens,Whole organism,Mutable collagenous catch apparatus and decentralized coordination,4.7e+08,1.4e+08,1200000,0.02,System estimate
+Strongylocentrotus purpuratus (Purple Sea Urchin),Animals with nerves,Strongylocentrotus purpuratus,Whole organism,Autonomous pedicellariae reflex arcs and grazing rhythm,4.5e+08,9.6e+07,800000,0.015,System estimate
+Holothuria scabra (Sea Cucumber),Animals with nerves,Holothuria scabra,Whole organism,Evisceration defense reflex and catch collagen remodeling,4.4e+08,4.8e+07,400000,0.01,System estimate
+Antedon mediterranea (Feather Star),Animals with nerves,Antedon mediterranea,Whole organism,Chambered organ pacemaker and 10-arm swimming coordination,5e+08,3.6e+07,300000,0.006,System estimate
+Vampyroteuthis infernalis (Vampire Squid),Animals with nerves,Vampyroteuthis infernalis,Whole organism,Oxygen minimum zone survival and photophore decoy pulses,1.65e+08,6e+10,80000000,1.2,System estimate
+Abralia veranyi (Eye-Flash Squid),Animals with nerves,Abralia veranyi,Whole organism,Closed-loop radiometric downwelling counter-illumination matching,5e+07,2.6e+10,35000000,0.45,System estimate
+Histioteuthis bonnellii (Cock-eyed Squid),Animals with nerves,Histioteuthis bonnellii,Whole organism,Dual-spectral asymmetric ocular processing,4.5e+07,7.1e+10,95000000,1.8,System estimate
+Bathothauma lyra (Telescope-Eye Cranchiid),Animals with nerves,Bathothauma lyra,Whole organism,Movable turret eye stereoscopic tracking and ammonium buoyancy,3.5e+07,3.4e+10,45000000,0.85,System estimate
+Stauroteuthis syrtensis (Bioluminescent Dumbo Octopus),Animals with nerves,Stauroteuthis syrtensis,Whole organism,Sucker photophore lure illumination and web trapping,6e+07,3.8e+11,500000000,2.2,System estimate
+Palaeocharinus rhyniensis (Rhynie Trigonotarbid),Animals with nerves,Palaeocharinus rhyniensis,Whole organism,Terrestrial predatory micro-ambush and book lung respiration,4.07e+08,6.3e+06,18000,0.0003,System estimate
+Pneumodesmus newmani,Animals with nerves,Pneumodesmus newmani,Whole organism,Metachronal leg propulsion and spiracular atmospheric gas exchange,4.28e+08,4.2e+06,12000,0.0002,System estimate
+Attercopus fimbriunguis (Stem-Spider),Animals with nerves,Attercopus fimbriunguis,Whole organism,Burrow lining silk synthesis and tactile burrow vigilance,3.86e+08,7.7e+06,22000,0.0004,System estimate
+Rhyniella praecursor,Animals with nerves,Rhyniella praecursor,Whole organism,Ballistic furcula spring escape and postantennal chemoreception,4.07e+08,1.9e+06,5500,5e-05,System estimate
+Akmonistion zangerli (Bearsden Anvil Shark),Animals with nerves,Akmonistion zangerli,Whole organism,Pelagic visual-electroreceptive stalking and spine display,3.3e+08,1.5e+10,25000000,3.8,System estimate
+Falcatus falcatus (Sword-Spine Shark),Animals with nerves,Falcatus falcatus,Whole organism,Nocturnal school foraging and spine tactile courtship,3.25e+08,2.7e+09,4500000,0.35,System estimate
+Helicoprion bessonowi,Animals with nerves,Helicoprion bessonowi,Whole organism,Deep pelagic ammonoid jaw crushing and proprioceptive feedback,2.9e+08,2.7e+11,450000000,85,System estimate
+Belantsea montana,Animals with nerves,Belantsea montana,Whole organism,Labriform reef hovering and benthic bioerosion,3.25e+08,6.3e+09,18000000,2.5,System estimate
+Cladoselache fyleri,Animals with nerves,Cladoselache fyleri,Whole organism,High-speed linear oceanic pursuit and lateral line hydrodynamic tracking,3.6e+08,5.7e+10,95000000,12,System estimate
+Effigia okeeffeae,Animals with nerves,Effigia okeeffeae,Whole organism,Bipedal cursorial grazing and visual predator vigilance,2.05e+08,5.7e+10,95000000,16,System estimate
+Herrerasaurus ischigualastensis,Animals with nerves,Herrerasaurus ischigualastensis,Whole organism,Basal theropod cursorial agility and grasping predatory claws,2.31e+08,9e+10,150000000,38,System estimate
+Eoraptor lunensis,Animals with nerves,Eoraptor lunensis,Whole organism,Dietary opportunistic switching and high cursorial agility,2.31e+08,2.9e+10,48000000,8.5,System estimate
+Desmatosuchus spurensis,Animals with nerves,Desmatosuchus spurensis,Whole organism,Olfactory soil excavation and passive armor deflection,2.1e+08,5.1e+10,85000000,28,System estimate
+Diplodocus carnegii,Animals with nerves,Diplodocus carnegii,Whole organism,Low-browsing cervical sweep and supersonic tail-whip acoustic shockwaves,1.52e+08,2e+11,210000000,95,System estimate
+Brachiosaurus altithorax,Animals with nerves,Brachiosaurus altithorax,Whole organism,High-canopy selective browsing and massive cardiac hydrostatics,1.53e+08,1.5e+11,250000000,120,System estimate
+Camarasaurus supremus,Animals with nerves,Camarasaurus supremus,Whole organism,Durophagous plant mastication and horizontal vestibular gaze stabiliz...,1.5e+08,7.7e+10,220000000,105,System estimate
+Europasaurus holgeri (Dwarf Sauropod),Colonies & societies,Europasaurus holgeri,Whole organism,Insular dwarf browsing and low-frequency herd infrasound coordination,1.54e+08,7.8e+10,130000000,48,System estimate
+Rhamphorhynchus muensteri,Animals with nerves,Rhamphorhynchus muensteri,Whole organism,Low-altitude water surface skimming and tactile jaw snap,1.5e+08,3.9e+10,65000000,4.2,System estimate
+Pteranodon longiceps,Animals with nerves,Pteranodon longiceps,Whole organism,Dynamic oceanic thermals and wing gust reflex compensation,8.5e+07,1.4e+11,240000000,32,System estimate
+Anurognathus ammoni,Animals with nerves,Anurognathus ammoni,Whole organism,Nocturnal hawking insect capture and stereoscopic tracking,1.5e+08,9.8e+09,28000000,1.1,System estimate
+Tupandactylus navigans,Animals with nerves,Tupandactylus navigans,Whole organism,Visual socio-sexual crest signaling and forest-edge soaring,1.15e+08,6.6e+10,110000000,11.5,System estimate
+Tachyglossus aculeatus (Short-beaked Echidna),Animals with nerves,Tachyglossus aculeatus,Whole organism,Massive frontal neocortical foliation and sub-surface electro-probing,1.6e+08,3.7e+11,310000000,25,System estimate
+Didelphis virginiana (Virginia Opossum),Animals with nerves,Didelphis virginiana,Whole organism,Thanatosis (playing dead) autonomic reflex and broad olfactory foraging,6.5e+07,2.2e+11,180000000,6,System estimate
+Macropus rufus (Red Kangaroo),Animals with nerves,Macropus rufus,Whole organism,Elastic tendon energy storage and cerebellar bipedal phase locking,2.5e+07,8.2e+11,680000000,56,System estimate
+Sarcophilus harrisii (Tasmanian Devil),Animals with nerves,Sarcophilus harrisii,Whole organism,Bone-crushing proprioception and nocturnal carcass olfactory tracking,2e+07,2.6e+11,220000000,16.5,System estimate
+Porichthys notatus (Plainfin Midshipman),Animals with nerves,Porichthys notatus,Whole organism,Hours-long continuous resonant vocal humming and hindbrain pacing,4.5e+07,1.6e+10,45000000,0.85,System estimate
+Drosophila melanogaster (Mushroom Body),Animals with nerves,Drosophila melanogaster,Subsystem / Organ,Kenyon cell sparse coding and dopaminergic coincidence learning,2.5e+08,1.5e+06,4000,1e-05,System estimate
+Periplaneta americana (American Cockroach),Animals with nerves,Periplaneta americana,Whole organism,Giant interneuron wind puff aerodynamic escape circuit,3e+08,1e+08,300000,0.0035,System estimate
+Corvus corone (Carrion Crow),Animals with nerves,Corvus corone,Whole organism,Nidopallium caudolaterale executive working memory and numerical judg...,1.8e+07,7.7e+11,800000000,9,System estimate
+Nestor notabilis (Kea),Animals with nerves,Nestor notabilis,Whole organism,Exploratory destructive deconstruction and probabilistic inference,3e+07,1.2e+12,1250000000,12,System estimate
+Orcinus orca (Killer Whale),Animals with nerves,Orcinus orca,Whole organism,Matriarchal acoustic culture and synchronized hydro-pulse cooperative...,1e+07,1.3e+13,10500000000,5600,System estimate
+Globicephala melas (Long-finned Pilot Whale),Animals with nerves,Globicephala melas,Whole organism,High-count neocortical sensory integration and mass pod acoustic cohe...,1.2e+07,4.5e+13,37200000000,2700,System estimate
+Pongo abelii (Sumatran Orangutan),Animals with nerves,Pongo abelii,Whole organism,"Arboreal compliance mechanics, nest structural engineering, and tool ...",1.2e+07,1.4e+13,7800000000,380,System estimate
+Gorilla beringei beringei (Mountain Gorilla),Animals with nerves,Gorilla beringei beringei,Whole organism,Complex nettle leaf preparation folding and acoustic chest-beating di...,8e+06,1.6e+13,9000000000,500,System estimate
+Hylobates lar (Lar Gibbon),Animals with nerves,Hylobates lar,Whole organism,Ricochetal brachiation pendulum physics and acoustic mated duets,1.8e+07,3.8e+12,2200000000,105,System estimate
+Chauvet Cave parietal art,Writing & archives,Homo sapiens sapiens,Social Superorganism / Culture,"Parietal precuneus expansion, graphic perspective, and figurative myt...",36000,0.01,0,0,Order-of-magnitude class
+Sunghir Burial Individuals (Homo sapiens),Animals with nerves,Homo sapiens sapiens,Social Superorganism / Culture,"Cumulative cultural labor investment, mortuary hierarchy, and bead st...",34000,1.5e+14,86060000000,1400,System estimate
+Hohlenstein-Stadel Lion-Man (Homo sapiens),Writing & archives,Homo sapiens sapiens,Cognitive Artifact,Therianthropic imaginary conceptual blending and external symbolic st...,40000,0.005,0,0,System estimate
+Denisova Cave Chlorite Bracelet & Bone Needle,Writing & archives,Homo sapiens sapiens / Archaic,Cognitive Artifact,High-speed mechanical rotational drilling and tailored insulated clot...,45000,0.008,0,0,System estimate
+Armillaria ostoyae (Humongous Fungus),"Microbes, plants & fungi",Armillaria ostoyae,Colonial Network,Macro-scale subterranean rhizomorph hydraulic transport and nutrient ...,2400,5e+06,0,0,System estimate
+Neurospora crassa (Hyphal Syncytium),"Microbes, plants & fungi",Neurospora crassa,Cellular Network,Hyphal tip bioelectric action potentials and syncytial resource sharing,4e+08,80000,0,0,System estimate
+Pseudomonas aeruginosa Biofilm,"Microbes, plants & fungi",Pseudomonas aeruginosa,Cellular Network,Quorum-sensing autoinducer concentration thresholding and c-di-GMP sw...,2.5e+09,120000,0,0,System estimate
+Trametes versicolor (Turkey Tail Mycelium),"Microbes, plants & fungi",Trametes versicolor,Colonial Network,Memristive spike-train generation and spatial nutrient maze routing,3e+08,250000,0,0,System estimate
+Zuse Z3 Electromechanical Computer (1941),Computers & chips,Zuse Z3,Technological Artifact,Binary floating-point electromechanical relay computation,85,5,0,0,System estimate
+Colossus Mark 1 Cryptanalytic Engine (1944),Computers & chips,Colossus Mark 1,Technological Artifact,High-speed parallel thermionic cryptanalytic Boolean correlation,82,25000,0,0,System estimate
+IBM System/360 Model 91 (1967),Computers & chips,IBM System/360 Model 91,Technological Artifact,Dynamic out-of-order execution and hardware register renaming,59,1.66e+07,0,0,System estimate
+Cray-1 Vector Supercomputer (1976),Computers & chips,Cray-1,Technological Artifact,Vector pipeline chaining and ECL high-speed memory interleaved access,50,1.6e+08,0,0,System estimate
+Thinking Machines CM-5 (1991),Computers & chips,Connection Machine CM-5,Technological Artifact,"Massively parallel SIMD/MIMD processing across 1,024-node fat tree",35,1.31e+11,0,0,System estimate
+IBM Deep Blue (1997),Computers & chips,IBM Deep Blue,Technological Artifact,Hardware-accelerated minimax search with alpha-beta heuristic pruning,29,2e+11,0,0,System estimate
+NVIDIA H100 Hopper Tensor Core GPU (2022),Computers & chips,NVIDIA H100,Technological Artifact,FP8 Transformer Engine tensor parallelism and dynamic programming,4,4e+15,0,0,System estimate
+NVIDIA Blackwell B200 GPU (2024),Computers & chips,NVIDIA Blackwell B200,Technological Artifact,Dual-die 10 TB/s NV-HBI interconnect and microscopic FP4 tensor compu...,2,9e+15,0,0,System estimate
+Lightmatter Envise Electro-Photonic AI Engine,Computers & chips,Lightmatter Envise,Technological Artifact,Speed-of-light optical interference matrix-vector tensor multiplication,3,3.2e+15,0,0,System estimate
+Synechococcus elongatus KaiABC Post-Translational Circadian Clock,"Microbes, plants & fungi",Synechococcus elongatus,Single Cell / Microbe,Post-translational KaiABC hexameric ATPase circadian phase oscillation,2.9e+09,600,0,0,System estimate
+Nostoc punctiforme Heterocystous Diazotrophic Filament Network,"Microbes, plants & fungi",Nostoc punctiforme,Colonial / Multicellular,1D reaction-diffusion PatS peptide morphogen lateral inhibition and s...,2.1e+09,5000,0,0,System estimate
+Lokiarchaeum ossiferum Asgard Archaeal Cytoskeletal Host Lineage,"Microbes, plants & fungi",Lokiarchaeum ossiferum,Single Cell / Microbe,Lokiactin cytoskeletal membrane protrusion sensing and ESCRT vesicula...,1.8e+09,800,0,0,System estimate
+Bangiomorpha pubescens Stenian Sexual Meiotic Red Alga,"Microbes, plants & fungi",Bangiomorpha pubescens,Multicellular Organism,Meiotic sexual genetic recombination and apical-basal polarity signaling,1.047e+09,10000,0,0,Order-of-magnitude class
+Salpingoeca rosetta Colonial Choanoflagellate Ciliary Mechanosensor,"Microbes, plants & fungi",Salpingoeca rosetta,Colonial / Multicellular,Pre-synaptic scaffold and voltage-gated calcium ciliary mechanosensor...,6.5e+08,15000,0,0,System estimate
+Ikaria wariootia White Sea Ediacaran Peristaltic Bilaterian,Animals with nerves,Ikaria wariootia,Multicellular Organism,Anterior chemosensory gradient tracking and peristaltic muscular burr...,5.55e+08,25000,500,1e-05,System estimate
+Treptichnus pedum Fortunian 3D Subsurface Foraging Trace Maker,Animals with nerves,Treptichnus pedum,Multicellular Organism,Circumoral ring CPG and 3D systematic subsurface foraging memory,5.41e+08,600000,5000,0.0001,System estimate
+Endoceras proteiforme Ordovician Giant Cameroceratid Nautiloid,Animals with nerves,Endoceras proteiforme,Multicellular Organism,"Pelagic hydrostatic buoyancy control, statocyst balance, and visual t...",4.6e+08,6e+09,15000000,8,System estimate
+Entelognathus primordialis Silurian Jawed Placoderm Predator,Animals with nerves,Entelognathus primordialis,Multicellular Organism,Saltatory myelinated axonal conduction (50 m/s) and 3-canal vestibula...,4.25e+08,3.6e+09,6000000,0.45,System estimate
+Rhynia gwynne-vaughanii Early Devonian Vascular Land Plant,"Microbes, plants & fungi",Rhynia gwynne-vaughanii,Multicellular Organism,"Hydraulic turgor pressure, stomatal Ca2+ guard-cell feedback, and myc...",4.07e+08,20000,0,0,System estimate
+Hylonomus lyelli Pennsylvanian Amniote Terrestrial Insectivore,Animals with nerves,Hylonomus lyelli,Multicellular Organism,Amniote dorsal ventricular ridge / pallial visual-motor insect predation,3.12e+08,4.2e+09,12000000,0.35,System estimate
+Sphecomyrma freyi Mid-Cretaceous Basal Eusocial Stem-Ant,Colonies & societies,Sphecomyrma freyi,Colonial / Superorganism,Mushroom-body olfactory learning and distributed stigmergic colony fo...,9.9e+07,8.8e+07,250000,0.0001,System estimate
+Pascaline & Leibniz Stepped Reckoner Mechanical Calculators,Computers & chips,Leibniz Stepped Reckoner,Technological Artifact,Deterministic mechanical gear-tooth digital state transition and saut...,354,2,0,0,System estimate
+Frontier 100k-GPU Test-Time Reasoning AI Cluster,Computers & chips,Frontier Reasoning AI Cluster,Technological Artifact,Distributed transformer tensor parallelism with RL-trained test-time ...,2,3e+20,0,0,System estimate
+Triceratops horridus Ornithischian Megaherbivore Cranial Endocast,Animals with nerves,Triceratops horridus,Multicellular Organism,Low-frequency acoustic lagena and defensive frill motor-reflex integr...,6.8e+07,2.1e+11,350000000,72,System estimate
+Clupea harengus Pelagic Teleost Fish School & Hydrodynamic Shoal,Colonies & societies,Clupea harengus,Collective / Swarm,Couzin-zone lateral-line hydrodynamic alignment and super-organismal ...,4e+08,9.6e+16,100000000000000,1e+06,System estimate
+Connochaetes taurinus Serengeti Wildebeest Migratory Megaherd,Colonies & societies,Connochaetes taurinus,Collective / Swarm,Distributed environmental gradient consensus and synchronous calving ...,2.5e+07,4.5e+18,3750000000000000,6e+08,System estimate
+Göbekli Tepe & Çatalhöyük Neolithic Sedentary Village & Ritual,Colonies & societies,Homo sapiens (Neolithic Village),Human Institution / Society,"Spoken language, communal ritual architecture, and geometric clay tok...",11500,4.5e+17,258000000000000,4.05e+06,System estimate
+Ubaid & Cahokia Hierarchical Chiefdom & Irrigation Polity,Colonies & societies,Homo sapiens (Chiefdom Polity),Human Institution / Society,"Two-tier chiefdom hierarchy, stamp-seal redistributive warehousing, a...",6000,3e+18,1720000000000000,2.7e+07,System estimate
+Uruk & Old Kingdom Memphis Literate Bronze Age City-State,Colonies & societies,Homo sapiens (Bronze Age State),Human Institution / Society,Cuneiform/hieroglyphic exosomatic ledger memory and four-tier state b...,5200,1.2e+19,6880000000000000,1.08e+08,System estimate
+Roman & Han Continental Agrarian Mega-Empire,Colonies & societies,Homo sapiens (Classical Mega-Empire),Human Institution / Society,"Paved horse-relay vascular communications, metallic coinage, and bure...",2000,9e+21,5160000000000000000,8.1e+10,System estimate
+19th-Century Constitutional Nation-State & Global Telegraph Grid,Colonies & societies,Homo sapiens (Industrial Nation-State),Human Institution / Society,"Electromagnetic telegraphy (~10^7 m/s), mass print media, and industr...",175,4.5e+22,25800000000000000000,4.05e+11,System estimate
+United Nations & Global Satellite-Mainframe Grid (1975),Colonies & societies,Homo sapiens (20th-Century Global Grid),Human Institution / Society,"Geostationary microwave/satellite links, CMOS mainframes, and multila...",51,6e+23,344000000000000000000,5.4e+12,System estimate
+Grypania spiralis Paleoproterozoic Macroscopic Eukaryotic Ribbon,"Microbes, plants & fungi",Grypania spiralis,Multicellular Organism,Macroscopic eukaryotic thallus morphogenesis and cytoplasmic streaming,1.87e+09,25000,0,0,System estimate
+Sacabambaspis janvieri Ordovician Armored Jawless Agnathan,Animals with nerves,Sacabambaspis janvieri,Multicellular Organism,Unmyelinated tripartite vertebrate brain with paired anterior camera ...,4.6e+08,9e+08,1500000,0.08,System estimate
+Incan Tawantinsuyu Quipu Knotted-Cord Imperial Bureaucratic Network,Colonies & societies,Homo sapiens (Incan Tawantinsuyu Empire),Human Institution / Society,Base-10 knotted-cord topological accounting (Khipu) and high-altitude...,550,1.5e+21,860000000000000000,1.35e+10,System estimate
+"Apollo Block II Guidance Computer (Moon, 384k km)",Computers & chips,Apollo 11 CM/LM (1969),Off-Earth Spacecraft,"5,600 RTL NOR gate ICs + 72 KB woven copper core-rope",57,42700,0,2.8e+04,System estimate
+"Viking 1 Lander Computer (Mars Surface, 1976)",Computers & chips,Viking 1 & 2 Mars Landers,Off-Earth Spacecraft,Dual 24-bit GCSC with radiation-hardened plated-wire memory,50,200000,0,1.8e+04,System estimate
+Galileo COSMAC Jupiter Radiation-Belt Probe,Computers & chips,"Galileo Orbiter (Jupiter, 778M km)",Off-Earth Spacecraft,Six RCA 1802 CMOS-on-sapphire 8-bit microprocessors,37,200000,0,1.5e+04,System estimate
+Hubble Space Telescope Orbital Computer (80486),Computers & chips,Hubble Space Telescope (540 km LEO),Orbital Observatory,Radiation-hardened 25 MHz 80486 + 12 GB solid-state recorder,36,2e+07,0,1.2e+04,System estimate
+Mars Pathfinder & Sojourner Autonomous Rover,Computers & chips,Pathfinder RAD6000 + Sojourner 80C85,Planetary Rover,Radiation-hardened 32-bit RISC + laser-stripe hazard avoidance,29,2.2e+07,0,8000,System estimate
+New Horizons Kuiper Belt Probe (64 AU),Computers & chips,"New Horizons (Pluto & Arrokoth, 9.6B km)",Deep-Space Probe,Four Mongoose-V 32-bit MIPS CPUs + 16 GB NAND flash + RTG,20,1.5e+07,0,1e+04,System estimate
+Curiosity Mars Rover (RAD750 + AEGIS Vision),Computers & chips,Mars Science Laboratory (Gale Crater),Planetary Rover,200 MHz BAE RAD750 + autonomous ChemCam rock target selection,14,4e+08,0,1.2e+04,System estimate
+Perseverance Rover & Vision Compute FPGA (Mars),Computers & chips,Mars 2020 Rover (Jezero Crater),Planetary Rover,RAD750 + Xilinx Virtex-5 FPGA real-time terrain navigation,5,1.5e+09,0,1.4e+04,System estimate
+Ingenuity Mars Helicopter (Snapdragon 801 Flight Burst),Computers & chips,Ingenuity Rotorcraft (72 Mars flights),Planetary Rotorcraft,2.26 GHz quad-core ARM SoC + 500 Hz visual-inertial flight loop,5,2e+10,0,250,System estimate
+ISS Spaceborne Edge Supercomputer (400 km LEO),Computers & chips,HPE Spaceborne Computer-2 (ISS),Orbital Edge Server,In-orbit x86/GPU edge cluster for autonomous space station AI,5,2.5e+12,0,4.5e+04,System estimate
+Asgard archaeal OdinTubulin proto-microtubule lattice,"Microbes, plants & fungi",Odinarchaeota / Asgard archaea,Subcellular polymer,GTP-coupled proto-tubule polymerization ratchet,1.9e+09,25,0,0,System estimate
+Cytoplasmic dynein-1 retrograde microtubule winch,"Microbes, plants & fungi",Dynein-1-dynactin complex,Subcellular machine,Six-AAA+ ring minus-end retrograde microtubule transport,1.8e+09,146,0,0,System estimate
+Eukaryotic 9+2 motile cilium & dynein axoneme,"Microbes, plants & fungi",Eukaryotic 9+2 axoneme,Subcellular organelle,Axonemal dynein doublet-sliding waves & IFT trains,1.8e+09,5000,0,0,System estimate
+Prokaryotic CRISPR-Cas adaptive immune spacer array,"Microbes, plants & fungi",Streptococcus / Archaeal CRISPR-Cas,Subcellular immune memory,Cas1-Cas2 viral DNA spacer capture & RNA-guided interference,3.5e+09,50,0,0,System estimate
+Chara corallina giant internodal green alga,"Microbes, plants & fungi",Chara corallina (Charophyceae),Multicellular green alga,10-cm multinucleate cells with Cl-/Ca2+ action potentials (~2 cm/s),4.5e+08,25000,0,0,System estimate
+Jawed-vertebrate V(D)J adaptive immune repertoire,"Microbes, plants & fungi",Gnathostomata B/T lymphocyte pool,Distributed somatic system,RAG1/2 somatic DNA recombination + clonal affinity maturation (~10^11 ce,4.5e+08,1e+11,0,0,Order-of-magnitude class
+Microbrachius dicki clasper-mating placoderm,Animals with nerves,Microbrachius dicki (Antiarch fish),Vertebrate organism,Earliest jawed vertebrate with paired bony claspers for internal fertili,3.85e+08,3e+09,5000000,0.2,System estimate
+Tmesipteris oblanceolata 160-Gb fork fern,"Microbes, plants & fungi",Tmesipteris oblanceolata,Vascular plant,Largest measured eukaryotic genome (160.45 billion base pairs per copy),1.6e+08,80000,0,0,System estimate
+Amborella trichopoda basal flowering shrub,"Microbes, plants & fungi",Amborella trichopoda,Basal angiosperm,Sister lineage to all living flowering plants; retains ancestral floral ,1.3e+08,2e+06,0,0,System estimate
+Zea mays domesticated C4 transposon crop,"Microbes, plants & fungi",Zea mays (Maize),Domesticated angiosperm,2.4-Gb genome (~85% transposable elements) + Kranz C4 solar carbon pump,9000,3e+06,0,0,System estimate
+Mycoplasma mycoides JCVI-syn1.0 synthetic cell,"Microbes, plants & fungi",Mycoplasma mycoides JCVI-syn1.0,Synthetic bacterial cell,"Living cell booted from a 1,077,947-bp chemically synthesized genome",16,400,0,0,System estimate
+Lipid-nanoparticle modified-mRNA vaccine platform,"Microbes, plants & fungi",Nucleoside-modified mRNA LNP,Programmable biomolecular vector,"4,284-nt N1-methylpseudouridine mRNA instructing host antigen synthesis",6,5000,0,0,System estimate
+High-throughput optical/nanopore DNA sequencer,Computers & chips,Illumina SBS / Oxford Nanopore,Biomolecular-silicon transducer,Massively parallel base-calling reading ~10^10 DNA bases per run,12,2e+08,0,0,System estimate
+ASML Twinscan EUV 13.5-nm lithography scanner,Computers & chips,ASML NXE/EXE EUV Scanner,Semiconductor fab constructor,Laser-produced tin plasma + Bragg mirrors printing nanometer transistor ,7,5e+11,0,0,System estimate

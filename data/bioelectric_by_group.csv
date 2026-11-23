@@ -1,0 +1,6 @@
+group,events_per_s_low,events_per_s_high,evidence,basis,source
+Trees,3e+20,3e+21,estimate,3.04x10^12 trees x 10^9 signalling cells x 0.1-1 events a second,Crowther et al. (2015) Nature 525:201
+Bacterial biofilms (potassium waves),1e+24,1e+26,estimate,"Biofilms hold 40-80% of microbial cells; their potassium waves pulse about once an hour or two. Counted per cell this reaches 10^26 a second, so it decides the total",Prindle et al. (2015) Nature 527:59; Flemming & Wuertz (2019) Nat. Rev. Microbiol. 17:247
+Fungi,,,measured,Mycelium fires spike trains minutes to hours apart; no global count of spiking cells exists,Adamatzky (2022) R. Soc. Open Sci. 9:211926
+Sponges and placozoans,,,measured,Whole-body impulses a few times an hour; tiny next to the above,"Leys, Mackie & Meech (1999) J. Exp. Biol. 202:1139"
+"Census, today",7e+23,7e+23,estimate,The census's c_bioelectric_ops_sec. It sits inside the range above if part of the biofilm signalling is counted,This file

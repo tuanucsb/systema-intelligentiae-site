@@ -1,4 +1,4 @@
-// Intelligence formulas: six ways to add the census into one number, each drawn over the same 64 moments,
+// Intelligence formulas: six ways to add the census into one number, each drawn over the same 68 moments,
 // and a mixer that weighs every ingredient. Every number on the page is computed here from the census.
 (function () {
   'use strict';
@@ -124,7 +124,7 @@
     $('cards-' + fam).innerHTML = F.filter(f => f.fam === fam).map(f =>
       '<article class="iq-card" id="f-' + f.k + '" style="--k:' + FAM[fam].color + '"><header><h3>' + esc(f.name) + '<span class="iq-sym" aria-hidden="true">' + f.sym + '</span></h3><span class="iq-verdict">' + TAG[f.tag][0] + ' ' + TAG[f.tag][1] + '</span></header>' +
       '<p class="iq-say">' + esc(f.say) + '</p><div class="iq-eqn">' + f.eqn + '</div><p class="iq-why">' + f.why + '</p>' +
-      '<div class="iq-plot"><svg class="iq" id="svg-' + f.k + '" role="img" aria-label="' + esc(f.name) + ' across the 64 moments of the census. The table at the end of the page gives the values."></svg></div>' +
+      '<div class="iq-plot"><svg class="iq" id="svg-' + f.k + '" role="img" aria-label="' + esc(f.name) + ' across the ' + N + ' moments of the census. The table at the end of the page gives the values."></svg></div>' +
       '<p class="iq-read" id="read-' + f.k + '"></p><p class="iq-ver">' + f.ver() + '</p></article>').join('');
   });
   F.forEach(f => hook($('svg-' + f.k)));

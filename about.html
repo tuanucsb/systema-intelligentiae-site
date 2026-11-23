@@ -21,7 +21,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
 
 <main id="main" class="wrap prose">
   <div class="page-head">
@@ -33,11 +33,11 @@
   <section class="sec" aria-labelledby="methodH">
     <h2 id="methodH">How it was made</h2>
     <ol class="steps">
-      <li><b>64 moments.</b> Earth’s history is split into 64 moments, from 4.1 billion years ago to 2026. Forty of them are stops on the journey, each with one star creature.</li>
-      <li><b>Ten numbers.</b> Each moment is described by ten quantities measured separately: DNA, working and stored memory, biological, neural and digital throughput, power and persistence. They are never added into one score.</li>
-      <li><b>Sources first.</b> Each number traces to published estimates in the sources register, which you can open in the <a href="data.html">Data Lab</a>.</li>
-      <li><b>Honest uncertainty.</b> Today’s values carry 95% ranges from a 10,000-draw Monte Carlo. Older moments are labelled by how direct their evidence is (<a href="how.html#sureH">how sure are we?</a>).</li>
-      <li><b>Checked twice.</b> A validator checks the census, the stories and the image credits against each other every time the site is built.</li>
+      <li><b>68 moments &amp; 10 parts.</b> Earth’s history is split into 68 moments, from 4.1 billion years ago to 2026—all 68 are stops on the <a href="journey.html">Journey</a> (with a 26-stop quick tour), connected across 10 functional parts and 173 inventions on the <a href="tree.html">Tree</a>.</li>
+      <li><b>Volume vs. single-system complexity.</b> Each moment tracks ten planet-wide quantities separately—never added into one score—while the <a href="atlas.html">703-system Atlas</a> and <a href="index.html#today-pie">time-scrubbable pie &amp; complexity map</a> compare one individual cell, tree, animal or supercomputer against planet totals.</li>
+      <li><b>Deep-time tracks &amp; book lenses.</b> Dedicated dated ledgers trace <a href="data.html#genomes">DNA &amp; genomes</a>, <a href="data.html#sex">sexual reproduction</a>, <a href="data.html#plants">plants &amp; fungi</a>, <a href="data.html#immunity">immune systems</a>, <a href="data.html#motors">molecular motors</a>, <a href="data.html#neural">neural circuits</a>, <a href="data.html#networks">communication networks</a>, <a href="data.html#making">replication &amp; manufacturing</a> and <a href="data.html#offworld">off-world spacecraft</a>, paired with <a href="stories.html#books">three landmark book lenses</a> (Schrödinger, Bennett, Agüera y Arcas).</li>
+      <li><b>Sources &amp; honest uncertainty.</b> Each number traces to published estimates in the <a href="data.html#sources">Data Lab</a>. Today’s values carry 95% ranges from a 10,000-draw Monte Carlo; older moments carry explicit fossil, gene-clock or living-relative evidence tags (<a href="how.html#sureH">how sure are we?</a>).</li>
+      <li><b>Checked twice.</b> A validator checks the census, milestone dates, invention links and image credits against each other every time the site is built.</li>
     </ol>
   </section>
 
@@ -45,7 +45,7 @@
     <h2 id="citeH">How to cite</h2>
     <p>Please credit the project when you use its numbers or text. Copy this line:</p>
     <div class="cite-box">
-      <p id="citeLine">Systema Intelligentiae (2026). <i>A natural history of thinking matter: an open census of Earth’s memory, wiring and computing, 4.1 billion years ago to 2026.</i> Version of 8 November 2026. <span id="citeUrl">about.html</span></p>
+      <p id="citeLine">Systema Intelligentiae (2026). <i>A natural history of thinking matter: an open census of Earth’s memory, wiring and computing, 4.1 billion years ago to 2026.</i> Version of 22 November 2026. <span id="citeUrl">about.html</span></p>
       <button type="button" class="btn sm ghost" id="copyCite">Copy citation</button>
       <span class="sr-only" id="copyMsg" aria-live="polite"></span>
     </div>
@@ -63,7 +63,7 @@
 
   <section class="sec" aria-labelledby="updH">
     <h2 id="updH">Last updated</h2>
-    <p>8 November 2026. The census is revised when better estimates are published; the version date in the citation tells you which one you used.</p>
+    <p>22 November 2026. The census is revised when better estimates are published; the version date in the citation tells you which one you used.</p>
   </section>
 </main>
 
@@ -77,10 +77,20 @@
   const url = location.href.split('#')[0];
   document.getElementById('citeUrl').textContent = url;
   const btn = document.getElementById('copyCite'), msg = document.getElementById('copyMsg');
+  let copyTimer = null, lastCopyMsg = '';
   btn.addEventListener('click', () => {
     const text = document.getElementById('citeLine').textContent.replace(/\s+/g, ' ').trim();
-    const done = ok => { msg.textContent = ok ? 'Citation copied' : 'Copy failed: select the line and copy it'; btn.textContent = ok ? 'Copied ✓' : 'Copy citation'; setTimeout(() => { btn.textContent = 'Copy citation'; }, 2000); };
-    if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => done(true), () => done(false)); else done(false);
+    const done = ok => {
+      const raw = ok ? 'Citation copied' : 'Copy failed: select the line and copy it';
+      const out = raw === lastCopyMsg ? raw + '\u00A0' : raw;
+      lastCopyMsg = out;
+      msg.textContent = out;
+      btn.dataset.state = ok ? 'copied' : 'failed';
+      btn.textContent = ok ? 'Copied ✓' : 'Copy citation';
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => { delete btn.dataset.state; btn.textContent = 'Copy citation'; msg.textContent = ''; }, 2000);
+    };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(() => done(true), () => done(false)); else done(false);
   });
 })();
 </script>

@@ -6,12 +6,12 @@
 <title>Systema Intelligentiae</title>
 <meta name="description" content="How did a planet learn to think? Follow 4.1 billion years of memory, wiring and computing, from a rock pore to a data center.">
 <meta property="og:title" content="Systema Intelligentiae — How did a planet learn to think?">
-<meta property="og:description" content="Follow 4.1 billion years of memory, wiring and computing across 64 moments in Earth's history, from a rock pore to a data center.">
+<meta property="og:description" content="Follow 4.1 billion years of memory, wiring and computing across 68 moments in Earth's history, from a rock pore to a data center.">
 <meta property="og:image" content="assets/og/default.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Systema Intelligentiae — How did a planet learn to think?">
-<meta name="twitter:description" content="Follow 4.1 billion years of memory, wiring and computing across 64 moments in Earth's history, from a rock pore to a data center.">
+<meta name="twitter:description" content="Follow 4.1 billion years of memory, wiring and computing across 68 moments in Earth's history, from a rock pore to a data center.">
 <meta name="twitter:image" content="assets/og/default.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -22,7 +22,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
 <noscript><p class="nojs wrap">This page draws its charts and stories with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
 
 <main id="main" class="wrap">
@@ -63,14 +63,14 @@
   </section>
 
   <details class="sec home-evidence" id="homeEvidence">
-    <summary><span>Explore the numbers behind the story</span><small>64 moments · original chart · units and assumptions</small></summary>
+    <summary><span>Explore the numbers behind the story</span><small>68 moments · original chart · units and assumptions</small></summary>
     <div class="home-evidence-body">
       <p class="note">These are model estimates and reconstructions. Biochemical events, nerve signals and digital operations describe different processes; their counts do not measure a shared quantity of intelligence.</p>
       <div class="stats" id="stats"></div>
     <figure class="evidence-fig">
       <div class="fig-tools"><div class="seg" role="group" aria-label="Time axis"><button type="button" id="mOrd" aria-pressed="true">One column per moment</button><button type="button" id="mTime" aria-pressed="false">True time</button></div></div>
       <div class="keys" id="heroKeys" role="group" aria-label="Layers of the stack: select one to highlight it"></div>
-      <div class="stack-wrap"><svg id="heroChart" role="img" aria-label="Seven layers of Earth’s computing and memory across 64 moments, each drawn as thick as its value has digits. The table below the chart gives the values."></svg></div>
+      <div class="stack-wrap"><svg id="heroChart" role="img" aria-label="Seven layers of Earth’s computing and memory across 68 moments, each drawn as thick as its value has digits. The table below the chart gives the values."></svg></div>
       <div class="scrub"><input type="range" class="time-slider" id="heroSlider" aria-label="Moment in Earth’s history"><a class="btn sm ghost" id="heroGo" href="journey.html#EP32b">Visit this moment →</a></div>
       <figcaption><span class="teach" id="heroRead">Each layer is as thick as its number has digits: 10²⁶ is 26 digits thick. Each column is one moment in Earth’s history, not one year, so the last six columns cover only 80 years.</span>
       <p class="time-key" data-time-key="moments"></p></figcaption>
@@ -103,7 +103,16 @@ doing: ops/s · keeping: bits · reach: individuals</div></div>
     </div>
   </details>
 
-  <section class="sec" id="questions" aria-labelledby="askH">
+  <section class="sec cv-defer" id="today-pie" aria-labelledby="pieH">
+    <div class="sec-head">
+      <span class="eyebrow">Earth today (2026) · Total volume vs. one system’s complexity</span>
+      <h2 id="pieH">Who processes Earth’s information today—and how complex is each one?</h2>
+      <p>One bacterium runs only ~850 chemical reactions a second, while one tree runs ~10⁹ electrical signals a second, one human brain ~1.5×10¹⁴ synapse signals a second, and one frontier AI cluster 3×10²⁰ operations a second. Yet because 3.1×10³⁰ bacteria run at once, microbes dominate total events. Switch the pies below to compare events, power, memory and one unit’s complexity.</p>
+    </div>
+    <div id="todayPieApp"></div>
+  </section>
+
+  <section class="sec cv-defer" id="questions" aria-labelledby="askH">
     <div class="sec-head"><h2 id="askH">Follow a question</h2><p>Each question opens the detailed chart, highlights its relevant layers and points to stops in the Journey.</p></div>
     <div class="threads" id="threads"></div>
     <div class="thread-out" id="threadOut" hidden></div>
@@ -111,12 +120,14 @@ doing: ops/s · keeping: bits · reach: individuals</div></div>
   </section>
 
   <section class="sec" aria-labelledby="ways">
-    <div class="sec-head"><h2 id="ways">Four ways in</h2><p>Pick the one that fits your mood. They all use the same story and the same numbers.</p></div>
+    <div class="sec-head"><h2 id="ways">Six ways in</h2><p>Pick the one that fits your mood. They all use the same story and the same numbers.</p></div>
     <div class="doors">
-      <a class="door" id="journeyDoor" href="journey.html" style="--dc:var(--act-1);--do:var(--on-act-1)"><span class="lvl">Start here</span><span class="big">Take the journey</span><p><span class="n-stops">64</span> stops, from a mineral bubble to an AI supercomputer. One star at each stop, or a 24-stop quick tour.</p><span class="go" id="journeyGo">Start exploring →</span></a>
-      <a class="door" href="tree.html" style="--dc:var(--c-cpu);--do:var(--on-cpu)"><span class="lvl">Explore</span><span class="big">Explore the tree</span><p><span class="n-inv">122</span> inventions and the links between them. Follow neural computing, animal networks or memory.</p><span class="go">Go exploring →</span></a>
-      <a class="door" href="how.html" style="--dc:var(--c-io);--do:var(--on-io)"><span class="lvl">Skeptics</span><span class="big">How we know</span><p>Eight popular estimates that are badly wrong, and what the evidence says instead.</p><span class="go">Check our work →</span></a>
-      <a class="door" href="data.html" style="--dc:var(--c-store);--do:var(--on-store)"><span class="lvl">Expert</span><span class="big">Data Lab</span><p>All 64 rows, every column, uncertainty ranges, energy and hardware ledgers. Plot anything.</p><span class="go">Open the data →</span></a>
+      <a class="door" id="journeyDoor" href="journey.html" style="--dc:var(--act-1);--do:var(--on-act-1)"><span class="lvl">Start here</span><span class="big">Take the journey</span><p><span class="n-stops">68</span> stops, from a mineral bubble to an AI supercomputer. One star at each stop, or a 26-stop quick tour.</p><span class="go" id="journeyGo">Start exploring →</span></a>
+      <a class="door" href="tree.html" style="--dc:var(--c-cpu);--do:var(--on-cpu)"><span class="lvl">Explore</span><span class="big">Explore the tree</span><p><span class="n-inv">173</span> inventions across 10 parts—including DNA, sexual reproduction, plants, immunity, Bennett’s 5 breakthroughs and spaceflight.</p><span class="go">Go exploring →</span></a>
+      <a class="door" href="atlas.html" style="--dc:var(--c-make);--do:var(--on-make)"><span class="lvl">Systems DB</span><span class="big">Atlas of minds</span><p>703 deduplicated cells, motors, trees, animals, societies, archives, spacecraft, chips and AI models—sorted by complexity.</p><span class="go">Browse systems →</span></a>
+      <a class="door" href="stories.html" style="--dc:var(--c-prog);--do:var(--on-prog)"><span class="lvl">Read</span><span class="big">Stories</span><p>DNA, sex, nerves, motors, plants and immunity: over 150 dated milestones, each with a picture and the evidence behind it.</p><span class="go">Read the stories →</span></a>
+      <a class="door" href="how.html" style="--dc:var(--c-io);--do:var(--on-io)"><span class="lvl">Skeptics</span><span class="big">How we know</span><p>What we count, how sure we are, eight popular figures that are badly off, and the equations behind every number.</p><span class="go">Check our work →</span></a>
+      <a class="door" href="data.html" style="--dc:var(--c-store);--do:var(--on-store)"><span class="lvl">Expert</span><span class="big">Data Lab</span><p>All 68 rows and 25 ledgers: off-world spacecraft, genomes, sex, plants, immunity, nerves, networks, hardware and media.</p><span class="go">Open the data →</span></a>
     </div>
   </section>
 
@@ -126,13 +137,13 @@ doing: ops/s · keeping: bits · reach: individuals</div></div>
       <p class="time-key" data-time-key=""></p>
   </section>
 
-  <section class="sec" aria-labelledby="partsH">
-    <div class="sec-head"><h2 id="partsH">Every thinking thing has nine parts</h2><p>A bacterium, you and a laptop all need power, senses, wiring, a processor, memory, a program, storage, outside memory and a network. Watch each part get upgraded through time.</p></div>
-    <div class="spec-wrap"><table class="spec" id="parts"><caption class="sr-only">The nine parts of a thinking thing, in a bacterium, in you and in a laptop</caption></table></div>
+  <section class="sec cv-defer" aria-labelledby="partsH">
+    <div class="sec-head"><h2 id="partsH">Every thinking thing has ten parts</h2><p>A bacterium, you and a laptop all need power, senses, wiring, a processor, memory, a program, storage, outside memory, a network, and a way to replicate or manufacture more of itself. Watch each part get upgraded through time.</p></div>
+    <div class="spec-wrap"><table class="spec" id="parts"><caption class="sr-only">The ten parts of a thinking thing, in a bacterium, in you and in a laptop</caption></table></div>
   </section>
 
   <section class="sec x-only" aria-labelledby="vecH">
-    <div class="sec-head"><h2 id="vecH">For researchers: the state vector</h2><p>Each of the 64 moments is described by ten separately measured quantities, each kept in its own units. The stack height on this page is an index for the picture (a sum of digit counts) and is never used to rank anything. Units are kept apart: bits, events per second, watts and bit-years.</p></div>
+    <div class="sec-head"><h2 id="vecH">For researchers: the state vector</h2><p>Each of the 68 moments is described by ten separately measured quantities, each kept in its own units. The stack height on this page is an index for the picture (a sum of digit counts) and is never used to rank anything. Units are kept apart: bits, events per second, watts and bit-years.</p></div>
     <div class="lab">
       <pre>Ψ(t) = ( H_copy, H_div, H_sel,            hereditary DNA (bits)
          M_active, M_passive,              working vs. structural memory (bits)
@@ -143,12 +154,12 @@ doing: ops/s · keeping: bits · reach: individuals</div></div>
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="actsH">
-    <div class="sec-head"><h2 id="actsH">Seven acts, <span class="n-stops">64</span> stops</h2><p>The journey runs in seven acts, from chemistry in a rock pore to machines. Open an act to start at its first stop.</p></div>
+  <section class="sec cv-defer" aria-labelledby="actsH">
+    <div class="sec-head"><h2 id="actsH">Seven acts, <span class="n-stops">68</span> stops</h2><p>The journey runs in seven acts, from chemistry in a rock pore to machines. Open an act to start at its first stop.</p></div>
     <div class="acts" id="acts"></div>
   </section>
 
-  <section class="sec" aria-labelledby="surpH">
+  <section class="sec cv-defer" aria-labelledby="surpH">
     <div class="sec-head"><h2 id="surpH">Things that surprised us</h2></div>
     <div class="surprises">
       <a class="surprise" href="journey.html#EP32b" style="--sc:var(--act-2)"><b>97%</b><h3>Most life is still bacteria</h3><p>Of Earth’s ~3×10³⁰ living cells, almost all are single-celled microbes. The typical cell today is about as simple as one from 3 billion years ago.</p></a>
@@ -164,5 +175,6 @@ doing: ops/s · keeping: bits · reach: individuals</div></div>
 <script src="assets/common.js"></script>
 <script src="assets/home.js"></script>
 <script src="assets/home-story.js"></script>
+<script src="assets/pie-today.js"></script>
 </body>
 </html>

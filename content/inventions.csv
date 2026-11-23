@@ -21,12 +21,13 @@ day-clock,EP02b,prog,24-hour clock,A three-protein clock anticipates dawn. The p
 quorum,EP02b,net,Quorum sensing,Microbial mats vote by chemical signal across up to ~10¹⁰ cells.,3; 13; 68
 aerobic,EP03b,power,Breathing oxygen,Burning sugar with oxygen yields 30–36 ATP instead of 2. Planet power: 3.5 TW.,15; 17; 27; 47
 mitochondria,EP04a,power,Mitochondria,"An engulfed bacterium becomes a power plant: ~10,000× more energy per gene.",22; 27; 68; 86
+molecular-motors,EP04a,wire,Molecular motors,"Kinesin and dynein walk cargo along polarized microtubule pipes at ~1–5 µm/s, beating diffusion inside big cells.",22; 92; 93; 94; 95
 euk-signaling,EP04a,cpu,Complex-cell signaling,"Signal cascades and an internal skeleton, ~100,000 operations per second per cell.",13; 22; 27; 69
 chromatin,EP04a,store,Packed chromosomes,DNA wound on protein spools lets genomes grow large.,20; 22; 27; 68
 endosymbiosis,EP04a,net,Cells inside cells,Two cells become one.,22; 27; 68; 86
 chloroplast,EP04b,power,Chloroplast,A swallowed cyanobacterium becomes a built-in solar panel.,2; 16; 27; 68; 86
 eyespot,EP04b,io,Eyespot,A light-sensitive spot steers two flagella within milliseconds.,16; 50; 69
-sex,EP05a,prog,Sex,Shuffling two genomes lets good mutations combine and bad ones get purged.,21; 22; 68
+sex,EP05a,prog,Sex,"First fossil sexual life (Bangiomorpha, ~1.05 Ga): shuffling two genomes lets good mutations combine and bad ones get purged.",21; 22; 68; 86; 96; 97
 multicellular,EP05a,net,Many-celled bodies,Clones stick together and split the work.,22; 68; 69; 86
 synapse-kit,EP05b,wire,Synapse parts (spare),"Proteins later used in synapses already exist, used for gluing cells together.",43; 74; 75
 mycelia,EP05b,net,Fungal networks,Fungal threads and colonial rosettes.,2; 68; 73
@@ -36,12 +37,12 @@ head,EP07b,io,A front end,Sensors cluster at the front of a two-sided body.,39; 
 bare-axons,EP07b,wire,Bare nerve fibers,Signals travel ~1 m/s; speed grows only with the square root of fiber width.,18; 19; 39; 75
 neurons,EP07b,cpu,Neurons,"Nerve nets are in use by now: 10²⁰ synaptic events per second, planet-wide.",18; 19; 39; 74; 75
 neural-activity,EP07b,ram,Firing patterns,Spikes hold state for milliseconds to seconds.,14; 18; 39
-steering,EP08a,prog,Steering,"Approach good, avoid bad, in three dimensions. The first of five great brain breakthroughs.",39; 49; 50
+steering,EP08a,prog,Steering,"Approach good, avoid bad, in three dimensions. Bennett's Breakthrough 1.",39; 49; 50
 compound-eyes,EP08b,io,Compound eyes,"Anomalocaris had more than 16,000 lenses per eye.",39; 50; 51
 three-part-brain,EP08b,cpu,Three-part brain,"Early arthropods already had front, middle and rear brain parts with layered visual centers.",39; 51; 76
 distributed-arms,EP09a,cpu,Distributed arm brains,Cephalopod ancestors split computing between optic lobes and semi-independent arm cords.,39; 51; 76
 reef-colonies,EP09a,net,Reef colonies,Millions of coral and bryozoan clones share food and warning pulses across a living reef.,39; 51; 68
-reinforcing,EP09b,prog,Learning from reward,"Dopamine signals surprise, so the brain learns from trial and error. Breakthrough two.",39; 49
+reinforcing,EP09b,prog,Learning from reward,"Dopamine signals surprise, so the brain learns from trial and error. Bennett's Breakthrough 2.",39; 49
 synaptic-weights,EP09b,store,Synaptic memory,Lessons from one lifetime get written into synapse strengths (~4–5 bits each).,14; 24; 39
 schools,EP09b,net,Fish schools,"Early fish likely move as one, sensing neighbors in open water.",39; 51
 lateral-line,EP10b,io,Water-ripple sense,Hair cells and electric sensors along a fish's flank map unseen motion in murky water.,39; 50; 64
@@ -60,7 +61,7 @@ balance-cerebellum,EP15a,cpu,Two-leg balance brain,Fast inner-ear and cerebellar
 endothermy,EP15b,power,Warm blood,"A 37 °C body keeps the brain fast, even at night.",15; 39; 56; 65
 neocortex,EP15b,cpu,Six-layer cortex,"The mammal cortex forms, wired to the hippocampus.",18; 39; 65
 hippocampal-maps,EP15b,ram,Mental maps,Place cells hold where-am-I.,14; 39; 65
-simulating,EP15b,prog,Imagining,Replay rehearses paths not yet taken. Breakthrough three.,39; 49; 65; 86
+simulating,EP15b,prog,Imagining,Replay rehearses paths not yet taken. Bennett's Breakthrough 3.,39; 49; 65; 86
 middle-ear,EP16b,io,Three-bone ear,Old jaw bones begin to become ear bones for high-pitched hearing.,43; 65
 flight-controller,EP17a,cpu,Flight controller,A bigger cerebellum and pallium steer in three dimensions.,43; 61
 flocks,EP19a,net,Flocks and V-formations,"Birds likely flock by now; living starlings each track their seven nearest neighbors, passing turns across thousands with no leader.",43; 61; 68
@@ -70,8 +71,8 @@ color-fovea,EP19a,io,Sharp forward-facing eyes,Early primates bring both eyes fo
 folded-cortex,EP20a,cpu,Folded neocortex,"By now monkeys' and apes' larger brains are folded, packing far more visual and social columns inside the skull.",18; 23; 39; 65
 echolocation,EP19b,io,Echolocation,Toothed whales see with sound.,10; 62
 dense-pallium,EP19b,cpu,Dense bird brains,Songbirds pack ~240 million neurons per gram.,23; 61
-vocal-pods,EP19b,net,Vocal pods and dialects,"Whale pods and songbirds learn family dialects, coordinating hunts and territories over kilometers.",10; 61; 62; 68
-mentalizing,EP20a,prog,Reading minds,A prefrontal cortex models what others know. Breakthrough four.,23; 39
+vocal-pods,EP19c,net,Vocal pods and dialects,"Whale pods and songbirds learn family dialects, coordinating hunts and territories over kilometers.",10; 61; 62; 68
+mentalizing,EP20a,prog,Reading minds,A prefrontal cortex models what others know. Bennett's Breakthrough 4.,23; 39
 primate-troops,EP20a,net,Troops and coalitions,Apes and monkeys track allies and rivals in groups of ~50–80 through grooming and alarm calls.,23; 39; 68
 bipedal-gait,EP20b,io,Upright walking,"Balancing on two legs frees the hands from walking so fingers can carry, gesture and build.",23; 39; 43
 matriarch-clans,EP20b,net,Matriarch clans,Long-lived elders lead nested elephant and savanna herds via low rumbles and ground vibrations.,10; 23; 68
@@ -83,7 +84,7 @@ hierarchical-planning,EP22b,prog,Multi-step tool plans,Modern-sized brains hold 
 hunting-bands,EP22b,net,Cooperative bands,Hominin families share childcare across grandparents and coordinate team hunts of big game.,23; 39; 68
 engraved-symbols,EP23a,backup,Engraved symbols,Ochre plaques and shell beads carry meaning.,23; 25; 39
 speech,EP23b,wire,Speech,"About 39 bits per second, across all 17 languages measured.",23; 39; 44
-speaking,EP23b,prog,Language,By now nested grammar moves plans and stories between minds. Breakthrough five.,23; 39; 68
+speaking,EP23b,prog,Language,By now nested grammar moves plans and stories between minds. Bennett's Breakthrough 5.,23; 39; 68
 cave-art,EP23b,backup,Cave art and tallies,Painted walls and notched bones store stories and counts outside the head.,23; 25; 39
 tribes,EP23b,net,Tribes,"Groups of ~1,500 bound by a shared language.",23; 39; 68
 agriculture,EP24a,power,Farming,Crops and herds turn sunlight into a dependable surplus.,2; 6; 35
@@ -121,3 +122,53 @@ hbm,EP32b,ram,Memory everywhere,Refreshed every 64 ms; refreshing alone uses ~11
 reasoning,EP32b,prog,Machines that deliberate,Models think step by step before answering.,39; 77; 78; 86
 zettabytes,EP32b,backup,15 zettabytes,"1.2×10²³ bits stored, kept alive by ~20 GW of power.",25; 26; 85
 planetary-net,EP32b,net,Planetary network,8.1 billion people and 6.5 billion devices.,25; 26; 44; 79; 86
+template-copying,EP01a,make,Template copying,Mineral-held RNA chains catalyse rough copies of neighbors before cells exist.,47; 67; 68; 81; 86; 87
+binary-fission,EP01b,make,Cell division,"One cell copies its DNA tape and ribosomes, then pinches into two complete cells.",28; 30; 47; 66; 68; 86
+mitotic-spindle,EP04a,make,Coordinated mitosis,Host nucleus and engulfed mitochondria synchronize their division on protein spindles.,22; 27; 68; 86
+germline-embryo,EP05a,make,Single-cell bottleneck,Many-celled bodies reset to one fertilized egg or spore so every body builds fresh.,14; 22; 68; 69; 86
+hox-body-plan,EP08a,make,Body-plan toolkit,"Shared Hox master switches stamp out modular segments, limbs and sense organs.",16; 39; 68; 69
+spores-seeds,EP11b,make,Spores and seeds,"Dormant plant embryos travel overland with packed food, germinating years later.",2; 63; 68
+metamorphosis,EP13a,make,Metamorphosis,One insect genome builds a feeding larva first and rebuilds it into a winged adult.,9; 37; 68
+queen-castes,EP17b,make,Reproductive castes,One queen lays millions of eggs while sterile worker castes forage and build as one body.,9; 12; 37; 68; 86
+live-birth-milk,EP18b,make,Live birth and milk,Warm internal gestation and nursing grow slow-wiring brains safely beside a parent.,15; 23; 58; 68
+knapped-manufacture,EP21a,make,Stone toolmaking,Hands shape raw cobbles into repeatable cutting edges passed down by watching.,23; 25; 39; 43
+selective-breeding,EP24a,make,Domestication,"Farmers steer the reproduction of wheat, rice, sheep and cattle for bigger harvests.",2; 6; 35; 68
+movable-type-molds,EP28a,make,Interchangeable type,"A hand mold casts thousands of identical metal letters, launching mass manufacture.",25; 44; 86
+machine-tools,EP29a,make,Factories and lathes,Steam-powered lathes and looms cut interchangeable parts that build more machines.,17; 25; 79; 86
+photolithography,EP30b,make,Chip photolithography,"Light projects circuit masks onto silicon wafers, printing millions of switches at once.",25; 45; 80; 86
+euv-fabs-synbio,EP32a,make,EUV fabs and gene writing,Ultraviolet fabs print 100-billion-transistor chips while DNA printers write custom genes.,28; 77; 80; 86
+ai-assisted-design,EP32b,make,AI-designed chips and proteins,"Models co-design chip floorplans, robot code and proteins, though fabs still need humans.",28; 39; 77; 78; 86
+organelle-transfer,EP04b,store,Organelle gene transfer,"Mitochondria and chloroplasts move thousands of genes into the nucleus, keeping tiny local genomes beside their membranes.",2; 22; 27; 68
+genome-doublings,EP09a,store,Two genome doublings,"Early vertebrates copy their entire genome twice, freeing spare genes to wire new brains, jaws and senses.",20; 39; 68; 104
+polyploid-genomes,EP13a,store,Plant & fish polyploidy,"Seed plants and bony fish double whole genomes again, fueling vast radiations on land and in water.",2; 20; 63; 104
+lean-genomes,EP15a,store,Lean dinosaur genomes,Two-legged dinosaurs shed repeated DNA for smaller cells and high-speed oxygen use long before birds fly.,20; 59; 61; 104
+flowering-genomes,EP17m,store,Flowers and pollinators,"Repeated genome doublings build flowers, nectar and double fertilization, recruiting insects and birds as flying pollen couriers.",2; 9; 101; 104
+human-genome,EP22c,store,Our 3.1B-letter genome,"Humans carry ~20,000 protein genes plus vast regulatory switches; each child inherits ~70 new DNA letter changes.",20; 21; 23; 104
+dna-sequencing,EP31a,store,Reading DNA,"Sequencers read viral, bacterial and soon human genomes letter by letter, turning heredity into digital text.",20; 28; 86; 105
+crispr-synbio,EP31b,store,CRISPR & synthetic DNA,"Chemically written genomes boot living cells, CRISPR cuts chosen DNA letters, and books are stored in DNA.",20; 28; 86; 105
+drift-barrier-dna,EP32b,store,3.6×10³⁷ DNA bits,Split roughly evenly between microbes and complex cells; ferns hold 160B letters while Paramecium errs 1 in 50B.,1; 20; 21; 104
+meiotic-core,EP04a,prog,Meiotic toolkit,"Early complex cells repurpose DNA-repair enzymes to pair chromosomes, swap segments and halve gene copies.",22; 47; 68; 96; 97
+mating-types,EP04b,make,Mating types,Single-celled algae evolve plus and minus surface tags so stressed cells fuse only with an opposite partner.,22; 68; 96; 98
+sperm-and-egg,EP05b,make,Sperm and egg,Equal gametes split jobs into millions of tiny swimming sperm that search and large food-packed eggs that build embryos.,22; 68; 96; 98
+broadcast-spawning,EP07b,make,Synchronized spawning,Early sea animals release clouds of eggs and scent-guided sperm in lockstep with moonlight and chemical cues.,39; 68; 74; 98
+internal-fertilization,EP12b,make,Internal fertilization,"Jawed armored fish evolve claspers for direct mating instead of open-water clouds, setting up reproduction on land.",64; 68; 99
+land-mating,EP13b,make,Pollen & land mating,Seed plants pipe sperm through tiny pollen tubes while early reptiles pair on land to lay waterproof shelled eggs.,54; 63; 64; 68
+sex-chromosomes,EP17a,make,XY & ZW chromosomes,"Mammals and birds lock sex onto dedicated chromosomes instead of nest temperature, stabilizing 50:50 sex ratios.",61; 65; 100
+courtship-selection,EP19c,make,Courtship & mate choice,"Learned birdsong, whale songs and bright displays turn mate choice into an engine of sensory and brain evolution.",10; 61; 68; 102
+pair-bonds-care,EP22b,make,Pair bonds & grandmothers,"Long pair bonds, shared family care and post-menopausal grandmothers pool food so slow-growing human brains mature.",23; 39; 68; 103
+assisted-reproduction,EP31b,make,IVF & embryo screening,"In-vitro fertilization, cryopreservation and genetic screening let medicine assist conception and check embryos.",28; 86; 105
+apollo-guidance,EP30b,prog,Spaceflight guidance,"Apollo's 72-kilobyte microchip computer lands humans on the Moon 384,400 km away, shedding radar overloads mid-descent.",25; 45; 106
+voyager-probes,EP31a,io,Deep-space probes,Plutonium-powered Voyagers carry six radiation-hardened computers and billion-year gold records past the outer planets into interstellar space.,25; 106; 107; 108
+mars-autonomy,EP31b,prog,Autonomous rovers,"With radio taking 4–24 minutes to reach Mars, radiation-hardened rovers dodge hazards and pick laser targets on their own.",39; 106; 109
+deep-space-links,EP32a,wire,Deep-space & orbital lasers,70-meter dishes catch 160-bit/s whispers from interstellar space while infrared lasers wire satellites and deep-space probes.,25; 26; 108; 110
+offworld-fleet,EP32b,io,Off-world fleet (1 light-day),"~17,500 active satellites, L2 telescopes, Mars robots and Voyager 1 at 25.9 billion km extend Earth's senses into the stars.",26; 108; 109; 110
+crispr-immunity,EP02b,store,CRISPR viral memory,Bacteria snip DNA from attacking viruses and file it in their own genome as a mugshot gallery for next time.,20; 86; 111
+adaptive-immunity,EP11a,prog,Adaptive immunity,"Jawed fish shuffle antibody gene segments into billions of detectors, keeping lifetime memory of past germs.",20; 39; 112
+calcium-memory,EP11b,ram,Plant calcium memory,Land plants count touches over 20 seconds with calcium pulses and remember winter cold in chromatin marks.,2; 63; 113
+plant-signals,EP17m,wire,Plant warning waves,Bitten leaves fire glutamate-calcium waves down stems and release scents that prime neighboring leaves.,2; 113; 114
+prefrontal-ram,EP20a,ram,Prefrontal working memory,Primate frontal loops hold active goals and rules online across distractions so plans survive interruptions.,23; 39; 115
+abacus-scratchpad,EP26a,ram,Counting boards & abacus,"Pebbles and sliding beads hold intermediate sums outside the skull, breaking our ~4-item mental scratchpad limit.",25; 29; 115; 116
+mobile-cloud,EP31m,io,Pocket smartphone sensors,"Over a billion phones pair cameras, microphones and GPS with mobile networks, sensing the live planet.",25; 26; 44; 86
+synthetic-cell,EP31m,make,Synthetic bacterial cell,"Chemists stitch 1.08 million DNA letters from a computer file to boot the first living cell with a human-written genome.",20; 28; 86; 117
+kv-context,EP32a,ram,Attention context cache,Transformer key-value caches keep hundreds of thousands of words live in fast chip memory while reasoning.,39; 77; 78; 118
+mrna-vaccines,EP32a,store,Programmable mRNA vaccines,Digitally written messenger RNA in lipid droplets teaches human cells to print viral proteins and build immunity.,28; 86; 112; 118

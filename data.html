@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data Lab · Systema Intelligentiae</title>
-<meta name="description" content="The full 64-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
+<meta name="description" content="The full 68-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
 <meta property="og:title" content="Data Lab · Systema Intelligentiae">
-<meta property="og:description" content="The full 64-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
+<meta property="og:description" content="The full 68-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
 <meta property="og:image" content="assets/og/default.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Data Lab · Systema Intelligentiae">
-<meta name="twitter:description" content="The full 64-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
+<meta name="twitter:description" content="The full 68-step census of Earth's memory, computing and energy, with uncertainty ranges and ledgers. Sort, plot and download.">
 <meta name="twitter:image" content="assets/og/default.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -21,19 +21,20 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html" aria-current="page">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html" aria-current="page">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
 <noscript><p class="nojs wrap">This page draws its charts and stories with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
 
 <main id="main" class="wrap">
   <div class="page-head">
     <span class="eyebrow">Data Lab · expert level</span>
     <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Every number, open</h1>
-    <p>The full 64-step census of Earth and the ledgers behind today’s values. Sort, filter, plot and download. Values are in raw scientific units.</p>
+    <p>The full 68-step census of Earth and the 24 ledgers behind today’s values. Sort, filter, plot and download. Values are in raw scientific units.</p>
     <p class="note"><a href="research.html">Read the papers built on these numbers, each checked against them →</a> · <a href="papers.html">Test a finding yourself at the research desk →</a></p>
   </div>
-  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="tabGroups" class="tab-groups" role="group" aria-label="Filter datasets by topic"></div>
+  <div class="tabs" role="tablist" aria-label="Datasets" id="tabs"></div>
   <div style="height:16px"></div>
-  <div id="panel" class="lab-panel" role="tabpanel"></div>
+  <div id="panel" class="lab-panel" role="tabpanel" aria-label="Selected dataset"></div>
 </main>
 
 <footer id="siteFoot"></footer>

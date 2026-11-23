@@ -129,3 +129,124 @@ arpanet,web,Packet-switched computer networks become the global World Wide Web.,
 stored-programs,transformers,General-purpose software lets chips switch from hand-coded rules to learned weights.,28; 39; 46; 77; 86
 dram,hbm,Capacitor memory cells stack vertically into high-bandwidth AI memory.,26; 45; 85
 digital-storage,zettabytes,Magnetic and flash drives scale planetary archives to 15 zettabytes.,25; 26; 85
+rna,template-copying,RNA strands act as both stored message and copying catalyst.,47; 67; 68; 81; 86; 87
+template-copying,binary-fission,Loose template copying gets wrapped inside a dividing cell.,28; 47; 68; 86
+ribosome,binary-fission,Ribosomes build the proteins needed to pinch one cell into two.,28; 29; 30; 68; 86
+dna,binary-fission,Double-stranded DNA gives dividing cells an accurate master tape.,20; 28; 47; 68
+endosymbiosis,mitotic-spindle,Two merged cells must time their division together to stay partners.,22; 27; 68; 86
+chromatin,mitotic-spindle,Spindle fibers pull packed chromosomes cleanly into daughter cells.,20; 22; 27; 68
+sex,germline-embryo,Shuffled gametes fuse into one starting cell that builds a whole body.,14; 22; 68; 86
+germline-embryo,multicellular,Starting from one clone cell keeps tissues cooperating instead of cheating.,14; 22; 68; 69; 86
+bioelectric,hox-body-plan,Tissue voltage patterns and Hox switches tell growing embryos where organs go.,39; 68; 69
+hox-body-plan,steering,Modular two-sided body plans place sensors in front and muscles down the flanks.,16; 39; 68
+land-plants,spores-seeds,Life on dry land rewards weatherproof spores and food-packed seeds.,2; 63; 68
+metamorphosis,mushroom-bodies,Rebuilding the brain during pupation wires an adult insect's flight and scent circuits.,9; 37; 39; 68
+metamorphosis,queen-castes,Flexible larval development lets food cues turn sisters into queens or sterile workers.,9; 12; 37; 68; 86
+queen-castes,eusocial,Splitting egg-laying from worker labor turns a colony into one superorganism.,9; 12; 37; 68; 86
+amniote-egg,live-birth-milk,Internal membranes evolve into a warm placenta followed by nursing.,15; 23; 58; 68
+live-birth-milk,family-care,Months of milk and warmth create a close parent-child learning bond.,15; 23; 58; 68
+tool-hands,knapped-manufacture,Precision grip and aimed blows turn raw cobbles into manufactured blades.,23; 25; 39; 43
+knapped-manufacture,stone-tools,Repeated flaking recipes leave durable tool designs behind for millennia.,23; 25; 39
+agriculture,selective-breeding,Planting saved seed lets farmers breed bigger grains and tamer herds.,2; 6; 35; 68
+movable-type-molds,printing,Casting thousands of identical metal letters makes the printing press practical.,25; 44; 86
+coal-steam,machine-tools,Steam power drives precision lathes that cut parts for further machines.,17; 25; 79; 86
+machine-tools,tabulators,Interchangeable gears and pins make punch-card tabulators manufacturable.,25; 29; 86
+integrated-circuits,photolithography,Planar chips scale up because light prints whole circuits in one exposure.,25; 45; 80; 86
+photolithography,gpus,Shrinking optical features packs thousands of parallel math cores onto one die.,39; 77; 80; 86
+photolithography,euv-fabs-synbio,Optical chip printing scales down to 13.5-nm extreme ultraviolet lithography.,77; 80; 86
+euv-fabs-synbio,ai-clusters,Nanometer EUV wafer fabs manufacture the GPUs inside frontier clusters.,26; 77; 80; 86
+transformers,ai-assisted-design,Sequence and graph models learn to lay out circuits and fold new proteins.,28; 39; 77; 78; 86
+diffusion,molecular-motors,Drifting across a large complex cell takes hours; walking motors cross it in seconds.,48; 50; 92; 93
+mitochondria,molecular-motors,Abundant ATP per gene pays the fuel bill for protein walkers stepping along tracks.,22; 92; 95
+molecular-motors,mitotic-spindle,Motors and dynamic microtubules pull packed chromosomes cleanly apart.,22; 92; 93
+molecular-motors,eyespot,Dynein motors slide microtubule pairs to bend steering flagella in milliseconds.,16; 50; 69; 92
+molecular-motors,sex,"Microtubule spindles pair, shuffle and halve chromosomes in meiosis.",21; 22; 93
+molecular-motors,mycelia,Motors haul wall supplies along microtubule tracks to growing fungal tips.,2; 73; 92
+molecular-motors,bare-axons,Long nerve fibers rely on microtubule highways to supply distant synapses.,18; 19; 94
+gene-swapping,meiotic-core,Bacterial DNA-repair enzymes get repurposed to pair and cross over chromosomes.,20; 22; 68; 97
+chromatin,meiotic-core,Spool-packed linear chromosomes can line up side by side and swap matching segments.,20; 22; 68; 97
+meiotic-core,mating-types,Halved chromosome sets need plus and minus tags to find an opposite partner.,22; 68; 96; 98
+mitochondria,organelle-transfer,Swallowed power-plant bacteria hand thousands of genes over to the host nucleus.,22; 27; 68
+chloroplast,organelle-transfer,Captured cyanobacteria transfer ~18% of a plant's future nuclear genes.,2; 27; 68
+mating-types,sex,Plus-and-minus cell fusion scales into regular two-parent sexual cycles.,22; 68; 96; 97
+sex,sperm-and-egg,Competing demands of partner search and embryo food split gametes into sperm and egg.,22; 68; 96; 98
+sperm-and-egg,broadcast-spawning,Tiny swimming sperm and large eggs coordinate across reefs by moonlight and scent.,39; 68; 74; 98
+neurons,broadcast-spawning,Light- and chemical-sensing nerve nets synchronize reef-wide spawning hours.,39; 74; 98
+hox-body-plan,genome-doublings,Copying the whole genome twice gives early vertebrates four Hox clusters to elaborate brains and jaws.,20; 39; 68; 104
+genome-doublings,reinforcing,Spare receptor and channel genes help wire richer vertebrate reward circuits.,20; 39; 104
+genome-doublings,myelin,Duplicated vertebrate gene families help build fast myelinated jaws and nerves.,18; 20; 39; 104
+broadcast-spawning,internal-fertilization,Jawed fish claspers replace open-water gamete clouds with direct pairing.,64; 68; 99
+genome-doublings,polyploid-genomes,"Whole-genome doubling repeats in bony fish and seed plants, fueling new radiations.",2; 20; 63; 104
+spores-seeds,land-mating,Microscopic pollen tubes carry male nuclei directly to ovules without open water.,2; 63; 68
+internal-fertilization,land-mating,Direct internal pairing lets early tetrapods and reptiles fertilize eggs out of water.,54; 64; 68; 99
+land-mating,amniote-egg,Fertilizing inside the body lets mothers wrap a waterproof shell around the egg before laying.,54; 64; 68
+polyploid-genomes,lean-genomes,"After earlier doublings, two-legged dinosaurs trim repeated DNA for tiny, fast-breathing cells.",20; 59; 61; 104
+lean-genomes,flight-controller,Compact genomes and tiny blood cells support the high metabolic demand of powered flight.,20; 61; 104
+land-mating,sex-chromosomes,Dedicated XY and ZW chromosomes replace nest temperature to keep land sex ratios balanced.,61; 65; 100
+polyploid-genomes,flowering-genomes,"Repeated plant genome doublings wire petal, scent and double-fertilization genes.",2; 101; 104
+flowering-genomes,eusocial,"Flowers trade nectar and pollen for targeted delivery, fueling bee and ant superorganisms.",2; 9; 12; 101
+sex-chromosomes,live-birth-milk,Chromosomal sex and genomic imprinting co-evolve with the mammalian placenta.,15; 65; 100
+dense-pallium,courtship-selection,High-density songbird and whale brains learn intricate songs judged by picky mates.,10; 61; 68; 102
+courtship-selection,vocal-pods,Mate-choice songs and displays co-evolve with learned family dialects.,10; 61; 62; 102
+live-birth-milk,pair-bonds-care,Prolonged nursing extends into human pair bonds and three-generation grandmother care.,23; 58; 68; 103
+pair-bonds-care,hunting-bands,Shared childcare across partners and grandparents frees foraging bands to cooperate.,23; 39; 68; 103
+pair-bonds-care,human-genome,Long childhoods and small band sizes shape our 3.1B-letter genome and ~70 mutations per birth.,20; 21; 23; 103; 104
+human-genome,speaking,Regulatory DNA switches tune vocal-learning and cortical circuits for human language.,20; 23; 39; 68
+electronic-computers,dna-sequencing,Digital computers assemble millions of short DNA reads into complete genomes.,20; 28; 45; 105
+dna-sequencing,crispr-synbio,Reading whole genomes makes targeted CRISPR editing and synthetic genomes possible.,20; 28; 86; 105
+dna-sequencing,assisted-reproduction,Cheap sequencing lets IVF clinics screen embryos for severe genetic conditions.,20; 28; 105
+crispr-synbio,euv-fabs-synbio,Programmable gene editing pairs with benchtop chemical DNA synthesis.,28; 80; 86; 105
+crispr-synbio,drift-barrier-dna,Sequencing across all kingdoms reveals how population size governs DNA copying accuracy.,1; 20; 21; 104; 105
+stored-programs,apollo-guidance,Priority-scheduled flight programs steer rockets faster than human reflexes.,28; 45; 106
+integrated-circuits,apollo-guidance,Shrinking logic onto silicon chips packs a Moon-landing computer into 32 kilograms and 55 watts.,25; 45; 106
+apollo-guidance,voyager-probes,Fault-tolerant flight computers evolve into Voyager's six redundant deep-space brains.,106; 107
+voyager-probes,mars-autonomy,Outer-planet fault protection grows into onboard computer vision for rovers minutes of light-time away.,107; 109
+gpus,mars-autonomy,"Fast vision chips and FPGAs let Mars rovers, helicopters and asteroid probes navigate without Earth in the loop.",77; 109
+fiber,deep-space-links,Coherent infrared lasers jump from glass fibers to vacuum links between satellites and interplanetary probes.,25; 26; 110
+voyager-probes,deep-space-links,Tracking twin probes beyond the heliopause drives 70-meter Deep Space Network receivers to single-attowatt sensitivity.,107; 108
+mars-autonomy,offworld-fleet,"Onboard autonomy lets ~40 deep-space explorers and ~17,500 satellites operate across light-seconds to one light-day.",109; 110
+deep-space-links,offworld-fleet,Orbital laser meshes and deep-space dishes tie off-world sensors back into Earth's planetary network.,26; 108; 110
+deep-space-links,planetary-net,"Thousands of laser-linked low-Earth-orbit satellites bring low-latency networking to oceans, poles and aircraft.",26; 44; 110
+gene-swapping,crispr-immunity,Microbes capture snippets of viral DNA into clustered repeats to recognize returning phages.,20; 86; 111
+crispr-immunity,crispr-synbio,Prokaryotic RNA-guided viral defense gets engineered into programmable genome editing.,20; 28; 105; 111
+genome-doublings,adaptive-immunity,Whole-genome duplications and a domesticated transposon build jawed-vertebrate V(D)J antibody shuffling.,20; 104; 112
+adaptive-immunity,live-birth-milk,Maternal antibodies cross the placenta and milk while immune tolerance protects the fetus.,15; 65; 112
+four-second-memory,calcium-memory,Short chemical memory extends into 20-second plant calcium counters and seasonal chromatin marks.,2; 50; 113
+land-plants,calcium-memory,Life on land selects for touch-counting traps and winter-tracking vernalisation memory.,2; 63; 113
+calcium-memory,plant-signals,Local calcium pulses scale into vascular glutamate waves that warn distant leaves of herbivores.,2; 113; 114
+wood-wide-web,plant-signals,Root-fungal nutrient trade pairs with vascular wound waves and airborne defense scents.,2; 113; 114
+plant-signals,flowering-genomes,Volatile leaf and floral chemistry shifts from herbivore defense to recruiting insect pollinators.,2; 101; 114
+hippocampal-maps,prefrontal-ram,Spatial replay circuits feed primate prefrontal loops that hold active goals across distractions.,23; 39; 115
+folded-cortex,prefrontal-ram,Expanded primate cortex dedicates recurrent frontal columns to delay-period working memory.,23; 39; 115
+prefrontal-ram,hierarchical-planning,Holding multiple sub-goals in working memory lets hominins knap stone cores in planned stages.,23; 39; 115
+prefrontal-ram,abacus-scratchpad,Counting boards and beads offload intermediate sums beyond the brain's ~4-item working-memory limit.,25; 115; 116
+abacus-scratchpad,written-algorithms,Place-value columns on counting boards inspire zero and written positional arithmetic.,25; 29; 116
+abacus-scratchpad,calculators,Bead-and-carry columns get mechanized into geared adding and multiplying drums.,25; 29; 116
+web,mobile-cloud,Cellular networks and low-power chips untether the Web into a billion pocket sensor phones.,25; 26; 44
+mobile-cloud,gpus,Billions of smartphone photos and voice streams create the training data that fuels deep learning.,26; 77; 86
+mobile-cloud,planetary-net,Always-on pocket sensors bind billions of human minds and cloud servers into one real-time loop.,26; 44; 86
+dna-sequencing,synthetic-cell,Reading bacterial genomes into computer files lets chemists synthesize a 1.08M-letter genome that boots a cell.,20; 28; 105; 117
+synthetic-cell,crispr-synbio,Booting a chemically written cell opens programmable synthetic biology alongside CRISPR editing.,20; 28; 105; 117
+synthetic-cell,euv-fabs-synbio,Whole-genome chemical assembly matures into minimal 473-gene cells and benchtop gene printers.,28; 86; 117
+dram,kv-context,Fast dynamic chip memory scales into GPU key-value caches holding live million-token context.,26; 45; 118
+transformers,kv-context,Self-attention stores keys and values for every past token as an active reasoning scratchpad.,39; 77; 118
+kv-context,hbm,Massive attention KV-caches drive terabyte-per-second High Bandwidth Memory stacks on AI clusters.,26; 77; 85; 118
+kv-context,reasoning,"Long live context windows let deliberative models write, check and revise multi-page chains of thought.",39; 77; 78; 118
+adaptive-immunity,mrna-vaccines,Digital mRNA sequences train B- and T-cell memory directly without growing a live pathogen.,28; 112; 118
+crispr-synbio,mrna-vaccines,Modified-nucleoside RNA chemistry and rapid gene synthesis turn vaccine design into code.,28; 86; 105; 118
+autocatalysis,chem-state,Self-feeding vent reactions hold transient chemical concentrations as the first live state.,27; 47; 50
+chemoreceptors,quorum,Surface chemical sensors let dense microbial mats read signaling molecules from neighbors.,3; 13; 68
+aerobic,euk-signaling,"Burning sugar with oxygen yields ~15x more ATP per molecule, funding large signaling cascades.",13; 15; 22; 27
+bare-axons,distributed-arms,Slow unmyelinated fibers reward keeping semi-autonomous nerve cords inside each flexible arm.,18; 39; 51; 76
+broadcast-spawning,reef-colonies,Moon-synchronized spawning disperses larvae that settle and bud into vast clone reefs.,39; 68; 74; 98
+myelin,internal-fertilization,Fast myelinated nerves give jawed fishes fine motor control for paired clasper mating.,18; 64; 99
+hyperoxia,metamorphosis,Oxygen-rich Carboniferous air fuels winged adult insects emerging from specialized larvae.,9; 37; 63
+polyploid-genomes,land-mating,"Duplicated seed-plant gene families elaborate pollen tubes, cones and drought-hardy seeds.",2; 20; 63; 104
+lean-genomes,balance-cerebellum,"Streamlined genomes and tiny red blood cells power agile, upright two-legged dinosaur brains.",20; 59; 61; 104
+endothermy,sex-chromosomes,"Warm, steady body and nest temperatures favor genetic XY and ZW sex switches over thermal cues.",15; 61; 65; 100
+middle-ear,family-care,Sensitive three-bone ears let warm-blooded mothers hear high-pitched offspring calls in the dark.,23; 43; 65
+bipedal-gait,knapped-manufacture,Walking upright frees hominin hands from locomotion to carry cobbles and strike sharp blades.,23; 39; 43
+hierarchical-planning,engraved-symbols,Multi-step planning minds carve deliberate geometric tallies onto ochre and shell.,23; 25; 39
+coinage-markets,abacus-scratchpad,Busy coin-and-tax markets push merchants to tally sums rapidly on counting boards.,25; 68; 116
+paper-mills,written-algorithms,Affordable rag paper replaces erasable dust boards so step-by-step arithmetic stays checkable.,25; 29; 44
+drift-barrier-dna,ai-assisted-design,Billions of natural gene sequences shaped by drift and selection train AI protein and genome models.,20; 28; 77; 86; 104

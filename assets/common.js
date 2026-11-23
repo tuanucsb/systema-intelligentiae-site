@@ -27,6 +27,20 @@
   const MYTHS = SI.myths;
   const NEURAL = {}; (SI.neural || []).forEach(r => { (NEURAL[r.ep] || (NEURAL[r.ep] = [])).push(r); });
   const NETWORKS = {}; (SI.networks || []).forEach(r => { (NETWORKS[r.ep] || (NETWORKS[r.ep] = [])).push(r); });
+  const MAKING = {}; (SI.making || []).forEach(r => { (MAKING[r.ep] || (MAKING[r.ep] = [])).push(r); });
+  const MOTORS = {}; (SI.motors || []).forEach(r => { (MOTORS[r.ep] || (MOTORS[r.ep] = [])).push(r); });
+  const SEX = {}; (SI.sex || []).forEach(r => { (SEX[r.ep] || (SEX[r.ep] = [])).push(r); });
+  const GENOMES = {}; (SI.genomes || []).forEach(r => { (GENOMES[r.ep] || (GENOMES[r.ep] = [])).push(r); });
+  const NERVEGENES = {}; (SI.nervegenes || []).forEach(r => { (NERVEGENES[r.ep] || (NERVEGENES[r.ep] = [])).push(r); });
+  const OFFWORLD = {}; (SI.offworld || []).forEach(r => { (OFFWORLD[r.ep] || (OFFWORLD[r.ep] = [])).push(r); });
+  const PLANTS = {}; (SI.plants || []).forEach(r => { (PLANTS[r.ep] || (PLANTS[r.ep] = [])).push(r); });
+  const IMMUNITY = {}; (SI.immunity || []).forEach(r => { (IMMUNITY[r.ep] || (IMMUNITY[r.ep] = [])).push(r); });
+  const PERSP = SI.perspectives || [];
+  const PERSP_EP = {}, PERSP_INV = {};
+  PERSP.forEach(p => {
+    (p.epochs || []).forEach(ep => { (PERSP_EP[ep] || (PERSP_EP[ep] = [])).push(p); });
+    (p.inventions || []).forEach(id => { (PERSP_INV[id] || (PERSP_INV[id] = [])).push(p); });
+  });
   // every moment has a plain title; between stops it also has its own hook
   const MOM = {}; (SI.moments || []).forEach(m => { MOM[m.epoch] = m; });
   const titleOf = i => (MOM[E[i].id] || {}).title || fmtTime(E[i].t);
@@ -140,6 +154,7 @@
     store: '<path d="M8 3c0 6 8 6 8 9s-8 3-8 9M16 3c0 6-8 6-8 9s8 3 8 9M9 6h6M9 18h6"/>',
     backup: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
     net: '<circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="19" r="2.5"/><path d="M7.5 6h9M6.2 8.2l4.6 8.6M17.8 8.2l-4.6 8.6"/>',
+    make: '<circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/><path d="M12 7.5v9"/>',
     search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'
   };
   const icon = k => '<svg viewBox="0 0 24 24" class="picon" aria-hidden="true">' + (ICON[k] || '') + '</svg>';
@@ -214,6 +229,10 @@
     punchcard: () => '<polygon class="f" points="18,18 94,18 102,26 102,62 18,62"/>' + [28, 38, 48, 58, 68, 78, 88].map((x, k) => '<rect class="' + (k % 2 ? 'a' : 'd') + '" x="' + x + '" y="' + (28 + (k % 3) * 9) + '" width="4" height="6"/><rect class="d" x="' + x + '" y="' + (37 + ((k + 1) % 2) * 9) + '" width="4" height="6"/>').join(''),
     wafer: () => '<circle class="f" cx="60" cy="40" r="27"/><path class="t" d="M36 28 H84 M33 40 H87 M36 52 H84 M48 16 V64 M60 13 V67 M72 16 V64"/><rect class="a" x="49" y="29" width="10" height="10"/><rect class="a" x="61" y="41" width="10" height="10"/>',
     transformer: () => { const L = [22, 40, 58], R = [22, 40, 58]; let s = ''; L.forEach(y1 => R.forEach(y2 => { s += '<line class="' + (y1 === y2 ? 'as' : 't') + '" x1="34" y1="' + y1 + '" x2="86" y2="' + y2 + '"/>'; })); L.forEach(y => { s += '<circle class="f" cx="30" cy="' + y + '" r="5.5"/><circle class="a" cx="90" cy="' + y + '" r="5.5"/>'; }); return s; },
+    flower: () => { let s = '<path d="M52 74 V46"/><path class="f" d="M52 58 C42 54 38 60 46 64 Z M52 54 C62 50 66 56 58 60 Z"/>'; for (let k = 0; k < 6; k++) { const a = k * 60; s += '<ellipse class="f" cx="52" cy="24" rx="5.5" ry="11" transform="rotate(' + a + ' 52 36)"/>'; } s += '<circle class="a" cx="52" cy="36" r="6"/><ellipse class="f" cx="90" cy="28" rx="9" ry="5" transform="rotate(-18 90 28)"/><ellipse class="t" cx="88" cy="20" rx="6" ry="3" transform="rotate(-35 88 20)"/><circle class="a" cx="81" cy="30" r="2.2"/><path class="t dash" d="M62 34 Q72 28 80 30"/>'; return s; },
+    spermwhale: () => '<path class="f" d="M14 30 C14 20 26 18 46 20 C68 22 86 30 98 38 L112 28 L108 40 L112 52 L98 43 C84 48 64 52 44 50 L24 48 L22 44 L38 44 L18 40 C14 38 14 34 14 30 Z"/><circle class="d" cx="34" cy="36" r="1.8"/><ellipse class="a" cx="28" cy="27" rx="9" ry="4"/><path class="as" d="M8 24 q-5 9 0 18 M4 19 q-8 14 0 28"/>',
+    sapiens_skull: () => '<path class="f" d="M34 48 C30 28 42 14 60 14 C78 14 86 26 84 42 L86 50 L78 52 L76 62 H50 L48 52 C40 52 36 50 34 48 Z"/><circle class="d" cx="68" cy="36" r="3.2"/><circle class="d" cx="78" cy="36" r="2.2"/><path class="t" d="M52 56 H74"/><polygon class="a" points="98,24 108,40 98,56 92,40"/>',
+    syn_cell: () => '<rect class="f" x="20" y="14" width="32" height="52" rx="5"/><rect class="t" x="24" y="20" width="24" height="36" rx="2"/><circle class="d" cx="36" cy="61" r="2"/><circle class="f" cx="84" cy="40" r="22"/><circle class="a" cx="84" cy="40" r="11" style="fill:none;stroke-width:2.5;stroke-dasharray:4 3"/><path class="as" d="M52 40 H62"/>',
     generic: () => '<circle class="t dash" cx="60" cy="40" r="24"/><circle class="a" cx="60" cy="40" r="3"/>'
   };
   const glyph = g => '<svg viewBox="0 0 120 80" class="gl" aria-hidden="true">' + (G[g] || G.generic)() + '</svg>';
@@ -241,11 +260,11 @@
   /* ---------- header, footer, expert switch ---------- */
   function readExpert() { try { return localStorage.getItem('si-expert') === '1'; } catch (e) { return false; } }
   function writeExpert(v) { try { localStorage.setItem('si-expert', v ? '1' : '0'); } catch (e) { /* storage blocked */ } }
-  const EXPERT_TIP = 'Expert view is for researchers and teachers. It adds the symbols behind each number (like C_neural), the equations, every source and citation, the raw census rows, calculation graphs and uncertainty ranges. Switch it off to go back to the plain story. Your choice is remembered.';
+  const EXPERT_TIP = 'Expert view is for researchers and teachers. It adds the Theories tab in the menu, the symbols behind each number (like C_neural), the equations, every source and citation, the raw census rows, calculation graphs and uncertainty ranges. Switch it off to go back to the plain story. Your choice is remembered.';
   function chrome(page) {
     const mark = ORDER.map(k => '<i style="background:var(--c-' + k + ')"></i>').join('');
-    const links = [['journey.html', 'journey', 'Journey'], ['tree.html', 'tree', 'Tree'], ['how.html', 'how', 'How we know'], ['data.html', 'data', 'Data Lab']];
-    const footLinks = links.slice(0, 2).concat([['atlas.html', 'atlas', 'Atlas of minds']], links.slice(2), [['intelligence.html', 'intelligence', 'Intelligence formulas'], ['research.html', 'research', 'Papers'], ['papers.html', 'papers', 'Research desk']]);
+    const links = [['journey.html', 'journey', 'Journey'], ['tree.html', 'tree', 'Tree'], ['stories.html', 'stories', 'Stories'], ['atlas.html', 'atlas', 'Atlas'], ['how.html', 'how', 'How we know'], ['data.html', 'data', 'Data Lab'], ['theories.html', 'theories', 'Theories', true]];
+    const footLinks = links.concat([['intelligence.html', 'intelligence', 'Intelligence formulas'], ['research.html', 'research', 'Papers'], ['papers.html', 'papers', 'Research desk']]);
     const head = document.getElementById('siteHead');
     const tools = head && head.querySelector('.head-tools');
     if (tools) {
@@ -254,18 +273,18 @@
     } else if (head) {
       head.className = 'site-head';
       head.innerHTML = '<div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' + mark + '</span>Systema Intelligentiae</a>' +
-        '<nav class="site-nav" aria-label="Main">' + links.map(l => '<a href="' + l[0] + '"' + (l[1] === page ? ' aria-current="page"' : '') + '>' + l[2] + '</a>').join('') + '</nav>' +
+        '<nav class="site-nav" aria-label="Main">' + links.map(l => '<a href="' + l[0] + '"' + (l[3] ? ' class="x-only"' : '') + (l[1] === page ? ' aria-current="page"' : '') + '>' + l[2] + '</a>').join('') + '</nav>' +
         '<div class="head-tools"><label class="switch" data-tip="' + EXPERT_TIP + '"><input type="checkbox" id="expertToggle"><span class="track"></span>Expert view <span class="tag">PhD</span></label></div></div>';
     }
     const foot = document.getElementById('siteFoot');
     if (foot) {
       foot.className = 'site-foot';
-      const cur = (href, key) => '<a href="' + href + '"' + (page === key ? ' aria-current="page"' : '') + '>';
+      const cur = (href, key, xOnly) => '<a href="' + href + '"' + (xOnly ? ' class="x-only"' : '') + (page === key ? ' aria-current="page"' : '') + '>';
       foot.innerHTML = '<div class="wrap">' +
         '<div class="colo" data-url="' + esc(location.href.split('#')[0]) + '"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' + mark + '</span>Systema Intelligentiae</a>' +
         '<p>A natural history of thinking matter: how Earth built memory, wiring and computing over 4.1 billion years, from one open census.</p>' +
-        '<p class="upd">Last updated 21 Nov 2026</p></div>' +
-        '<nav aria-labelledby="footExplore"><h2 id="footExplore">Explore</h2>' + footLinks.map(l => cur(l[0], l[1]) + l[2] + '</a>').join('') + '</nav>' +
+        '<p class="upd">Last updated 22 Nov 2026</p></div>' +
+        '<nav aria-labelledby="footExplore"><h2 id="footExplore">Explore</h2>' + footLinks.map(l => cur(l[0], l[1], l[3]) + l[2] + '</a>').join('') + '</nav>' +
         '<nav aria-labelledby="footAbout"><h2 id="footAbout">About</h2>' + cur('about.html', 'about') + 'About this project</a><a href="about.html#cite">How to cite</a>' +
         cur('credits.html', 'credits') + 'Image credits</a><a href="about.html#licence">Data licence</a><a href="data.html">Download the data</a></nav></div>';
     }
@@ -375,7 +394,7 @@
     hit.addEventListener('mouseleave', () => { hov.setAttribute('visibility', 'hidden'); if (opts.onHover) opts.onHover(null); });
     // one authored moment: the lines wipe in left to right on first load (reduced motion shows them at once)
     if (opts.drawIn) drawIn(svg);
-    // the slider is the keyboard and touch way through the 64 moments; input = live, change = committed
+    // the slider is the keyboard and touch way through the 68 moments; input = live, change = committed
     const sl = opts.slider;
     if (sl) {
       sl.min = 0; sl.max = N - 1; sl.step = 1;
@@ -417,7 +436,7 @@
     let mode = 'ord', sel = N - 1, focus = null, hov = null, xb = [];
     svg.classList.add('stk');
     const f1 = n => n.toFixed(1);
-    // wide: direct labels at the right edge; narrow (phones): all 64 columns fit the width and the legend carries the names
+    // wide: direct labels at the right edge; narrow (phones): all 68 columns fit the width and the legend carries the names
     function fit() { narrow = svg.parentElement.clientWidth < 640; W = narrow ? 400 : 1000; L = narrow ? 30 : 54; R = narrow ? 8 : 204; PW = W - L - R; svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.classList.toggle('narrow', narrow); }
     function bounds() {
       const b = [];
@@ -620,7 +639,7 @@
     vals.forEach((v, k) => { if (ok(v)) { d += (pen ? 'L' : 'M') + xp(k).toFixed(1) + ' ' + yp(v).toFixed(1); pen = true; } else pen = false; });
     const acts = ACTS.map(a => '<line class="ab" x1="' + xp(a.i0).toFixed(1) + '" x2="' + xp(a.i0).toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tk" x="' + (xp(a.i0) + 3).toFixed(1) + '" y="' + (H - 12) + '">' + a.n + '</text>').join('');
     const fmtA = v => (lin ? numFmt(col, v) : '10' + sup(Math.round(v)));
-    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(numName(col)) + ' across the 64 moments">' + acts +
+    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(numName(col)) + ' across the ' + N + ' moments">' + acts +
       '<text class="tk" x="' + (W - Rr) + '" y="' + (T - 3) + '" text-anchor="end">' + fmtA(hi) + '</text><text class="tk" x="' + (W - Rr) + '" y="' + (H - B + 12) + '" text-anchor="end">' + fmtA(lo) + '</text>' +
       '<path class="hl" d="' + d + '"/>' + (ok(vals[i]) ? '<circle class="hr" cx="' + xp(i).toFixed(1) + '" cy="' + yp(vals[i]).toFixed(1) + '" r="5"/>' : '') + '</svg>' +
       '<p class="num-cap">Roman numerals mark the seven acts, from the first chemistry (I) to silicon (VII).' + (lin ? ' This one is drawn on an ordinary scale.' : '') + '</p>';
@@ -655,7 +674,7 @@
         '<p>' + esc(kd ? kd[1] : '') + (epi ? ' ' + esc(epi.about) : '') + '</p></div>';
       h += '<h3>How it is worked out</h3><pre class="formula">' + esc(R.eq) + '</pre><div id="numIn"></div>';
       h += '<div class="x-only num-graphs"><h3>The calculation as a graph</h3><p class="num-cap">Each box is one number at this moment; arrows show what feeds what. Boxes with a dashed edge are set by hand or are model assumptions, so the chain stops there.</p><div id="numCalc" class="num-calc"></div>' +
-        '<h3>This number across all 64 moments</h3><p class="num-cap">Each step up is ten times more. Each column is one moment, not one year. The ring marks the moment you opened.</p><div id="numHist" class="num-hist"></div></div>';
+        '<h3>This number across all ' + N + ' moments</h3><p class="num-cap">Each step up is ten times more. Each column is one moment, not one year. The ring marks the moment you opened.</p><div id="numHist" class="num-hist"></div></div>';
       if (R.basis) h += '<h3>What it rests on</h3><p>' + esc(R.basis) + '</p>';
       h += '<div id="numSrc"></div>';
       const cites = (e.cites.match(/\d+/g) || []).map(Number), here = R.f.filter(n => cites.indexOf(n) >= 0), refs = here.length ? here : R.f;
@@ -752,21 +771,241 @@
     document.querySelectorAll('[data-time-key]').forEach(el => {
       if (el.dataset.done) return; el.dataset.done = '1';
       el.innerHTML = '<span class="tk-h">Time labels</span>' + TIME_TIPS.map(t => '<span class="tk-i" data-tip="' + esc(t[2]) + '" tabindex="0"><b>' + t[0] + '</b> = ' + t[1] + '</span>').join('') +
-        (el.dataset.timeKey === 'moments' ? '<span class="tk-i" data-tip="The census has 64 moments, spaced far apart in deep time and close together recently. Drawing each one the same width keeps the recent ones visible." tabindex="0">Each column is one moment, not one year</span>' : '');
+        (el.dataset.timeKey === 'moments' ? '<span class="tk-i" data-tip="The census has ' + N + ' moments, spaced far apart in deep time and close together recently. Drawing each one the same width keeps the recent ones visible." tabindex="0">Each column is one moment, not one year</span>' : '');
     });
   }
-  // an invention's longer explanation and "learn more" links (content/invention_more.csv)
+  function slidesOfInv(u) {
+    if (!u) return [];
+    const list = (u.pics || []).slice();
+    const pl = PLATES[u.epoch];
+    if (pl && pl.file && !list.some(p => p.credit_url === pl.credit_url || p.file === pl.file)) {
+      const st = STOP[u.epoch];
+      list.push({
+        file: pl.file,
+        caption: pl.caption || (st ? st.who + ' (' + st.taxon + ')' : u.label),
+        credit: pl.credit,
+        licence: pl.licence,
+        author: pl.author,
+        licence_url: pl.licence_url,
+        credit_url: pl.credit_url
+      });
+    }
+    return list;
+  }
+
+  function invGallery(u, st, actColor) {
+    const slides = slidesOfInv(u);
+    const stopLink = st
+      ? '<a class="dr-who-link" href="journey.html#' + esc(u.epoch) + '"><b>' + esc(st.who) + '</b> · <i>' + esc(st.taxon) + '</i> · Visit stop →</a>'
+      : '<a class="dr-who-link" href="journey.html#' + esc(u.epoch) + '"><b>' + esc(titleOf(u.i)) + '</b> · Visit stop →</a>';
+    if (!slides.length) {
+      return '<figure class="dr-plate" style="--g:' + actColor + '">' + (st ? plateArt(u.epoch, st.glyph, st.who) : '') + '<figcaption>' + stopLink + '</figcaption></figure>';
+    }
+    const M = slides.length;
+    return '<section class="inv-carousel" aria-roledescription="carousel" aria-label="Pictures for ' + esc(u.label) + '" data-inv="' + esc(u.id) + '" style="--g:' + actColor + '">' +
+      (M > 1 ? '<div class="inv-car-controls"><button type="button" class="inv-car-btn" data-dir="prev" aria-label="Previous picture" disabled>‹</button><button type="button" class="inv-car-btn" data-dir="next" aria-label="Next picture">›</button></div>' : '') +
+      '<div class="inv-car-track" tabindex="0" role="group" aria-label="Pictures">' +
+      slides.map((s, k) =>
+        '<figure class="inv-car-slide" role="group" aria-roledescription="slide" aria-label="' + (k + 1) + ' of ' + M + '" data-marker-name="Picture ' + (k + 1) + ' of ' + M + '">' +
+        '<button type="button" class="inv-car-zoom" data-lb-inv="' + esc(u.id) + '" data-lb-idx="' + k + '" aria-label="Enlarge picture ' + (k + 1) + ' of ' + M + ': ' + esc(s.caption) + '">' +
+        '<img src="' + esc(s.file) + '" alt="' + esc(s.caption) + '" width="640" height="440"' + (k > 0 ? ' loading="lazy" fetchpriority="low"' : '') + '>' +
+        '<span class="inv-zoom-pill" aria-hidden="true">Enlarge ⤢</span></button>' +
+        '<figcaption><span class="inv-cap-txt">' + esc(s.caption) + '</span>' +
+        '<span class="inv-cap-cred"><a href="' + esc(s.credit_url) + '" target="_blank" rel="noopener noreferrer">' + esc(s.credit) + ' ↗</a></span></figcaption></figure>'
+      ).join('') +
+      '</div>' +
+      '<p class="sr-only inv-car-status" role="status" aria-live="polite"></p>' +
+      '<div class="inv-car-foot">' +
+      (M > 1 ? '<nav class="inv-car-markers" aria-label="Choose a picture">' + slides.map((s, k) => '<button type="button" class="inv-car-dot" data-slide="' + k + '" aria-label="Picture ' + (k + 1) + ' of ' + M + '"' + (k === 0 ? ' aria-current="true"' : '') + '><i></i></button>').join('') + '</nav>' : '') +
+      stopLink + '</div></section>';
+  }
+
+  function invThumbStrip(u) {
+    const slides = slidesOfInv(u);
+    if (!slides.length) return '';
+    return '<div class="inv-thumbs" role="group" aria-label="Pictures for ' + esc(u.label) + '">' +
+      slides.map((s, k) =>
+        '<button type="button" class="inv-thumb-btn" data-lb-inv="' + esc(u.id) + '" data-lb-idx="' + k + '" aria-label="Enlarge picture ' + (k + 1) + ' of ' + slides.length + ': ' + esc(s.caption) + '">' +
+        '<img src="' + esc(s.file) + '" alt="' + esc(s.caption) + '" width="220" height="150" loading="lazy">' +
+        '<span>' + esc(s.caption) + '</span></button>'
+      ).join('') + '</div>';
+  }
+
+  function bindCarousels(root) {
+    const scope = root || document;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    scope.querySelectorAll('.inv-carousel').forEach(car => {
+      if (car.dataset.bound) return;
+      car.dataset.bound = '1';
+      const track = car.querySelector('.inv-car-track');
+      const slides = [...track.querySelectorAll('.inv-car-slide')];
+      if (slides.length < 2) return;
+      const prevBtn = car.querySelector('[data-dir="prev"]');
+      const nextBtn = car.querySelector('[data-dir="next"]');
+      const dots = [...car.querySelectorAll('.inv-car-dot')];
+      const status = car.querySelector('.inv-car-status');
+      let settledIdx = 0, activeDot = 0, pendingIdx = null, rafId = 0, debTimer = null;
+
+      const nearestIdx = () => {
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, bestDist = Infinity;
+        slides.forEach((sl, k) => {
+          const d = Math.abs((sl.offsetLeft + sl.offsetWidth / 2) - center);
+          if (d < bestDist) { bestDist = d; best = k; }
+        });
+        return best;
+      };
+      const setDot = idx => {
+        if (idx === activeDot) return;
+        activeDot = idx;
+        dots.forEach((d, k) => { if (k === idx) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      };
+      const syncButtons = idx => {
+        const atStart = idx <= 0, atEnd = idx >= slides.length - 1;
+        const prevHadFocus = document.activeElement === prevBtn;
+        const nextHadFocus = document.activeElement === nextBtn;
+        if (prevBtn) prevBtn.disabled = atStart;
+        if (nextBtn) nextBtn.disabled = atEnd;
+        if (atStart && prevHadFocus && nextBtn && !nextBtn.disabled) nextBtn.focus();
+        if (atEnd && nextHadFocus && prevBtn && !prevBtn.disabled) prevBtn.focus();
+      };
+      const onSettle = () => {
+        const idx = nearestIdx();
+        pendingIdx = null;
+        setDot(idx);
+        syncButtons(idx);
+        if (idx !== settledIdx) {
+          settledIdx = idx;
+          if (status) status.textContent = 'Picture ' + (idx + 1) + ' of ' + slides.length;
+        }
+      };
+      const goTo = target => {
+        const clamped = Math.max(0, Math.min(slides.length - 1, target));
+        pendingIdx = clamped;
+        setDot(clamped);
+        syncButtons(clamped);
+        const sl = slides[clamped];
+        track.scrollTo({ left: sl.offsetLeft - track.offsetLeft, behavior: reduced ? 'auto' : 'smooth' });
+        if (reduced) onSettle();
+      };
+      if (prevBtn) prevBtn.addEventListener('click', () => goTo((pendingIdx != null ? pendingIdx : nearestIdx()) - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goTo((pendingIdx != null ? pendingIdx : nearestIdx()) + 1));
+      dots.forEach((d, k) => d.addEventListener('click', () => goTo(k)));
+      track.addEventListener('scroll', () => {
+        if (pendingIdx == null && !rafId) {
+          rafId = requestAnimationFrame(() => { rafId = 0; setDot(nearestIdx()); });
+        }
+        if (!('onscrollend' in window)) {
+          clearTimeout(debTimer);
+          debTimer = setTimeout(onSettle, 140);
+        }
+      }, { passive: true });
+      if ('onscrollend' in window) track.addEventListener('scrollend', onSettle);
+    });
+  }
+
+  let lbDlg = null, lbState = null;
+  function openInvLightbox(invId, idx) {
+    const u = INVK[invId];
+    const slides = slidesOfInv(u);
+    if (!u || !slides.length) return;
+    if (!lbDlg) {
+      lbDlg = document.createElement('dialog');
+      lbDlg.className = 'inv-lb';
+      lbDlg.setAttribute('aria-labelledby', 'invLbTitle');
+      lbDlg.setAttribute('closedby', 'any');
+      document.body.appendChild(lbDlg);
+      if (!('closedBy' in HTMLDialogElement.prototype)) {
+        const outside = (ev, d) => { const r = d.getBoundingClientRect(); return ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom; };
+        let pressedOut = false;
+        lbDlg.addEventListener('pointerdown', ev => { pressedOut = outside(ev, lbDlg); });
+        lbDlg.addEventListener('pointerup', ev => { if (pressedOut && outside(ev, lbDlg)) lbDlg.close(); });
+      }
+      lbDlg.addEventListener('close', () => { lbDlg.returnValue = ''; lbState = null; });
+      lbDlg.addEventListener('click', ev => {
+        if (ev.target.closest('.lb-close')) { lbDlg.close(); return; }
+        const nav = ev.target.closest('[data-lb-step]');
+        if (nav && lbState) { lbState.idx = (lbState.idx + Number(nav.dataset.lbStep) + lbState.slides.length) % lbState.slides.length; renderLb(); }
+      });
+      lbDlg.addEventListener('keydown', ev => {
+        if (!lbState || lbState.slides.length < 2) return;
+        if (ev.key === 'ArrowRight') { ev.preventDefault(); lbState.idx = (lbState.idx + 1) % lbState.slides.length; renderLb(); }
+        else if (ev.key === 'ArrowLeft') { ev.preventDefault(); lbState.idx = (lbState.idx - 1 + lbState.slides.length) % lbState.slides.length; renderLb(); }
+      });
+    }
+    lbState = { u, slides, idx: Math.max(0, Math.min(slides.length - 1, idx || 0)) };
+    renderLb();
+    if (!lbDlg.open) { if (lbDlg.showModal) lbDlg.showModal(); else lbDlg.setAttribute('open', ''); }
+  }
+  function renderLb() {
+    if (!lbDlg || !lbState) return;
+    const { u, slides, idx } = lbState;
+    const s = slides[idx], M = slides.length;
+    lbDlg.innerHTML =
+      '<div class="num-top"><div><span class="eyebrow">' + esc(PK[u.part].name) + ' · Picture ' + (idx + 1) + ' of ' + M + '</span><h2 id="invLbTitle">' + esc(u.label) + '</h2></div>' +
+      '<button type="button" class="num-x lb-close" aria-label="Close" autofocus>×</button></div>' +
+      '<div class="inv-lb-stage">' +
+      (M > 1 ? '<button type="button" class="inv-lb-nav prev" data-lb-step="-1" aria-label="Previous picture">‹</button>' : '') +
+      '<img src="' + esc(s.file) + '" alt="' + esc(s.caption) + '">' +
+      (M > 1 ? '<button type="button" class="inv-lb-nav next" data-lb-step="1" aria-label="Next picture">›</button>' : '') +
+      '</div>' +
+      '<p class="inv-lb-cap">' + esc(s.caption) + '</p>' +
+      '<div class="inv-lb-cred"><span>By <b>' + esc(s.author) + '</b></span>' +
+      '<a class="lic-badge" href="' + esc(s.licence_url) + '" target="_blank" rel="noopener noreferrer">' + esc(s.licence) + '</a>' +
+      '<a href="' + esc(s.credit_url) + '" target="_blank" rel="noopener noreferrer">Wikimedia Commons ↗</a></div>';
+  }
+  document.addEventListener('click', ev => {
+    const b = ev.target.closest && ev.target.closest('[data-lb-inv]');
+    if (!b) return;
+    ev.preventDefault();
+    openInvLightbox(b.getAttribute('data-lb-inv'), Number(b.getAttribute('data-lb-idx') || 0));
+  });
+
+  // an invention's longer explanation, Watch & Listen media, and "learn more" links
+  const YT_IC = '<svg viewBox="0 0 20 20" aria-hidden="true" class="av-ic"><rect x="1.5" y="4" width="17" height="12" rx="3.5" fill="currentColor" opacity=".16"/><path d="M8 7.2L13.5 10L8 12.8V7.2Z" fill="currentColor"/></svg>';
+  const POD_IC = '<svg viewBox="0 0 20 20" aria-hidden="true" class="av-ic"><circle cx="10" cy="9" r="2.2" fill="currentColor"/><path d="M6.3 12.5a5.2 5.2 0 1 1 7.4 0M3.8 15a8.5 8.5 0 1 1 12.4 0M10 11.5v5.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+  function avCardHtml(watch, listen) {
+    if (!watch && !listen) return '';
+    let out = '<div class="inv-av"><span class="sub">Watch &amp; listen</span><div class="inv-av-grid">';
+    if (watch && watch[3]) {
+      out += '<a class="av-card yt" href="' + esc(watch[3]) + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="av-badge">' + YT_IC + 'Video · YouTube' + (watch[2] ? ' · ' + esc(watch[2]) : '') + '</span>' +
+        '<b>' + esc(watch[0]) + '</b>' +
+        '<span class="av-show">' + esc(watch[1]) + ' ↗</span></a>';
+    }
+    if (listen && listen[3]) {
+      out += '<a class="av-card pod" href="' + esc(listen[3]) + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="av-badge">' + POD_IC + 'Podcast' + (listen[2] ? ' · ' + esc(listen[2]) : '') + '</span>' +
+        '<b>' + esc(listen[0]) + '</b>' +
+        '<span class="av-show">' + esc(listen[1]) + ' ↗</span></a>';
+    }
+    out += '</div></div>';
+    return out;
+  }
   function invMore(u) {
-    if (!u || (!u.more && !(u.learn && u.learn.length))) return '';
+    if (!u || (!u.more && !(u.learn && u.learn.length) && !u.watch && !u.listen)) return '';
     return '<div class="inv-more">' + (u.more ? '<p>' + esc(u.more) + '</p>' : '') +
-      (u.learn && u.learn.length ? '<div class="inv-learn"><span class="sub">Learn more</span><ul>' + u.learn.map(l =>
+      avCardHtml(u.watch, u.listen) +
+      (u.learn && u.learn.length ? '<div class="inv-learn"><span class="sub">Read more</span><ul>' + u.learn.map(l =>
         '<li><a href="' + esc(l[2]) + '" target="_blank" rel="noopener">' + esc(l[0]) + '</a><span> · ' + esc(l[1]) + '</span></li>').join('') + '</ul></div>' : '') + '</div>';
   }
+  function perspCard(p, openByDefault) {
+    if (!p) return '';
+    return '<details class="evid-disc persp-disc"' + (openByDefault ? ' open' : '') + '>' +
+      '<summary>Book perspectives · ' + esc(p.title) + ' (Schrödinger · Bennett · Agüera y Arcas)</summary>' +
+      '<div class="persp-grid">' +
+      '<div class="persp-col" style="--pc:var(--c-power)"><span class="sub">E. Schrödinger · <cite>What Is Life?</cite> (1944)</span><p>' + esc(p.schrodinger) + '</p></div>' +
+      '<div class="persp-col" style="--pc:var(--c-prog)"><span class="sub">M. Bennett · <cite>A Brief History of Intelligence</cite> (2023)</span><p>' + esc(p.bennett) + '</p></div>' +
+      '<div class="persp-col" style="--pc:var(--c-net)"><span class="sub">B. Agüera y Arcas · <cite>What Is Intelligence?</cite> (2025)</span><p>' + esc(p.aguera) + '</p></div>' +
+      '</div></details>';
+  }
+  const perspForEpoch = ep => (PERSP_EP[ep] || []).map(p => perspCard(p, false)).join('');
+  const perspForInv = id => (PERSP_INV[id] || []).map(p => perspCard(p, false)).join('');
   const numBtn = (col, html, i) => '<button type="button" class="num" data-num="' + col + '"' + (i != null ? ' data-i="' + i + '"' : '') + ' data-tip="Where this number comes from: its equation, inputs and sources">' + html + '</button>';
 
   window.SIX = {
-    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, TOUR, PLATES, MYTHS, NEURAL, NETWORKS, MOM, titleOf, hookOf, stopsAround,
+    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, TOUR, PLATES, MYTHS, NEURAL, NETWORKS, MAKING, MOTORS, SEX, GENOMES, NERVEGENES, OFFWORLD, PLANTS, IMMUNITY, PERSP, PERSP_EP, PERSP_INV, MOM, titleOf, hookOf, stopsAround,
     IN, OUT, closure, EPI, GAUGES, RANGE, sup, esc, plain, sci, watts, fmtTime, fmtShort, delta, icon, glyph, plateArt, plateCredit, plateThumb, chrome, chart, LEGEND, stack, LAYERS, LK, DIGITS, stackHeight, loadAtlas, KINDS, KIND, yearsAgo,
-    loadCensus, loadLedgers, readLast, writeLast, placeOf, momentText, readExpert, numPanel, numBtn, numName, COLOF, invMore, timeKeys
+    loadCensus, loadLedgers, readLast, writeLast, placeOf, momentText, readExpert, numPanel, numBtn, numName, COLOF, invMore, avCardHtml, invGallery, invThumbStrip, bindCarousels, slidesOfInv, openInvLightbox, perspCard, perspForEpoch, perspForInv, timeKeys
   };
 })();

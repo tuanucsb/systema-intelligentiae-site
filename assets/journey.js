@@ -154,8 +154,152 @@
       '<p class="spot-foot"><a href="data.html#' + (neural ? 'neural' : 'networks') + '">All ' + all + (neural ? ' brain and sense milestones' : ' group networks') + ' →</a></p></div>';
   }
 
+  function motorCard(r) {
+    const pills = [];
+    if (r.step > 0) pills.push('<b>' + X.plain(r.step) + ' nm</b> step');
+    if (r.vel > 0) pills.push('<b>' + X.plain(r.vel) + ' µm/s</b> speed');
+    if (r.force > 0) pills.push('<b>' + X.plain(r.force) + ' pN</b> force');
+    if (r.atp > 0) pills.push('<b>' + X.plain(r.atp) + ' ATP/GTP</b> per step');
+    const all = (X.SI.motors || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-wire)">' +
+      '<span class="sub">Molecular motors &amp; tracks · ' + esc(r.track) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>Regime: ' + esc(r.regime) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#motors">All ' + all + ' motor &amp; microtubule milestones →</a></p></div>';
+  }
+
+  function genomeCard(r) {
+    const pills = [];
+    if (r.bp > 0) pills.push('<b>' + X.sci(r.bp) + '</b> DNA letters');
+    if (r.genes > 0) pills.push('<b>' + X.sci(r.genes) + '</b> protein genes');
+    if (r.err > 0) pills.push('<b>1 in ' + X.sci(Math.round(1 / r.err)) + '</b> copy error');
+    const all = (X.SI.genomes || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-store)">' +
+      '<span class="sub">DNA &amp; genomes · ' + esc(r.lin) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      (r.mech ? '<p class="spot-sys"><span>Mechanism: ' + esc(r.mech) + '</span></p>' : '') +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#genomes">All ' + all + ' genome milestones →</a> · <a href="stories.html#dna-story">Read the DNA story →</a></p></div>';
+  }
+
+  function nerveGeneCard(r) {
+    const all = (X.SI.nervegenes || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-wire)">' +
+      '<span class="sub">Nerve genes before nerves · ' + esc(r.grp) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>Role: ' + esc(r.role) + '</span></p>' +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#nervegenes">All ' + all + ' nerve-gene families →</a> · <a href="stories.html#nerves-story">Nerves story →</a></p></div>';
+  }
+
+  function sexCard(r) {
+    const pills = [];
+    if (r.lvl > 0) pills.push('<b>Step ' + r.lvl + '/16</b> sophistication');
+    if (r.bits > 0) pills.push('<b>~' + X.sci(r.bits) + '</b> bits shuffled');
+    const all = (X.SI.sex || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-make)">' +
+      '<span class="sub">Sexual reproduction · ' + esc(r.stage) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>Mode: ' + esc(r.mode) + ' · Care: ' + esc(r.care) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#sex">All ' + all + ' sexual-reproduction steps →</a> · <a href="stories.html#sex-story">Sex story →</a></p></div>';
+  }
+
+  function makingCard(r) {
+    const pills = [];
+    if (r.bits > 0) pills.push('<b>~' + X.sci(r.bits) + '</b> blueprint bits');
+    if (r.err > 0) pills.push('<b>' + X.sci(r.err) + '</b> error/bit');
+    const all = (X.SI.making || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-make)">' +
+      '<span class="sub">Replication &amp; manufacturing · ' + esc(r.cat) + '</span>' +
+      '<h3>' + esc(r.name) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.why) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.sys) + ' · <span>Autonomy: ' + esc(r.auto) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#making">All ' + all + ' replication &amp; manufacturing milestones →</a></p></div>';
+  }
+
+  function fmtDistKm(km) {
+    if (!(km > 0)) return '';
+    if (km >= 1e9) return X.plain(km / 1e9) + 'B km';
+    if (km >= 1e6) return X.plain(km / 1e6) + 'M km';
+    return Math.round(km).toLocaleString('en-US') + ' km';
+  }
+  function fmtLightTime(s) {
+    if (!(s > 0)) return '';
+    if (s >= 3600) return X.plain(s / 3600) + ' hr light-time';
+    if (s >= 60) return X.plain(s / 60) + ' min light-time';
+    if (s >= 0.5) return X.plain(s) + ' s light-time';
+    return X.plain(s * 1000) + ' ms light-time';
+  }
+  function offworldCard(r) {
+    const pills = [];
+    if (r.km > 0) pills.push('<b>' + fmtDistKm(r.km) + '</b> from Earth');
+    if (r.lt > 0) pills.push('<b>' + fmtLightTime(r.lt) + '</b>');
+    if (r.ops > 0) pills.push('<b>' + X.sci(r.ops) + '/s</b> compute');
+    if (r.ram > 0) pills.push('<b>' + X.sci(r.ram) + '</b> RAM bits');
+    if (r.bps > 0) pills.push('<b>' + X.sci(r.bps) + ' b/s</b> downlink');
+    const all = (X.SI.offworld || []).length;
+    const when = r.yr >= 2026 ? 'Today (2026)' : 'In ' + r.yr;
+    return '<div class="spot-card" style="--sc:var(--s-silicon)">' +
+      '<span class="sub">Computing beyond Earth · ' + esc(r.regime) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + esc(when) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.hw) + '</span></p>' +
+      '<p class="spot-sys"><span>Power: ' + (r.w > 0 ? X.watts(r.w) + ' · ' : '') + esc(r.pwr) + ' · Status: ' + esc(r.act) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      (r.dn ? '<p>' + esc(r.dn) + '</p>' : '') +
+      '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#offworld">All ' + all + ' off-world computing milestones →</a> · <a href="data.html#offworld2026">2026 space inventory →</a></p></div>';
+  }
+
+  function plantCard(r) {
+    const pills = [];
+    if (r.spd > 0) pills.push('<b>' + X.sci(r.spd) + ' m/s</b> signal speed');
+    if (r.mem > 0) pills.push('<b>~' + X.sci(r.mem) + ' s</b> memory window');
+    const all = (X.SI.plants || []).length;
+    return '<div class="spot-card" style="--sc:var(--s-chem)">' +
+      '<span class="sub">Plant &amp; fungal sensing · ' + esc(r.cat) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>Channel: ' + esc(r.chan) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#plants">All ' + all + ' plant &amp; fungal milestones →</a> · <a href="stories.html#plants-story">Plants story →</a></p></div>';
+  }
+
+  function immuneCard(r) {
+    const pills = [];
+    if (r.rep > 1) pills.push('<b>~' + X.sci(r.rep) + '</b> receptor variants');
+    if (r.mem > 0) pills.push('<b>~' + X.plain(r.mem) + ' yr</b> memory');
+    const all = (X.SI.immunity || []).length;
+    return '<div class="spot-card" style="--sc:var(--c-prog)">' +
+      '<span class="sub">Immune memory · ' + esc(r.stage) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>Mechanism: ' + esc(r.mech) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="data.html#immunity">All ' + all + ' immune milestones →</a> · <a href="stories.html#immunity-story">Immunity story →</a></p></div>';
+  }
+
   function renderSpotlights(ep) {
-    const cards = (X.NEURAL[ep] || []).map(n => spotCard(n, true)).concat((X.NETWORKS[ep] || []).map(g => spotCard(g, false)));
+    const cards = (X.OFFWORLD[ep] || []).map(o => offworldCard(o))
+      .concat((X.GENOMES[ep] || []).map(g => genomeCard(g)))
+      .concat((X.SEX[ep] || []).map(s => sexCard(s)))
+      .concat((X.PLANTS[ep] || []).map(p => plantCard(p)))
+      .concat((X.IMMUNITY[ep] || []).map(im => immuneCard(im)))
+      .concat((X.NEURAL[ep] || []).map(n => spotCard(n, true)))
+      .concat((X.NERVEGENES[ep] || []).map(g => nerveGeneCard(g)))
+      .concat((X.NETWORKS[ep] || []).map(g => spotCard(g, false)))
+      .concat((X.MOTORS[ep] || []).map(m => motorCard(m)))
+      .concat((X.MAKING[ep] || []).map(m => makingCard(m)));
     if (!cards.length) return '';
     const SHOW = 3;
     return '<div class="spotlights">' + cards.slice(0, SHOW).join('') + '</div>' +
@@ -239,6 +383,7 @@
 
     const story = '<div class="story">' +
       renderSpotlights(e.id) +
+      X.perspForEpoch(e.id) +
       (myths.length ? '<div class="know"><span class="sub">Myth busters</span>' + myths.map(m => '<button type="button" class="myth-chip" data-myth="' + m.id + '" aria-expanded="' + (openMyth === m.id) + '">' + esc(m.title) + '</button>').join('') + '</div><div id="mythbox"></div>' : '') +
       renderCompare(i) +
       evid +
@@ -247,9 +392,9 @@
 
     const finale = i === X.N - 1
       ? '<section class="finale" aria-labelledby="finH"><h3 id="finH">You crossed 4.1 billion years across ' + (tourOnly ? X.TOUR.length + ' key milestones' : X.STOPS.length + ' stops') + '.</h3>' +
-        '<p>The same nine parts, then and now. Every box on the right rests on something older on the left.</p>' +
+        '<p>The same ten parts, then and now. Every box on the right rests on something older on the left.</p>' +
         '<div class="then-now">' + miniBoard(0, 'Then · ' + X.fmtTime(X.E[0].t)) + miniBoard(i, 'Now · ' + X.fmtTime(e.t)) + '</div>' +
-        '<div class="cta"><a class="btn" href="tree.html">Follow a guided path in the tree →</a><a class="btn ghost" href="how.html">Check our numbers</a></div></section>'
+        '<div class="cta"><a class="btn" href="tree.html">Follow a guided path in the tree →</a><a class="btn ghost" href="index.html#today-pie">See today’s pie breakdown</a></div></section>'
       : '';
 
     card.innerHTML = band + '<div class="card-body">' + lead + '<div class="card-grid">' + board + planet + '</div>' + story + '<div class="minds" id="minds" hidden></div>' + finale + '</div>';
@@ -287,7 +432,8 @@
       ? '<details class="evid-disc sm-disc x-only"><summary>Sources for ' + esc(s.label) + ' (' + s.refs.length + ')</summary><ol class="refs">' + s.refs.map(n => '<li value="' + n + '">' + esc(X.SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>'
       : '';
     pp.innerHTML = '<div class="pp-head"><strong>' + p.name + '</strong><span>' + p.question + '</span></div>' +
-      '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' + X.invMore(s) +
+      '<p class="pp-detail">' + (s ? esc(s.detail) : 'Nothing on Earth has this part yet.') + '</p>' +
+      (s ? X.invThumbStrip(s) : '') + X.invMore(s) +
       '<ol class="pp-hist" aria-label="History of this part">' + X.HIST[k].map(u => '<li><button type="button" data-jump="' + u.i + '" class="' + (u.i > cur ? 'future' : '') + (s === u ? ' now' : '') + '"><span class="when">' + X.fmtShort(X.E[u.i].t) + '</span>' + esc(u.label) + '</button></li>').join('') + '</ol>' +
       invRefs +
       (s ? '<a href="tree.html#' + s.id + '">Follow ' + esc(s.label) + ' in the tree →</a>' : '');
@@ -366,13 +512,23 @@
     const m = ev.target.closest('.myth-chip'); if (m) { openMyth = openMyth === m.dataset.myth ? null : m.dataset.myth; renderMyth(); return; }
     const sh = ev.target.closest('[data-share]'); if (sh) copyLink(sh);
   });
+  let shareTimer = null, lastShareMsg = '';
   function copyLink(btn) {
     const url = new URL('s/' + btn.dataset.share + '.html', location.href).href;
     const done = ok => {
-      $('shareMsg').textContent = ok ? 'Link copied' : 'Copy failed. The link is ' + url;
+      const msgText = ok ? 'Link copied' : 'Copy failed. The link is ' + url;
+      const outMsg = msgText === lastShareMsg ? msgText + '\u00A0' : msgText;
+      lastShareMsg = outMsg;
+      const live = $('shareMsg');
+      if (live) live.textContent = outMsg;
+      btn.dataset.state = ok ? 'copied' : 'failed';
       btn.textContent = ok ? 'Link copied ✓' : 'Copy link';
       if (!ok) { try { window.prompt('Copy this link:', url); } catch (e) { /* prompts blocked */ } }
-      setTimeout(() => { if (btn.isConnected) btn.textContent = 'Copy link'; }, 2200);
+      clearTimeout(shareTimer);
+      shareTimer = setTimeout(() => {
+        if (btn.isConnected) { delete btn.dataset.state; btn.textContent = 'Copy link'; }
+        if (live) live.textContent = '';
+      }, 2200);
     };
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(() => done(true), () => done(false));
     else done(false);

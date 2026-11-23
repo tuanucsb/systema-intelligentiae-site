@@ -1,0 +1,13 @@
+organism,quantity,value,unit,evidence,inv,note,source
+Glass sponge,signal speed,0.0027,m/s,measured,tissue-waves,"Electrical impulse through a whole-body tissue, no nerves","Leys, Mackie & Meech (1999) J. Exp. Biol. 202:1139"
+Venus flytrap,signal speed,0.1,m/s,measured,,"Plant action potential, about 10 cm a second",Volkov et al. (2008) Plant Physiol. 146:694
+Human C fibre (bare),signal speed,1,m/s,measured,bare-axons,Thin bare fibres carry 0.5-2 m/s,Gasser & Erlanger (1929) Am. J. Physiol. 88:581
+"Squid giant axon (bare, 0.5 mm thick)",signal speed,25,m/s,measured,bare-axons,Speed bought with sheer thickness,Hodgkin & Huxley (1952) J. Physiol. 117:500
+"Human motor nerve (myelinated, 0.02 mm)",signal speed,120,m/s,measured,myelin,About 6 m/s per micrometre of thickness,Hursh (1939) Am. J. Physiol. 127:131
+Kuruma shrimp (myelin-like sheath),signal speed,210,m/s,measured,myelin,The fastest nerve fibre measured; shrimp evolved their own sheath,Xu & Terakawa (1999) J. Exp. Biol. 202:1979
+C. elegans,synapses per neuron,25,per neuron,measured,steering,"About 7,000 chemical synapses and 900 gap junctions among 302 neurons",White et al. (1986) Phil. Trans. R. Soc. B 314:1
+Fruit fly,synapses per neuron,380,per neuron,measured,mushroom-bodies,"About 50 million synapses among 139,000 neurons",Dorkenwald et al. (2024) Nature 634:124
+Mouse cortex,synapses per neuron,7000,per neuron,measured,neocortex,,Schüz & Palm (1989) J. Comp. Neurol. 286:442
+Human cortex,synapses per neuron,10000,per neuron,measured,speaking,About 1.6x10^14 synapses among 1.6x10^10 cortical neurons,Tang et al. (2001) Synapse 41:258; Azevedo et al. (2009) J. Comp. Neurol. 513:532
+Human brain,power per neuron,2.3e-10,W,measured,speaking,About 20 W for 86 billion neurons,Raichle & Gusnard (2002) PNAS 99:10237; Azevedo et al. (2009)
+Rodents and primates,power per neuron,2e-10,W,measured,,Energy per neuron is roughly the same across mammals; bigger brains cost more because they have more neurons,Herculano-Houzel (2011) PLoS ONE 6:e17514

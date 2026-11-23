@@ -248,7 +248,7 @@
       if (last) g += '<text class="lab" x="' + f1(last[0] + 10) + '" y="' + f1(last[1] + (n ? 14 : -4)) + '">' + esc(Q[k].name) + '</text>';
     });
     marks.forEach(m => { const v = E[m.i][m.k]; if (v > 0) g += '<circle class="pm" cx="' + f1(xx(m.i)) + '" cy="' + f1(yy(v)) + '" r="5.5"/>'; });
-    return '<div class="inset"><svg class="stk pch" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(keys.map(k => Q[k].name).join(' and ')) + ' across the 64 census moments, log scale; the values used are circled. The data table above gives the numbers.">' + g + '</svg></div>';
+    return '<div class="inset"><svg class="stk pch" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(keys.map(k => Q[k].name).join(' and ')) + ' across the ' + N + ' census moments, log scale; the values used are circled. The data table above gives the numbers.">' + g + '</svg></div>';
   }
   function paperHTML(t) {
     const r = FORMS[t.form].run(t), v = verify(t, r), VD = VERDICT[v.verdict];
@@ -275,7 +275,7 @@
       '<div class="p-verdict v-' + v.verdict + '"><b>' + TAG[v.verdict].split(' ')[0] + ' ' + VD[0] + '</b><span>' + VD[1] + '</span></div></header>' +
       '<section><h3>Abstract</h3><p>' + esc(abstract) + '</p></section>' +
       '<section><h3>1. Thesis</h3>' + (t.intro ? '<p>' + esc(t.intro) + '</p>' : '') + '<p class="p-thesis">' + esc(r.sentence) + '</p></section>' +
-      '<section><h3>2. Data</h3><p>The values below are read directly from the 64-moment census. Open any derivation to see the arithmetic behind a moment.</p><div class="tbl-wrap p-tbl"><table class="tbl"><thead><tr><th>Quantity</th><th>Moment</th><th>Value</th><th>95% range</th><th>Evidence level</th><th>Sources</th></tr></thead><tbody>' + rowsHTML + '</tbody></table></div>' + deriv +
+      '<section><h3>2. Data</h3><p>The values below are read directly from the ' + N + '-moment census. Open any derivation to see the arithmetic behind a moment.</p><div class="tbl-wrap p-tbl"><table class="tbl"><thead><tr><th>Quantity</th><th>Moment</th><th>Value</th><th>95% range</th><th>Evidence level</th><th>Sources</th></tr></thead><tbody>' + rowsHTML + '</tbody></table></div>' + deriv +
       (basis ? '<div class="p-keys"><span class="sub">What each number rests on</span><ul class="p-list">' + basis + '</ul></div>' : '') +
       (ks.length ? '<div class="p-keys"><span class="sub">Key sources that pin these numbers</span><ul>' + ks.map(k => '<li id="key-' + k.id + '"><b>' + k.id + ' · ' + esc(k.ref) + '</b><span>' + esc(k.says) + '</span><span class="for">Supports: ' + esc(supports(k.id)) + '</span><span class="x-only">' + esc(k.audit) + '</span></li>').join('') + '</ul></div>' : '') +
       '<p class="note"><a href="data.html">Open the full census and ledgers in the Data Lab →</a></p></section>' +

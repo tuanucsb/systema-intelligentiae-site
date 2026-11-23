@@ -263,7 +263,7 @@
         'The paper dates Homo erectus to 1.0 million years ago and Neanderthals to 60,000 years ago; the data file gives ' + yearsAgo(Hm.find(h => /erectus/.test(h[0]))[1]).replace(' years ago', '') + ' and ' + yearsAgo(Hm.find(h => /Neanderthal/.test(h[0]))[1]) + '. Six dates differ in all; this figure uses the data file.',
         'The paper’s table lists 14 human relatives; ' + Hm.length + ' of them are in the data file, and only those are drawn. Its dates and body masses differ for several; the brain sizes match.'
       ],
-      src: 'the project’s brain-structure table (fossil brain sizes) and the 64-moment census of Earth (memory kept outside bodies).',
+      src: 'the project’s brain-structure table (fossil brain sizes) and the ' + X.N + '-moment census of Earth (memory kept outside bodies).',
       table
     };
   }

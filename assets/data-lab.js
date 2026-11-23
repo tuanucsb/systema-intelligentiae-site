@@ -28,12 +28,66 @@
     'All columns': null
   };
 
-  const TABS = [['census', 'Census · 64 moments'], ['plot', 'Plot builder']].concat(Object.keys(LED).map(k => [k, LED[k].title.split(' (')[0]]));
-  let tab = 'census', preset = 'Story essentials', filter = '', sortCol = null, sortDir = 1, hiRow = null;
+  const TABS = [['census', 'Census · ' + CEN.rows.length + ' moments'], ['plot', 'Plot builder']].concat(Object.keys(LED).map(k => [k, LED[k].title.split(' (')[0]]));
+  const TAB_GROUPS = [
+    { key: 'all', label: 'All (' + TABS.length + ')', match: null },
+    { key: 'core', label: 'Core & checks', match: new Set(['census', 'plot', 'systems', 'censuschecks', 'invmedia']) },
+    { key: 'dna', label: 'DNA, sex & making', match: new Set(['genomes', 'dnainventory', 'sex', 'making', 'motors']) },
+    { key: 'bio', label: 'Brains, plants & immunity', match: new Set(['biggest', 'neural', 'nervegenes', 'nervespeed', 'neuronsbygroup', 'brains', 'plants', 'immunity']) },
+    { key: 'net', label: 'Networks & space', match: new Set(['networks', 'offworld', 'offworld2026']) },
+    { key: 'budget', label: '2026 budgets & sources', match: new Set(['bioelectric', 'uncertainty', 'power', 'devices', 'media', 'sources']) }
+  ];
+  let tab = 'census', tabGroup = 'all', preset = 'Story essentials', filter = '', sortCol = null, sortDir = 1, hiRow = null;
   const CNUM = numericCols(CEN.columns, CEN.rows);
 
-  $('tabs').innerHTML = TABS.map(t => '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (t[0] === tab) + '">' + esc(t[1]) + '</button>').join('');
-  $('tabs').addEventListener('click', ev => { const b = ev.target.closest('[data-tab]'); if (b) { tab = b.dataset.tab; sortCol = null; sortDir = 1; draw(); } });
+  $('tabs').innerHTML = TABS.map(t => '<button type="button" role="tab" id="tab-' + t[0] + '" data-tab="' + t[0] + '" aria-selected="' + (t[0] === tab) + '" tabindex="' + (t[0] === tab ? 0 : -1) + '">' + esc(t[1]) + '</button>').join('');
+  function syncTabGroupUI() {
+    const grpEl = $('tabGroups');
+    const curGrp = TAB_GROUPS.find(g => g.key === tabGroup) || TAB_GROUPS[0];
+    if (grpEl) {
+      grpEl.innerHTML = TAB_GROUPS.map(g => '<button type="button" class="part-chip" data-tgrp="' + g.key + '" aria-pressed="' + (g.key === tabGroup) + '">' + esc(g.label) + '</button>').join('');
+      grpEl.querySelectorAll('[data-tgrp]').forEach(b => b.addEventListener('click', () => {
+        tabGroup = b.dataset.tgrp;
+        const gObj = TAB_GROUPS.find(g => g.key === tabGroup) || TAB_GROUPS[0];
+        if (gObj.match && !gObj.match.has(tab)) {
+          const firstMatch = TABS.find(t => gObj.match.has(t[0]));
+          if (firstMatch) selectTab(firstMatch[0], false, true);
+        }
+        syncTabGroupUI();
+      }));
+    }
+    $('tabs').querySelectorAll('[role="tab"]').forEach(b => {
+      b.hidden = !!(curGrp.match && !curGrp.match.has(b.dataset.tab));
+    });
+  }
+  function selectTab(nextTab, focusBtn, pushHash) {
+    if (!nextTab) return;
+    tab = nextTab; sortCol = null; sortDir = 1;
+    const curGrp = TAB_GROUPS.find(g => g.key === tabGroup);
+    if (curGrp && curGrp.match && !curGrp.match.has(tab)) tabGroup = 'all';
+    syncTabGroupUI();
+    if (pushHash !== false) {
+      try { history.replaceState(null, '', nextTab === 'census' && hiRow == null ? location.pathname : '#' + nextTab); } catch (e) { /* ignore */ }
+    }
+    draw();
+    const active = $('tabs').querySelector('[data-tab="' + tab + '"]');
+    if (active) {
+      try { active.scrollIntoView({ block: 'nearest', inline: 'nearest', container: 'nearest' }); } catch (e) { active.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+      if (focusBtn) active.focus();
+    }
+  }
+  $('tabs').addEventListener('click', ev => { const b = ev.target.closest('[data-tab]'); if (b) selectTab(b.dataset.tab, false, true); });
+  $('tabs').addEventListener('keydown', ev => {
+    const btns = [...$('tabs').querySelectorAll('[role="tab"]:not([hidden])')];
+    const cur = btns.indexOf(document.activeElement);
+    if (cur < 0) return;
+    let nx = -1;
+    if (ev.key === 'ArrowRight') nx = (cur + 1) % btns.length;
+    else if (ev.key === 'ArrowLeft') nx = (cur - 1 + btns.length) % btns.length;
+    else if (ev.key === 'Home') nx = 0;
+    else if (ev.key === 'End') nx = btns.length - 1;
+    if (nx >= 0) { ev.preventDefault(); selectTab(btns[nx].dataset.tab, true, true); }
+  });
 
   function table(cols, rows, nums, opts) {
     opts = opts || {};
@@ -54,7 +108,7 @@
     const cols = (PRESETS[preset] || CEN.columns).filter(c => CEN.columns.indexOf(c) >= 0);
     $('panel').innerHTML = '<div class="lab-tools"><label class="sub" for="preset">Columns</label><select id="preset">' + Object.keys(PRESETS).map(p => '<option' + (p === preset ? ' selected' : '') + '>' + p + '</option>').join('') + '</select>' +
       '<input type="search" id="filt" placeholder="Filter rows: Cambrian, extinction, EP14…" value="' + esc(filter) + '" aria-label="Filter rows">' +
-      '<a class="btn sm" href="data/earth_census_64_epochs.csv" download>Download CSV</a></div>' +
+      '<a class="btn sm" href="data/earth_census_68_epochs.csv" download>Download CSV</a></div>' +
       '<div class="note-box">One row per moment, from 4.1 billion years ago (EP01a) to 2026 (EP32b). Units are in the column names: <span class="mono">_bits</span>, <span class="mono">_ops_sec</span>, <span class="mono">_watts</span>, <span class="mono">_gt_c</span> (gigatonnes of carbon), <span class="mono">time_mya</span> (millions of years ago).</div>' +
       table(cols, CEN.rows, CNUM, { allCols: CEN.columns, filter, sortCol, sortDir, hi: hiRow });
     $('preset').addEventListener('change', ev => { preset = ev.target.value; sortCol = null; drawCensus(); });
@@ -79,7 +133,7 @@
   function drawPlot() {
     $('panel').innerHTML = '<div class="lab-tools">' + [0, 1, 2].map(k => '<select data-s="' + k + '" aria-label="Series ' + (k + 1) + '" style="border-color:' + PC[k] + '"><option value="">(none)</option>' + PLOTCOLS.map(c => '<option' + (plotSel[k] === c ? ' selected' : '') + '>' + c + '</option>').join('') + '</select>').join('') +
       '<label class="toggle"><input type="checkbox" id="logY"' + (logY ? ' checked' : '') + '> Log scale</label></div>' +
-      '<div class="plot-wrap"><svg id="plot" class="plot" viewBox="0 0 1000 400" role="img" aria-label="Plot of selected census columns"></svg></div><p class="time-key" data-time-key="moments"></p><p class="readout" id="pread">Hover the plot to read values. X axis: the 64 moments in order (time not to scale).</p>';
+      '<div class="plot-wrap"><svg id="plot" class="plot" viewBox="0 0 1000 400" role="img" aria-label="Plot of selected census columns"></svg></div><p class="time-key" data-time-key="moments"></p><p class="readout" id="pread">Hover the plot to read values. X axis: the ' + CEN.rows.length + ' moments in order (time not to scale).</p>';
     $('panel').querySelectorAll('select[data-s]').forEach(s => s.addEventListener('change', () => { plotSel[Number(s.dataset.s)] = s.value; drawPlot(); }));
     $('logY').addEventListener('change', ev => { logY = ev.target.checked; drawPlot(); });
     const W = 1000, H = 400, Lm = 70, R = 20, T = 20, B = 46, N = CEN.rows.length;
@@ -163,6 +217,7 @@
   const SHORT = {
     'Lab-evolved RNA polymerase ribozyme': 'RNA copier (lab)', 'LUCA (reconstructed from living genomes)': 'LUCA, the common ancestor',
     'Escherichia coli K-12': 'E. coli', 'Methanocaldococcus jannaschii': 'Methane maker', 'Synechocystis sp. PCC 6803': 'Cyanobacterium',
+    'Paracoccus denitrificans PD1222': 'Aerobic bacterium',
     'Reclinomonas americana mitochondrion': 'Mitochondrion', 'Arabidopsis thaliana chloroplast': 'Chloroplast',
     "Saccharomyces cerevisiae (baker's yeast)": 'Yeast', 'Neurospora crassa': 'Bread mould', 'Monosiga brevicollis (choanoflagellate)': 'Choanoflagellate',
     'Amphimedon queenslandica (sponge)': 'Sponge', 'Nematostella vectensis (sea anemone)': 'Sea anemone', 'Drosophila melanogaster (fruit fly)': 'Fruit fly',
@@ -171,7 +226,12 @@
     'Gallus gallus (chicken)': 'Chicken', 'Homo sapiens': 'Human', 'Paramecium tetraurelia': 'Paramecium',
     'Tmesipteris oblanceolata (fork fern)': 'Fork fern (largest genome)', 'Nasuia deltocephalinicola': 'Insect symbiont (smallest)',
     'Sorangium cellulosum So0157-2': 'Soil myxobacterium',
-    'Chlamydomonas reinhardtii (green alga)': 'Green alga', 'Physcomitrium patens (moss)': 'Moss', 'Amborella trichopoda': 'Amborella (flowering plant)', 'Triticum aestivum (bread wheat)': 'Bread wheat'
+    'Chlamydomonas reinhardtii (green alga)': 'Green alga', 'Physcomitrium patens (moss)': 'Moss',
+    'Chondrus crispus (red alga)': 'Irish moss (red alga)', 'Marchantia polymorpha (liverwort)': 'Liverwort',
+    'Anthoceros agrestis (hornwort)': 'Hornwort', 'Ceratopteris richardii (fern)': 'Ceratopteris fern',
+    'Ectocarpus siliculosus (brown alga)': 'Brown seaweed', 'Pinus taeda (loblolly pine)': 'Loblolly pine (22B)',
+    'Amborella trichopoda': 'Amborella (flowering plant)', 'Triticum aestivum (bread wheat)': 'Bread wheat',
+    'Oryza sativa (rice)': 'Rice', 'Zea mays (maize)': 'Maize'
   };
   const shortName = o => SHORT[o] || o.split(' (')[0];
 
@@ -218,7 +278,7 @@
     });
     s += labs + pts;
     const html = '<figure class="lab-fig" id="figG">' +
-      '<figcaption><h3>Genomes grew, then stopped tracking complexity</h3><p>Each point is the genome of a living stand-in for a milestone, placed at the milestone’s date. Genomes grew about a thousandfold up to the first complex cells. After that, size and complexity part ways: a fern holds 50 times our DNA, a lungfish 14 times.</p></figcaption>' +
+      '<figcaption><h3>Genomes grew, then stopped tracking complexity</h3><p>Each point is the genome of a living stand-in for a milestone, placed at the milestone’s date. Genomes grew about a thousandfold up to the first complex cells. After that, size and complexity part ways: a fern holds 50 times our DNA, a lungfish 14 times. <a href="stories.html#dna-story">Read the full DNA story →</a> · <a href="tree.html#path=dna">Walk DNA in the Tree →</a></p></figcaption>' +
       '<div class="fig-tools" role="group" aria-label="Highlight a group">' + groups.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === genomeGroup) + '">' + esc(g) + '</button>').join('') + '</div>' +
       '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Genome size against time, ' + rows.length + ' genomes. The table below lists every value.">' + s + '</svg></div>' +
       '<p class="fig-legend"><span>How the date is known:</span>' + ['fossil', 'molecular_clock', 'living_inference', 'measured'].map(k => '<span>' + legendSym(EV[k].s, EV[k].c) + esc(EV[k].n) + '</span>').join('') + '</p>' +
@@ -292,8 +352,8 @@
     rows.forEach((r, i) => { if (X.CRISIS[r.epoch_id]) s += '<path d="M' + (x0(i) + cw / 2 - 5).toFixed(1) + ' ' + (H - B) + 'l5 -8l5 8z" class="fcrisis"><title>' + esc(X.CRISIS[r.epoch_id]) + '</title></path>'; });
     s += '<line id="bigHov" class="fhov" x1="0" x2="0" y1="' + T + '" y2="' + (H - B) + '" visibility="hidden"/><rect id="bigHit" x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
     const html = '<figure class="lab-fig" id="figB">' +
-      '<figcaption><h3>The biggest brain grew about 25 million times</h3><p>The animal with the most neurons alive at each moment, from about 10,000 in the first nerve nets to 257 billion in today’s African elephant. Only the elephant has been counted; the shaded band shows the range of estimates for the rest, and dinosaur brains are disputed. Plants and fungi have no neurons: their electrical signals are counted separately in the census.</p></figcaption>' +
-      '<div class="plot-wrap"><svg class="plot fig" id="bigSvg" tabindex="0" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Biggest brain at each of the 64 moments. Use the left and right arrow keys to step through the moments; the table below lists every value.">' + s + '</svg></div>' +
+      '<figcaption><h3>The biggest brain grew about 25 million times</h3><p>The animal with the most neurons alive at each moment, from about 10,000 in the first nerve nets to 257 billion in today’s African elephant. Only the elephant has been counted; the shaded band shows the range of estimates for the rest, and dinosaur brains are disputed. Plants and fungi have no neurons: their electrical signals are counted separately in the census. <a href="stories.html#nerves-story">Read the full nerves story →</a> · <a href="tree.html#path=neural">Walk neural evolution in the Tree →</a></p></figcaption>' +
+      '<div class="plot-wrap"><svg class="plot fig" id="bigSvg" tabindex="0" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Biggest brain at each of the ' + N + ' moments. Use the left and right arrow keys to step through the moments; the table below lists every value.">' + s + '</svg></div>' +
       '<p class="fig-legend"><span><svg width="18" height="10" aria-hidden="true"><path d="M1 5h16" class="fstep"/></svg>Best estimate</span><span><svg width="18" height="10" aria-hidden="true"><rect x="1" y="1" width="16" height="8" class="fband"/></svg>Range of estimates</span><span><svg width="12" height="10" aria-hidden="true"><path d="M1 9l5 -8l5 8z" class="fcrisis"/></svg>Crisis</span></p>' +
       '<p class="time-key" data-time-key="moments"></p>' +
       '<p class="readout fig-read" id="figRead" aria-live="polite">Hover the chart, or focus it and use the arrow keys, to read each moment.</p></figure>';
@@ -319,7 +379,635 @@
     };
     return { html, bind };
   }
-  const FIGS = { genomes: figGenomes, biggest: figBiggest };
+  // Figure C: 16 sophistication steps of sexual reproduction across 3.8 billion years (log time vs step 1..16).
+  let sexStage = 'All';
+  function figSex(l) {
+    const rows = objRows(l).sort((a, b) => Number(a.sophistication_level) - Number(b.sophistication_level));
+    const stages = ['All'].concat([...new Set(rows.map(r => r.stage))]);
+    const W = 1000, H = 480, L = 66, R = 210, T = 28, B = 52;
+    const LX0 = 9.65, LX1 = 1.0;
+    const xOf = mya => {
+      const yrs = Math.max(10, Number(mya) * 1e6);
+      return L + (LX0 - Math.log10(yrs)) / (LX0 - LX1) * (W - L - R);
+    };
+    const yOf = lvl => T + (16 - Number(lvl)) / 15 * (H - T - B);
+    let s = '';
+    [[9.6, '4 Ga'], [9, '1 Ga'], [8.7, '500 Ma'], [8, '100 Ma'], [7, '10 Ma'], [6, '1 Ma'], [4, '10 ka'], [1.7, '1978']].forEach(([v, lab]) => {
+      const x = L + (LX0 - v) / (LX0 - LX1) * (W - L - R);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+    [1, 4, 8, 12, 16].forEach(lvl => {
+      const y = yOf(lvl);
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" opacity=".45"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">Step ' + lvl + '</text>';
+    });
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Time before today (log scale: each step right is ×10 closer to 2026)</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Cumulative sophistication of sexual reproduction (16 steps)</text>';
+    let pathD = '', bars = '', pts = '', labs = '';
+    rows.forEach((r, i) => {
+      const x = xOf(r.time_mya), y = yOf(r.sophistication_level), e = EV[r.evidence] || EV.estimate;
+      const on = sexStage === 'All' || r.stage === sexStage;
+      pathD += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+      if (r.low_mya !== '' && r.high_mya !== '') {
+        const x1 = xOf(r.high_mya), x2 = xOf(r.low_mya);
+        bars += '<line x1="' + x1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="' + e.c + '" stroke-width="3" opacity="' + (on ? '0.35' : '0.1') + '"/>';
+      }
+      pts += '<g class="fpt' + (on ? '' : ' dim') + '" tabindex="' + (on ? 0 : -1) + '" role="button" data-i="' + i + '" aria-label="' + esc('Step ' + r.sophistication_level + ': ' + r.plain_title) + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="11" fill="transparent"/>' + sym(e.s, x, y, 5.5, e.c) + '</g>';
+      if (on) {
+        const rightSide = x > W - R - 130;
+        labs += '<text class="flab" x="' + (rightSide ? x - 9 : x + 9).toFixed(1) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="' + (rightSide ? 'end' : 'start') + '">' + esc(r.plain_title) + '</text>';
+      }
+    });
+    s += '<path d="' + pathD + '" fill="none" stroke="var(--c-make)" stroke-width="1.8" stroke-dasharray="4 3" opacity=".55"/>' + bars + labs + pts;
+    const html = '<figure class="lab-fig" id="figS">' +
+      '<figcaption><h3>How sexual reproduction began and grew sophisticated over 3.8 billion years</h3><p>From bacterial sideways DNA repair and eukaryotic meiosis to Bangiomorpha (1.05 Ga, oldest sexual fossil), unequal sperm and egg, armored-fish internal mating (385 Ma), pollen tubes, XY/ZW chromosomes, flowers and pollinators, mammal placentas, learned courtship songs, human grandmothers and IVF. Horizontal bars show each date’s uncertainty window. <a href="stories.html#sex-story">Read the full sex story →</a> · <a href="tree.html#path=sex">Walk this path in the Tree →</a></p></figcaption>' +
+      '<div class="fig-tools" role="group" aria-label="Filter by stage">' + stages.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === sexStage) + '">' + esc(g.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Sixteen steps in the evolution of sexual reproduction against log time. The table below lists every value.">' + s + '</svg></div>' +
+      '<p class="fig-legend"><span>How each date is known:</span>' + ['fossil', 'molecular_clock', 'living_inference', 'measured'].map(k => '<span>' + legendSym(EV[k].s, EV[k].c) + esc(EV[k].n) + '</span>').join('') + '</p>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any step (and use Left/Right arrow keys) to inspect its mechanism, organism, parental investment and date evidence.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>Step ' + esc(r.sophistication_level) + '/16 · ' + esc(r.plain_title) + '</b> (' + esc(X.fmtTime(Number(r.time_mya))) + ' · ' + esc((EV[r.evidence] || EV.estimate).n) + esc(rangeText(Number(r.low_mya), Number(r.high_mya))) + ')' +
+        '<br>' + esc(r.plain_text) +
+        '<br><b>Organism:</b> ' + esc(r.representative_organism) + ' · <b>Mode:</b> ' + esc(r.gamete_and_mating_mode) + ' · <b>Care:</b> ' + esc(r.parental_and_social_investment) +
+        '<br><span class="fig-src">Source: ' + esc(r.source) + (r.inv ? ' · <a href="tree.html#' + esc(r.inv) + '">View in Tree →</a>' : '') + '</span>', g => { sexStage = g; })
+    };
+  }
+  // Figure D: Computing beyond Earth — distance from Earth (log km & light-time) vs onboard compute (ops/s).
+  let spaceFilter = 'All';
+  const SPACE_SHORT = {
+    'Explorer 1 & Vanguard 1 Orbital Transistor Telemetry': 'Explorer 1 (1958)',
+    'Mariner 4 Central Computer & Endless-Loop Tape Recorder': 'Mariner 4 (1965)',
+    'IBM Gemini Guidance Computer (Gemini 3–12)': 'Gemini (1965)',
+    'Apollo Block II Guidance Computer (Command & Lunar Modules)': 'Apollo 11 AGC (1969)',
+    'Pioneer 10 & Pioneer 11 (Jupiter/Saturn & Solar Escape)': 'Pioneer 10 (1972)',
+    'Viking 1 & 2 Landers (Plated-Wire Guidance & Lab Computers)': 'Viking 1 (1976)',
+    'Voyager 1 & Voyager 2 Six-Computer Suite + Golden Records': 'Voyager launch (1977)',
+    'Galileo Jupiter Orbiter (Radiation-Hardened Microprocessors)': 'Galileo (1989)',
+    'Hubble Space Telescope (DF-224 → Radiation-Hardened 80486)': 'Hubble (1990)',
+    'Mars Pathfinder (RAD6000) & Sojourner Autonomous Rover (80C85)': 'Pathfinder & Sojourner (1997)',
+    'Cassini Saturn Orbiter & Huygens Titan Lander': 'Cassini-Huygens (1997)',
+    'New Horizons Pluto & Kuiper Belt Probe (Mongoose-V)': 'New Horizons (64 AU)',
+    'Curiosity Rover (RAD750 + AEGIS Autonomous Target Selection)': 'Curiosity (2012)',
+    'Perseverance Rover (RAD750 + Vision FPGA) & Ingenuity Helicopter (Snapdragon 801)': 'Perseverance & Ingenuity (2021)',
+    'James Webb Space Telescope (Sun–Earth L2, 1.5 Million km)': 'James Webb at L2 (2021)',
+    'DART SMART Nav Autonomous Asteroid Redirector & Psyche Deep-Space Laser': 'DART & Psyche laser (2022)',
+    'Voyager 1 Crosses One Light-Day from Earth (Nov 2026, ~173 AU)': 'Voyager 1: 1 light-day (2026)',
+    'Total Active Off-Earth Computing Fleet (~17,500 Satellites & ~40 Deep-Space Probes)': 'All ~17,540 off-Earth craft (2026)'
+  };
+  function figOffworld(l) {
+    const rows = objRows(l);
+    const groups = ['All', 'Active in 2026', 'Historical / dormant'];
+    const isAct = r => String(r.active_2026 || '').startsWith('Yes') || String(r.active_2026 || '').startsWith('Perseverance');
+    const matchGrp = r => spaceFilter === 'All' || (spaceFilter === 'Active in 2026' ? isAct(r) : !isAct(r));
+    const W = 1000, H = 500, L = 82, R = 36, T = 34, B = 56;
+    const LX0 = 2.2, LX1 = 10.65, LY0 = 1.6, LY1 = 16.0;
+    const xOf = km => L + (Math.log10(Math.max(200, km)) - LX0) / (LX1 - LX0) * (W - L - R);
+    const yOf = ops => T + (LY1 - Math.log10(Math.max(50, ops))) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [[2, '100/s'], [5, '100k/s'], [8, '100M/s'], [11, '100B/s'], [14, '100T/s']].forEach(([v, lab]) => {
+      const y = yOf(Math.pow(10, v));
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    [
+      [400, 'LEO · 1.3 ms'],
+      [384400, 'Moon · 1.3 s'],
+      [1.5e6, 'L2 · 5 s'],
+      [2.25e8, 'Mars · 12.5 min'],
+      [1.43e9, 'Saturn · 1.3 hr'],
+      [9.61e9, 'Kuiper · 8.9 hr'],
+      [2.59e10, '1 light-day (25.9B km)']
+    ].forEach(([km, lab]) => {
+      const x = xOf(km);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/>' +
+        '<text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="' + (km > 1e10 ? 'end' : 'middle') + '">' + lab + '</text>';
+    });
+    const yPhone = yOf(5e12);
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yPhone.toFixed(1) + '" y2="' + yPhone.toFixed(1) + '" class="fref"/>' +
+      '<text class="tick" x="' + (L + 8) + '" y="' + (yPhone - 6).toFixed(1) + '">1 modern smartphone on Earth (~5×10¹² ops/s)</text>';
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Distance from Earth &amp; one-way speed-of-light radio delay (log scale) →</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 12) + '">Onboard computing speed, operations per second (log scale)</text>';
+
+    const place = placer(W - 8);
+    place.reserve(0, 0, L - 2, H);
+    rows.forEach(r => {
+      const x = xOf(Number(r.distance_from_earth_km)), y = yOf(Number(r.compute_ops_sec));
+      place.reserve(x - 8, y - 8, x + 8, y + 8);
+    });
+    let pts = '', labs = '';
+    rows.forEach((r, i) => {
+      const km = Number(r.distance_from_earth_km), ops = Number(r.compute_ops_sec);
+      const x = xOf(km), y = yOf(ops), act = isAct(r), on = matchGrp(r);
+      const fill = r.mission_or_system.indexOf('Total Active') >= 0 ? 'var(--c-prog)' : (act ? 'var(--s-silicon)' : 'var(--ink-3)');
+      const shape = act ? 'diamond' : 'circle';
+      const sName = SPACE_SHORT[r.mission_or_system] || r.plain_title;
+      pts += '<g class="fpt' + (on ? '' : ' dim') + '" tabindex="' + (on ? 0 : -1) + '" role="button" data-i="' + i + '" aria-label="' + esc(sName + ', ' + X.sci(km) + ' km, ' + X.sci(ops) + ' ops/s') + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="12" fill="transparent"/>' + sym(shape, x, y, 5.8, fill) + '</g>';
+      if (on) {
+        const w = sName.length * 6.2 + 4;
+        let p = place(x + 9, y + 4, w, 13, x - 9);
+        if (typeof p === 'number') p = { x: x + 9, y: p };
+        if (p) labs += '<text class="flab" x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '">' + esc(sName) + '</text>';
+      }
+    });
+    s += labs + pts;
+    const fmtLt = sec => sec >= 3600 ? (sec / 3600).toFixed(1) + ' hours' : sec >= 60 ? (sec / 60).toFixed(1) + ' minutes' : sec >= 0.5 ? sec.toFixed(2) + ' seconds' : (sec * 1000).toFixed(1) + ' ms';
+    const html = '<figure class="lab-fig" id="figO">' +
+      '<figcaption><h3>The farther a computer leaves Earth, the leaner and tougher its brain must be</h3><p>Outside Earth’s magnetic shield and repair reach, cosmic rays flip bits inside dense modern chips and sunlight fades with the square of distance. Every deep-space explorer beyond low orbit—including Voyager 1 at one full light-day (25.9 billion km, 69 KB of memory, ~12,000 ops/s)—computes slower than a single pocket phone, yet uses onboard autonomy because radio commands take minutes to 24 hours to arrive. All ~17,540 active off-planet spacecraft together run ~1.9×10¹⁵ ops/s, just 0.00001% of Earth’s silicon fleet. <a href="tree.html#path=space">Walk the spaceflight path in the Tree →</a> · <a href="data.html#offworld2026">Open the 2026 6-zone space inventory →</a></p></figcaption>' +
+      '<div class="fig-tools" role="group" aria-label="Filter spacecraft">' + groups.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === spaceFilter) + '">' + esc(g) + '</button>').join('') + '</div>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Spacecraft computing speed against distance from Earth, 18 milestones from low orbit to Voyager 1 at 1 light-day.">' + s + '</svg></div>' +
+      '<p class="fig-legend"><span>Status in 2026:</span><span>' + legendSym('diamond', 'var(--s-silicon)') + 'Active in space today</span><span>' + legendSym('circle', 'var(--ink-3)') + 'Historical / silent</span><span>' + legendSym('diamond', 'var(--c-prog)') + '2026 all-space total</span></p>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any spacecraft (Left/Right arrow keys step through) to inspect its distance, light-time delay, hardware, memory, radio bit rate and power source.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.plain_title) + ' (' + esc(r.year_ce) + ')</b> · ' + esc(r.regime) +
+        '<br><b>Distance:</b> ' + X.sci(Number(r.distance_from_earth_km)) + ' km (' + esc(fmtLt(Number(r.one_way_light_time_s))) + ' one-way light time) · <b>Compute:</b> ' + X.sci(Number(r.compute_ops_sec)) + ' ops/s' +
+        (Number(r.ram_bits) > 0 ? ' · <b>RAM:</b> ' + X.sci(Number(r.ram_bits)) + ' bits' : '') +
+        (Number(r.downlink_bits_sec) > 0 ? ' · <b>Downlink:</b> ' + X.sci(Number(r.downlink_bits_sec)) + ' bits/s' : '') +
+        '<br>' + esc(r.plain_text) +
+        '<br><b>Hardware:</b> ' + esc(r.processor_hardware) + ' · <b>Power:</b> ' + X.watts(Number(r.power_watts)) + ' (' + esc(r.power_source) + ') · <b>2026:</b> ' + esc(r.active_2026) +
+        '<br><span class="fig-src">Source: ' + esc(r.source) + (r.inv ? ' · <a href="tree.html#' + esc(r.inv) + '">View in Tree →</a>' : '') + '</span>', g => { spaceFilter = g; })
+    };
+  }
+  // Figure E: Molecular motors vs. passive diffusion (crossing time t = L^2 / 2D vs active transport).
+  let motorSel = null;
+  function figMotors(l) {
+    const rows = objRows(l).filter(r => Number(r.velocity_um_s) > 0);
+    const W = 1000, H = 460, L = 86, R = 175, T = 30, B = 54;
+    const LX0 = 0, LX1 = 6, LY0 = -3.5, LY1 = 10.6; // x: log10(um) 1 um..1 m; y: log10(sec) 0.3 ms..1,585 yr
+    const xOf = um => L + (Math.log10(um) - LX0) / (LX1 - LX0) * (W - L - R);
+    const yOf = sec => T + (LY1 - Math.log10(sec)) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [
+      [-3, '1 ms'],
+      [0, '1 sec'],
+      [1.78, '1 min'],
+      [3.56, '1 hour'],
+      [4.94, '1 day'],
+      [7.5, '1 year'],
+      [10.7, '1,585 yr']
+    ].forEach(([ly, lab]) => {
+      if (ly < LY0 || ly > LY1) return;
+      const y = yOf(Math.pow(10, ly));
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    [
+      [1, '1 µm (bacterium)'],
+      [20, '20 µm (eukaryote)'],
+      [1000, '1 mm (worm / leaf)'],
+      [1e4, '1 cm'],
+      [1e6, '1 m (human axon)']
+    ].forEach(([um, lab]) => {
+      const x = xOf(um);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+
+    // Quadratic diffusion curve: t = L^2 / (2 * D), D = 10 um^2/s for cytoplasmic protein
+    let diffD = '';
+    for (let k = 0; k <= 60; k++) {
+      const um = Math.pow(10, LX0 + (LX1 - LX0) * k / 60);
+      const sec = (um * um) / 20.0;
+      diffD += (k ? 'L' : 'M') + xOf(um).toFixed(1) + ' ' + yOf(sec).toFixed(1);
+    }
+    s += '<path d="' + diffD + '" fill="none" stroke="var(--crisis)" stroke-width="2.6" stroke-dasharray="6 4"/>' +
+      '<text class="tick" x="' + (W - R + 8) + '" y="' + (yOf(5e10) + 4).toFixed(1) + '" style="fill:var(--crisis-ink);font-weight:700">Passive diffusion (1,585 yr)</text>';
+
+    // Active linear transport lines: t = um / v_um_s
+    const LINES = [
+      ['Kinesin-1 (~1 µm/s)', 1.0, 'var(--c-wire)'],
+      ['Fast axonal (~4 µm/s)', 4.0, 'var(--c-store)'],
+      ['Plant Myosin XI (50 µm/s)', 50.0, 'var(--s-chem)'],
+      ['Bare nerve spike (1 m/s)', 1e6, 'var(--s-neuro)'],
+      ['Myelinated spike (120 m/s)', 1.2e8, 'var(--c-cpu)']
+    ];
+    LINES.forEach(([lab, v, col]) => {
+      const pts = [];
+      for (const um of [1, 1e6]) {
+        const sec = um / v, ly = Math.log10(sec);
+        if (ly >= LY0 && ly <= LY1) pts.push([um, sec]);
+      }
+      for (const ly of [LY0, LY1]) {
+        const sec = Math.pow(10, ly), um = sec * v, lx = Math.log10(um);
+        if (lx >= LX0 && lx <= LX1) pts.push([um, sec]);
+      }
+      pts.sort((a, b) => a[0] - b[0]);
+      if (pts.length >= 2) {
+        const p0 = pts[0], p1 = pts[pts.length - 1];
+        s += '<line x1="' + xOf(p0[0]).toFixed(1) + '" y1="' + yOf(p0[1]).toFixed(1) + '" x2="' + xOf(p1[0]).toFixed(1) + '" y2="' + yOf(p1[1]).toFixed(1) + '" stroke="' + col + '" stroke-width="2"/>';
+        if (Math.abs(Math.log10(p1[0]) - LX1) < 0.05) {
+          s += '<text class="tick" x="' + (W - R + 8) + '" y="' + (yOf(p1[1]) + 4).toFixed(1) + '">' + esc(lab) + '</text>';
+        }
+      }
+    });
+
+    // Plot measured motors at characteristic cellular/organismal distances
+    let pts = '';
+    rows.forEach((r, i) => {
+      const v = Number(r.velocity_um_s);
+      const um = r.milestone.indexOf('Axonal') >= 0 ? 1e6 : (r.milestone.indexOf('Myosin XI') >= 0 ? 1e5 : (r.milestone.indexOf('Flagellar') >= 0 || r.milestone.indexOf('FtsZ') >= 0 ? 2 : 30));
+      const sec = Math.max(Math.pow(10, LY0 + 0.2), Math.min(Math.pow(10, LY1 - 0.2), um / v));
+      const x = xOf(um), y = yOf(sec), e = EV[r.evidence] || EV.estimate;
+      pts += '<g class="fpt" tabindex="0" role="button" data-i="' + i + '" aria-label="' + esc(r.plain_title + ': ' + v + ' µm/s') + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="11" fill="transparent"/>' + sym(e.s, x, y, 5.5, e.c) + '</g>';
+    });
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Distance across cell, leaf or nerve fiber (log₁₀ scale, 1 µm → 1 m)</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Crossing time (log₁₀ scale: quadratic diffusion vs. linear motors &amp; spikes)</text>' + pts;
+
+    const html = '<figure class="lab-fig" id="figM">' +
+      '<figcaption><h3>Why complex cells and brains needed walking motors: the quadratic diffusion wall</h3><p>Across a 1-µm bacterium, passive thermal drifting crosses the cell in ~50 milliseconds—so bacteria never needed indoor cargo walkers. Because diffusion time grows with the <b>square</b> of distance (t = L²/2D), drifting a protein down a 1-meter human sciatic nerve would take ~1,585 years; ATP-driven kinesin highways deliver cargo in ~3–11 days while myelinated spikes carry the electrical message in 8 milliseconds. <a href="stories.html#motors-story">Read the motors story →</a> · <a href="tree.html#path=motors">Walk motors in the Tree →</a></p></figcaption>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Log-log crossing time versus distance comparing passive diffusion against kinesin, myosin XI and nerve spikes.">' + s + '</svg></div>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any motor point (Left/Right arrows step through) to read its speed, step size, force and ATP cost.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.plain_title) + '</b> (' + esc(X.fmtTime(Number(r.time_mya))) + ') · <b>' + esc(r.velocity_um_s) + ' µm/s</b>' +
+        (Number(r.step_nm) > 0 ? ' · ' + esc(r.step_nm) + ' nm step' : '') +
+        (Number(r.force_pn) > 0 ? ' · ' + esc(r.force_pn) + ' pN stall force' : '') +
+        '<br>' + esc(r.plain_text) + '<br><span class="fig-src">Source: ' + esc(r.source) + '</span>', () => {})
+    };
+  }
+
+  // Figure F: Replication, reproduction & manufacturing — Blueprint bits vs. Copy fidelity (log-log).
+  let makeCat = 'All';
+  function figMaking(l) {
+    const rows = objRows(l).filter(r => Number(r.blueprint_bits) > 0 && Number(r.copy_error_per_bit) > 0);
+    const cats = ['All'].concat([...new Set(rows.map(r => r.mode_category))]);
+    const W = 1000, H = 470, L = 86, R = 36, T = 30, B = 54;
+    const LX0 = 1.8, LX1 = 14.6, LY0 = 1.0, LY1 = 13.6; // y = -log10(error_per_bit): higher = more accurate!
+    const xOf = bits => L + (Math.log10(bits) - LX0) / (LX1 - LX0) * (W - L - R);
+    const yOf = err => T + (LY1 - (-Math.log10(err))) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [[2, '1 in 100'], [5, '1 in 10⁵'], [9, '1 in 10⁹'], [12, '1 in 10¹²']].forEach(([acc, lab]) => {
+      const y = T + (LY1 - acc) / (LY1 - LY0) * (H - T - B);
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    [[2, '100 b'], [5, '100 kb'], [8, '100 Mb'], [11, '100 Gb'], [14, '100 Tb']].forEach(([lb, lab]) => {
+      const x = L + (lb - LX0) / (LX1 - LX0) * (W - L - R);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+    // Eigen error threshold diagonal: bits * err = 1 => -log10(err) = log10(bits)
+    s += '<line x1="' + xOf(100).toFixed(1) + '" y1="' + yOf(0.01).toFixed(1) + '" x2="' + xOf(3.9e13).toFixed(1) + '" y2="' + yOf(1 / 3.9e13).toFixed(1) + '" class="fref"/>' +
+      '<text class="tick" x="' + (xOf(1e7) + 8).toFixed(1) + '" y="' + (yOf(1e-7) + 14).toFixed(1) + '">Eigen threshold (~1 error per full blueprint)</text>';
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Blueprint size in bits (RNA strand → genome → book → 100B-transistor EUV chip mask)</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Copying accuracy (1 error in N bits; higher = cleaner copying)</text>';
+
+    const place = placer(W - 8);
+    place.reserve(0, 0, L - 2, H);
+    const CAT_COL = {
+      '1.': ['var(--s-chem)', 'circle'],
+      '2.': ['var(--c-make)', 'diamond'],
+      '3.': ['var(--c-backup)', 'square'],
+      '4.': ['var(--s-silicon)', 'triangle']
+    };
+    rows.forEach(r => { place.reserve(xOf(Number(r.blueprint_bits)) - 7, yOf(Number(r.copy_error_per_bit)) - 7, xOf(Number(r.blueprint_bits)) + 7, yOf(Number(r.copy_error_per_bit)) + 7); });
+    let pts = '', labs = '';
+    rows.forEach((r, i) => {
+      const bits = Number(r.blueprint_bits), err = Number(r.copy_error_per_bit);
+      const x = xOf(bits), y = yOf(err);
+      const on = makeCat === 'All' || r.mode_category === makeCat;
+      const [col, shp] = CAT_COL[r.mode_category.slice(0, 2)] || ['var(--c-make)', 'circle'];
+      const shortM = r.milestone.split(' (')[0].slice(0, 32);
+      pts += '<g class="fpt' + (on ? '' : ' dim') + '" tabindex="' + (on ? 0 : -1) + '" role="button" data-i="' + i + '" aria-label="' + esc(r.milestone + ', ' + X.sci(bits) + ' bits') + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="11" fill="transparent"/>' + sym(shp, x, y, 5.5, col) + '</g>';
+      if (on) {
+        let p = place(x + 9, y + 4, shortM.length * 6.1 + 4, 12, x - 9);
+        if (typeof p === 'number') p = { x: x + 9, y: p };
+        if (p) labs += '<text class="flab" x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '">' + esc(shortM) + '</text>';
+      }
+    });
+    s += labs + pts;
+    const html = '<figure class="lab-fig" id="figMk">' +
+      '<figcaption><h3>Every leap in blueprint size demanded a matching leap in copying fidelity</h3><p>Without proofreading, Hadean RNA templates hit Eigen’s error cliff around ~200 bits. Cells jumped to megabase and gigabase genomes via polymerase proofreading and mismatch repair; human craft restarted at low accuracy with hand-knapped stone before movable type, precision lathes, silicon photolithography and 13.5-nm EUV scanners pushed exosomatic manufacturing past 10¹³ bits. <a href="tree.html#path=making">Walk replication &amp; making in the Tree →</a></p></figcaption>' +
+      '<div class="fig-tools" role="group" aria-label="Filter mode">' + cats.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === makeCat) + '">' + esc(g.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Blueprint bits versus copying fidelity across 24 biological and technological replication milestones.">' + s + '</svg></div>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any milestone to read its blueprint bits, error rate, cycle time, energy cost and autonomy.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.milestone) + '</b> (' + esc(r.representative_system) + ')' +
+        '<br><b>Blueprint:</b> ~' + X.sci(Number(r.blueprint_bits)) + ' bits · <b>Error:</b> ' + X.sci(Number(r.copy_error_per_bit)) + '/bit · <b>Autonomy:</b> ' + esc(r.self_sufficiency) +
+        '<br>' + esc(r.what_changed) + '<br><span class="fig-src">Source: ' + esc(r.source) + '</span>', g => { makeCat = g; })
+    };
+  }
+
+  // Figure G: The world's neurons by animal group across 55 moments (555 Ma -> 2026).
+  let cladeSel = null;
+  function figNeuronsByGroup(l) {
+    const rows = objRows(l), N = rows.length;
+    const W = 1000, H = 440, L = 82, R = 175, T = 30, B = 52, LY0 = 18, LY1 = 25;
+    const cw = (W - L - R) / Math.max(1, N - 1), xOf = i => L + i * cw;
+    const yOf = v => T + (LY1 - Math.log10(Math.max(1e18, v))) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    for (let v = LY0; v <= LY1; v++) {
+      const y = yOf(Math.pow(10, v));
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">10' + X.sup(v) + '</text>';
+    }
+    [0, Math.floor(N * 0.25), Math.floor(N * 0.5), Math.floor(N * 0.75), N - 1].forEach(i => {
+      const x = xOf(i);
+      s += '<text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + esc(X.fmtShort(Number(rows[i].time_mya))) + '</text>';
+    });
+    const SERIES = [
+      ['census_n_neurons_global', 'Census global curve (3.4×10²⁴)', 'var(--ink-3)', true],
+      ['arthropods_land', 'Land arthropods (5.0×10²³)', 'var(--s-neuro)', false],
+      ['nematodes', 'Soil roundworms (1.3×10²³)', 'var(--c-store)', false],
+      ['fish', 'Fish (1.0×10²²)', 'var(--c-io)', false],
+      ['humans', 'All 8.2B humans (7.1×10²⁰)', 'var(--c-prog)', false],
+      ['birds', 'Wild & domestic birds (1.5×10¹⁹)', 'var(--c-power)', false]
+    ];
+    SERIES.forEach(([col, lab, color, dashed]) => {
+      let d = '', pen = false, lastY = null;
+      rows.forEach((r, i) => {
+        const v = Number(r[col]);
+        if (v >= 1e18) {
+          const y = yOf(v);
+          d += (pen ? 'L' : 'M') + xOf(i).toFixed(1) + ' ' + y.toFixed(1);
+          pen = true; lastY = y;
+        } else { pen = false; }
+      });
+      if (d) {
+        s += '<path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="' + (dashed ? '1.8' : '2.4') + '"' + (dashed ? ' stroke-dasharray="5 4"' : '') + '/>';
+        if (lastY != null) s += '<text class="tick" x="' + (W - R + 8) + '" y="' + (lastY + 4).toFixed(1) + '" style="fill:' + color + ';font-weight:600">' + esc(lab.split(' (')[0]) + '</text>';
+      }
+    });
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Total neurons on Earth by animal group (log₁₀ scale, 555 Ma → 2026)</text>' +
+      '<line id="clHov" class="fhov" x1="0" x2="0" y1="' + T + '" y2="' + (H - B) + '" visibility="hidden"/>' +
+      '<rect id="clHit" x="' + L + '" y="' + T + '" width="' + (W - L - R) + '" height="' + (H - T - B) + '" fill="transparent"/>';
+
+    const html = '<figure class="lab-fig" id="figCl">' +
+      '<figcaption><h3>Tiny invertebrates hold >98% of Earth’s neurons; all humans hold ~0.1%</h3><p>Summing sourced animal clades today gives ~6.4×10²³ neurons—led by land mites, springtails and insects (~5.0×10²³) and soil roundworms (~1.3×10²³)—about fivefold below the census’s 3.4×10²⁴ upper curve (which leaves room for uncounted ocean copepods and higher mean arthropod neuron counts). All 8.2 billion humans together hold ~7.05×10²⁰ neurons. <a href="stories.html#nerves-story">Read the nerves story →</a></p></figcaption>' +
+      '<div class="plot-wrap"><svg class="plot fig" id="clSvg" tabindex="0" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Neurons on Earth by animal clade across 55 moments from 555 million years ago to 2026.">' + s + '</svg></div>' +
+      '<p class="time-key" data-time-key="moments"></p>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover the chart, or focus it and press Left/Right arrow keys, to compare animal groups at any moment.</p></figure>';
+    const bind = () => {
+      const svg = $('clSvg'), hov = $('clHov'), read = $('figRead');
+      const sel = i => {
+        cladeSel = i = Math.max(0, Math.min(N - 1, i));
+        const r = rows[i], x = xOf(i);
+        hov.setAttribute('x1', x); hov.setAttribute('x2', x); hov.setAttribute('visibility', 'visible');
+        read.innerHTML = '<b>' + esc(X.fmtTime(Number(r.time_mya))) + ' (' + esc(r.epoch_id) + ')</b> · Sum of groups: <b>' + X.sci(Number(r.sum_of_groups)) + '</b> vs. Census: <b>' + X.sci(Number(r.census_n_neurons_global)) + '</b>' +
+          '<br>Land arthropods: ' + X.sci(Number(r.arthropods_land)) + ' · Roundworms: ' + X.sci(Number(r.nematodes)) + ' · Fish: ' + X.sci(Number(r.fish)) + ' · Birds: ' + X.sci(Number(r.birds)) + ' · Humans: ' + X.sci(Number(r.humans));
+      };
+      $('clHit').addEventListener('mousemove', ev => { const b = svg.getBoundingClientRect(); sel(Math.round(((ev.clientX - b.left) / b.width * W - L) / cw)); });
+      $('clHit').addEventListener('click', ev => { const b = svg.getBoundingClientRect(); sel(Math.round(((ev.clientX - b.left) / b.width * W - L) / cw)); });
+      svg.addEventListener('keydown', ev => {
+        const d = { ArrowRight: 1, ArrowLeft: -1, Home: -1e3, End: 1e3 }[ev.key];
+        if (d == null) return;
+        ev.preventDefault(); sel((cladeSel == null ? N - 1 : cladeSel) + d);
+      });
+    };
+    return { html, bind };
+  }
+
+  // Figure H: Plant & fungal sensing without neurons — signal speed vs. memory window across 14 milestones.
+  let plantCat = 'All';
+  function figPlants(l) {
+    const rows = objRows(l);
+    const cats = ['All'].concat([...new Set(rows.map(r => r.category))]);
+    const W = 1000, H = 450, L = 86, R = 36, T = 32, B = 54, XLOCAL = 132, XS0 = 200;
+    const LX0 = -5.2, LX1 = 0.35, LY0 = -0.6, LY1 = 7.7;
+    const xOf = spd => spd > 0 ? XS0 + (Math.log10(spd) - LX0) / (LX1 - LX0) * (W - R - XS0) : XLOCAL;
+    const yOf = mem => T + (LY1 - Math.log10(Math.max(0.3, mem))) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [[0, '1 second'], [1.778, '1 minute'], [3.556, '1 hour'], [4.937, '1 day'], [6.414, '1 month'], [7.499, '1 year']].forEach(([lv, lab]) => {
+      const y = T + (LY1 - lv) / (LY1 - LY0) * (H - T - B);
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    [[-5, '10 µm/s'], [-4, '0.1 mm/s'], [-3, '1 mm/s'], [-2, '1 cm/s'], [-1, '10 cm/s'], [0, '1 m/s']].forEach(([lv, lab]) => {
+      const x = XS0 + (lv - LX0) / (LX1 - LX0) * (W - R - XS0);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+    s += '<line class="grid" x1="' + ((XLOCAL + XS0) / 2).toFixed(1) + '" x2="' + ((XLOCAL + XS0) / 2).toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="3 4"/>' +
+      '<text class="tick" x="' + XLOCAL + '" y="' + (H - B + 18) + '" text-anchor="middle">local cell</text>' +
+      '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + XS0 + '" y="' + (H - 8) + '">Signal propagation speed across tissue, roots or air (log₁₀ m/s; myelinated animal nerves run 50–100× further right)</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Memory or integration window (half a second → seasons &amp; years)</text>';
+    const PCAT = {
+      'Light & daily clocks': ['var(--c-power)', 'circle'],
+      'Electrical & calcium waves': ['var(--c-wire)', 'triangle'],
+      'Hydraulics & root foraging': ['var(--s-chem)', 'square'],
+      'Seasonal & touch memory': ['var(--c-ram)', 'diamond'],
+      'Chemical & pollinator signalling': ['var(--c-make)', 'circle']
+    };
+    const place = placer(W - 8);
+    place.reserve(0, 0, L - 2, H);
+    rows.forEach(r => { const x = xOf(Number(r.signal_speed_m_s)), y = yOf(Number(r.memory_window_s)); place.reserve(x - 7, y - 7, x + 7, y + 7); });
+    let pts = '', labs = '';
+    rows.forEach((r, i) => {
+      const spd = Number(r.signal_speed_m_s), mem = Number(r.memory_window_s);
+      const x = xOf(spd), y = yOf(mem);
+      const on = plantCat === 'All' || r.category === plantCat;
+      const [col, shp] = PCAT[r.category] || ['var(--s-chem)', 'circle'];
+      const shortP = r.plain_title.length > 34 ? r.plain_title.slice(0, 32) + '…' : r.plain_title;
+      pts += '<g class="fpt' + (on ? '' : ' dim') + '" tabindex="' + (on ? 0 : -1) + '" role="button" data-i="' + i + '" aria-label="' + esc(r.plain_title + ', ' + r.representative_system) + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="12" fill="transparent"/>' + sym(shp, x, y, 5.8, col) + '</g>';
+      if (on) {
+        let p = place(x + 9, y + 4, shortP.length * 6.0 + 4, 12, spd > 0 ? x - 9 : null);
+        if (typeof p === 'number') p = { x: x + 9, y: p };
+        if (p) labs += '<text class="flab" x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '">' + esc(shortP) + '</text>';
+      }
+    });
+    s += labs + pts;
+    const fmtMem = sec => sec >= 3.15e7 ? (sec / 3.1536e7).toFixed(1).replace(/\.0$/, '') + ' yr' : sec >= 86400 ? Math.round(sec / 86400) + ' d' : sec >= 3600 ? (sec / 3600).toFixed(1).replace(/\.0$/, '') + ' h' : sec >= 60 ? Math.round(sec / 60) + ' min' : sec + ' s';
+    const html = '<figure class="lab-fig" id="figPl">' +
+      '<figcaption><h3>Without nerves, plants trade speed for timescales from milliseconds to seasons</h3><p>Rooted organisms never paid the 20-watt metabolic bill of a brain, yet they compute across eight orders of magnitude in time: from half-second algal light steering and 20-second Venus flytrap calcium counters to two-minute vascular glutamate wound waves, winter-long Polycomb histone counters and multi-year seed dormancy. <a href="stories.html#plants-story">Read the plants &amp; fungi story →</a> · <a href="tree.html#path=plants">Walk plants in the Tree →</a></p></figcaption>' +
+      '<div class="fig-tools" role="group" aria-label="Filter plant signalling category">' + cats.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === plantCat) + '">' + esc(g) + '</button>').join('') + '</div>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Plant and fungal signal propagation speed versus memory window across 14 milestones.">' + s + '</svg></div>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any milestone to read its organism, signalling channel, propagation speed, memory window and source.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.plain_title) + '</b> (' + esc(r.representative_system) + ' · ' + esc(X.fmtTime(Number(r.time_mya))) + ')' +
+        '<br><b>Channel:</b> ' + esc(r.signalling_channel) + ' · <b>Speed:</b> ' + (Number(r.signal_speed_m_s) > 0 ? X.plain(Number(r.signal_speed_m_s)) + ' m/s' : 'cell-autonomous switch') + ' · <b>Memory window:</b> ~' + fmtMem(Number(r.memory_window_s)) +
+        '<br>' + esc(r.plain_text) + '<br><span class="fig-src">Source: ' + esc(r.source) + '</span>', g => { plantCat = g; })
+    };
+  }
+
+  // Figure I: Immune evolution — time (log scale) vs. threat repertoire diversity across 12 milestones.
+  let immStage = 'All';
+  function figImmunity(l) {
+    const rows = objRows(l);
+    const stages = ['All'].concat([...new Set(rows.map(r => r.stage))]);
+    const W = 1000, H = 450, L = 86, R = 36, T = 32, B = 54;
+    const LX0 = 9.7, LX1 = 0.5, LY0 = -0.3, LY1 = 14.8;
+    const xOf = t => L + (LX0 - Math.log10(Math.max(3, t * 1e6))) / (LX0 - LX1) * (W - R - L);
+    const yOf = rep => T + (LY1 - Math.log10(Math.max(1, rep))) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [[0, '1 clone'], [3, '1 thousand'], [6, '1 million'], [9, '1 billion'], [12, '1 trillion'], [14, '100 trillion']].forEach(([lv, lab]) => {
+      const y = T + (LY1 - lv) / (LY1 - LY0) * (H - T - B);
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    [[9.6, '4 Ga'], [9, '1 Ga'], [8.7, '500 Ma'], [8, '100 Ma'], [6, '1 Ma'], [4, '10 ka'], [2.4, '1800 CE'], [0.8, '2020 CE']].forEach(([lv, lab]) => {
+      const x = L + (LX0 - lv) / (LX0 - LX1) * (W - R - L);
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Time before present (log₁₀ years: archaean phage wars → Cambrian vertebrates → modern vaccines)</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Distinct molecular targets recognized (repertoire diversity, log₁₀ scale)</text>';
+    const ISTG = {
+      '1.': ['var(--s-chem)', 'circle'],
+      '2.': ['var(--c-store)', 'square'],
+      '3.': ['var(--c-prog)', 'diamond'],
+      '4.': ['var(--s-silicon)', 'triangle']
+    };
+    const place = placer(W - 8);
+    place.reserve(0, 0, L - 2, H);
+    rows.forEach(r => { const x = xOf(Number(r.time_mya)), y = yOf(Number(r.repertoire_diversity)); place.reserve(x - 7, y - 7, x + 7, y + 7); });
+    let pts = '', labs = '';
+    rows.forEach((r, i) => {
+      const x = xOf(Number(r.time_mya)), y = yOf(Number(r.repertoire_diversity));
+      const on = immStage === 'All' || r.stage === immStage;
+      const [col, shp] = ISTG[r.stage.slice(0, 2)] || ['var(--c-prog)', 'circle'];
+      const shortI = r.milestone.split(' (')[0].slice(0, 32);
+      pts += '<g class="fpt' + (on ? '' : ' dim') + '" tabindex="' + (on ? 0 : -1) + '" role="button" data-i="' + i + '" aria-label="' + esc(r.plain_title + ', repertoire ' + X.sci(Number(r.repertoire_diversity))) + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="12" fill="transparent"/>' + sym(shp, x, y, 5.8, col) + '</g>';
+      if (on) {
+        let p = place(x + 9, y + 4, shortI.length * 6.0 + 4, 12, x - 9);
+        if (typeof p === 'number') p = { x: x + 9, y: p };
+        if (p) labs += '<text class="flab" x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '">' + esc(shortI) + '</text>';
+      }
+    });
+    s += labs + pts;
+    const html = '<figure class="lab-fig" id="figIm">' +
+      '<figcaption><h3>Earth’s second learning system jumped a billionfold in diversity with early vertebrates</h3><p>Hardwired pattern sensors recognize tens to hundreds of microbial motifs; CRISPR-Cas stores thousands of heritable viral spacers; around 500–450 Ma, jawless lampreys (VLR) and jawed fishes (RAG1/2 V(D)J) independently invented somatic gene shuffling across 10¹¹–10¹⁴ lymphocyte receptors—now steered deliberately by vaccines, monoclonal antibodies, CAR-T cells and digital mRNA. <a href="stories.html#immunity-story">Read the immunity story →</a> · <a href="tree.html#path=immunity">Walk immunity in the Tree →</a></p></figcaption>' +
+      '<div class="fig-tools" role="group" aria-label="Filter immune evolution stage">' + stages.map(g => '<button type="button" class="part-chip" data-g="' + esc(g) + '" aria-pressed="' + (g === immStage) + '">' + esc(g.replace(/^\d+\.\s*/, '')) + '</button>').join('') + '</div>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Immune repertoire diversity across deep time from bacterial restriction enzymes to mRNA vaccines.">' + s + '</svg></div>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any milestone to read its immune mechanism, repertoire size, memory duration and citation.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.plain_title) + '</b> (' + esc(r.representative_system) + ' · ' + esc(X.fmtTime(Number(r.time_mya))) + ')' +
+        '<br><b>Repertoire:</b> ~' + X.sci(Number(r.repertoire_diversity)) + ' targets · <b>Memory duration:</b> ' + (Number(r.memory_duration_yr) >= 100 ? 'heritable across generations (~' + Number(r.memory_duration_yr) + '+ yr)' : Number(r.memory_duration_yr) > 0 ? '~' + Number(r.memory_duration_yr) + ' yr' : 'innate immediate response') +
+        '<br>' + esc(r.plain_text) + '<br><span class="fig-src">Source: ' + esc(r.source) + '</span>', g => { immStage = g; })
+    };
+  }
+
+  // Figure J: 2026 Closed Power Budget — Compartment Power (W) vs. Event Rate (events/s) with iso-cost E = P/C lines.
+  function figPower(l) {
+    const raw = objRows(l);
+    const items = [];
+    raw.forEach(r => {
+      const nm = String(r.compartment || '');
+      if (nm.startsWith('SUBTOTAL') || nm.startsWith('GRAND') || nm.startsWith('2a.')) return;
+      const isTech = nm.startsWith('4.');
+      const isAnim = nm.startsWith('3.');
+      const pw = isTech ? 8.0e10 : (isAnim ? 1.8e11 : Number(r.compartment_power_w));
+      const fullPw = Number(r.compartment_power_w);
+      const ev = Number(r.compartment_event_rate_ops_s);
+      const ej = Number(r.effective_energy_per_event_j) || (pw / ev);
+      if (pw > 0 && ev > 0) {
+        items.push({
+          short: nm.startsWith('1a.') ? 'Deep subsurface microbes (0.69 TW)' :
+            nm.startsWith('1b.') ? 'Starved soil/ocean microbes (3.89 TW)' :
+            nm.startsWith('1c.') ? 'Active surface microbes (9.42 TW)' :
+            nm.startsWith('2b.') ? 'Active plant, fungal & protist cells (48.5 TW)' :
+            isAnim ? 'Animal neural tissue (0.18 TW of 2.5 TW animals)' :
+            'Global computers & IT (80 GW of 19.5 TW tech)',
+          color: nm.startsWith('1') ? 'var(--s-chem)' : nm.startsWith('2') ? 'var(--act-3)' : isAnim ? 'var(--s-neuro)' : 'var(--s-silicon)',
+          shape: nm.startsWith('1') ? 'circle' : nm.startsWith('2') ? 'square' : isAnim ? 'diamond' : 'triangle',
+          pw, fullPw, ev, ej,
+          ontology: r.event_ontology,
+          source: r.primary_source_ref
+        });
+      }
+    });
+    const W = 1000, H = 430, L = 82, R = 36, T = 30, B = 52;
+    const LX0 = 21.4, LX1 = 34.2, LY0 = 10.4, LY1 = 14.2;
+    const xOf = c => L + (Math.log10(c) - LX0) / (LX1 - LX0) * (W - L - R);
+    const yOf = p => T + (LY1 - Math.log10(p)) / (LY1 - LY0) * (H - T - B);
+    let s = '';
+    [[22, '10²²/s'], [25, '10²⁵/s'], [28, '10²⁸/s'], [31, '10³¹/s'], [34, '10³⁴/s']].forEach(([lx, lab]) => {
+      const x = xOf(Math.pow(10, lx));
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '" stroke-dasharray="2 3"/><text class="tick" x="' + x.toFixed(1) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + lab + '</text>';
+    });
+    [[11, '100 GW'], [12, '1 TW'], [13, '10 TW'], [14, '100 TW']].forEach(([ly, lab]) => {
+      const y = yOf(Math.pow(10, ly));
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end">' + lab + '</text>';
+    });
+    // Iso-energy diagonals: log10(P) = log10(C) + log10(E)
+    [[-20.56, 'Landauer floor (2.8×10⁻²¹ J)', 'var(--c-power)'], [-18, '10⁻¹⁸ J / event', 'var(--line-2)'], [-15, '10⁻¹⁵ J / event', 'var(--line-2)'], [-12, '10⁻¹² J / event', 'var(--line-2)']].forEach(([le, lab, col]) => {
+      const pts = [];
+      for (const lx of [LX0, LX1]) { const ly = lx + le; if (ly >= LY0 && ly <= LY1) pts.push([lx, ly]); }
+      for (const ly of [LY0, LY1]) { const lx = ly - le; if (lx >= LX0 && lx <= LX1) pts.push([lx, ly]); }
+      pts.sort((a, b) => a[0] - b[0]);
+      if (pts.length >= 2) {
+        const p0 = pts[0], p1 = pts[pts.length - 1];
+        const x1 = xOf(Math.pow(10, p0[0])), y1 = yOf(Math.pow(10, p0[1])), x2 = xOf(Math.pow(10, p1[0])), y2 = yOf(Math.pow(10, p1[1]));
+        s += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + col + '" stroke-width="' + (le < -20 ? '2' : '1.4') + '" stroke-dasharray="5 4"/>';
+        s += '<text class="tick" x="' + ((x1 + x2) / 2).toFixed(1) + '" y="' + ((y1 + y2) / 2 - 5).toFixed(1) + '" text-anchor="middle">' + esc(lab) + '</text>';
+      }
+    });
+    s += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>' +
+      '<text class="tick" x="' + L + '" y="' + (H - 8) + '">Compartment event rate C (operations or signals per second, log₁₀) →</text>' +
+      '<text class="tick" x="' + (L + 4) + '" y="' + (T - 10) + '">Signalling / metabolic power P (watts, log₁₀; diagonals = energy per event E = P ÷ C)</text>';
+
+    const place = placer(W - 8);
+    place.reserve(0, 0, L - 2, H);
+    items.forEach(it => place.reserve(xOf(it.ev) - 8, yOf(it.pw) - 8, xOf(it.ev) + 8, yOf(it.pw) + 8));
+    let pts = '', labs = '';
+    items.forEach((it, i) => {
+      const x = xOf(it.ev), y = yOf(it.pw);
+      pts += '<g class="fpt" tabindex="0" role="button" data-i="' + i + '" aria-label="' + esc(it.short + ', ' + X.sci(it.ev) + '/s, ' + X.sci(it.ej) + ' J/event') + '">' +
+        '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="12" fill="transparent"/>' + sym(it.shape, x, y, 6.2, it.color) + '</g>';
+      let p = place(x + 10, y + 4, it.short.length * 6.0 + 6, 13, x - 10);
+      if (typeof p === 'number') p = { x: x + 10, y: p };
+      if (p) labs += '<text class="flab" x="' + p.x.toFixed(1) + '" y="' + p.y.toFixed(1) + '">' + esc(it.short) + '</text>';
+    });
+    s += labs + pts;
+    const html = '<figure class="lab-fig" id="figPwr">' +
+      '<figcaption><h3>Earth’s 84.5 TW closed power budget: power vs. event rate across compartments</h3><p>Diagonal lines mark constant energy per operation (<b>E = P ÷ C</b>). Active surface microbes sit within ×1.5 of Landauer’s physical limit (4.05×10⁻²¹ J/turnover), non-woody plant and fungal cells capture 48.5 TW, animal nervous tissue spends ~0.18 TW of animals’ 2.5 TW total (~6×10⁻¹⁶ J/synapse), and all world computers draw 80 GW of humanity’s 19.5 TW primary energy (~4.2×10⁻¹² J/op). <a href="how.html#math">Inspect all 12 equations →</a></p></figcaption>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Log-log map of compartment power versus event rate across six biospheric and technological compartments in 2026.">' + s + '</svg></div>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any compartment to read its power, event rate, joules per event and primary literature sources.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(items, it => '<b>' + esc(it.short) + '</b> · Signalling/metabolic power: <b>' + X.watts(it.pw) + '</b>' +
+        (it.fullPw > it.pw * 1.1 ? ' (within ' + X.watts(it.fullPw) + ' compartment total)' : '') +
+        ' · Rate: <b>' + X.sci(it.ev) + '/s</b> · Energy/event: <b>' + X.sci(it.ej) + ' J</b>' +
+        '<br>' + esc(it.ontology) + '<br><span class="fig-src">Source: ' + esc(it.source) + '</span>', () => {})
+    };
+  }
+
+  // Figure K: 2026 Global Computer Inventory — Peak vs. Executed Ops/s (C_exec = N * peak * u) across 4 hardware tiers.
+  function figDevices(l) {
+    const rows = objRows(l).filter(r => !String(r.device_family || '').startsWith('TOTAL'));
+    const W = 1000, H = 310, L = 278, R = 185, T = 28, B = 40, PW = W - L - R;
+    const maxOps = 3.2e22;
+    const xW = v => Math.max(3, (v / maxOps) * PW);
+    const rowH = (H - T - B) / rows.length;
+    const COLORS = ['var(--c-cpu)', 'var(--s-silicon)', 'var(--c-store)', 'var(--c-wire)'];
+    let s = '';
+    [0, 1e22, 2e22, 3e22].forEach(v => {
+      const x = L + (v / maxOps) * PW;
+      s += '<line class="grid" x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="' + (T - 6) + '" y2="' + (H - B) + '"/>' +
+        '<text class="tick" x="' + x.toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle">' + (v === 0 ? '0' : (v / 1e22) + '×10²²/s') + '</text>';
+    });
+    rows.forEach((r, k) => {
+      const y = T + k * rowH + 8, bh = rowH - 18;
+      const pk = Number(r.aggregate_peak_ops_sec), ex = Number(r.executed_ops_sec_central), u = Number(r.utilization_central);
+      const gw = Number(r.aggregate_wall_power_gw), short = r.device_family.split(' (')[0];
+      const col = COLORS[k % COLORS.length];
+      s += '<g class="fpt" tabindex="0" role="button" data-i="' + k + '" aria-label="' + esc(short + ': ' + X.sci(ex) + ' executed of ' + X.sci(pk) + ' peak ops/s') + '">' +
+        '<rect x="8" y="' + (y - 4).toFixed(1) + '" width="' + (W - 16) + '" height="' + (bh + 8).toFixed(1) + '" fill="transparent"/>' +
+        '<text x="' + (L - 12) + '" y="' + (y + bh * 0.68).toFixed(1) + '" text-anchor="end" fill="var(--ink)" font-size="12.5" font-weight="700">' + esc(short) + '</text>' +
+        '<rect x="' + L + '" y="' + y.toFixed(1) + '" width="' + xW(pk).toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="4" fill="' + col + '" opacity="0.22" stroke="' + col + '" stroke-width="1.2"/>' +
+        '<rect x="' + L + '" y="' + y.toFixed(1) + '" width="' + xW(ex).toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="4" fill="' + col + '"/>' +
+        '<text x="' + (L + xW(pk) + 8).toFixed(1) + '" y="' + (y + bh * 0.68).toFixed(1) + '" fill="var(--ink-2)" font-size="12" class="tnum"><tspan font-weight="700" fill="var(--ink)">' + X.sci(ex) + '/s</tspan> (' + Math.round(u * 100) + '% of ' + X.sci(pk) + ') · ' + gw + ' GW</text></g>';
+    });
+    const html = '<figure class="lab-fig" id="figDev">' +
+      '<figcaption><h3>Peak capacity vs. real executed compute across Earth’s 6.49 billion active chips</h3><p>Advertised hardware peaks add up to <b>7.6×10²² ops/s</b>, but phones and PCs sit idle most of the day (~14.5% utilization) while datacenter AI accelerators run hot (~60% utilization). Multiplying each family by its duty cycle (<b>C<sub>exec</sub> = N · peak · u</b>) gives <b>1.89×10²² executed ops/s</b> on <b>80 GW</b>—with 15 million AI chips already delivering nearly half (9.0×10²¹/s) of all executed silicon work.</p></figcaption>' +
+      '<div class="plot-wrap"><svg class="plot fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Horizontal bar chart comparing advertised peak operations per second (translucent bar) against sustained executed operations per second (solid bar) across four global computer hardware families in 2026.">' + s + '</svg></div>' +
+      '<p class="fig-legend"><span>Bars:</span><span><svg width="16" height="10" aria-hidden="true"><rect x="1" y="1" width="14" height="8" rx="2" style="fill:var(--c-cpu)"/></svg>Executed ops/s (C_exec)</span><span><svg width="16" height="10" aria-hidden="true"><rect x="1" y="1" width="14" height="8" rx="2" style="fill:var(--c-cpu);opacity:.24;stroke:var(--c-cpu)"/></svg>Advertised peak ops/s</span></p>' +
+      '<p class="readout fig-read" id="figRead" aria-live="polite">Hover, tap or tab to any hardware family to inspect its active unit count, precision domain, utilization range, wall power and J/op.</p></figure>';
+    return {
+      html,
+      bind: () => bindPoints(rows, r => '<b>' + esc(r.device_family) + '</b> · Units: <b>' + X.sci(Number(r.installed_active_units_2026)) + '</b> · Precision: ' + esc(r.dominant_precision_domain) +
+        '<br>Peak: <b>' + X.sci(Number(r.aggregate_peak_ops_sec)) + '/s</b> × Utilization <b>' + (Number(r.utilization_central) * 100).toFixed(1) + '%</b> (' + esc(r.utilization_range) + ') = Executed: <b>' + X.sci(Number(r.executed_ops_sec_central)) + '/s</b>' +
+        ' · Power: <b>' + esc(r.aggregate_wall_power_gw) + ' GW</b> (' + X.sci(Number(r.energy_per_op_j)) + ' J/op)' +
+        '<br><span class="fig-src">Source: ' + esc(r.primary_source_ref) + '</span>', () => {})
+    };
+  }
+
+  const FIGS = { genomes: figGenomes, biggest: figBiggest, sex: figSex, offworld: figOffworld, motors: figMotors, making: figMaking, neuronsbygroup: figNeuronsByGroup, plants: figPlants, immunity: figImmunity, power: figPower, devices: figDevices };
 
   /* ---------- ledgers ---------- */
   function drawLedger(k) {
@@ -333,14 +1021,29 @@
   }
 
   function draw() {
-    $('tabs').querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    $('tabs').querySelectorAll('[data-tab]').forEach(b => {
+      const on = b.dataset.tab === tab;
+      b.setAttribute('aria-selected', String(on));
+      b.setAttribute('tabindex', on ? '0' : '-1');
+      if (on) $('panel').setAttribute('aria-labelledby', b.id);
+    });
     if (tab === 'census') drawCensus();
     else if (tab === 'plot') drawPlot();
     else drawLedger(tab);
   }
 
-  const h = (location.hash || '').slice(1);
-  if (X.IDX[h] !== undefined) { hiRow = X.IDX[h]; preset = 'Story essentials'; }
-  else if (LED[h]) tab = h;  // data.html#devices opens that ledger
+  function applyHash() {
+    const h = (location.hash || '').slice(1);
+    if (X.IDX[h] !== undefined) { tab = 'census'; hiRow = X.IDX[h]; preset = 'Story essentials'; }
+    else if (h === 'plot' || h === 'census') { tab = h; hiRow = null; }
+    else if (LED[h]) { tab = h; hiRow = null; }
+    const curGrp = TAB_GROUPS.find(g => g.key === tabGroup);
+    if (curGrp && curGrp.match && !curGrp.match.has(tab)) tabGroup = 'all';
+  }
+  applyHash();
+  syncTabGroupUI();
   draw();
+  const initBtn = $('tabs').querySelector('[data-tab="' + tab + '"]');
+  if (initBtn) { try { initBtn.scrollIntoView({ block: 'nearest', inline: 'nearest', container: 'nearest' }); } catch (e) { /* ignore */ } }
+  addEventListener('hashchange', () => { applyHash(); syncTabGroupUI(); sortCol = null; sortDir = 1; draw(); });
 })();

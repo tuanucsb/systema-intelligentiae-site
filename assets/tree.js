@@ -35,6 +35,69 @@
       color: 'var(--c-io)',
       about: 'From molecules bumping a wall to 16,000-lens compound eyes, water-ripple sensors, whiskers, 100:1 retinal edge compression and sonar.',
       steps: ['contact-chem', 'chemoreceptors', 'eyespot', 'compound-eyes', 'lateral-line', 'eyes-in-air', 'whiskers-turbinals', 'middle-ear', 'color-fovea', 'echolocation', 'bipedal-gait', 'tool-hands'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'bennett',
+      label: 'Bennett’s 5 brain breakthroughs',
+      color: 'var(--c-prog)',
+      about: 'Max Bennett’s five vertebrate control layers—Steering, Reinforcing, Simulating, Mentalizing and Speaking—plus how AI jumped straight to language.',
+      steps: ['steering', 'reinforcing', 'simulating', 'mentalizing', 'speaking', 'transformers', 'reasoning'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'symbio',
+      label: 'Symbiogenesis & mergers (Agüera y Arcas)',
+      color: 'var(--c-net)',
+      about: 'Blaise Agüera y Arcas’s lens: major leaps happen when separate replicators merge—from self-copying tapes and mitochondria to human-AI networks.',
+      steps: ['self-copying', 'syntrophy', 'endosymbiosis', 'mitochondria', 'chloroplast', 'multicellular', 'wood-wide-web', 'eusocial', 'stored-programs', 'transformers', 'planetary-net'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'making',
+      label: 'Replication, reproduction & manufacturing',
+      color: 'var(--c-make)',
+      about: 'How life and technology make more of themselves: RNA templates, cell division, embryos, castes, stone tools, movable type, lathes, synthetic cells and EUV chip fabs.',
+      steps: ['template-copying', 'binary-fission', 'mitotic-spindle', 'germline-embryo', 'hox-body-plan', 'spores-seeds', 'metamorphosis', 'queen-castes', 'live-birth-milk', 'knapped-manufacture', 'selective-breeding', 'movable-type-molds', 'machine-tools', 'photolithography', 'synthetic-cell', 'euv-fabs-synbio', 'ai-assisted-design'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'dna',
+      label: 'How DNA & genomes evolved',
+      color: 'var(--c-store)',
+      about: 'From 200-letter self-copying RNA and LUCA’s 2.5M DNA letters to spool-packed chromosomes, whole-genome doublings, flowers, reading DNA, synthetic cells and CRISPR.',
+      steps: ['rna', 'genetic-code', 'dna', 'gene-swapping', 'crispr-immunity', 'chromatin', 'organelle-transfer', 'sex', 'genome-doublings', 'polyploid-genomes', 'lean-genomes', 'flowering-genomes', 'human-genome', 'agriculture', 'dna-sequencing', 'synthetic-cell', 'crispr-synbio', 'mrna-vaccines', 'drift-barrier-dna'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'sex',
+      label: 'How sexual reproduction evolved',
+      color: 'var(--c-make)',
+      about: 'When sex began and how it grew sophisticated: sideways DNA repair, meiosis, mating types, Bangiomorpha, sperm & egg, internal mating, XY/ZW, flowers, courtship, grandmothers and IVF.',
+      steps: ['gene-swapping', 'meiotic-core', 'mating-types', 'sex', 'germline-embryo', 'sperm-and-egg', 'broadcast-spawning', 'internal-fertilization', 'spores-seeds', 'land-mating', 'sex-chromosomes', 'flowering-genomes', 'queen-castes', 'live-birth-milk', 'courtship-selection', 'pair-bonds-care', 'assisted-reproduction'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'plants',
+      label: 'Plants & fungi: sensing without brains',
+      color: 'var(--s-chem)',
+      about: 'How rooted life senses sun, gravity, winter and herbivores without a single neuron: clocks, chloroplasts, fungal webs, 20-second calcium counters, wound waves and flowers.',
+      steps: ['day-clock', 'oxy-photo', 'chloroplast', 'eyespot', 'sex', 'mycelia', 'land-plants', 'spores-seeds', 'wood-wide-web', 'calcium-memory', 'polyploid-genomes', 'plant-signals', 'flowering-genomes', 'agriculture', 'selective-breeding'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'immunity',
+      label: 'Immune systems: the second memory',
+      color: 'var(--c-prog)',
+      about: 'How cells tell self from invader and remember past plagues: bacterial CRISPR mugshots, innate Toll alarms, vertebrate V(D)J antibody shuffling, maternal milk and mRNA vaccines.',
+      steps: ['dna', 'gene-swapping', 'crispr-immunity', 'meiotic-core', 'tissue-waves', 'genome-doublings', 'adaptive-immunity', 'live-birth-milk', 'dna-sequencing', 'crispr-synbio', 'mrna-vaccines'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'motors',
+      label: 'Molecular motors, microtubules & wiring',
+      color: 'var(--c-wire)',
+      about: 'How life escaped slow random diffusion: bacterial rings and rotary flagella, microtubule pipes with kinesin and dynein walkers, cilia, spindles, axons and fiber.',
+      steps: ['diffusion', 'binary-fission', 'chemoreceptors', 'mitochondria', 'molecular-motors', 'mitotic-spindle', 'eyespot', 'sex', 'mycelia', 'bare-axons', 'synaptic-weights', 'myelin', 'telegraph', 'fiber'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'space',
+      label: 'Computing beyond Earth (orbit to Voyager)',
+      color: 'var(--s-silicon)',
+      about: 'How computers left our planet: silicon chips, Apollo’s 72 KB Moon landing, Voyager’s twin interstellar probes and billion-year Golden Records, autonomous Mars rovers and 17,500 laser-linked satellites.',
+      steps: ['telegraph', 'stored-programs', 'integrated-circuits', 'apollo-guidance', 'voyager-probes', 'fiber', 'mars-autonomy', 'gpus', 'deep-space-links', 'offworld-fleet'].filter(id => X.INVK[id])
     }
   ];
   const PATHK = {}; PATHS.forEach(p => { PATHK[p.key] = p; });
@@ -82,7 +145,8 @@
   const SOFT = {
     photosynthesis: 5, mitochondria: 4, chromosomes: 6, chloroplast: 6, superorganisms: 5,
     echolocation: 4, mechanical: 4, microchips: 5, transformers: 5, supercomputers: 5,
-    everywhere: 5, electronic: 4, distributed: 6, formations: 5, coalitions: 5, algorithms: 4
+    everywhere: 5, electronic: 4, distributed: 6, formations: 5, coalitions: 5, algorithms: 4,
+    photolithography: 5, metamorphosis: 4, interchangeable: 5, domestication: 6, coordinated: 4
   };
   const soft = t => esc(t).replace(/[A-Za-z]{10,}/g, w => { const k = SOFT[w.toLowerCase()]; return k ? w.slice(0, k) + '\u00ad' + w.slice(k) : w; });
 
@@ -260,7 +324,61 @@
       '<div class="dr-spot" style="--sc:var(--c-net)"><span class="sub">A group example · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
       '<p class="x-only">' + esc(g.name) + ' · Channel: ' + esc(g.chan) + (g.size ? ' · ~' + X.sci(g.size) + ' members' : '') + '</p>' +
       '<a href="data.html#networks">See all ' + (X.SI.networks || []).length + ' in the Data Lab →</a></div>');
-    return neu.concat(net).join('');
+    const mk = (X.SI.making || []).filter(r => r.inv === u.id).map(m =>
+      '<div class="dr-spot" style="--sc:var(--c-make)"><span class="sub">Replication &amp; making · ' + when(m.t) + '</span><b>' + esc(m.name) + '</b><p>' + esc(m.why) + '</p>' +
+      '<p class="x-only">' + esc(m.sys) + ' · Blueprint: ~' + X.sci(m.bits) + ' bits · Autonomy: ' + esc(m.auto) + '</p>' +
+      '<a href="data.html#making">See all ' + (X.SI.making || []).length + ' in the Data Lab →</a></div>');
+    const mot = (X.SI.motors || []).filter(r => r.inv === u.id).map(m =>
+      '<div class="dr-spot" style="--sc:var(--c-wire)"><span class="sub">Molecular motors &amp; tracks · ' + when(m.t) + '</span><b>' + esc(m.pt) + '</b><p>' + esc(m.px) + '</p>' +
+      '<p class="x-only">' + esc(m.name) + (m.vel > 0 ? ' · ' + X.plain(m.vel) + ' µm/s' : '') + (m.step > 0 ? ' · ' + X.plain(m.step) + ' nm step' : '') + '</p>' +
+      '<a href="data.html#motors">See all ' + (X.SI.motors || []).length + ' in the Data Lab →</a></div>');
+    const gen = (X.SI.genomes || []).filter(r => r.inv === u.id).map(g =>
+      '<div class="dr-spot" style="--sc:var(--c-store)"><span class="sub">DNA &amp; genome milestone · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
+      '<p class="x-only">' + esc(g.sys) + (g.bp > 0 ? ' · ' + X.sci(g.bp) + ' letters' : '') + (g.genes > 0 ? ' · ' + X.sci(g.genes) + ' genes' : '') + (g.err > 0 ? ' · 1 error in ' + X.sci(Math.round(1 / g.err)) : '') + '</p>' +
+      '<a href="data.html#genomes">All ' + (X.SI.genomes || []).length + ' genome milestones →</a> · <a href="stories.html#dna-story">DNA story →</a></div>');
+    const sx = (X.SI.sex || []).filter(r => r.inv === u.id).map(s =>
+      '<div class="dr-spot" style="--sc:var(--c-make)"><span class="sub">Sexual reproduction (Step ' + s.lvl + '/16) · ' + when(s.t) + '</span><b>' + esc(s.pt) + '</b><p>' + esc(s.px) + '</p>' +
+      '<p class="x-only">' + esc(s.sys) + ' · ' + esc(s.mode) + '</p>' +
+      '<a href="data.html#sex">All ' + (X.SI.sex || []).length + ' sex evolution steps →</a> · <a href="stories.html#sex-story">Sex story →</a></div>');
+    const ng = (X.SI.nervegenes || []).filter(r => r.inv === u.id).map(g =>
+      '<div class="dr-spot" style="--sc:var(--c-wire)"><span class="sub">Nerve gene before nerves · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
+      '<p class="x-only">' + esc(g.name) + ' · ' + esc(g.grp) + '</p>' +
+      '<a href="data.html#nervegenes">All ' + (X.SI.nervegenes || []).length + ' nerve-gene families →</a></div>');
+    const off = (X.SI.offworld || []).filter(r => r.inv === u.id).map(o =>
+      '<div class="dr-spot" style="--sc:var(--s-silicon)"><span class="sub">Computing beyond Earth · ' + (o.yr >= 2026 ? 'today' : o.yr) + ' · ' + esc(o.regime) + '</span><b>' + esc(o.pt) + '</b><p>' + esc(o.px) + '</p>' +
+      '<p class="x-only">' + esc(o.name) + ' · ' + X.sci(o.km) + ' km · ' + X.sci(o.ops) + ' ops/s · ' + X.sci(o.bps) + ' b/s</p>' +
+      '<a href="data.html#offworld">All ' + (X.SI.offworld || []).length + ' off-world milestones →</a> · <a href="data.html#offworld2026">2026 space inventory →</a></div>');
+    const pl = (X.SI.plants || []).filter(r => r.inv === u.id).map(p =>
+      '<div class="dr-spot" style="--sc:var(--s-chem)"><span class="sub">Plant &amp; fungal sensing · ' + when(p.t) + '</span><b>' + esc(p.pt) + '</b><p>' + esc(p.px) + '</p>' +
+      '<p class="x-only">' + esc(p.sys) + ' · ' + esc(p.chan) + '</p>' +
+      '<a href="data.html#plants">All ' + (X.SI.plants || []).length + ' plant milestones →</a> · <a href="stories.html#plants-story">Plants story →</a></div>');
+    const imm = (X.SI.immunity || []).filter(r => r.inv === u.id).map(im =>
+      '<div class="dr-spot" style="--sc:var(--c-prog)"><span class="sub">Immune memory · ' + when(im.t) + '</span><b>' + esc(im.pt) + '</b><p>' + esc(im.px) + '</p>' +
+      '<p class="x-only">' + esc(im.sys) + ' · ' + esc(im.mech) + '</p>' +
+      '<a href="data.html#immunity">All ' + (X.SI.immunity || []).length + ' immune milestones →</a> · <a href="stories.html#immunity-story">Immunity story →</a></div>');
+    return off.concat(gen, sx, pl, imm, neu, ng, net, mk, mot).join('');
+  }
+  function epochLedgerHtml(ep) {
+    const when = t => !(t > 0) ? 'today' : (t * 1e6 < 10000 ? 'in ' : 'about ') + X.fmtTime(t);
+    const off = (X.OFFWORLD[ep] || []).map(o =>
+      '<div class="dr-spot" style="--sc:var(--s-silicon)"><span class="sub">Computing beyond Earth · ' + (o.yr >= 2026 ? 'today' : o.yr) + '</span><b>' + esc(o.pt) + '</b><p>' + esc(o.px) + '</p>' +
+      '<a href="data.html#offworld">Open off-world computing ledger →</a></div>');
+    const gen = (X.GENOMES[ep] || []).map(g =>
+      '<div class="dr-spot" style="--sc:var(--c-store)"><span class="sub">DNA &amp; genomes · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
+      '<a href="data.html#genomes">Open genome ledger →</a> · <a href="stories.html#dna-story">Read DNA story →</a></div>');
+    const sx = (X.SEX[ep] || []).map(s =>
+      '<div class="dr-spot" style="--sc:var(--c-make)"><span class="sub">Sexual reproduction (Step ' + s.lvl + '/16) · ' + when(s.t) + '</span><b>' + esc(s.pt) + '</b><p>' + esc(s.px) + '</p>' +
+      '<a href="data.html#sex">Open sexual reproduction ledger →</a></div>');
+    const pl = (X.PLANTS[ep] || []).map(p =>
+      '<div class="dr-spot" style="--sc:var(--s-chem)"><span class="sub">Plant &amp; fungal sensing · ' + when(p.t) + '</span><b>' + esc(p.pt) + '</b><p>' + esc(p.px) + '</p>' +
+      '<a href="data.html#plants">Open plant signalling ledger →</a></div>');
+    const imm = (X.IMMUNITY[ep] || []).map(im =>
+      '<div class="dr-spot" style="--sc:var(--c-prog)"><span class="sub">Immune memory · ' + when(im.t) + '</span><b>' + esc(im.pt) + '</b><p>' + esc(im.px) + '</p>' +
+      '<a href="data.html#immunity">Open immune evolution ledger →</a></div>');
+    const ng = (X.NERVEGENES[ep] || []).map(g =>
+      '<div class="dr-spot" style="--sc:var(--c-wire)"><span class="sub">Nerve genes · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
+      '<a href="data.html#nervegenes">Open nerve-gene ledger →</a></div>');
+    return off.concat(gen, sx, pl, imm, ng).join('');
   }
   const top = (chip, title) => '<button type="button" class="dr-handle" aria-expanded="' + !peek + '" aria-label="' + (peek ? 'Show details' : 'Fold details down') + '"><i aria-hidden="true"></i><span>' + esc(title) + '</span></button>' +
     '<div class="dr-top">' + chip + '<button type="button" class="x" id="drClose" aria-label="Close details">×</button></div>';
@@ -272,15 +390,12 @@
       ? 'Highlighting ' + PATHK[activePath].steps.length + ' steps in "' + PATHK[activePath].label + '"'
       : mode === 'near' ? X.IN[u.id].length + ' linked predecessors, ' + X.OUT[u.id].length + ' linked developments'
       : mode === 'back' ? 'Builds on ' + (cs.set.size - 1) + ' earlier inventions' : 'Connected to ' + (cs.set.size - 1) + ' later developments';
-    const fig = st
-      ? '<figure class="dr-plate" style="--g:' + a.color + '">' + X.plateArt(e.id, st.glyph, st.who) +
-        '<figcaption><a class="dr-who-link" href="journey.html#' + e.id + '"><b>' + esc(st.who) + '</b> · ' + esc(st.taxon) + ' · Visit stop →</a>' + X.plateCredit(e.id) + '</figcaption></figure>'
-      : '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '"><span><b>' + esc(X.titleOf(u.i)) + '</b><span>' + esc(X.hookOf(u.i)) + ' Visit this stop →</span></span></a>';
+    const fig = X.invGallery(u, st, a.color);
     const byTime = list => list.slice().sort((x, y) => X.INVK[x.id].i - X.INVK[y.id].i);
     drawer.innerHTML = top('<span class="part-chip" style="--pc:' + p.color + '">' + X.icon(p.key) + p.name + '</span>', u.label) +
       pathBarHtml(u.id) +
       '<div><h2>' + esc(u.label) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + ' · Act ' + a.n + ': ' + a.name + '</p></div>' +
-      '<p class="dr-detail">' + esc(u.detail) + '</p>' + X.invMore(u) + fig + invLedgerHtml(u) +
+      '<p class="dr-detail">' + esc(u.detail) + '</p>' + fig + X.invMore(u) + X.perspForInv(u.id) + invLedgerHtml(u) +
       '<div style="display:grid;gap:6px"><div class="modes" role="group" aria-label="What to highlight">' +
       [['near', 'Neighbors', 'Highlight linked predecessors and linked developments'], ['back', 'Rests on', 'Highlight all earlier inventions connected to this one'], ['forward', 'Led to', 'Highlight all later developments connected to this one']].map(m => '<button type="button" data-mode="' + m[0] + '" data-tip="' + m[2] + '" aria-pressed="' + (!activePath && mode === m[0]) + '">' + m[1] + '</button>').join('') +
       '</div><span class="muted" style="font-size:14px">' + esc(count) + '</span></div>' +
@@ -317,11 +432,12 @@
     drawer.innerHTML = top('<span class="chip" style="background:color-mix(in srgb,' + a.color + ' 20%,var(--surface))">Act ' + a.n + ' · ' + a.name + '</span>', st ? st.who : X.titleOf(i)) +
       '<div><h2>' + esc(st ? st.who : X.titleOf(i)) + '</h2><p class="dr-when">' + X.fmtTime(e.t) + (st ? ' · ' + esc(X.titleOf(i)) : '') + '</p></div>' +
       '<a class="dr-who" href="journey.html#' + e.id + '" style="--g:' + a.color + '">' + (st ? '<span class="mini">' + X.plateThumb(e.id, st.glyph) + '</span>' : '') + '<span><b>' + esc(X.hookOf(i)) + '</b><span>Visit this stop →</span></span></a>' +
-      lossHtml(i) + relList('New at this moment', X.newAt(i).map(u => relItem(u.id, u.detail, u.refs))) + expertBlock(e);
+      lossHtml(i) + relList('New at this moment', X.newAt(i).map(u => relItem(u.id, u.detail, u.refs))) +
+      epochLedgerHtml(e.id) + X.perspForEpoch(e.id) + expertBlock(e);
   }
   function drawDrawer() {
     if (!sel) return;
-    if (sel.type === 'inv') drawInv(X.INVK[sel.id]);
+    if (sel.type === 'inv') { drawInv(X.INVK[sel.id]); X.bindCarousels(drawer); }
     else if (sel.type === 'lane') drawLane(sel.key);
     else drawEpoch(sel.i);
   }
@@ -511,13 +627,22 @@
   renderPaths();
   chips();
   render();
-  const h = decodeURIComponent((location.hash || '').slice(1));
-  if (h.indexOf('path=') === 0) {
-    const parts = h.slice(5).split(':');
-    if (PATHK[parts[0]]) startPath(parts[0], parts[1]);
-  } else if (X.INVK[h]) selectInv(h);
-  else if (h.indexOf('lane-') === 0 && X.PK[h.slice(5)]) selectLane(h.slice(5));
-  else if (X.IDX[h] !== undefined) selectEpoch(X.IDX[h]);
+  function applyTreeHash() {
+    const h = decodeURIComponent((location.hash || '').slice(1));
+    if (!h) return;
+    if (h.indexOf('path=') === 0) {
+      const parts = h.slice(5).split(':');
+      if (PATHK[parts[0]] && (activePath !== parts[0] || (parts[1] && (!sel || sel.id !== parts[1])))) startPath(parts[0], parts[1]);
+    } else if (X.INVK[h]) {
+      if (!sel || sel.type !== 'inv' || sel.id !== h) selectInv(h);
+    } else if (h.indexOf('lane-') === 0 && X.PK[h.slice(5)]) {
+      if (!sel || sel.type !== 'lane' || sel.key !== h.slice(5)) selectLane(h.slice(5));
+    } else if (X.IDX[h] !== undefined) {
+      if (!sel || sel.type !== 'epoch' || sel.i !== X.IDX[h]) selectEpoch(X.IDX[h]);
+    }
+  }
+  applyTreeHash();
+  window.addEventListener('hashchange', applyTreeHash);
   const sq = new URLSearchParams(location.search).get('q');
   if (sq) { q.value = sq; showResults(); q.focus(); }
 })();

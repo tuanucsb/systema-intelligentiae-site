@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Atlas of Minds · Systema Intelligentiae</title>
-<meta name="description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
-<meta property="og:title" content="Atlas of Minds · Systema Intelligentiae">
-<meta property="og:description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
+<title>Atlas &amp; Systems Database · Systema Intelligentiae</title>
+<meta name="description" content="Explore all 703 deduplicated systems in Systema Intelligentiae: microbes, molecular motors, plants, animals, colonies, archives, spacecraft, computers and AI models, by when they appeared and how much information one system processes.">
+<meta property="og:title" content="Atlas &amp; Systems Database · Systema Intelligentiae">
+<meta property="og:description" content="Explore 703 deduplicated cells, motors, plants, animals, societies, archives, spacecraft, chips and AI models on one complexity map and searchable database.">
 <meta property="og:image" content="assets/og/default.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Atlas of Minds · Systema Intelligentiae">
-<meta name="twitter:description" content="Hundreds of kinds of mind on one map: cells, animals, archives, societies, chips and neural nets, by when they appeared and how much they compute.">
+<meta name="twitter:title" content="Atlas &amp; Systems Database · Systema Intelligentiae">
+<meta name="twitter:description" content="Explore 703 deduplicated cells, motors, plants, animals, societies, archives, spacecraft, chips and AI models on one complexity map and searchable database.">
 <meta name="twitter:image" content="assets/og/default.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -21,27 +21,77 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a></nav><div class="head-tools"></div></div></header>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html" aria-current="page">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">This page draws its interactive map and database table with JavaScript, which is turned off here. You can still <a href="data/tracked_systems_catalog.csv" download>download the full systems CSV</a>.</p></noscript>
 
 <main id="main" class="wrap">
   <div class="page-head">
-    <span class="eyebrow">Atlas of minds</span>
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">The stack is made of things</h1>
-    <p>Each dot is one system from the catalog behind this site: a cell, an animal, an archive, a society, a chip, a neural net. It sits where its kind first appeared and at the number of operations it does each second, in the colour of the layer of the <a href="index.html">thinking stack</a> it lives in.</p>
+    <span class="eyebrow">Atlas of minds · individual system complexity &amp; catalog</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Every system we track, one unit at a time</h1>
+    <p>Planet totals multiply population by speed, so trillions of simple bacteria outweigh brains on raw volume. Here each dot and row measures <b>one individual system</b>—one bacterium, one spruce tree, one honeybee, one human brain, one clay archive or one AI cluster—so you can see how much information a single system processes and browse the full database behind this site.</p>
   </div>
 
   <section class="sec" style="padding-top:8px" aria-labelledby="mapH">
-    <h2 id="mapH" class="sr-only">Map of systems</h2>
-    <div class="keys" id="atKeys" role="group" aria-label="Kinds of system: select one to highlight it"></div>
-    <div class="stack-wrap"><svg id="atlas" role="img" aria-label="Catalog systems by date of first appearance and operations per second. The table below counts what has been measured for each kind."></svg></div>
-    <p class="teach">Both axes go up in steps of ×10. A dot one grid line higher does ten times more each second; a dot one grid line to the left first appeared ten times longer ago. <span id="atNote"></span></p>
+    <div class="sec-head">
+      <h2 id="mapH">Complexity over deep time</h2>
+      <p>Vertical height shows operations per second inside <b>one unit</b>; horizontal position shows when that kind of system first appeared. Click a category pill to filter both the map and the database below, or click any dot to jump to its row.</p>
+    </div>
+    <div class="keys" id="atKeys" role="group" aria-label="Kinds of system: select one to filter"></div>
+    <div class="stack-wrap"><svg id="atlas" role="img" aria-label="Tracked systems by date of first appearance and single-system operations per second. The searchable table below lists every system."></svg></div>
+    <p class="teach">Both axes step by ×10. One grid line higher means ten times more operations a second in a single unit; one grid line left means ten times further back in time. <span id="atNote"></span></p>
     <p class="time-key" data-time-key=""></p>
   </section>
 
-  <section class="sec" aria-labelledby="covH">
-    <div class="sec-head"><h2 id="covH">What we have measured, and for whom</h2><p>Each cell counts the systems of that kind with at least one sourced measurement in that dimension. Darker means a larger share of that kind is covered. The pale cells are the gaps.</p></div>
+  <section class="sec cv-defer" id="how-ops" aria-labelledby="opsMethodH">
+    <div class="sec-head">
+      <span class="eyebrow">Calculation rules &amp; scaling</span>
+      <h2 id="opsMethodH">How one unit’s operations per second is calculated</h2>
+      <p>Chemical turnovers, nerve signals, archive writes and chip cycles are different physical events and are never summed into one planetary score. To place individual systems on a common order-of-magnitude scale, each group converts published anatomical or hardware measurements into events per second using its own physical equation.</p>
+    </div>
+    <div class="atl-eq-grid" id="atlEqCards"></div>
+    <div id="atlScaleMount"></div>
+  </section>
+
+  <section class="sec cv-defer" id="systems-db" aria-labelledby="dbH">
+    <div class="sec-head">
+      <h2 id="dbH">Tracked systems database</h2>
+      <p>Search by organism, machine, taxon or computing mechanism, click any column header to sort, or click a row to highlight where it sits on the chart above. Chemical reactions, nerve spikes, archive reads and chip operations remain distinct physical events.</p>
+    </div>
+    <search class="sys-search-bar">
+      <div class="sys-search-field">
+        <label for="sysQuery">Filter systems</label>
+        <input type="search" id="sysQuery" placeholder="Try E. coli, spruce, octopus, crow, cuneiform, ENIAC, H100, DeepSeek…">
+      </div>
+      <div class="sys-actions">
+        <span class="readout" id="sysCount"></span>
+        <button type="button" class="btn sm ghost" id="sysReset" hidden>Reset filters</button>
+        <a class="btn sm" href="data/tracked_systems_catalog.csv" download>Download CSV</a>
+      </div>
+    </search>
+    <p id="sysStatus" class="sr-only" role="status"></p>
+    <div tabindex="0" role="region" aria-labelledby="sysCap" class="tbl-wrap sys-tbl-wrap">
+      <table class="tbl sys-tbl" id="sysTable">
+        <caption id="sysCap" class="sr-only">All tracked biological, social, archival and silicon systems in Systema Intelligentiae</caption>
+        <thead>
+          <tr>
+            <th scope="col" data-type="text"><button type="button" class="sort-btn">System <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="text"><button type="button" class="sort-btn">Group <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="text"><button type="button" class="sort-btn">Taxon / entity <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="text"><button type="button" class="sort-btn">Computing mechanism <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="number"><button type="button" class="sort-btn">First appeared <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="number" aria-sort="descending"><button type="button" class="sort-btn">1-unit ops / s <span class="sort-ic" aria-hidden="true"></span></button></th>
+            <th scope="col" data-type="number"><button type="button" class="sort-btn">Neurons <span class="sort-ic" aria-hidden="true"></span></button></th>
+          </tr>
+        </thead>
+        <tbody id="sysBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec cv-defer" id="coverage" aria-labelledby="covH">
+    <div class="sec-head"><h2 id="covH">What we have measured, and for whom</h2><p>Each cell counts the systems of that kind with at least one sourced measurement in that dimension. Darker means a larger share of that kind is covered; pale cells mark open research gaps.</p></div>
     <div class="cov-wrap"><table class="cov" id="cov"><caption class="sr-only">Number of catalog systems with a sourced measurement, by dimension and kind</caption></table></div>
-    <p class="note">The full tables, with sources and uncertainty ranges, are in the <a href="data.html">Data Lab</a>.</p>
+    <p class="note">Open all ledgers, uncertainty bands and raw census columns in the <a href="data.html">Data Lab →</a></p>
   </section>
 </main>
 

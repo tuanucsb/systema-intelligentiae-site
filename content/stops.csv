@@ -32,17 +32,20 @@ EP15b,Night-shift mammal,Morganucodon,mammal,~10 cm,Warm blood and a layered cor
 EP16a,Rift volcanoes,Central Atlantic eruptions,volcano,continent-scale lava floods,"Huge eruptions along the opening Atlantic fill the air with carbon dioxide. About 76% of species die, clearing the stage for giant dinosaurs.",0
 EP16b,Paperclip-sized mammal,Hadrocodium wui,hadrocodium,"~3 cm, ~2 g",Old jaw bones begin to become a three-bone middle ear for high-pitched hearing.,0
 EP17a,Feathered flyer,Archaeopteryx,bird,~50 cm,"Flight needs a fast 3D controller, so the brain's balance centers grow.",0
+EP17m,First flowers & pollinators,Amborella & early bees,flower,~1 cm – 1 m,"Petals, scent and nectar turn flying insects into targeted pollen couriers, transforming land ecosystems.",1
 EP17b,T. rex and ant colonies,Tyrannosaurus and Formicidae,trex,12 m / 3 mm,Ant and bee colonies act as superorganisms. Neural activity peaks at 2×10²⁶ events per second.,1
 EP18a,Asteroid impact,Chicxulub,impact,10 km asteroid,Impact winter. Neural activity falls 92.5% and the big dinosaurs are gone.,1
 EP18b,Early primate,Purgatorius,primate,~15 cm,Small warm-blooded survivors inherit an emptied world.,0
 EP19a,Leaping primate,Darwinius & Eocene mammals,euprimate,"~50 cm, ~600 g","Forward-facing eyes spread through hothouse forests, some mammal brains begin to fold, and global nerve signaling more than doubles.",0
 EP19b,Echolocating whale & songbird,Squalodon and songbirds,whale,~3 m / ~20 g,Whales see with sound; songbirds pack 240 million neurons into each gram of brain.,1
+EP19c,Sperm-whale vocal clans,Physeteroidea & songbirds,spermwhale,brain ~8 kg / ~15 m,Deep-diving sperm whales evolve Earth's largest brains and ocean-spanning click dialects while grasslands spread.,0
 EP20a,Great ape,Miocene apes,ape,~1 m,Reading minds: a prefrontal cortex that models what others know.,1
 EP20b,Upright hominin,Sahelanthropus & savanna clans,biped_ape,~1.1 m,"Drying African grasslands reward walking on two legs, freeing hands to carry while elephant and ape families coordinate across kilometers.",0
 EP21a,Australopithecus,First stone toolmakers,stone,~1.2 m,"A struck stone keeps a plan for 10,000 years at zero watts. Memory leaves the body.",1
 EP21b,Stone-flake maker,Homo habilis,habilis,brain ~610 cm³,"Sharp Oldowan stone flakes butcher meat and marrow, co-evolving with hand-eye brain circuits and multiplying memory outside bodies tenfold.",0
 EP22a,Homo erectus,Handaxes and fire,fire,brain ~950 cm³,Possibly tending fire already: cooking digests food outside the body and frees energy for a bigger brain.,0
 EP22b,Spear-hunting band,Homo heidelbergensis & Neanderthals,spear,"brain ~1,250–1,450 cm³","Modern-sized brains plan multi-step stone cores and balanced wooden spears, hunting big game in tight cooperative families.",0
+EP22c,First Homo sapiens,Jebel Irhoud hominins,sapiens_skull,"brain ~1,350 cm³","Early Homo sapiens across Africa combine modern-sized skulls, prepared-core stone blades and three-generation family care.",1
 EP23a,Ochre engraver,Blombos Cave Homo sapiens,ochre,plaque ~8 cm,"Cross-hatched red ochre and pierced shell beads hold shared meaning outside the skull, multiplying external memory tenfold.",0
 EP23b,Homo sapiens,Ice-age artists,speech,"brain ~1,350 cm³","Language at ~39 bits per second, cave art and tally bones.",1
 EP24a,First villagers,Fertile Crescent farmers & Göbekli Tepe,wheat,"villages of 500–3,000","Domesticated grain and herds turn sunlight into stored surplus, anchoring permanent villages of thousands of people.",0
@@ -60,6 +63,7 @@ EP29b,Punch-card tabulator,Hollerith census machine & radio,punchcard,electric p
 EP30a,ENIAC,First electronic computers,tube,~30 tonnes,Computing goes electronic and software becomes data.,1
 EP30b,Microchips & ARPANET,"Silicon ICs, DRAM & packet networks",wafer,thousands of transistors/chip,"Whole circuits etched onto single silicon chips launch Moore's law, paired with electronic DRAM memory and packet-switched ARPANET.",0
 EP31a,The Web,Microchips and fiber optics,chip,~1 billion processors,"Digital storage nears every paper, film and vinyl archive ever made, and passes it two years later.",0
+EP31m,Smartphones & synthetic cell,Pocket sensors & JCVI-syn1.0,syn_cell,~1.5B phones / 1.08M-bp cell,Smartphones put networked cameras and maps in a billion pockets while chemists boot the first synthetic bacterial genome.,0
 EP31b,Deep learning,AlexNet on GPUs,gpu,5×10¹⁸ operations/s worldwide,Graphics chips get repurposed to learn.,0
 EP32a,Transformer & AlphaFold,Self-attention foundation models,transformer,175B+ weights / 200M proteins,One self-attention neural architecture learns to write text and code and predicts the 3D shapes of 200 million biological proteins.,0
 EP32b,AI supercomputer,"~100,000 GPUs",rack,3×10²⁰ operations/s,"One machine runs 3×10²⁰ operations per second. All silicon together is still 0.006% of animal brain activity, and the typical cell is still a bacterium.",1
