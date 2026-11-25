@@ -12,6 +12,9 @@
   let allGauges = false;
   let cmpIdx = 0;
   let cmpOpen = false;
+  let viewMode = (new URLSearchParams(location.search).get('view') === 'stairs') ? 'stairs' : 'card';
+  let stairsAll = true;
+  let stairsBuiltKey = '';
 
   document.querySelectorAll('.n-stops').forEach(el => { el.textContent = X.STOPS.length; });
 
@@ -23,12 +26,23 @@
   }).join('');
   $('actRail').addEventListener('click', ev => {
     const dot = ev.target.closest('i[data-i]');
-    if (dot) { ev.stopPropagation(); select(Number(dot.dataset.i), false, true); return; }
+    if (dot) {
+      ev.stopPropagation();
+      const idx = Number(dot.dataset.i);
+      if (viewMode === 'stairs' && !stairsAll && window.SI_STAIRS && !window.SI_STAIRS.hasLandmark(X.E[idx].id)) {
+        stairsAll = true; syncStairsButtons();
+      }
+      select(idx, viewMode === 'stairs', true);
+      return;
+    }
     const b = ev.target.closest('[data-act]'); if (!b) return;
     const a = X.ACTS.find(x => x.n === b.dataset.act);
-    const pool = tourOnly ? X.TOUR : X.STOPS;
+    const pool = viewMode === 'stairs'
+      ? (stairsAll ? X.STOPS : X.STOPS.filter(s => window.SI_STAIRS && window.SI_STAIRS.hasLandmark(s.epoch)))
+      : (tourOnly ? X.TOUR : X.STOPS);
     const first = pool.find(s => s.i >= a.i0 && s.i <= a.i1);
-    select(first ? first.i : a.i0, false, true);
+    select(first ? first.i : a.i0, viewMode === 'stairs', true);
+    if (viewMode === 'stairs' && window.SI_STAIRS) window.SI_STAIRS.scrollToAct($('stairsView'), a.n);
   });
 
   /* ---------- chart ---------- */
@@ -459,9 +473,63 @@
     const el = document.querySelector('meta[property="' + prop + '"], meta[name="' + prop + '"]');
     if (el) el.setAttribute('content', val);
   }
+  function syncStairsButtons() {
+    const sv = $('stairsView');
+    if (!sv) return;
+    sv.querySelectorAll('[data-st-density]').forEach(btn => {
+      const wantAll = btn.dataset.stDensity === 'all';
+      btn.setAttribute('aria-pressed', String(stairsAll === wantAll));
+    });
+  }
+  function renderStairsIfNeeded(force) {
+    if (!window.SI_STAIRS) return;
+    const key = stairsAll ? 'all' : 'landmarks';
+    const sv = $('stairsView');
+    if (!sv) return;
+    if (force || stairsBuiltKey !== key) {
+      stairsBuiltKey = key;
+      window.SI_STAIRS.render(sv, { all: stairsAll, cur });
+    } else {
+      window.SI_STAIRS.updateSelection(sv, cur);
+    }
+    syncStairsButtons();
+  }
+  function openFullCardAt(idx) {
+    const sv = $('stairsView');
+    if (sv && window.SI_STAIRS) window.SI_STAIRS.closePopover(sv);
+    if (viewMode === 'stairs') setViewMode('card', true);
+    select(idx, true, true);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const top = $('actRail').getBoundingClientRect().top;
+    window.scrollBy({ top: top - 14, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function setViewMode(mode, pushUrl) {
+    viewMode = mode === 'stairs' ? 'stairs' : 'card';
+    if (viewMode === 'stairs' && !stairsAll && window.SI_STAIRS && !window.SI_STAIRS.hasLandmark(X.E[cur].id)) {
+      stairsAll = true;
+    }
+    const isSt = viewMode === 'stairs';
+    if ($('modeCard')) $('modeCard').setAttribute('aria-pressed', String(!isSt));
+    if ($('modeStairs')) $('modeStairs').setAttribute('aria-pressed', String(isSt));
+    if ($('cardView')) $('cardView').hidden = isSt;
+    if ($('jumpStairsBtn')) $('jumpStairsBtn').hidden = isSt;
+    renderStairsIfNeeded(false);
+    if (!isSt) ch.select(cur);
+    if (pushUrl) {
+      try {
+        const u = new URL(location.href);
+        if (isSt) u.searchParams.set('view', 'stairs');
+        else u.searchParams.delete('view');
+        u.hash = '#' + X.E[cur].id;
+        history.pushState(null, '', u.pathname + u.search + u.hash);
+      } catch (e) { /* ignore */ }
+    }
+  }
+
   function select(i, keepScroll, push) {
     cur = Math.max(0, Math.min(X.N - 1, i));
     renderCard(); ch.select(cur);
+    renderStairsIfNeeded(false);
     $('pos').textContent = posText();
     $('prev').disabled = cur === 0; $('next').disabled = cur === X.N - 1;
     const a = X.actOf(cur), e = X.E[cur], st = X.STOP[e.id];
@@ -474,19 +542,24 @@
     setMeta('og:image', mImg); setMeta('twitter:image', mImg);
     document.querySelectorAll('.act-seg').forEach(b => b.classList.toggle('on', b.dataset.act === a.n));
     document.querySelectorAll('.act-seg .dots i').forEach(d => {
-      d.classList.toggle('on', Number(d.dataset.i) === cur);
-      d.classList.toggle('dim', tourOnly && !d.dataset.tour && Number(d.dataset.i) !== cur);
+      const di = Number(d.dataset.i);
+      const isDim = viewMode === 'stairs'
+        ? (!stairsAll && window.SI_STAIRS && !window.SI_STAIRS.hasLandmark(X.E[di].id) && di !== cur)
+        : (tourOnly && !d.dataset.tour && di !== cur);
+      d.classList.toggle('on', di === cur);
+      d.classList.toggle('dim', isDim);
     });
     $('actNow').textContent = 'Act ' + a.n + ' · ' + a.name;
     const hash = '#' + X.E[cur].id;
+    const urlStr = location.pathname + location.search + hash;
     try {
       if (push === 'live') { /* wait for drag end */ }
       else if (push === 'slide') {
-        if (history.state && history.state.slide) history.replaceState({ slide: true }, '', hash);
-        else if (location.hash !== hash) history.pushState({ slide: true }, '', hash);
+        if (history.state && history.state.slide) history.replaceState({ slide: true }, '', urlStr);
+        else if (location.hash !== hash) history.pushState({ slide: true }, '', urlStr);
       }
-      else if (push && location.hash !== hash) history.pushState(null, '', hash);
-      else history.replaceState(null, '', hash);
+      else if (push && location.hash !== hash) history.pushState(null, '', urlStr);
+      else history.replaceState(null, '', urlStr);
     } catch (e) { /* ignore */ }
     X.writeLast(cur);
     if (!keepScroll) {
@@ -505,7 +578,12 @@
   $('next').addEventListener('click', () => move(1));
   $('first').addEventListener('click', () => select(0));
   $('today').addEventListener('click', () => select(X.N - 1));
-  $('tourOnly').addEventListener('change', ev => { tourOnly = ev.target.checked; select(cur, true); });
+  $('tourOnly').addEventListener('change', ev => {
+    tourOnly = ev.target.checked;
+    stairsAll = !tourOnly;
+    renderStairsIfNeeded(false);
+    select(cur, true);
+  });
   $('card').addEventListener('click', ev => {
     const slot = ev.target.closest('.slot'); if (slot) { selPart = slot.dataset.part; renderPart(); return; }
     const j = ev.target.closest('[data-jump]'); if (j) { select(Number(j.dataset.jump), true, true); return; }
@@ -539,12 +617,96 @@
     if (ev.target.classList.contains('compare-disc')) cmpOpen = ev.target.open;
   }, true);
   document.addEventListener('keydown', ev => {
+    if (ev.key === 'Escape' && $('stairsView') && window.SI_STAIRS) {
+      window.SI_STAIRS.closePopover($('stairsView'));
+      return;
+    }
     if (ev.key !== 'ArrowLeft' && ev.key !== 'ArrowRight') return;
     const ae = document.activeElement;
     if (ae && /INPUT|TEXTAREA|SELECT/.test(ae.tagName)) return;
     ev.preventDefault(); move(ev.key === 'ArrowRight' ? 1 : -1);
   });
+  if ($('modeCard')) $('modeCard').addEventListener('click', () => setViewMode('card', true));
+  if ($('modeStairs')) $('modeStairs').addEventListener('click', () => setViewMode('stairs', true));
+  ['jumpStairsBtn', 'jumpStairsIntro'].forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    el.addEventListener('click', ev => {
+      const sv = $('stairsView');
+      if (!sv) return;
+      ev.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      sv.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+  if ($('stairsView')) {
+    const sv = $('stairsView');
+    sv.addEventListener('click', ev => {
+      const densBtn = ev.target.closest('[data-st-density]');
+      if (densBtn) {
+        const nextAll = densBtn.dataset.stDensity === 'all';
+        if (nextAll === stairsAll) return;
+        stairsAll = nextAll;
+        tourOnly = !nextAll;
+        if ($('tourOnly')) $('tourOnly').checked = tourOnly;
+        renderStairsIfNeeded(true);
+        select(cur, true);
+        return;
+      }
+      if (ev.target.closest('[data-close-pop]')) {
+        if (window.SI_STAIRS) window.SI_STAIRS.closePopover(sv);
+        return;
+      }
+      const popNav = ev.target.closest('[data-pop-step]');
+      if (popNav && window.SI_STAIRS) {
+        const pool = window.SI_STAIRS.poolIndices(stairsAll);
+        const baseIdx = popNav.hasAttribute('data-cur') ? Number(popNav.dataset.cur) : cur;
+        let pIdx = pool.indexOf(baseIdx);
+        if (pIdx < 0) pIdx = 0;
+        const nextIdx = pool[Math.max(0, Math.min(pool.length - 1, pIdx + Number(popNav.dataset.popStep)))];
+        if (nextIdx !== undefined) {
+          select(nextIdx, true, true);
+          window.SI_STAIRS.openPopover(sv, nextIdx, stairsAll, true);
+        }
+        return;
+      }
+      const openBtn = ev.target.closest('[data-open-card]');
+      if (openBtn) {
+        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+        ev.preventDefault();
+        openFullCardAt(Number(openBtn.dataset.openCard));
+        return;
+      }
+      if (ev.target.closest('.st-cal-inv, .part-chip, .st-part-pill, .st-fin-link, [data-num]')) {
+        return;
+      }
+      const stepEl = ev.target.closest('[data-i]');
+      if (stepEl) {
+        ev.preventDefault();
+        const idx = Number(stepEl.dataset.i);
+        select(idx, true, true);
+        if (stepEl.closest('.stairs-fig') && window.SI_STAIRS) {
+          window.SI_STAIRS.openPopover(sv, idx, stairsAll, true);
+        }
+        return;
+      }
+      if (!ev.target.closest('#stairsPop') && window.SI_STAIRS) {
+        window.SI_STAIRS.closePopover(sv);
+      }
+    });
+    sv.addEventListener('dblclick', ev => {
+      if (ev.target.closest('.st-cal-inv, .part-chip, .st-part-pill, .st-fin-link, [data-num], #stairsPop')) return;
+      const stepEl = ev.target.closest('[data-i]');
+      if (stepEl) {
+        ev.preventDefault();
+        openFullCardAt(Number(stepEl.dataset.i));
+      }
+    });
+  }
+
   window.addEventListener('popstate', () => {
+    const nextMode = (new URLSearchParams(location.search).get('view') === 'stairs') ? 'stairs' : 'card';
+    if (nextMode !== viewMode) setViewMode(nextMode, false);
     const k = X.IDX[(location.hash || '').slice(1)];
     if (k !== undefined && k !== cur) select(k, true);
   });
@@ -558,4 +720,5 @@
     r.querySelector('a').addEventListener('click', ev => { ev.preventDefault(); r.hidden = true; select(last, false, true); });
   }
   select(X.IDX[h] !== undefined ? X.IDX[h] : 0, true);
+  setViewMode(viewMode, false);
 })();

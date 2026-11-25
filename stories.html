@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Stories · Systema Intelligentiae</title>
-<meta name="description" content="Six deep-time stories: how DNA, sex, nerves, molecular motors, plants and immune systems evolved, each with a timeline of dated milestones, plus three book lenses on life and intelligence.">
+<meta name="description" content="Nine deep-time stories told as natural-history collector cards: DNA, sex, molecular motors, plants, immunity, brains, collective networks, replication and computing beyond Earth—click any card to open its full story, interactive charts and dated milestones.">
 <meta property="og:title" content="Stories · Systema Intelligentiae">
-<meta property="og:description" content="Six deep-time stories: how DNA, sex, nerves, molecular motors, plants and immune systems evolved, each with a timeline of dated milestones.">
+<meta property="og:description" content="Nine deep-time stories told as collector cards: click any card for the full story, interactive visualizations, Watch &amp; Listen media and dated milestones.">
 <meta property="og:image" content="assets/og/default.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stories · Systema Intelligentiae">
-<meta name="twitter:description" content="Six deep-time stories: how DNA, sex, nerves, molecular motors, plants and immune systems evolved, each with a timeline of dated milestones.">
+<meta name="twitter:description" content="Nine deep-time stories told as collector cards: click any card for the full story, interactive visualizations, Watch &amp; Listen media and dated milestones.">
 <meta name="twitter:image" content="assets/og/default.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -22,18 +22,38 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html" aria-current="page">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
-<noscript><p class="nojs wrap">This page draws its stories and timelines with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
+<noscript><p class="nojs wrap">This page draws its story cards, charts and timelines with JavaScript, which is turned off or blocked here. The menu above still works.</p></noscript>
 
 <main id="main" class="wrap">
   <div class="page-head">
-    <span class="eyebrow">Stories</span>
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Six inventions, followed through deep time</h1>
-    <p>Each story follows one of life’s inventions from its first trace to today. Every dot on a story’s timeline is a dated milestone from our sourced records: pick one to see what happened and when.</p>
+    <span class="eyebrow">Stories · Collector’s deck of deep time</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">Nine inventions, told as collector cards</h1>
+    <p>Each card follows one major invention of life or mind from its first trace to today—specimen picture, plain summary and headline stats on the front. <span class="v-ptr">Click</span><span class="v-touch">Tap</span> any card to open a popup with the full story, interactive charts, Watch &amp; Listen media and every dated milestone.</p>
   </div>
 
-  <nav class="story-index" id="storyIndex" aria-label="The six stories"></nav>
+  <div class="deck-bar" id="deckToolbar"></div>
 
-  <div class="stories" id="storiesList"></div>
+  <section aria-labelledby="deckH">
+    <h2 id="deckH" class="sr-only">Nine deep-time story cards</h2>
+    <div class="bcard-deck" id="storyDeck"></div>
+  </section>
+
+  <dialog id="storyModal" class="story-modal" closedby="any" aria-labelledby="storyModalTitle"></dialog>
+
+  <section class="sec" id="all-milestones" aria-labelledby="allH">
+    <div class="sec-head">
+      <span class="eyebrow">Cross-story archive</span>
+      <h2 id="allH">Compare every dated milestone across all nine stories</h2>
+      <p>Want to read across tracks instead of one card at a time? Open the archive below to browse all <span id="allCount">221</span> dated milestones together—in time order along the 68-moment spine, grouped by specimen picture, or ranked by the peer-reviewed papers they cite.</p>
+    </div>
+    <details class="evid-disc" id="allExplorer">
+      <summary><b>Open the cross-story milestone, picture &amp; paper browser</b></summary>
+      <div class="all-exp-body">
+        <nav class="story-index" id="storyIndex" aria-label="Filter cross-story milestones"></nav>
+        <div class="stories" id="storiesList"></div>
+      </div>
+    </details>
+  </section>
 
   <section class="sec" id="books" aria-labelledby="booksH">
     <div class="sec-head"><span class="eyebrow">Three books</span><h2 id="booksH">Three ways to read the same record</h2><p>Three landmark books read the 4-billion-year story from different angles: physics and heredity, the steps of brain evolution, and life as computation.<span class="x-only"> <a href="theories.html">Open the full eight-book review in Theories →</a></span></p></div>
@@ -47,6 +67,7 @@
 
 <footer id="siteFoot"></footer>
 <script src="assets/data.js"></script>
+<script src="assets/ledgers.js"></script>
 <script src="assets/common.js"></script>
 <script src="assets/stories.js"></script>
 </body>

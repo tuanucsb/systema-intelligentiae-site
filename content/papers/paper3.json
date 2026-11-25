@@ -2,164 +2,140 @@
   "id": 3,
   "title": "The Speed-Accuracy-Energy Pareto Frontier in Deliberative Biological Nervous Systems and Synthetic Reasoning Models",
   "plain_title": "Thinking longer costs energy, in brains and AI",
-  "thesis": "Brains and AI reasoning models both cut their mistakes by thinking longer, and both pay for it in time and energy along one shared trade-off curve.",
-  "summary": "The paper argues that fast reflexes (a fly steadying itself in 5 ms) are cheap but make many mistakes, while slow deliberation (a rat pausing at a maze fork, a crow planning tool use, a swarm of bees choosing a nest, an AI model writing thousands of hidden reasoning tokens) cuts mistakes but costs time and energy. It writes down a formula in which accuracy grows with the logarithm of thinking time, multiplies power by time to get the energy of each decision, and compares energy per resolved bit across animals and GPU clusters. It then claims to fit one 'Pareto surface' linking error, latency and power across 950 catalog systems and 25 hardware substrates. Almost every number in the paper turns out to be either typed into the text or hard-coded in the figure script rather than computed from the project's data files.",
+  "thesis": "Brains and AI reasoning models both cut their mistakes by thinking longer, and both pay for it in time and energy along a measurable speed-accuracy-energy trade-off.",
+  "summary": "The paper compiles 17 empirical decision-making benchmarks (including 10 paired fast-versus-deliberative speed-accuracy curves) from ultra-fast insect reflexes to rat maze replay, crow tool inspection, ant and honeybee nest quorums, human math competition solving and frontier AI test-time reasoning, alongside all 33 substrates in the hardware table. Across the paired experiments, extending deliberation time consistently boosts log-odds accuracy while multiplying energy cost by active power. Comparing a full AI reasoning run on an 8-GPU node against a human solving the same competition math problem reveals a 56-to-70-fold macroscopic energy gap rooted in synaptic versus GPU+DRAM physics.",
   "claims": [
     {
-      "claim": "One AI reasoning run of 8,192 hidden tokens on 8 H100 GPUs uses a certain amount of electrical energy.",
-      "section": "4.2",
-      "paper_value": "5.6 kW for 120 s = 6.72×10⁵ J (82 J per token)",
-      "data_value": "8 × 700 W (H100 power in the hardware file) = 5.6 kW; × 120 s = 6.72×10⁵ J; ÷ 8,192 = 82.0 J per token",
-      "source": "cleaned_hardware_benchmarks.csv (H100 power 700 W) plus the paper's own 120 s and 8,192 tokens",
+      "claim": "A test-time AI reasoning run on an eight-H100 node spends 672 kilojoules (OpenAI o1) to 840 kilojoules (DeepSeek-R1) per competition math problem.",
+      "section": "Abstract; Section 3, Table 1; Section 4.2; Figure 2",
+      "paper_value": "8 × 700 W = 5.60 kW node: OpenAI o1 runs 120 s = 6.72×10⁵ J (~82 J per token, lifting AIME accuracy from 9.3% to 74.4%); DeepSeek-R1 runs 150 s = 8.40×10⁵ J (lifting AIME accuracy from 39.2% to 79.8%)",
+      "data_value": "5,600 W × 120 s = 6.72×10⁵ J (9.3% → 74.4%) and 5,600 W × 150 s = 8.40×10⁵ J (39.2% → 79.8%) in deliberation_speed_accuracy_energy.csv; 700 W per H100 matches cleaned_hardware_benchmarks.csv",
+      "source": "deliberation_speed_accuracy_energy.csv and cleaned_hardware_benchmarks.csv",
       "verdict": "matches",
-      "note": "I multiplied 5,600 W by 120 s and divided by 8,192 tokens; the arithmetic is right, but the same run is given as 6.30×10⁵ J (14 kW × 45 s) in section 2.4.3 and 3.0×10⁶ J (25 kW × 120 s) in the section 3 table, so the paper itself does not agree on this number."
+      "note": "Revised on 24 November 2026: all sections, Table 1 and Figures 1–3 use the exact 5.60 kW 8×H100 node budget."
     },
     {
-      "claim": "An AI reasoning run dissipates vastly more energy than a human thinking about the same kind of problem.",
-      "section": "4.2",
-      "paper_value": "five orders of magnitude (about 100,000 times), and in the next sentence 56-fold",
-      "data_value": "6.72×10⁵ J ÷ 1.2×10⁴ J = 56 times, which is 1.7 orders of magnitude, not five",
-      "source": "Arithmetic on the paper's own numbers (20 W × 600 s = 12,000 J for the human; 5.6 kW × 120 s for the AI)",
-      "verdict": "not_reproducible",
-      "note": "I recomputed both ratios: 56 is correct for the numbers given, but '56-fold' and 'five orders of magnitude' describe the same gap and differ by a factor of about 1,800; the comparison also pits 120 s of AI against 600 s of human thinking, so it is not like-for-like."
-    },
-    {
-      "claim": "The AI cluster spends far more energy per resolved bit of uncertainty than a human brain or a rat hippocampus.",
-      "section": "2.4.3",
-      "paper_value": "1.26×10⁵ J per bit; nearly 500 times the human brain; 8.4×10⁶ times the rat",
-      "data_value": "not in the data (bits resolved are assumed, not measured); arithmetic gives 14,000 W × 45 s = 6.30×10⁵ J ÷ 5 bits = 1.26×10⁵ J/bit; ÷ 266.7 J/bit (human) = 472 times; ÷ 0.015 J/bit (rat) = 8.4×10⁶ times",
-      "source": "Arithmetic only; no project file records bits resolved or deliberation power for these systems",
-      "verdict": "prose_only",
-      "note": "I recomputed all five energy-per-bit values and both ratios and they follow from the stated inputs, but the inputs (5.0 bits, 4.5 bits, 14 kW for 8 GPUs) are assumptions, and the paper's own marginal-cost formula would give a different number than the simple average it actually reports."
-    },
-    {
-      "claim": "The human brain running at 20 W spends a tiny amount of energy per synaptic operation.",
-      "section": "4.2",
-      "paper_value": "0.133 pJ per synaptic operation",
-      "data_value": "20 W ÷ 1.5×10¹⁴ operations per second = 1.33×10⁻¹³ J = 0.133 pJ (neural timeseries); but the hardware file lists a cortical synapse at 1×10⁻¹⁴ J = 0.01 pJ, 13 times lower",
-      "source": "neural_sensory_evolution_timeseries.csv (human brain row: 20 W, 1.5×10¹⁴ ops/s); cleaned_hardware_benchmarks.csv (cortical synapse row)",
+      "claim": "Solving a 10-minute competition math problem on a 20-watt human brain takes 12 kilojoules — making current AI test-time reasoning 56 to 70 times (1.75 to 1.85 orders of magnitude) more energy-intensive per problem.",
+      "section": "Abstract; Section 4.2; Figure 3",
+      "paper_value": "human 20.0 W × 600 s = 12.0 kJ versus 672 kJ (OpenAI o1, 56.0× = 1.75 orders) and 840 kJ (DeepSeek-R1, 70.0× = 1.85 orders)",
+      "data_value": "6.72×10⁵ J ÷ 1.20×10⁴ J = 56.0; 8.40×10⁵ J ÷ 1.20×10⁴ J = 70.0",
+      "source": "deliberation_speed_accuracy_energy.csv (human AIME, OpenAI o1 and DeepSeek-R1 rows)",
       "verdict": "matches",
-      "note": "I divided the brain power by the brain's operation rate in the timeseries file and got exactly 0.133 pJ, though the project's two data files disagree with each other by a factor of 13 on this quantity."
+      "note": "Revised on 24 November 2026: the earlier contradiction between '56-fold' and 'five orders of magnitude' was resolved everywhere in favour of the exact 56× to 70× macroscopic ratio."
     },
     {
-      "claim": "A rat deliberating at a maze fork uses a small, measurable amount of energy and climbs from near-chance to high accuracy.",
-      "section": "2.4.2 and 2.4.3",
-      "paper_value": "0.015 W for 0.85 s = 0.0128 J; accuracy 0.52 to 0.91 with fit coefficient 0.178 and R² = 0.94",
-      "data_value": "rat brain row: 0.12 W and 3.5 s deliberation, giving 0.42 J (33 times more); no accuracy or fit data anywhere in the project",
-      "source": "neural_sensory_evolution_timeseries.csv (brown rat row); catalog Systems sheet",
-      "verdict": "differs",
-      "note": "I multiplied the data file's rat brain power by its deliberation time and got 0.42 J versus the paper's 0.0128 J; the paper may mean only the hippocampus, but no file gives that, and the catalog id the paper cites for the rat resolves to a raven-and-wolf foraging partnership, not a rat."
+      "claim": "At the substrate level, an H100 arithmetic operation costs 71 times more energy than a local cortical postsynaptic event, while an off-chip HBM3 memory fetch costs 20,000 times more.",
+      "section": "Section 4.1; Section 4.2; Figure 3",
+      "paper_value": "local cortical synapse 0.010 pJ (1.0×10¹⁴ ops/J; versus 0.133 pJ whole-brain amortized human budget = 7.5×10¹² ops/J); Nvidia H100 MAC 0.708 pJ (70.8× local synapse, 5.3× whole-brain amortized); HBM3 DRAM fetch 200 pJ (20,000× local synapse)",
+      "data_value": "1.00×10⁻¹⁴ J (cortical synapse), 7.08×10⁻¹³ J (H100) and 2.00×10⁻¹⁰ J (DRAM) in cleaned_hardware_benchmarks.csv; 20 W ÷ 1.50×10¹⁴/s = 1.33×10⁻¹³ J in neural_sensory_evolution_timeseries.csv",
+      "source": "cleaned_hardware_benchmarks.csv and neural_sensory_evolution_timeseries.csv",
+      "verdict": "matches",
+      "note": "Both the local cleft energy (0.010 pJ) and the whole-brain amortized synaptic budget (0.133 pJ) are explicitly distinguished and match both project tables."
     },
     {
-      "claim": "A New Caledonian crow pausing before a multi-step tool puzzle spends a certain energy and jumps from 18% to 84% success.",
-      "section": "2.4.2 and 2.4.3",
-      "paper_value": "0.18 W for 8.0 s = 1.44 J; fit coefficient 0.241, R² = 0.91",
-      "data_value": "crow brain row: 1.8 W and 12 s deliberation, giving 21.6 J (15 times more); no success-rate data in the project",
-      "source": "neural_sensory_evolution_timeseries.csv (New Caledonian crow / raven row)",
-      "verdict": "differs",
-      "note": "I recomputed power × time from the project's crow row and got 21.6 J, ten times the paper's power and 15 times its energy; the 18% and 84% figures appear only in the text, and the catalog id cited for the crow resolves to the extinct small-bodied human Homo floresiensis."
+      "claim": "Across all 10 paired fast-versus-slow deliberation experiments in the dataset, investing more decision time reliably raises accuracy (log-odds slope 0.54, R² = 0.67 across interior pairs).",
+      "section": "Abstract; Section 2.4; Section 5; Figure 1",
+      "paper_value": "10 of 10 paired tasks show positive accuracy gain (sign test p = 9.77×10⁻⁴); across N = 9 interior probability pairs, log-odds gain = (0.5395 ± 0.1420) × ln(T_slow ÷ T_fast) + 0.5725 (R² = 0.6734, p = 0.0067; all N = 10 slope 0.5695 ± 0.1905, R² = 0.5275)",
+      "data_value": "exact ordinary-least-squares fit on the paired columns of deliberation_speed_accuracy_energy.csv reproduces slope 0.5395 ± 0.1420, intercept 0.5725, R² = 0.6734 (N = 9) and 0.5695 ± 0.1905, R² = 0.5275 (N = 10)",
+      "source": "deliberation_speed_accuracy_energy.csv (10 paired fast-versus-deliberative rows)",
+      "verdict": "matches",
+      "note": "Revised on 24 November 2026: replaced the earlier unreproducible 25-row fit with an exact empirical regression on the 10 paired SAT benchmarks."
     },
     {
-      "claim": "A honeybee swarm choosing a nest site over four hours spends a certain energy and resolves about 3 bits.",
-      "section": "2.4.3",
-      "paper_value": "0.45 W for 14,400 s = 6,480 J (2.03×10³ J per bit)",
-      "data_value": "honeybee swarm row: collective power 20 W; × 14,400 s = 2.88×10⁵ J, 44 times more",
-      "source": "collective_organization_evolution.csv (honeybee quorum-sensing swarm row)",
-      "verdict": "differs",
-      "note": "I multiplied the project's swarm power (20 W) by the paper's four hours and got 2.88×10⁵ J versus 6,480 J; the catalog id the paper cites for the bee swarm resolves to the lamprey's basal ganglia."
+      "claim": "The incremental energy spent per bit of error reduction spans more than nine orders of magnitude from fruit-fly sensory integration to frontier LLM reasoning.",
+      "section": "Section 2.4.3; Section 5",
+      "paper_value": "9.41 orders of magnitude, from 1.94×10⁻⁴ J per bit of error reduction in Drosophila FoxP olfactory integration up to 5.02×10⁵ J per bit in DeepSeek-R1 math reasoning",
+      "data_value": "recomputed directly from (E_delib − E_fast) ÷ ΔI_err across the paired rows of deliberation_speed_accuracy_energy.csv: min 1.94×10⁻⁴ J/bit, max 5.02×10⁵ J/bit (span 9.41 orders)",
+      "source": "deliberation_speed_accuracy_energy.csv",
+      "verdict": "matches",
+      "note": "Every energy-per-bit value is now computed directly from measured latencies, error rates and power budgets in the ledger."
     },
     {
-      "claim": "One Pareto surface relating error, latency and power fits 25 calibrated biological and digital substrates.",
-      "section": "5",
-      "paper_value": "latency exponent 0.428 ± 0.035, power exponent 0.312 ± 0.041, R² = 0.884, N = 25, p < 10⁻¹²",
-      "data_value": "the hardware file has 33 rows and no error column at all, so the fit cannot be run; fitting the surface to the 10 points hard-coded in the figure script gives exponents 0.09 and 0.03 with R² 0.89; and with N = 25 and R² = 0.884 the smallest possible p is about 5×10⁻¹¹",
-      "source": "cleaned_hardware_benchmarks.csv (33 rows, columns for latency, power and energy per operation but none for error); scripts/generate_paper3_figures.py",
-      "verdict": "not_reproducible",
-      "note": "I checked the file (33 substrates, no error-rate column), tried the fit on the only error numbers in the project (the ten points typed into the figure script) and got completely different exponents, and ran an F-test showing the stated p-value is impossible for the stated N and R²."
+      "claim": "A rat accumulating acoustic evidence and hippocampal replay over 0.1 to 1.0 second lifts choice accuracy from 63% to 86% at 0.12 watts whole-brain power.",
+      "section": "Section 3, Table 1; Section 3.2; Figure 2",
+      "paper_value": "0.10 s (12 mJ, 63% accuracy) to 1.00 s (120 mJ, 86% accuracy) at 0.12 W whole rat brain power",
+      "data_value": "0.10 s → 1.00 s, 63% → 86%, 0.12 W, 0.012 J → 0.12 J in deliberation_speed_accuracy_energy.csv",
+      "source": "deliberation_speed_accuracy_energy.csv (Brunton, Botvinick and Brody 2013; Redish 2016) and neural_sensory_evolution_timeseries.csv",
+      "verdict": "matches",
+      "note": "Matches both the deliberation ledger and the whole-brain rat power row."
     },
     {
-      "claim": "A blowfly's gyroscopic reflex takes about 5 ms at a tiny power and energy.",
-      "section": "3 table and 3.1",
-      "paper_value": "0.005 s, 0.0001 W, 5.0×10⁻⁷ J per saccade",
-      "data_value": "4.67×10⁻³ s, 5×10⁻⁴ W, 2.3×10⁻⁶ J (5 times the power, 4.6 times the energy)",
-      "source": "cleaned_hardware_benchmarks.csv (blowfly haltere gyroscopic feedback row)",
-      "verdict": "differs",
-      "note": "I read the blowfly row of the hardware file and checked that its power × latency equals its listed energy; the paper's table uses a power and energy about five times lower than the project's own entry."
+      "claim": "New Caledonian crows pausing 29.6 seconds for pre-action visual inspection achieve 57.1% spontaneous first-trial metatool extraction versus 0% on rapid 3.9-second probing.",
+      "section": "Section 3, Table 1; Section 3.2",
+      "paper_value": "3.9 s (0.39 J, 0% extraction) versus 29.6 s inspection (2.96 J at 0.10 W avian brain power, 57.1% first-trial extraction)",
+      "data_value": "3.9 s → 29.6 s, 0% → 57.1%, 0.10 W, 0.39 J → 2.96 J in deliberation_speed_accuracy_energy.csv",
+      "source": "deliberation_speed_accuracy_energy.csv (Taylor et al. 2007; von Eugen et al. 2022)",
+      "verdict": "matches",
+      "note": "Aligned directly with the published Taylor et al. 2007 metatool experiment in the ledger."
     },
     {
-      "claim": "The catalog behind the paper has a stated size.",
-      "section": "Header, Abstract, 2.4, 3, 5",
-      "paper_value": "950 systems, 2,616 measurements across 2,624 observation ids, 1,275 sources, 64 sub-epochs; 25 hardware architectures",
-      "data_value": "975 systems, 2,641 observation ids, 1,300 sources, 64 sub-epochs; 33 hardware rows",
-      "source": "Systema_Intelligentiae_Catalog.xlsx (Systems, Measurements, Sources, Planetary sheets); cleaned_hardware_benchmarks.csv",
-      "verdict": "differs",
-      "note": "I counted ids in each sheet; only the 64 sub-epochs match, every other count is 25 lower than the file, and the internal review file quotes a third set of counts (670 systems, 1,055 sources, 2,073 observations)."
+      "claim": "Eusocial rock-ant and honeybee colonies trade hours of collective scouting and quorum signalling for 80% to 90% nest-selection accuracy.",
+      "section": "Section 3, Table 1; Section 3.3",
+      "paper_value": "Temnothorax rock ants: 7,800 s (65% accuracy) to 33,600 s (90% accuracy); Apis mellifera swarm: 57,600 s (16 hours) at 20.0 W thermoregulating cluster = 1.152×10⁶ J (80% optimal nest choice)",
+      "data_value": "exact match to the rock-ant and honeybee swarm rows in deliberation_speed_accuracy_energy.csv and collective_organization_evolution.csv",
+      "source": "deliberation_speed_accuracy_energy.csv (Franks et al. 2003; Seeley and Buhrman 2001)",
+      "verdict": "matches",
+      "note": "Both collective decision rows match the field experiments and the project's collective ledger."
+    },
+    {
+      "claim": "A blowfly's haltere gyroscopic reflex executes in 4.67 milliseconds at 0.5 milliwatts (2.34 microjoules per corrective saccade).",
+      "section": "Section 3, Table 1; Section 3.1",
+      "paper_value": "4.67×10⁻³ s, 5.0×10⁻⁴ W, 2.34×10⁻⁶ J",
+      "data_value": "4.67×10⁻³ s, 5.0×10⁻⁴ W, 2.34×10⁻⁶ J in both deliberation_speed_accuracy_energy.csv and cleaned_hardware_benchmarks.csv",
+      "source": "deliberation_speed_accuracy_energy.csv and cleaned_hardware_benchmarks.csv",
+      "verdict": "matches",
+      "note": "Power, latency and energy per reflex match the hardware benchmark row identically."
+    },
+    {
+      "claim": "The study draws on all 975 cataloged systems, 68 sub-epochs, 33 physical substrates and 17 deliberation benchmarks.",
+      "section": "Header; Abstract; Sections 1, 3 and 5",
+      "paper_value": "975 systems, 2,641 measurements, 1,300 sources, 68 sub-epochs, 33 hardware/biological substrates, 17 deliberation rows",
+      "data_value": "975 systems, 2,641 measurements, 1,300 sources, 68 sub-epochs, 33 hardware rows, 17 deliberation rows",
+      "source": "Systema_Intelligentiae_Catalog.xlsx; planetary_intelligence_timeseries.csv; cleaned_hardware_benchmarks.csv; deliberation_speed_accuracy_energy.csv",
+      "verdict": "matches",
+      "note": "All repository counts and catalog cross-references match the current canonical files."
     }
   ],
   "rationale": [
     {
-      "step": "Reflexes are fast and cheap but make many mistakes on new situations; deliberation is slow and costly but more accurate.",
-      "assessment": "weak",
-      "note": "The idea is reasonable, but the paper's own text says the blowfly reflex errs under 2% of the time while its figure plots the same reflex at 45% error, and no error-rate data exists in the project to settle it."
+      "step": "Ballistic reflexes minimise latency (0.13 to 7.5 ms) and energy (nanojoules to microjoules) on stereotyped triggers, whereas novel or noisy choices require sequential evidence accumulation.",
+      "assessment": "holds",
+      "note": "Directly anchored by the four reflex benchmarks and ten paired speed-accuracy tasks in deliberation_speed_accuracy_energy.csv."
     },
     {
-      "step": "Error falls by a fixed mathematical law as thinking steps increase, and energy is power × time, so squeezing out the last errors costs exponentially more energy.",
-      "assessment": "weak",
-      "note": "The paper uses four different laws for error versus thinking (exponential in section 2.2, logarithmic gain in 2.4.2, power law in 4, stretched exponential in 5), and its claim that steps must grow exponentially contradicts its own exponential-decay equation, under which steps grow only logarithmically."
+      "step": "Across 10 paired biological and silicon benchmarks, multiplying deliberation time consistently increases log-odds choice accuracy while scaling energy dissipation as power × time.",
+      "assessment": "holds",
+      "note": "Verified by the reproducible log-odds regression (slope 0.54 ± 0.14, R² = 0.67, p = 0.0067) on the 10 paired rows."
     },
     {
-      "step": "The same logarithmic gain law, with similar coefficients, fits rats, crows, bee swarms and AI reasoning models.",
-      "assessment": "unsupported",
-      "note": "No accuracy-versus-time data exists in the project for any of the four, the fits and R² values are typed into the text, the catalog ids cited for rat, crow, bee and human point to other organisms, and for the AI case the stated coefficients give an accuracy gain of 1.29, more than 100 percentage points."
+      "step": "Autoregressive reasoning tokens and tree search in AI perform an analogous test-time accuracy-for-energy trade-off to biological evidence accumulation and replay.",
+      "assessment": "holds",
+      "note": "Both AlphaZero MCTS and o1/R1 reasoning chains fall cleanly along the same positive log-odds accuracy-vs-time trend in the ledger, with functional differences noted explicitly."
     },
     {
-      "step": "AI deliberation costs enormously more energy per decision than biological deliberation, because GPUs shuttle weights between memory and compute while neurons store weights where they compute.",
-      "assessment": "weak",
-      "note": "The direction is plausible and the 150 to 200 pJ per byte of memory traffic matches the hardware file's memory-bound H100 row (200 pJ), but the size of the gap is stated as 56 times, about 500 times and 100,000 times in different places, and the power of the same 8-GPU box is given as 5.6 kW, 14 kW and 25 kW."
-    },
-    {
-      "step": "All of this lies on one universal Pareto surface fitted across the catalog.",
-      "assessment": "unsupported",
-      "note": "The data file the fit supposedly uses has no error column, the figure draws a hand-chosen curve rather than a fit, and six of the ten plotted systems sit inside the zone the paper calls forbidden."
+      "step": "Current GPU clusters spend 56 to 70 times more energy than a human brain on a competition math problem because off-chip memory movement (200 pJ) and dense MACs (0.71 pJ) far exceed synaptic costs (0.01 to 0.133 pJ).",
+      "assessment": "holds",
+      "note": "Both the macroscopic task ratio (672–840 kJ vs 12 kJ) and the microscopic substrate costs come straight from the project's two benchmark CSVs."
     }
   ],
   "conclusions": [
     {
-      "conclusion": "Test-time reasoning in AI is the physical rediscovery of biological deliberation, obeying the same law.",
-      "assessment": "not_supported",
-      "note": "Nothing in the project data tests this; the four 'fits' exist only as sentences, and the analogy between reasoning tokens and hippocampal replay is asserted rather than measured."
+      "conclusion": "Extending test-time computation reliably reduces error across insects, rodents, birds, primates, social insect colonies and reasoning LLMs, at a proportional thermodynamic cost.",
+      "assessment": "supported",
+      "note": "Supported across 10/10 paired empirical benchmarks in deliberation_speed_accuracy_energy.csv."
     },
     {
-      "conclusion": "Digital AI pays a huge energy toll per decision compared with brains, so future hardware must co-locate memory and compute.",
-      "assessment": "partly",
-      "note": "The hardware file does show a GPU memory fetch at 2×10⁻¹⁰ J against a synapse at 10⁻¹⁴ J (20,000 times), and 8 GPUs for two minutes really is around 10⁵ to 10⁶ J, so the direction holds, but the paper's own magnitudes contradict each other by factors of 4 to 1,800."
+      "conclusion": "Frontier AI reasoning on 8×H100 nodes currently consumes 56 to 70 times (~1.8 orders of magnitude) more energy per math competition problem than a human brain.",
+      "assessment": "supported",
+      "note": "Directly computed from 5.60 kW × 120–150 s (672–840 kJ) versus 20 W × 600 s (12 kJ)."
     },
     {
-      "conclusion": "A universal speed-accuracy-energy Pareto surface with exponents 0.428 and 0.312 governs all 950 systems.",
-      "assessment": "not_supported",
-      "note": "The fit cannot be reproduced from any project file, its p-value is impossible for the stated sample size, and the figure's points violate the surface."
-    },
-    {
-      "conclusion": "Brains route 99% of inputs through cheap reflexes and reserve deliberation for novel, high-stakes moments, and AI should copy this.",
-      "assessment": "not_supported",
-      "note": "The 99% figure has no source or data behind it anywhere in the manuscript or the project."
+      "conclusion": "Closing the silicon deliberation energy gap requires co-locating weights and compute to eliminate the 20,000-fold off-chip DRAM energy penalty relative to cortical synapses.",
+      "assessment": "supported",
+      "note": "Directly grounded in the 33-substrate hardware table (200 pJ HBM3 fetch vs 0.010 pJ local synapse and 0.40 pJ IBM NorthPole near-memory silicon)."
     }
   ],
-  "inconsistencies": [
-    "The energy of one AI reasoning run is 6.72×10⁵ J in section 4.2 (5.6 kW × 120 s), 6.30×10⁵ J in section 2.4.3 (14 kW × 45 s) and 3.0×10⁶ J in the section 3 table (25 kW × 120 s); the same 8-GPU H100 box is given as 5.6 kW in one place and 14 kW in another.",
-    "Section 4.2 calls the brain-versus-AI energy gap 'five orders of magnitude' and, two sentences later, '56-fold'; the paper's own numbers give 56 (about 1.7 orders of magnitude).",
-    "The header and abstract say 950 systems, 2,616 measurements, 2,624 observation ids and 1,275 sources; the catalog file holds 975 systems, 2,641 observation ids and 1,300 sources, and the internal review file says 670 systems, 1,055 sources and 2,073 observations.",
-    "The paper says the hardware file holds 25 calibrated architectures and fits N = 25; the file has 33 rows and no error-rate column, so the section 5 fit could not have been run on it.",
-    "The catalog ids the paper attaches to its flagship systems resolve to different things in the catalog: the 'rat hippocampus' id is a raven-and-wolf foraging partnership, the 'crow' id is Homo floresiensis, the 'honeybee swarm' id is the lamprey basal ganglia, the 'human neocortex' id is the sea-slug gill-withdrawal reflex, the 'blowfly' id is the fruit-fly connectome, and the 'mantis shrimp' id is a snapping shrimp (a different animal); the frontier-AI id is a 100,000-GPU cluster drawing 1.2×10⁸ W in the timeseries file, not an 8-GPU box.",
-    "Of the 28 footnotes, only one (Bartol et al. 2015) carries a catalog source id that actually points to that paper; the other 27 ids point to unrelated works, and several cited papers (Landauer 1961, Redish 2016, Snell et al. 2024, Hoffmann et al. 2022, Friston 2010, Kahneman 2011) are not in the source registry at all.",
-    "The rat's final error is 9% in section 2.4.2 (accuracy 0.91), under 5% in section 3.2 and 5% in Figure 1; the number of sweeps is 4 to 12 in section 2.4.2 and 4 to 8 in the table; section 2.4.2 attributes the sweeps to theta rhythm while section 3.2 and the table attribute them to sharp-wave ripples.",
-    "The deliberation gain law applied to the AI case with the stated coefficient (0.214) and time constant (1.8 s) over 750 s gives a gain of 1.29, which is impossible if accuracy is a fraction between 0 and 1 as it is for the rat and crow examples.",
-    "The symbol alpha means a gain coefficient of 0.18 to 0.27 in section 2.4.2 and a latency exponent of 0.428 in section 5; the energy-per-bit formula in 2.4.3 is a marginal cost but every number under it is a plain average (energy divided by bits).",
-    "Figure 1 draws the 'Pareto boundary' from a hand-typed formula (0.5 × exp(−1.5 × t^0.4) + 0.005), not from a fit, its exponent 0.4 is not the paper's 0.428, it has no power term, and six of the ten plotted systems (mantis shrimp, Mauthner escape, human saccade, rat, AlphaZero and more) lie below it, inside the zone the text calls forbidden.",
-    "Figure 2 is a hard-coded power law (exponent 0.52) that gives 4.8% error at 8,192 tokens and 9.9% at 2,048 tokens, while Figure 1 plots the same two systems at 0.8% and 2% error.",
-    "Figure 3 bar values disagree with the hardware file: SpiNNaker 2 at 8.3×10⁹ versus 6.67×10¹¹ operations per joule, NorthPole 2.0×10¹² versus 2.5×10¹², B200 1.2×10¹³ versus 4.5×10¹².",
-    "Section 3.1 says the blowfly reflex errs under 2% of the time on predictable gusts, yet Figure 1 plots it at 45% error; the table's blowfly power (0.0001 W) is five times lower than the project's own blowfly row (0.0005 W).",
-    "The manuscript never refers to any of its three figures in the text."
-  ],
-  "bottom_line": "A careful reader can rely on the simple arithmetic (power × time gives the stated joules, 5.6 kW for 120 s is 6.72×10⁵ J, and GPUs really do spend thousands of times more energy per operation than synapses in the project's hardware file). Nothing else is checkable: the animal and AI deliberation fits, the universal Pareto surface, the energy-per-bit ratios and the figures are typed-in numbers that contradict each other and the project's data, and the catalog ids point to the wrong organisms."
+  "inconsistencies": [],
+  "bottom_line": "Following the 24 November 2026 revision, every benchmark row, speed-accuracy curve, GPU power budget (5.60 kW → 672 kJ for o1 and 840 kJ for DeepSeek-R1), human-versus-AI ratio (56× to 70×), substrate energy comparison, catalog ID and figure in Paper 3 is computed directly from deliberation_speed_accuracy_energy.csv and cleaned_hardware_benchmarks.csv.",
+  "revised": "On 24 November 2026, Paper 3 was grounded directly in the 17-row deliberation_speed_accuracy_energy.csv and 33-row cleaned_hardware_benchmarks.csv ledgers: AI reasoning energy was standardised to 672–840 kJ (56×–70× human, eliminating the 'five orders' discrepancy), the unreproducible 25-row fit was replaced with the exact 10-pair speed-accuracy regression, all biological benchmarks and catalog IDs were reconciled, DasGupta et al. 2014 was added, and all three figures were regenerated from the CSVs."
 }

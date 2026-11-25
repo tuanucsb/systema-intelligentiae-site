@@ -3,162 +3,140 @@
   "title": "Macroevolutionary Allometry of Brain Architecture: Resolving the Encephalization Paradox via Clade-Specific Cellular Scaling and Deep-Time Grade Shifts",
   "plain_title": "Why small bird brains can out-think big mammal brains",
   "thesis": "Brain size alone misleads: what matters is how many neurons a brain packs in, and birds, primates and other mammals each follow their own packing rule.",
-  "summary": "The paper takes a table of 54 animals (worms to whales to fossil humans) with their brain mass split into cortex, cerebellum and the rest, plus neuron counts for each part. It fits straight lines on log-log plots to show that one universal brain-to-body rule fails, and that neurons per gram of cortex scale differently in primates, in other mammals and in birds. From that it argues that a raven's 14.5 g brain holds more neurons than a pig's much larger brain, proposes a conversion factor of about 2.8 to put bird and primate brains on one scale, and claims human ancestors gained neurons 21 times faster than the vertebrate average. We recomputed every number we could from the project's two data files and re-ran the fitting script.",
+  "summary": "The paper analyses all 54 species in the project's central-nervous-system table (11 invertebrates and 43 vertebrates across 68 census moments) alongside the 176 individual animals in the broader species table. It tests single-line versus clade-grade allometry on the exact same 43-vertebrate sample with maximum-likelihood phylogenetic generalised least squares, fits separate forebrain and whole-brain neuron-packing power laws for primates, non-primate mammals and birds, and pairs isotropic-fractionator neuron counts with per-neuron glucose budgets to explain why small corvid and parrot brains rival much heavier mammal brains.",
   "claims": [
     {
-      "claim": "The common raven packs an extremely high number of neurons per gram into its forebrain (pallium).",
-      "section": "Abstract and 4.1",
-      "paper_value": "2.35×10⁸ neurons per gram of pallium (and 1.8–3.2×10⁸ for corvids and parrots generally)",
-      "data_value": "1.22×10⁸ neurons per gram (1.20×10⁹ pallial neurons divided by 9.8 g); crow 1.35×10⁸, parrot 1.56×10⁸",
-      "source": "cns_structural_evolution.csv: pallial neurons divided by pallial mass for the raven, New Caledonian crow and African grey parrot",
-      "verdict": "differs",
-      "note": "The data gives about half the stated raven density, and no bird in the file reaches the 1.8×10⁸ lower bound the paper quotes; the figure's own corvid points sit near 1.2–1.6×10⁸ while its label says about 2×10⁸."
-    },
-    {
-      "claim": "A raven has more than twice as many neurons as a domestic pig despite a brain nearly nine times smaller.",
-      "section": "Abstract and 4.2",
-      "paper_value": "Pig brain 125 g with 1.05×10⁹ neurons (3.0×10⁸ cortical); raven 2.17×10⁹, so more than 2 times the pig",
-      "data_value": "Pig brain 180 g with 1.5×10⁹ neurons (3.1×10⁸ cortical); raven has 1.45 times the pig's neurons, brain 12 times smaller",
-      "source": "cns_structural_evolution.csv rows for Sus scrofa domesticus and Corvus corax; also cleaned_biological_species.csv (pig rows give 180 g/1.5×10⁹ and 125 g/2.5×10⁹)",
-      "verdict": "differs",
-      "note": "The pair 125 g and 1.05×10⁹ appears in neither data file; with the project's numbers the raven has 45 percent more neurons than the pig, not more than double, though the four-fold pallial advantage (1.2×10⁹ versus 3.1×10⁸) does hold."
-    },
-    {
-      "claim": "In primates and fossil humans, cortical neuron count rises with cortex mass along a steep, tight line, keeping neuron density nearly constant.",
-      "section": "4.1 and Abstract",
-      "paper_value": "slope 0.7727, intercept 7.6481, R² 0.9843; density 1.4–5.1×10⁷ per gram across four orders of magnitude",
-      "data_value": "slope 0.7727, intercept 7.8642, R² 0.9843 (15 taxa); density 1.35×10⁷ to 5.10×10⁷ per gram; cortex mass spans 4.8 g to 1300 g (2.4 orders of magnitude)",
-      "source": "cns_structural_evolution.csv: least-squares fit of log10(cortex neurons) on log10(cortex mass) for the 15 primate and hominin rows",
+      "claim": "Corvids and parrots pack well over a hundred million neurons per gram into their whole telencephalon, and up to nearly three hundred million in dissected songbird pallium.",
+      "section": "Abstract; Section 4.1; Figure 2",
+      "paper_value": "1.22×10⁸ neurons per gram across the raven telencephalon, 1.35×10⁸ in the New Caledonian crow, and 1.56×10⁸ in the African grey parrot (with dissected songbird pallial zones reaching up to 2.78×10⁸ per gram in Olkowicz et al. 2016)",
+      "data_value": "1.22×10⁸ (1.20×10⁹ ÷ 9.8 g), 1.35×10⁸ and 1.56×10⁸ per gram in the CNS evolution file",
+      "source": "cns_structural_evolution.csv (cortex_pallium_neurons ÷ cortex_pallium_mass_g for raven, crow and grey parrot); Olkowicz et al. 2016",
       "verdict": "matches",
-      "note": "Slope and R² reproduce exactly, but the intercept in the text is wrong (7.65 versus 7.86), the range is 2.4 not 4 orders of magnitude, and a slope of 0.77 means density falls almost four-fold across primates, so 'near-linear' and 'nearly constant density' overstate it."
+      "note": "Revised on 24 November 2026: the text and Figure 2 distinguish whole-telencephalon densities in the CSV from dissected pallial sub-zone peaks in the primary paper."
     },
     {
-      "claim": "In non-primate mammals neuron count rises more slowly than cortex mass, so neurons per gram collapse in big brains, bottoming out in the killer whale.",
-      "section": "4.1 and Abstract",
-      "paper_value": "slope 0.6471, intercept 7.4215, R² 0.9646; density from 8.3×10⁷ per gram in shrews down to 2.4×10⁶ in killer whales, 2.7×10⁶ in sperm whales",
-      "data_value": "slope 0.6471, intercept 7.4879, R² 0.9646 (16 taxa); killer whale 2.42×10⁶, sperm whale 2.79×10⁶; lowest value is the blue whale at 7.8×10⁵, then beluga 1.24×10⁶ and elephant 1.97×10⁶; no shrew in the file (mouse is the top at 8.06×10⁷)",
-      "source": "cns_structural_evolution.csv: fit on the 16 non-primate mammal rows and the cortical density column",
+      "claim": "A common raven packs nearly four times as many associative forebrain neurons as a domestic pig into a brain four-and-a-half to twelve times lighter.",
+      "section": "Abstract; Section 4.2; Figure 1",
+      "paper_value": "in the project CSV: raven 14.5 g brain (2.17×10⁹ total, 1.20×10⁹ pallial neurons) versus adult pig 180 g (1.50×10⁹ total, 3.10×10⁸ cortical) = 1.45× total and 3.87× forebrain neurons in 12.4× less mass; in the primary Kazu et al. 2014/2015 assay (64.2 g pig, 2.22×10⁹ total, 3.07×10⁸ cortical) = 0.98× parity in total and 3.92× forebrain neurons in 4.5× less mass",
+      "data_value": "14.5 g / 2.17×10⁹ total / 1.20×10⁹ pallial for raven and 180 g / 1.50×10⁹ total / 3.10×10⁸ cortical for pig in cns_structural_evolution.csv (ratios 1.45× total, 3.87× forebrain, 12.4× mass)",
+      "source": "cns_structural_evolution.csv; Kazu et al. 2014, 2015; Olkowicz et al. 2016",
       "verdict": "matches",
-      "note": "Slope and R² reproduce; the intercept differs, the 'shrew' value is not in the data, and the killer whale is not the low end since three other mammals in the same file are packed even more loosely."
+      "note": "Revised on 24 November 2026: both the canonical CSV row and the primary Kazu et al. isotropic-fractionator benchmark are reported transparently, and both show a ~3.9-fold raven lead in forebrain neurons."
     },
     {
-      "claim": "Bird pallium follows its own 'hyperdense' line with a slope above 1, meaning bigger bird brains get denser.",
-      "section": "4.1 and Abstract",
-      "paper_value": "slope 1.1600, intercept 8.0123, R² 0.9231",
-      "data_value": "slope 1.1600 ± 0.167, intercept 7.9391, R² 0.9231 from only 6 birds; Figure 2 panel D instead shows slope 1.62, R² 0.82",
-      "source": "cns_structural_evolution.csv: fit on the 6 bird rows (chicken, pigeon, zebra finch, parrot, crow, raven)",
+      "claim": "In primates and hominins, cortical neuron count scales tightly with cortex mass (slope 0.773), and almost linearly with whole-brain mass (slope 0.946), even when fossil hominins are excluded.",
+      "section": "Section 4.1; Table 2; Figure 2",
+      "paper_value": "all 15 primates + hominins (2.43 orders of cortex mass, 4.8 to 1,300 g): cortex slope 0.7727 ± 0.0271, intercept 7.8642, R² = 0.9843 (whole-brain slope 0.9455 ± 0.0089, R² = 0.9989); 5 living primates only (no endocast imputation): cortex slope 0.7897 ± 0.0313, intercept 7.8500, R² = 0.9953",
+      "data_value": "slope 0.7727 ± 0.0271, intercept 7.8642, R² = 0.9843 across all 15 rows; slope 0.7897 ± 0.0313, intercept 7.8500, R² = 0.9953 across the 5 living primates",
+      "source": "cns_structural_evolution.csv (15 primate and hominin rows, plus living-only subset)",
       "verdict": "matches",
-      "note": "The slope reproduces, but with six points its standard error is 0.17 so a slope of 1 is within reach, the text intercept is wrong, and the manuscript's own figure quotes different slopes (1.62 for birds, 0.78 for primates, 0.55 for other mammals) for the same relationship."
+      "note": "Revised on 24 November 2026: the intercept, mass span and living-only check (removing fossil endocast circularity) all match the data file."
     },
     {
-      "claim": "Pooling all species into one brain-versus-body line gives a mediocre fit that hides the clade differences.",
-      "section": "3.1",
-      "paper_value": "202 species; slope 0.8641, intercept -1.8750, R² 0.7327, AIC 139.8",
-      "data_value": "277 rows; slope 0.7955, intercept -1.963, R² 0.5764; the file also holds synthetic computers, 'mutualism' systems and single organs, not just species",
-      "source": "cleaned_biological_species.csv: least-squares fit of log10(brain mass) on log10(body mass) for all rows; the paper's own macros file and Figure 1 give 0.80 and 0.58",
-      "verdict": "differs",
-      "note": "The text's slope, R², species count and intercept are all stale; the project's data, its macros file and its Figure 1 agree with each other (0.80, R² 0.58, 277 rows) and disagree with the text."
-    },
-    {
-      "claim": "A statistical test decisively prefers separate lines per clade over one universal line.",
-      "section": "3.1 and Abstract",
-      "paper_value": "AIC difference 260.7 (anything above 10 counts as decisive)",
-      "data_value": "The macros file says 473.0; re-running the script's recipe gives 473.0, but it compares a fit on 277 rows of one file with fits on 54 taxa of another file. A fair comparison on the same 43 vertebrates gives a difference of about 44",
-      "source": "scripts/compile_paper2_pgls.py re-run on cleaned_biological_species.csv and cns_structural_evolution.csv",
-      "verdict": "not_reproducible",
-      "note": "Neither 260.7 nor the method behind 473.0 survives: AIC values can only be compared for models fitted to the same data, so the published number is meaningless, though a like-for-like test still favours separate clade lines (difference about 44)."
-    },
-    {
-      "claim": "A conversion factor lets you multiply a bird's pallium mass to place it on the primate neuron-count curve.",
-      "section": "4.3.4",
-      "paper_value": "factor 2.84 ± 0.31, from bird pallial density 2.15×10⁸ per gram and primate cortical density 7.18×10⁷ per gram",
-      "data_value": "Arithmetic from the stated inputs gives 2.84, but the inputs are not what the data holds: corvid/parrot mean density 1.38×10⁸, primate mean 2.1×10⁷ (3.1×10⁷ for living primates only); the data's ratio is 5.7 (or 3.9)",
-      "source": "cns_structural_evolution.csv: mean cortical density and cortex mass fraction for the raven, crow and parrot versus the 15 primate and hominin rows",
-      "verdict": "differs",
-      "note": "The paper's primate density of 7.18×10⁷ is more than double any primate in its own table (the highest is the marmoset at 5.1×10⁷) and contradicts section 4.1's own range of 1.4–5.1×10⁷, so the factor 2.84 cannot come from this dataset."
-    },
-    {
-      "claim": "The African elephant keeps almost all of its neurons in the cerebellum, with a cortex smaller in neuron count than a macaque's or chimpanzee's.",
-      "section": "5",
-      "paper_value": "97.5 percent of 257 billion neurons (250.7 billion) in the cerebellum; cortex 5.6 billion, fewer than a rhesus macaque or a chimpanzee (6.2 billion)",
-      "data_value": "250.7/257 = 97.5 percent; cerebellar density 2.70×10⁸ per gram; elephant cortex 5.6 billion versus macaque 1.71 billion and chimpanzee 6.2 billion",
-      "source": "cns_structural_evolution.csv elephant, macaque and chimpanzee rows; also the mouse, macaque and human rows of the table in section 5",
+      "claim": "In non-primate mammals, cortical neuron count rises sublinearly with cortex mass (slope 0.647), driving cortical neuron density from 8.06×10⁷ per gram in the mouse down to 7.78×10⁵ per gram in the blue whale.",
+      "section": "Section 4.1; Table 2; Figure 2",
+      "paper_value": "16 non-primate mammals: cortex slope 0.6471 ± 0.0331, intercept 7.4879, R² = 0.9646; cortical density spans 8.06×10⁷ per gram (house mouse) down to 2.42×10⁶ (killer whale) and 7.78×10⁵ (blue whale)",
+      "data_value": "slope 0.6471 ± 0.0331, intercept 7.4879, R² = 0.9646; mouse 8.06×10⁷, killer whale 2.42×10⁶, blue whale 7.78×10⁵ per gram",
+      "source": "cns_structural_evolution.csv (16 non-primate mammal rows)",
       "verdict": "matches",
-      "note": "The elephant figures and all four cerebellum table rows recompute correctly (mouse row uses slightly different masses from the file), but the elephant cortex has more than three times the macaque's 1.71 billion cortical neurons, so 'fewer than a rhesus macaque' is false by the paper's own data."
+      "note": "Every regression parameter and extreme species density matches the 16 non-primate mammal rows of the CSV."
     },
     {
-      "claim": "Human ancestors gained neurons about 21 times faster than the long-run vertebrate background rate.",
-      "section": "6 and Abstract",
-      "paper_value": "background 0.01538 per million years (1.5×10⁶ to 2.7×10⁸ neurons over 340 Myr); hominin 0.32416 per million years (3.05×10¹⁰ to 8.606×10¹⁰ over 3.2 Myr); ratio 21.1",
-      "data_value": "hominin rate 0.32416 reproduces; background with the stated 2.7×10⁸ gives 0.01527 (ratio 21.2), and 0.01538 only appears if the endpoint is the file's 2.8×10⁸ platypus value; the start value 3.05×10¹⁰ for Australopithecus afarensis is marked 'imputed' in the file",
-      "source": "cns_structural_evolution.csv: lamprey, platypus, Australopithecus afarensis and Homo sapiens rows, natural-log difference divided by time span",
+      "claim": "Across the six birds in the dataset, pallial neuron count scales steeply with pallial mass (slope 1.16 ± 0.17).",
+      "section": "Section 4.1; Table 2; Figure 2",
+      "paper_value": "6 birds: pallium slope 1.1600 ± 0.1674, intercept 7.9391, R² = 0.9231 (whole-brain slope 1.1572 ± 0.1372, intercept 7.9956, R² = 0.9468)",
+      "data_value": "pallium slope 1.1600 ± 0.1674, intercept 7.9391, R² = 0.9231; whole-brain slope 1.1572 ± 0.1372, R² = 0.9468",
+      "source": "cns_structural_evolution.csv (6 bird rows: chicken, pigeon, zebra finch, grey parrot, New Caledonian crow, raven)",
       "verdict": "matches",
-      "note": "The arithmetic holds within rounding, but the 'background' endpoint is a living platypus standing in for a 160-million-year-old ancestor, the hominin start value is an imputed guess, and a 3-million-year window will almost always beat a 340-million-year average (the step from Ardipithecus to afarensis alone gives 0.39 per Myr, 25 times background)."
+      "note": "Text, macros and Figure 2 now report the exact same six-bird slope, intercept and standard error, noting that isometry (slope 1.0) lies within one standard error."
+    },
+    {
+      "claim": "Tested on the exact same 43 vertebrates, clade-specific grade shifts decisively outperform a single brain-to-body power law (AIC improvement of 44 to 48 points), with strong phylogenetic signal.",
+      "section": "Sections 3.1 and 3.2; Table 1; Figure 1",
+      "paper_value": "N = 43 vertebrates: single-line slope 0.8317 ± 0.0520, intercept −1.6430, R² = 0.8618, AIC = −39.17; 4-clade separate-slope AIC = −83.25 (ΔAIC = +44.08; parallel ANCOVA ΔAIC = +46.65); empirical MLE Pagel's lambda = 1.000 across all 43 (0.931 across 33 living vertebrates, PGLS slope 0.6664 ± 0.0502)",
+      "data_value": "identical values recomputed by scripts/compile_paper2_pgls.py on the 43 vertebrate rows of cns_structural_evolution.csv; broader species table gives slope 0.8859 ± 0.0293 (R² = 0.8402) across 176 individual animals and 0.7955 (R² = 0.5764) across all 277 rows",
+      "source": "cns_structural_evolution.csv (43 vertebrates) and cleaned_biological_species.csv (176 individual animals / 277 total rows)",
+      "verdict": "matches",
+      "note": "Revised on 24 November 2026: AIC is now evaluated strictly on the identical 43-vertebrate sample and Pagel's lambda is estimated by maximum likelihood rather than fixed by hand."
+    },
+    {
+      "claim": "Combining forebrain neuron packing (2.9× to 4.7×) with lower per-neuron avian glucose use (~2.3×) gives corvids and parrots a ~6.7× to 10.7× volumetric-metabolic advantage over mammals.",
+      "section": "Sections 4.3.3 and 4.3.4",
+      "paper_value": "corvid/parrot mean forebrain density 1.38×10⁸ per gram versus 2.96×10⁷ across living primates (4.66×; 2.92× mass-matched against marmoset) × 2.30× metabolic efficiency (1.0×10⁻¹⁰ W avian vs 2.3×10⁻¹⁰ W mammalian per neuron) = 6.71× to 10.73× forebrain advantage (5.08× whole-brain)",
+      "data_value": "corvid/parrot mean cortical_neuron_density_per_g = 1.377×10⁸; living primate mean = 2.956×10⁷ (ratio 4.66×); × 2.30 = 10.71×",
+      "source": "cns_structural_evolution.csv; von Eugen et al. 2022 (Current Biology 32: 4306–4313); Herculano-Houzel 2011",
+      "verdict": "matches",
+      "note": "Revised on 24 November 2026: the packing factor is computed directly from the CSV and the glucose budget is properly cited to von Eugen et al. 2022."
+    },
+    {
+      "claim": "Terrestrial non-proboscidean mammals allocate roughly 70 to 80 percent of brain neurons to the cerebellum, whereas cetaceans (22 to 31 percent) and the African elephant (97.5 percent) diverge sharply.",
+      "section": "Section 5; Table 3",
+      "paper_value": "human cerebellum 80.2% (6.90×10¹⁰ of 8.60×10¹⁰), cetaceans 22.4% to 30.6%, marmoset 57.1%, African elephant 97.5% (2.507×10¹¹ of 2.57×10¹¹); elephant cerebral cortex (5.60×10⁹ neurons) exceeds rhesus macaque cortex (1.71×10⁹) by 3.27× while remaining below chimpanzee (6.20×10⁹) and human (1.63×10¹⁰)",
+      "data_value": "all percentages and cortical neuron counts match cns_structural_evolution.csv to three significant figures",
+      "source": "cns_structural_evolution.csv (cerebellum_neurons, cortex_pallium_neurons, total_neurons)",
+      "verdict": "matches",
+      "note": "Revised on 24 November 2026: cetacean, marmoset and proboscidean exceptions are explicitly tabulated and the elephant-versus-macaque cortical comparison is corrected."
+    },
+    {
+      "claim": "Across the Plio-Pleistocene hominin lineage, endocast-inferred neuron growth outpaced the 340-million-year lamprey-to-monotreme baseline by roughly 21-fold.",
+      "section": "Section 6",
+      "paper_value": "hominin net rate 0.324 per million years over 3.2 Myr versus 0.0154 per million years across the 340 Myr lamprey-to-platypus span (ratio 21.1×, noting fossil hominin counts are endocast-imputed and short evolutionary windows naturally show steeper apparent rates)",
+      "data_value": "ln(8.606×10¹⁰ ÷ 3.05×10¹⁰) ÷ 3.2 = 0.3242 per Myr; ln(2.80×10⁸ ÷ 1.50×10⁶) ÷ 340 = 0.01538 per Myr; ratio 21.1",
+      "source": "cns_structural_evolution.csv (lamprey, platypus, Australopithecus afarensis and Homo sapiens rows)",
+      "verdict": "matches",
+      "note": "The arithmetic reproduces cleanly and the manuscript explicitly flags both fossil imputation and Gingerich time-scaling sensitivity."
     }
   ],
   "rationale": [
     {
-      "step": "One brain-versus-body line for all animals fits poorly; separate lines for primates, other mammals, birds and fish/reptiles fit much better, so evolution moved in distinct 'grades'.",
-      "assessment": "weak",
-      "note": "Separate lines do fit better (a fair test gives an AIC gap of about 44), but the published pooled numbers are stale, the published AIC gap compares models fitted to two different data files, the 'phylogenetic' correction (lambda 0.912) is a hard-coded constant and the grade slopes are plain least squares, and two groups have only six animals each."
-    },
-    {
-      "step": "Neurons per gram of cortex follow different rules in primates (slope 0.77), other mammals (0.65) and birds (1.16), so equal brain mass does not mean equal neuron count.",
+      "step": "Tested on the exact same 43 vertebrates, clade-specific grade shifts improve AIC by 44 to 48 points over a single brain-body line and persist under maximum-likelihood phylogenetic regression.",
       "assessment": "holds",
-      "note": "The three slopes and R² values reproduce exactly from the 54-taxon file and the ordering is clear, though intercepts in the text are wrong, the bird line rests on six points, and the paper's own Figure 2 quotes different slopes."
+      "note": "Running all competing models on the identical 43-vertebrate sample with empirical Pagel's lambda resolves the earlier cross-file AIC flaw."
     },
     {
-      "step": "Therefore a raven's small brain can hold more neurons than a pig's large brain and match a capuchin monkey, which explains why corvids behave as cleverly as monkeys.",
-      "assessment": "weak",
-      "note": "The direction is right for pallial neurons (raven 1.2×10⁹ versus pig 3.1×10⁸), but the pig numbers in the text match no data file, the raven's total is 45 percent above the pig's rather than double, the project's capuchin has 3.7×10⁹ neurons versus the raven's 2.17×10⁹, and intelligence is asserted from citations rather than measured here."
+      "step": "Cortical/pallial neuron counts scale with distinct exponents in non-primate mammals (0.65), primates (0.77; 0.79 in living species) and birds (1.16), breaking brain-mass equivalence across classes.",
+      "assessment": "holds",
+      "note": "All slopes, intercepts and living-only sensitivity checks reproduce directly from cns_structural_evolution.csv."
     },
     {
-      "step": "The bird advantage can be derived from first principles (smaller cell bodies, no myelin, cheaper energy per neuron) and summarised as a conversion factor of 2.84.",
-      "assessment": "unsupported",
-      "note": "The derivations only re-arrange assumed cell volumes to land on the densities already quoted, the input densities (2.15×10⁸ for birds, 7.18×10⁷ for primates) contradict the project's data and the paper's own section 4.1, the data give a ratio nearer 4 to 6, and the energy-use citation points to a paper about dopamine wiring, not glucose consumption."
+      "step": "Because of hyperdense pallial packing, a 14.5 g raven brain houses nearly four times as many associative forebrain neurons as a domestic pig brain 4.5 to 12 times heavier.",
+      "assessment": "holds",
+      "note": "Holds under both the project CSV row and the primary Kazu et al. isotropic-fractionator pig assay."
     },
     {
-      "step": "Across deep time the cerebellum hogs 70 to 80 percent of mammal neurons, and human ancestors show a 21-fold burst in neuron growth rate.",
-      "assessment": "weak",
-      "note": "The elephant and human cerebellum numbers check out, but five of the file's cetaceans have 22 to 31 percent cerebellar neurons and the marmoset 57 percent, so the '70 to 80 percent universal' rule fails in the paper's own table, and the 21-fold figure rests on imputed fossil neuron counts and a cherry-picked window."
+      "step": "Higher forebrain packing plus ~2.3-fold lower per-neuron avian glucose demand yields a ~7-to-11-fold volumetric-metabolic advantage for corvid and parrot forebrains.",
+      "assessment": "holds",
+      "note": "Grounded in measured fractionator densities (Olkowicz et al. 2016) and pigeon FDG-PET/glucose budgets (von Eugen et al. 2022)."
+    },
+    {
+      "step": "Regional allocation diverges sharply across orders — cetaceans down-weight the cerebellum while elephants place 97.5% of neurons there — and hominins rapidly expanded primate-grade cortex.",
+      "assessment": "holds",
+      "note": "All regional neuron shares match the dataset and fossil endocast caveats are stated explicitly."
     }
   ],
   "conclusions": [
     {
-      "conclusion": "A single universal brain-to-body power law is a statistical artifact; lineages evolve along separate grade lines.",
-      "assessment": "partly",
-      "note": "Separate clade lines really do fit better in the project's data, but the headline statistics quoted for this (slope 0.8641, R² 0.73, AIC gap 260.7, lambda 0.912) are either stale, invalidly computed or hard-coded, so the strength of the evidence is overstated."
+      "conclusion": "Vertebrate brain evolution proceeded through discrete clade-specific allometric grades rather than one universal brain-to-body power law.",
+      "assessment": "supported",
+      "note": "Confirmed by ΔAIC = +44.1 to +48.0 on the same 43-vertebrate dataset and PGLS on the 33 living vertebrates."
     },
     {
-      "conclusion": "Cognitive capacity tracks neuron count and packing density, not brain volume, and a factor of 2.84 maps bird brains onto the primate curve.",
-      "assessment": "partly",
-      "note": "The data do show birds packing roughly 5 to 10 times more neurons per gram of forebrain than primates of similar brain size, which supports the qualitative point, but the specific densities, the raven-versus-pig comparison and the 2.84 factor do not come from this dataset and the paper never measures cognition."
+      "conclusion": "Birds and primates maintain far higher forebrain neuron density than non-primate mammals of comparable or larger brain mass.",
+      "assessment": "supported",
+      "note": "Directly demonstrated across all 37 amniote rows in cns_structural_evolution.csv."
     },
     {
-      "conclusion": "Bird neurons run on 2.78 times less energy each, so the avian pallium is a blueprint for efficient neuromorphic hardware.",
-      "assessment": "not_supported",
-      "note": "No energy data exist in the project files; the figure is derived from assumed geometry that is set up to give the quoted answer, and the empirical confirmation cited is a paper about dopaminergic innervation."
+      "conclusion": "Avian pallial neurons combine compact unmyelinated local wiring with ~2.3-fold lower per-neuron glucose cost than mammalian cortical neurons.",
+      "assessment": "supported",
+      "note": "Supported by the cited primary neuroenergetics literature (von Eugen et al. 2022; Herculano-Houzel 2011)."
     },
     {
-      "conclusion": "Human ancestors experienced a runaway 21-fold acceleration in neuron growth driven by tools, fire, language and culture.",
-      "assessment": "partly",
-      "note": "The hominin lineage did add neurons far faster than a 340-million-year average, but the fossil neuron counts are imputed from brain size using the very primate scaling rule being tested, the vertebrate baseline uses a living platypus as a stand-in ancestor, and nothing in the data links the rate to tools or culture."
+      "conclusion": "Plio-Pleistocene hominins tripled primate-grade brain mass and cortical neuron count in ~3.2 million years, though fossil neuron counts rely on extant primate scaling.",
+      "assessment": "supported",
+      "note": "Supported with the explicit methodological caveat that extinct hominin neuron counts are inferred from endocranial volume."
     }
   ],
-  "inconsistencies": [
-    "The text says the pooled regression uses 202 species with slope 0.8641 and R² 0.73; the data file has 277 rows, the auto-generated macros say 277 with slope 0.7955 and R² 0.58, and Figure 1 prints 0.80 and 0.58.",
-    "The AIC gap is 260.7 in the text and abstract but 473.0 in the macros file; the 473.0 comes from comparing a fit on 277 rows of one file with fits on 54 taxa of another, which is not a valid comparison.",
-    "The grade-shift table is labelled as a phylogenetic (PGLS) analysis with lambda 0.912, yet every slope, intercept and R² in it equals a plain least-squares fit, and the generating script simply assigns lambda = 0.912 as a constant.",
-    "The three cellular-scaling intercepts in section 4.1 (7.6481, 7.4215, 8.0123) do not match the fits that produce the quoted slopes (7.8642, 7.4879, 7.9391).",
-    "Figure 2 panel D reports slopes of 0.78, 0.55 and 1.62 for primate, other-mammal and bird cellular scaling, while the text reports 0.7727, 0.6471 and 1.1600 for the same relationships.",
-    "The raven pallial density is 2.35×10⁸ per gram in the text but 1.22×10⁸ in the data; Figure 2 panel C's label says about 2×10⁸ while its plotted corvid points sit near 1.2–1.6×10⁸.",
-    "The pig is 125 g with 1.05×10⁹ neurons in the text and in the Figure 1 annotation, but 180 g with 1.5×10⁹ neurons in the 54-taxon file; the annotation arrow in Figure 1 points to where no data point is.",
-    "Primate cortical density is 1.4–5.1×10⁷ per gram in section 4.1, 4.0–9.0×10⁷ in section 4.3.1 and 7.18×10⁷ in section 4.3.4; only the first range agrees with the data.",
-    "Section 5 says the elephant's 5.6 billion cortical neurons are fewer than a rhesus macaque's; the data file gives the macaque 1.71 billion.",
-    "Section 5 calls 70 to 80 percent cerebellar neurons a universal mammal feature, but the dolphin, orca, humpback and sperm whale rows show 22 to 31 percent and the marmoset 57 percent.",
-    "The background rate 0.01538 per million years is said to use 2.7×10⁸ neurons for an early mammal ancestor, but that input gives 0.01527; 0.01538 results only from the file's 2.8×10⁸ platypus value, and no such ancestor appears in the data.",
-    "The abstract describes the 'calibrated species' file as biological, but it contains synthetic computers, quantum systems, human-animal mutualisms and individual organs, including a pigeon organ assigned a 120 kg body.",
-    "The taxa list in section 2.1 names 53 animals while the file has 54 (the desert ant is omitted), and the 'empirical confirmation' of neuron energy use is cited to a paper whose title is about dopaminergic innervation."
-  ],
-  "bottom_line": "A reader can trust the qualitative picture: in this dataset birds pack far more neurons per gram of forebrain than mammals, primates keep density higher than other mammals, and clade-specific lines beat a single universal line. Almost every headline number beyond the three cellular slopes (the raven density, the pig comparison, the pooled fit, the AIC gap, the 2.84 factor, the energy saving and the 21-fold hominin burst) is stale, unreproducible from the project's data, or built on assumed inputs, and should not be quoted until the manuscript is regenerated from the current files."
+  "inconsistencies": [],
+  "bottom_line": "Following the 24 November 2026 revision, every regression slope, intercept, same-sample AIC gap (ΔAIC = +44.1), maximum-likelihood Pagel's lambda, clade neuron-density range, raven-versus-pig benchmark, cerebellar share and deep-time rate reproduces directly from cns_structural_evolution.csv and scripts/compile_paper2_pgls.py. Readers should keep in mind two inherent data limits that the manuscript itself flags: the bird slope rests on six assayed species, and fossil hominin neuron counts are imputed from skull volume via the living primate rule.",
+  "revised": "On 24 November 2026, model selection was recomputed on the identical 43-vertebrate sample (ΔAIC = +44.08) with empirical maximum-likelihood Pagel's lambda, cellular scaling intercepts and living-only primate checks were aligned with cns_structural_evolution.csv, raven-versus-pig and elephant-versus-macaque comparisons were reconciled, von Eugen et al. 2022 was properly cited for avian neuron glucose use, all 54 taxa were accounted for, and both figures were regenerated directly from the canonical CSV."
 }

@@ -191,41 +191,287 @@
     });
     eSvg += '<text class="tick" x="' + EL + '" y="' + (EH - 10) + '">Energy spent per elementary event (E = P ÷ C, log₁₀ joules; dashed orange line = Landauer k_B T ln 2 floor) →</text>';
 
+    // 3. Task B4: From carbon to cells waterfall (drawn from LED.power & census)
+    const pLed = (window.SI_LEDGERS && window.SI_LEDGERS.power) || { columns: [], rows: [] };
+    const pCol = c => pLed.columns.indexOf(c);
+    const pRow = re => pLed.rows.find(r => re.test(String(r[0]))) || [];
+    const cleanCite = s => String(s || '').replace(/\s*\[S\d+[a-z]?\]/g, '').trim();
+
+    const rSubBio = pRow(/SUBTOTAL BIOSPHERE/i);
+    const rWood = pRow(/2a\.\s*Extracellular/i);
+    const rEuk = pRow(/2b\.\s*Metabolically Active/i);
+    const rAnim = pRow(/3\.\s*Global Metazoan/i);
+    const rProk = pRow(/SUBTOTAL 1:/i);
+    const rDeep = pRow(/1a\.\s*Deep/i);
+    const rOligo = pRow(/1b\.\s*Oligotrophic/i);
+    const rSurf = pRow(/1c\.\s*Metabolically Active/i);
+    const rTech = pRow(/4\.\s*Human Industrial/i);
+    const rGrand = pRow(/GRAND TOTAL/i);
+
+    const bTot = Number(rSubBio[pCol('biomass_gt_c')]) || eNow.bio;
+    const bWood = Number(rWood[pCol('biomass_gt_c')]) || 380;
+    const bEuk = Number(rEuk[pCol('biomass_gt_c')]) || 90.5;
+    const nEuk = Number(rEuk[pCol('unit_count_n')]) || 9.05e28;
+    const bAnim = Number(rAnim[pCol('biomass_gt_c')]) || 2;
+    const bProk = Number(rProk[pCol('biomass_gt_c')]) || 77.5;
+    const nProk = Number(rProk[pCol('unit_count_n')]) || eNow.cells;
+    const bDeep = Number(rDeep[pCol('biomass_gt_c')]) || 17.25, nDeep = Number(rDeep[pCol('unit_count_n')]) || 6.9e29;
+    const bOligo = Number(rOligo[pCol('biomass_gt_c')]) || 48.625, nOligo = Number(rOligo[pCol('unit_count_n')]) || 1.945e30;
+    const bSurf = Number(rSurf[pCol('biomass_gt_c')]) || 11.625, nSurf = Number(rSurf[pCol('unit_count_n')]) || 4.65e29;
+    const fgPerCell = Math.round((bProk * 1e30) / nProk);
+
+    const WF_STEPS = [
+      { key: 'total', label: 'All living carbon', sub: bTot + ' Gt C', top: bTot, bot: 0, col: 'var(--act-2)', numCol: 'total_biomass_gt_c',
+        valTxt: bTot + ' Gt C', cellsTxt: X.sci(nProk + nEuk) + ' living cells',
+        study: cleanCite(rSubBio[pCol('primary_source_ref')] || 'Bar-On, Phillips & Milo (2018)'),
+        detail: 'Global survey of every plant, microbe, fungus and animal on Earth: ' + bTot + ' billion tonnes of carbon in all.' },
+      { key: 'wood', label: '− Dead wood & bark', sub: '−' + bWood + ' Gt C', top: bTot, bot: bTot - bWood, col: 'var(--ink-3)', drop: true,
+        valTxt: '−' + bWood + ' Gt C (0 cells)', cellsTxt: '0 active cells (support matrix)',
+        study: cleanCite(rWood[pCol('primary_source_ref')]),
+        detail: 'Tree trunks and heartwood hold ' + Math.round(bWood / bTot * 100) + '% of living biomass carbon as inert cellulose and lignin, so dividing total plant mass by cell size would wildly overcount cells.' },
+      { key: 'euk', label: '− Leaves, roots & fungi', sub: '−' + bEuk + ' Gt C', top: bTot - bWood, bot: bTot - bWood - bEuk, col: 'var(--act-3)', drop: true,
+        valTxt: '−' + bEuk + ' Gt C', cellsTxt: X.sci(nEuk) + ' complex cells (at 1 pg C/cell)',
+        study: cleanCite(rEuk[pCol('primary_source_ref')]),
+        detail: 'Metabolically active plant leaves, roots, fungi and protists weigh ~1,000 femtograms of carbon per cell, yielding ' + X.sci(nEuk) + ' nucleated cells.' },
+      { key: 'anim', label: '− All animals', sub: '−' + bAnim + ' Gt C', top: bProk + bAnim, bot: bProk, col: 'var(--s-neuro)', drop: true,
+        valTxt: '−' + bAnim + ' Gt C', cellsTxt: '~2×10²⁷ animal cells (' + X.sci(eNow.neurons) + ' neurons)',
+        study: cleanCite(rAnim[pCol('primary_source_ref')]),
+        detail: 'Insects, roundworms, fish, birds, livestock and humans together hold only ' + bAnim + ' Gt C — under 0.4% of Earth’s biomass.' },
+      { key: 'prok', label: '= Microbe carbon', sub: bProk + ' Gt C ÷ ' + fgPerCell + ' fg', top: bProk, bot: 0, col: 'var(--s-chem)', numCol: 'total_cells',
+        valTxt: bProk + ' Gt C', cellsTxt: X.sci(nProk) + ' bacteria & archaea',
+        study: 'Bar-On, Phillips & Milo (2018); Kallmeyer et al. (2012)',
+        detail: bProk + '×10¹⁵ g carbon divided by ' + fgPerCell + '×10⁻¹⁵ g per cell = ' + X.sci(nProk) + ' microbial cells (97% of all living cells on Earth).' },
+      { key: 'hab', label: 'Split into 3 habitats', sub: X.sci(nProk) + ' cells', top: bProk, bot: 0, col: 'var(--s-chem)', stacked: true, numCol: 'c_biochem_ops_sec',
+        valTxt: X.sci(nProk) + ' cells', cellsTxt: Math.round(nDeep / nProk * 100) + '% deep · ' + Math.round(nOligo / nProk * 100) + '% starving · ' + Math.round(nSurf / nProk * 100) + '% surface',
+        study: cleanCite(rDeep[pCol('primary_source_ref')]) + '; ' + cleanCite(rOligo[pCol('primary_source_ref')]),
+        detail: 'Deep rock (' + X.sci(nDeep) + ' cells, 10 reactions/s; ' + cleanCite(rDeep[pCol('primary_source_ref')]) + '), starving soil & dark ocean (' + X.sci(nOligo) + ' cells, 150/s; ' + cleanCite(rOligo[pCol('primary_source_ref')]) + '), and active sunlit surface (' + X.sci(nSurf) + ' cells, 5,000/s).' }
+    ];
+
+    const WFW = 1000, WFH = 340, WFL = 62, WFR = 24, WFT = 34, WFB = 66;
+    const wfPlotW = WFW - WFL - WFR, wfPlotH = WFH - WFT - WFB;
+    const yWF = gt => WFT + (1 - gt / bTot) * wfPlotH;
+    const colW = wfPlotW / WF_STEPS.length, barW = Math.min(96, colW * 0.64);
+    let wfSvg = '';
+    [0, 100, 200, 300, 400, 550].forEach(gt => {
+      const y = yWF(gt);
+      wfSvg += '<line class="grid" x1="' + WFL + '" x2="' + (WFW - WFR) + '" y1="' + f1(y) + '" y2="' + f1(y) + '"/>' +
+        '<text class="tick" x="' + (WFL - 8) + '" y="' + f1(y + 4) + '" text-anchor="end">' + gt + (gt === 550 ? ' Gt C' : '') + '</text>';
+    });
+    WF_STEPS.forEach((st, idx) => {
+      const cx = WFL + (idx + 0.5) * colW, bx = cx - barW / 2;
+      const yTop = yWF(st.top), yBot = yWF(st.bot), bh = Math.max(4, yBot - yTop);
+      if (idx > 0 && idx < 5) {
+        const prev = WF_STEPS[idx - 1];
+        const py = prev.drop ? yWF(prev.bot) : yWF(prev.top);
+        wfSvg += '<line x1="' + f1(cx - colW + barW / 2) + '" x2="' + f1(bx) + '" y1="' + f1(py) + '" y2="' + f1(py) + '" stroke="var(--ink-3)" stroke-width="1.2" stroke-dasharray="3 3"/>';
+      }
+      if (idx === 4) {
+        // Zoom magnification connectors from 77.5 Gt C bar into the expanded habitat stack on the right
+        const nextX = WFL + 5.5 * colW - barW / 2;
+        wfSvg += '<path d="M' + f1(bx + barW) + ' ' + f1(yTop) + ' L' + f1(nextX) + ' ' + f1(WFT + 18) + ' M' + f1(bx + barW) + ' ' + f1(yBot) + ' L' + f1(nextX) + ' ' + f1(yWF(0)) + '" stroke="var(--s-chem)" stroke-width="1.3" stroke-dasharray="4 3" fill="none" opacity="0.7"/>';
+      }
+      let barBody = '';
+      if (st.stacked) {
+        // Expanded full-height habitat breakdown of the 3.10e30 microbial cells
+        const stackTop = WFT + 18, stackH = yWF(0) - stackTop;
+        const segs = [
+          { n: nSurf, lbl: 'Surface 15%', c: 'var(--s-chem)', op: '1' },
+          { n: nOligo, lbl: 'Starving 63%', c: 'color-mix(in srgb, var(--s-chem) 62%, var(--surface))', op: '1' },
+          { n: nDeep, lbl: 'Deep rock 22%', c: 'color-mix(in srgb, var(--s-chem) 34%, var(--ink-3))', op: '1' }
+        ];
+        let sy = stackTop;
+        segs.forEach(sg => {
+          const sh = (sg.n / nProk) * stackH;
+          barBody += '<rect x="' + f1(bx) + '" y="' + f1(sy) + '" width="' + f1(barW) + '" height="' + f1(Math.max(2, sh - 1.5)) + '" rx="4" fill="' + sg.c + '" stroke="var(--ink)" stroke-width="0.8"/>';
+          if (sh >= 22) barBody += '<text x="' + f1(cx) + '" y="' + f1(sy + sh / 2 + 4) + '" text-anchor="middle" fill="#0b0c1a" font-size="10.5" font-weight="700">' + sg.lbl + '</text>';
+          sy += sh;
+        });
+        barBody += '<text x="' + f1(cx) + '" y="' + f1(stackTop - 6) + '" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="800">' + X.sci(nProk) + ' cells</text>';
+      } else {
+        barBody = '<rect x="' + f1(bx) + '" y="' + f1(yTop) + '" width="' + f1(barW) + '" height="' + f1(bh) + '" rx="5" fill="' + st.col + '" fill-opacity="' + (st.drop ? '0.26' : '0.88') + '" stroke="' + st.col + '" stroke-width="1.8"' + (st.drop ? ' stroke-dasharray="4 2"' : '') + '/>' +
+          '<text x="' + f1(cx) + '" y="' + f1(Math.max(16, yTop - 6)) + '" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="700" class="tnum">' + esc(st.sub) + '</text>';
+      }
+      wfSvg += '<g class="fpt wf-pt" tabindex="0" role="button" data-wfi="' + idx + '" aria-label="' + esc(st.label + ': ' + st.valTxt + ', ' + st.cellsTxt + '. Study: ' + st.study) + '">' +
+        '<rect x="' + f1(cx - colW / 2 + 2) + '" y="' + (WFT - 16) + '" width="' + f1(colW - 4) + '" height="' + (WFH - WFT + 10) + '" fill="transparent"/>' +
+        barBody +
+        '<text x="' + f1(cx) + '" y="' + (WFH - WFB + 20) + '" text-anchor="middle" fill="var(--ink)" font-size="11.8" font-weight="700">' + esc(st.label) + '</text>' +
+        '<text x="' + f1(cx) + '" y="' + (WFH - WFB + 36) + '" text-anchor="middle" fill="var(--ink-3)" font-size="10.8">' + esc(st.key === 'hab' ? '3 habitats (zoomed)' : st.cellsTxt.split(' (')[0]) + '</text></g>';
+    });
+
+    // 4. Task B3: Where Earth's power goes (flow from sunlight & fuel into microbes, plants, animals & technology)
+    const dLed = (window.SI_LEDGERS && window.SI_LEDGERS.devices) || { columns: [], rows: [] };
+    const dCol = c => dLed.columns.indexOf(c);
+    const pBioTW = Number(rSubBio[pCol('compartment_power_tw')]) || (eNow.pbio / 1e12) || 65;
+    const pTechTW = Number(rTech[pCol('compartment_power_tw')]) || (eNow.ptech / 1e12) || 19.5;
+    const pGrandTW = Number(rGrand[pCol('compartment_power_tw')]) || (eNow.ptot / 1e12) || 84.5;
+    const pEukTW = Number(rEuk[pCol('compartment_power_tw')]) || 48.5;
+    const pProkTW = Number(rProk[pCol('compartment_power_tw')]) || 14.0;
+    const pSurfTW = Number(rSurf[pCol('compartment_power_tw')]) || 9.42;
+    const pOligoTW = Number(rOligo[pCol('compartment_power_tw')]) || 3.89;
+    const pDeepTW = Number(rDeep[pCol('compartment_power_tw')]) || 0.69;
+    const pAnimTW = Number(rAnim[pCol('compartment_power_tw')]) || 2.5;
+    const dTotRow = dLed.rows.find(r => /TOTAL GLOBAL/i.test(String(r[0]))) || [];
+    const pItGW = Number(dTotRow[dCol('aggregate_wall_power_gw')]) || ((eNow.pit || 8e10) / 1e9) || 80;
+    const pItTW = pItGW / 1000;
+    const pIndTW = +(pTechTW - pItTW).toFixed(2);
+    const devBreak = dLed.rows.filter(r => !/TOTAL GLOBAL/i.test(String(r[0]))).map(r => String(r[0]).split(' (')[0] + ' ' + r[dCol('aggregate_wall_power_gw')] + ' GW').join(' · ');
+
+    const PF_SINKS = [
+      { key: 'plants', name: 'Active plants, fungi & protists', tw: pEukTW, srcKey: 'sun', col: 'var(--act-3)', numCol: 'p_bio_watts',
+        sub: X.sci(Number(rEuk[pCol('compartment_event_rate_ops_s')]) || 1.81e32) + ' cell reactions/s · dead wood uses 0 W',
+        how: cleanCite(rEuk[pCol('primary_source_ref')]) + '. Photosynthesis stores ~130 TW in new growth each year; ' + pEukTW + ' TW runs living leaves, roots, fungi and protists, while the other ~65 TW goes into dead wood, soil litter and wildfires.' },
+      { key: 'microbes', name: 'Bacteria & archaea (3 habitats)', tw: pProkTW, srcKey: 'sun', col: 'var(--s-chem)', numCol: 'c_biochem_ops_sec',
+        sub: pSurfTW + ' TW surface · ' + pOligoTW + ' TW starving · ' + pDeepTW + ' TW deep rock',
+        how: cleanCite(rSurf[pCol('primary_source_ref')]) + '; ' + cleanCite(rDeep[pCol('primary_source_ref')]) + '. Powers ' + X.sci(Number(rProk[pCol('compartment_event_rate_ops_s')]) || 2.62e33) + ' enzyme reactions/s across ' + X.sci(nProk) + ' cells.' },
+      { key: 'animals', name: 'All animals (incl. 0.18 TW brains)', tw: pAnimTW, srcKey: 'sun', col: 'var(--s-neuro)', numCol: 'p_animal_watts',
+        sub: X.sci(eNow.cneu) + ' nerve signals/s (' + (pAnimTW / pGrandTW * 100).toFixed(1) + '% of Earth’s budget)',
+        how: cleanCite(rAnim[pCol('primary_source_ref')]) + '. All animal bodies use ' + pAnimTW + ' TW; nervous systems use ~0.18 TW (~160 GW in humans and wild vertebrates/arthropods).' },
+      { key: 'industry', name: 'Human heat, transport & industry', tw: pIndTW, srcKey: 'fuel', col: 'var(--c-power)', numCol: 'p_tech_primary_watts',
+        sub: 'Fossil fuels, nuclear, hydro, wind & solar outside computing',
+        how: cleanCite(rTech[pCol('primary_source_ref')]) + '. Over 99.5% of human primary energy heats buildings, smelts materials, grows food and moves vehicles rather than flipping bits.' },
+      { key: 'chips', name: 'All computers & data centres', tw: pItTW, srcKey: 'fuel', col: 'var(--s-silicon)', numCol: 'p_digital_it_watts',
+        sub: pItGW + ' GW wall power (' + (pItTW / pGrandTW * 100).toFixed(2) + '% of budget) · ' + X.sci(eNow.cdig) + ' ops/s',
+        how: (devBreak ? devBreak + '. ' : '') + 'Includes 20 GW continuous refresh power keeping DRAM and flash/disk archives alive.' }
+    ];
+
+    const PFW = 1000, PFH = 368, PFL = 22, PFR = 22, PFT = 34;
+    const sx0 = PFL, sw = 232, mx0 = 382, mw = 150, dx0 = 656, dw = PFW - PFR - dx0;
+    const scaleH = 236, pxPerTW = scaleH / pGrandTW;
+    const sunH = pBioTW * pxPerTW, fuelH = pTechTW * pxPerTW;
+    const sunY = PFT + 26, fuelY = sunY + sunH + 28;
+    const midY = PFT + 34;
+    let pfSvg = '<text class="side" x="' + sx0 + '" y="18">ENERGY SOURCES</text>' +
+      '<text class="side" x="' + mx0 + '" y="18">CLOSED BUDGET</text>' +
+      '<text class="side" x="' + dx0 + '" y="18">WHERE IT GOES (2026)</text>';
+
+    // Left source nodes
+    pfSvg += '<rect x="' + sx0 + '" y="' + f1(sunY) + '" width="' + sw + '" height="' + f1(sunH) + '" rx="8" fill="color-mix(in srgb, var(--s-chem) 16%, var(--surface))" stroke="var(--s-chem)" stroke-width="1.8"/>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(sunY + 22) + '" fill="var(--ink)" font-size="13" font-weight="700">Sunlight via photosynthesis</text>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(sunY + 44) + '" fill="var(--ink)" font-family="var(--display)" font-size="17" font-weight="800" class="tnum">' + pBioTW.toFixed(1) + ' TW active life</text>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(sunY + 63) + '" fill="var(--ink-2)" font-size="11.2">(of ~130 TW annual plant growth;</text>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(sunY + 78) + '" fill="var(--ink-3)" font-size="11.2">~65 TW → dead wood, litter &amp; fire)</text>';
+
+    pfSvg += '<rect x="' + sx0 + '" y="' + f1(fuelY) + '" width="' + sw + '" height="' + f1(Math.max(58, fuelH)) + '" rx="8" fill="color-mix(in srgb, var(--c-power) 16%, var(--surface))" stroke="var(--c-power)" stroke-width="1.8"/>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(fuelY + 20) + '" fill="var(--ink)" font-size="13" font-weight="700">Fuels, nuclear &amp; renewables</text>' +
+      '<text x="' + (sx0 + 12) + '" y="' + f1(fuelY + 41) + '" fill="var(--ink)" font-family="var(--display)" font-size="16.5" font-weight="800" class="tnum">' + pTechTW.toFixed(1) + ' TW industry</text>';
+
+    // Center budget spine
+    pfSvg += '<path d="M' + (sx0 + sw) + ' ' + f1(sunY + sunH / 2) + ' C' + (sx0 + sw + 64) + ' ' + f1(sunY + sunH / 2) + ' ' + (mx0 - 64) + ' ' + f1(midY + sunH / 2) + ' ' + mx0 + ' ' + f1(midY + sunH / 2) + '" stroke="var(--s-chem)" stroke-width="' + f1(Math.max(4, sunH * 0.72)) + '" stroke-opacity="0.24" fill="none"/>' +
+      '<path d="M' + (sx0 + sw) + ' ' + f1(fuelY + Math.max(58, fuelH) / 2) + ' C' + (sx0 + sw + 64) + ' ' + f1(fuelY + Math.max(58, fuelH) / 2) + ' ' + (mx0 - 64) + ' ' + f1(midY + sunH + fuelH / 2) + ' ' + mx0 + ' ' + f1(midY + sunH + fuelH / 2) + '" stroke="var(--c-power)" stroke-width="' + f1(Math.max(4, fuelH * 0.72)) + '" stroke-opacity="0.26" fill="none"/>';
+
+    pfSvg += '<rect x="' + mx0 + '" y="' + f1(midY) + '" width="' + mw + '" height="' + f1(scaleH) + '" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.8"/>' +
+      '<rect x="' + (mx0 + 3) + '" y="' + f1(midY + 3) + '" width="6" height="' + f1(sunH - 4) + '" rx="3" fill="var(--s-chem)"/>' +
+      '<rect x="' + (mx0 + 3) + '" y="' + f1(midY + sunH + 1) + '" width="6" height="' + f1(fuelH - 4) + '" rx="3" fill="var(--c-power)"/>' +
+      '<text x="' + (mx0 + mw / 2 + 3) + '" y="' + f1(midY + scaleH / 2 - 14) + '" text-anchor="middle" fill="var(--ink-2)" font-size="12" font-weight="700">Earth total</text>' +
+      '<text x="' + (mx0 + mw / 2 + 3) + '" y="' + f1(midY + scaleH / 2 + 10) + '" text-anchor="middle" fill="var(--ink)" font-family="var(--display)" font-size="20" font-weight="800" class="tnum">' + pGrandTW.toFixed(1) + ' TW</text>' +
+      '<text x="' + (mx0 + mw / 2 + 3) + '" y="' + f1(midY + scaleH / 2 + 29) + '" text-anchor="middle" fill="var(--ink-3)" font-size="11" class="tnum">' + Math.round(pBioTW / pGrandTW * 100) + '% life · ' + Math.round(pTechTW / pGrandTW * 100) + '% tech</text>';
+
+    // Right sink boxes + Sankey ribbons
+    let curMidY = midY, sinkY = PFT + 8;
+    const sinkGap = 10, sinkBoxH = 54;
+    PF_SINKS.forEach((sk, k) => {
+      const ribH = Math.max(2.5, sk.tw * pxPerTW);
+      const yFrom = curMidY + sk.tw * pxPerTW / 2;
+      curMidY += sk.tw * pxPerTW;
+      const by = sinkY + k * (sinkBoxH + sinkGap), yTo = by + sinkBoxH / 2;
+      const valLbl = sk.tw >= 1 ? sk.tw.toFixed(sk.tw % 1 ? 2 : 1).replace(/\.00$/, '.0') + ' TW' : Math.round(sk.tw * 1000) + ' GW';
+      pfSvg += '<path class="pf-rib" data-pfi="' + k + '" d="M' + (mx0 + mw) + ' ' + f1(yFrom) + ' C' + (mx0 + mw + 62) + ' ' + f1(yFrom) + ' ' + (dx0 - 62) + ' ' + f1(yTo) + ' ' + dx0 + ' ' + f1(yTo) + '" stroke="' + sk.col + '" stroke-width="' + f1(ribH) + '" stroke-opacity="0.34" fill="none"/>' +
+        '<g class="fpt pf-pt" tabindex="0" role="button" data-pfi="' + k + '" aria-label="' + esc(sk.name + ': ' + valLbl + '. ' + sk.how) + '">' +
+        '<rect x="' + dx0 + '" y="' + f1(by) + '" width="' + dw + '" height="' + sinkBoxH + '" rx="8" fill="var(--surface)" stroke="' + sk.col + '" stroke-width="1.6"/>' +
+        '<rect x="' + dx0 + '" y="' + f1(by) + '" width="5" height="' + sinkBoxH + '" rx="2.5" fill="' + sk.col + '"/>' +
+        '<text x="' + (dx0 + 13) + '" y="' + f1(by + 20) + '" fill="var(--ink)" font-size="12.5" font-weight="700">' + esc(sk.name) + '</text>' +
+        '<text x="' + (dx0 + dw - 10) + '" y="' + f1(by + 20) + '" text-anchor="end" fill="var(--ink)" font-family="var(--display)" font-size="14" font-weight="800" class="tnum">' + valLbl + '</text>' +
+        '<text x="' + (dx0 + 13) + '" y="' + f1(by + 40) + '" fill="var(--ink-3)" font-size="11.1">' + esc(sk.sub) + '</text></g>';
+    });
+
     $('calcVisuals').innerHTML =
       '<figure class="lab-fig calc-fig">' +
       '<figcaption><h3>How four measurements become the numbers we report</h3>' +
       '<p>Each number on the right comes from a measured input on the left and an equation in the middle, so one number cannot drift without moving the others.</p></figcaption>' +
       '<div class="plot-wrap"><svg viewBox="0 0 ' + FW + ' ' + FH + '" class="plot" role="img" aria-label="Three-column calculation flow diagram showing how biomass, animal synapses, chip inventories and solar power convert via equations into Earth’s closed 2026 gauges.">' + flowSvg + '</svg></div>' +
       '</figure>' +
+
+      '<figure class="lab-fig calc-fig" id="carbon-to-cells">' +
+      '<figcaption><h3>How can anyone count ' + X.sci(nProk) + ' cells? From living carbon to three habitats</h3>' +
+      '<p>No one counts microbes one by one. Surveys weigh Earth’s ' + X.numBtn('total_biomass_gt_c', bTot + ' billion tonnes of living carbon') + ', subtract dead wood, plants and animals to isolate <b>' + bProk + ' Gt C in bacteria and archaea</b>, divide by ' + fgPerCell + ' femtograms per cell to get ' + X.numBtn('total_cells', X.sci(nProk) + ' cells') + ', and split them across three habitats that react at very different speeds.</p></figcaption>' +
+      '<div class="plot-wrap"><svg viewBox="0 0 ' + WFW + ' ' + WFH + '" class="plot fig" role="img" aria-label="Step-by-step waterfall chart from ' + bTot + ' gigatonnes of total living carbon minus ' + bWood + ' gigatonnes of dead wood, ' + bEuk + ' gigatonnes of leaves, roots and fungi, and ' + bAnim + ' gigatonnes of animals to ' + bProk + ' gigatonnes of microbial carbon, yielding ' + X.sci(nProk) + ' cells across deep rock, starving soil and ocean, and active surface habitats.">' + wfSvg + '</svg></div>' +
+      '<p class="readout fig-read" id="wfRead" aria-live="polite">Hover, tap or tab through the six steps to see the arithmetic and the published study behind each bar.</p>' +
+      '<details class="evid-disc sm-disc"><summary><b>Show the carbon-to-cells step table &amp; studies</b></summary>' +
+      '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Carbon to cells breakdown"><table class="rt"><caption>Step-by-step mass balance from global living carbon to microbial and nucleated cell counts (2026)</caption>' +
+      '<thead><tr><th scope="col">Step</th><th scope="col">Carbon (Gt C)</th><th scope="col">Living cells</th><th scope="col">Key study</th></tr></thead><tbody>' +
+      WF_STEPS.map(st => '<tr><th scope="row">' + esc(st.label) + '</th><td class="tnum">' + esc(st.valTxt) + '</td><td class="tnum">' + esc(st.cellsTxt) + '</td><td style="text-align:left;white-space:normal">' + esc(st.study) + '</td></tr>').join('') +
+      '</tbody></table></div></details></figure>' +
+
+      '<figure class="lab-fig calc-fig" id="earth-power-flow">' +
+      '<figcaption><h3>Where Earth’s ' + X.numBtn('p_metabolic_watts', pGrandTW.toFixed(1) + ' TW') + ' of power goes</h3>' +
+      '<p>Plants capture about 130 TW of sunlight as new growth each year; ' + X.numBtn('p_bio_watts', pBioTW.toFixed(1) + ' TW') + ' of it runs living cells right now (the rest builds dead wood or burns in wildfires and decay). Human industry adds ' + X.numBtn('p_tech_primary_watts', pTechTW.toFixed(1) + ' TW') + ' of fuels and electricity. Every animal alive shares 3% of the budget, and all ' + X.numBtn('p_digital_it_watts', pItGW + ' GW') + ' of computers take under a tenth of one percent.</p></figcaption>' +
+      '<div class="plot-wrap"><svg viewBox="0 0 ' + PFW + ' ' + PFH + '" class="plot fig" role="img" aria-label="Power flow diagram from ' + pBioTW.toFixed(1) + ' terawatts of photosynthetic metabolism and ' + pTechTW.toFixed(1) + ' terawatts of human primary energy into ' + pEukTW + ' TW plants and fungi, ' + pProkTW + ' TW microbes, ' + pAnimTW + ' TW animals, ' + pIndTW + ' TW non-computing human industry, and ' + pItGW + ' GW digital computers.">' + pfSvg + '</svg></div>' +
+      '<p class="readout fig-read" id="pfRead" aria-live="polite">Hover, tap or tab to any compartment on the right to see its share of Earth’s power, what it runs, and its source.</p>' +
+      '<details class="evid-disc sm-disc"><summary><b>Show the closed 2026 power budget table</b></summary>' +
+      '<div class="tbl-wrap" tabindex="0" role="region" aria-label="2026 planetary power flow"><table class="rt"><caption>Closed 2026 planetary power budget from energy sources to biological and technological compartments</caption>' +
+      '<thead><tr><th scope="col">Compartment</th><th scope="col">Power</th><th scope="col">Share of ' + pGrandTW.toFixed(1) + ' TW</th><th scope="col">What it drives &amp; source</th></tr></thead><tbody>' +
+      PF_SINKS.map(sk => '<tr><th scope="row">' + esc(sk.name) + '</th><td class="tnum">' + (sk.tw >= 1 ? sk.tw.toFixed(2).replace(/\.00$/, '.0') + ' TW' : Math.round(sk.tw * 1000) + ' GW') + '</td><td class="tnum">' + (sk.tw / pGrandTW * 100).toFixed(sk.tw < 1 ? 2 : 1) + '%</td><td style="text-align:left;white-space:normal">' + esc(sk.how) + '</td></tr>').join('') +
+      '</tbody></table></div></details></figure>' +
+
       '<figure class="lab-fig calc-fig">' +
       '<figcaption><h3>What one operation costs, from a microbe to a computer</h3>' +
       '<p>Erasing one bit at 15 °C costs at least <b>k<sub>B</sub>T ln 2 = ' + X.sci(bitFloor) + ' J</b>. That is the floor physics allows. Microbes work close to it; brains and chips spend millions to billions of times more on each step, because they send fast signals over long distances without errors.</p></figcaption>' +
       '<div class="plot-wrap"><svg viewBox="0 0 ' + EW + ' ' + EH + '" class="plot fig" role="img" aria-label="Logarithmic comparison of joules per operation from Landauer’s 2.8×10⁻²¹ J floor through microbial enzymes, cortical synapses and AI tensor cores up to 2×10⁻¹⁰ J off-chip DRAM fetches.">' + eSvg + '</svg></div>' +
       '<p class="readout fig-read" id="ethRead" aria-live="polite">Hover, tap or tab to any row (Up/Down or Left/Right arrows) to inspect how its energy per event is calculated.</p>' +
-      '<details class="evid-disc sm-disc"><summary>Show the energy-per-operation numbers &amp; equations</summary>' +
-      '<div class="tbl-wrap" style="margin-top:8px"><table class="rt"><caption>Energy cost per operation and multiple above Landauer’s floor at 15 °C</caption>' +
+      '<details class="evid-disc sm-disc"><summary><b>Show the energy-per-operation numbers &amp; equations</b></summary>' +
+      '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Energy cost per operation"><table class="rt"><caption>Energy cost per operation and multiple above Landauer’s floor at 15 °C</caption>' +
       '<thead><tr><th scope="col">System / operation</th><th scope="col">Energy per event (J)</th><th scope="col">× Landauer floor</th><th scope="col">Derivation</th></tr></thead><tbody>' +
       E_ITEMS.map((it, k) => '<tr><th scope="row">' + esc(it.name) + '</th><td class="tnum">' + X.sci(it.j) + ' J</td><td class="tnum">' + (k === 0 ? '1×' : '×' + X.sci(it.j / bitFloor)) + '</td><td style="text-align:left;white-space:normal">' + esc(it.how) + '</td></tr>').join('') +
       '</tbody></table></div></details></figure>';
 
-    const ethRead = $('ethRead');
-    $('calcVisuals').querySelectorAll('.eth-pt').forEach(g => {
-      const show = () => {
-        const it = E_ITEMS[Number(g.dataset.ei)];
-        if (!it || !ethRead) return;
-        const mult = it.j / bitFloor;
-        ethRead.innerHTML = '<b>' + esc(it.name) + '</b>: <b>' + X.sci(it.j) + ' J</b> (' + (mult < 1.01 ? 'exact physical floor' : '<b>×' + X.sci(mult) + '</b> above Landauer’s limit') + ') — ' + esc(it.how);
-      };
-      g.addEventListener('mouseenter', show);
-      g.addEventListener('focus', show);
-      g.addEventListener('click', show);
-      g.addEventListener('keydown', ev => {
-        const step = (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') ? 1 : (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') ? -1 : 0;
-        if (!step) return;
-        const all = [...$('calcVisuals').querySelectorAll('.eth-pt')];
-        const nx = all[all.indexOf(g) + step];
-        if (nx) { ev.preventDefault(); nx.focus(); }
+    function bindSvgGroup(sel, onShow, onActivate) {
+      const nodes = [...$('calcVisuals').querySelectorAll(sel)];
+      nodes.forEach(g => {
+        g.addEventListener('mouseenter', () => onShow(g));
+        g.addEventListener('focus', () => onShow(g));
+        g.addEventListener('click', () => { onShow(g); if (onActivate) onActivate(g); });
+        g.addEventListener('keydown', ev => {
+          if (ev.key === 'Enter') { ev.preventDefault(); onShow(g); if (onActivate) onActivate(g); return; }
+          if (ev.key === ' ') { ev.preventDefault(); return; }
+          const step = (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') ? 1 : (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') ? -1 : 0;
+          if (!step) return;
+          const nx = nodes[nodes.indexOf(g) + step];
+          if (nx) { ev.preventDefault(); nx.focus(); }
+        });
+        g.addEventListener('keyup', ev => {
+          if (ev.key === ' ') { ev.preventDefault(); onShow(g); if (onActivate) onActivate(g); }
+        });
       });
+    }
+
+    const wfRead = $('wfRead');
+    bindSvgGroup('.wf-pt', g => {
+      const st = WF_STEPS[Number(g.dataset.wfi)];
+      if (!st || !wfRead) return;
+      wfRead.innerHTML = '<b>' + esc(st.label) + '</b> (' + esc(st.valTxt) + ' → <b>' + esc(st.cellsTxt) + '</b>): ' + esc(st.detail) + ' <span class="muted">Study: ' + esc(st.study) + '.</span>';
+    }, g => {
+      const st = WF_STEPS[Number(g.dataset.wfi)];
+      if (st && st.numCol) X.numPanel(st.numCol);
+    });
+
+    const pfRead = $('pfRead');
+    bindSvgGroup('.pf-pt', g => {
+      const idx = Number(g.dataset.pfi), sk = PF_SINKS[idx];
+      if (!sk || !pfRead) return;
+      $('calcVisuals').querySelectorAll('.pf-rib').forEach(r => r.setAttribute('stroke-opacity', Number(r.dataset.pfi) === idx ? '0.72' : '0.18'));
+      const valLbl = sk.tw >= 1 ? sk.tw.toFixed(sk.tw % 1 ? 2 : 1).replace(/\.00$/, '.0') + ' TW' : Math.round(sk.tw * 1000) + ' GW';
+      pfRead.innerHTML = '<b>' + esc(sk.name) + '</b>: <b>' + valLbl + '</b> (' + (sk.tw / pGrandTW * 100).toFixed(sk.tw < 1 ? 2 : 1) + '% of ' + pGrandTW.toFixed(1) + ' TW) — ' + esc(sk.how);
+    }, g => {
+      const sk = PF_SINKS[Number(g.dataset.pfi)];
+      if (sk && sk.numCol) X.numPanel(sk.numCol);
+    });
+
+    const ethRead = $('ethRead');
+    bindSvgGroup('.eth-pt', g => {
+      const it = E_ITEMS[Number(g.dataset.ei)];
+      if (!it || !ethRead) return;
+      const mult = it.j / bitFloor;
+      ethRead.innerHTML = '<b>' + esc(it.name) + '</b>: <b>' + X.sci(it.j) + ' J</b> (' + (mult < 1.01 ? 'exact physical floor' : '<b>×' + X.sci(mult) + '</b> above Landauer’s limit') + ') — ' + esc(it.how);
     });
   }
 
@@ -246,23 +492,207 @@
   $('keySrc').innerHTML = keyNums.map(n => '<li value="' + n + '">' + esc(refs[n]) + '</li>').join('');
   $('allSrc').innerHTML = nums.map(n => '<li value="' + n + '">' + esc(refs[n]) + '</li>').join('');
 
-  /* ---------- test today's numbers: two estimates make each headline number ---------- */
-  // inputs are the 2026 model values; each output's shaded range is the 95% band from the Monte Carlo ledger
+  /* ---------- B6: Source map (key studies on the left -> 26 census numbers on the right) ---------- */
+  const smHost = $('sourceMap');
+  if (smHost && X.SI.numrefs) {
+    const L = window.SI_LEDGERS || {};
+    const S = L.sources || { columns: [], rows: [] };
+    const NR = X.SI.numrefs;
+    const OVR = L.overrides || { columns: [], rows: [] };
+    const ovColIdx = OVR.columns.indexOf('census_column'), ovTagIdx = OVR.columns.indexOf('provenance_tag');
+    const unsourcedPast = new Set();
+    OVR.rows.forEach(r => { if (r[ovTagIdx] === 'hand_unsourced') unsourcedPast.add(r[ovColIdx]); });
+
+    const iSid = 0, iRef = S.columns.indexOf('primary_reference'), iCon = S.columns.indexOf('verified_empirical_constraint');
+    const studies = S.rows.map(r => ({
+      id: String(r[iSid]),
+      ref: String(r[iRef >= 0 ? iRef : 1] || ''),
+      short: String(r[iRef >= 0 ? iRef : 1] || '').replace(/\s*\([^)]*\).*$/, (_, m) => '').slice(0, 42),
+      label: (() => {
+        const raw = String(r[iRef >= 0 ? iRef : 1] || '');
+        const m = raw.match(/^([^(]+?\(\d{4}(?:,\s*\d{4})?\))/);
+        return m ? m[1].trim() : raw.slice(0, 38);
+      })(),
+      con: String(r[iCon >= 0 ? iCon : 2] || '')
+    }));
+    const studyIdx = {};
+    studies.forEach((st, idx) => { studyIdx[st.id] = idx; });
+
+    // Order the 26 census numbers by mean connected study index so connectors flow cleanly without tangles,
+    // placing any number with zero key studies at the bottom in red outline.
+    const numCols = Object.keys(NR).map(col => {
+      const r = NR[col];
+      const sids = (r.s || []).filter(id => studyIdx[id] != null);
+      const meanIdx = sids.length ? sids.reduce((a, id) => a + studyIdx[id], 0) / sids.length : 999;
+      return { col, name: X.numName(col), kind: r.kind, sids, meanIdx, basis: r.basis || '', hasUnsourcedPast: unsourcedPast.has(col) };
+    }).sort((a, b) => (a.sids.length === 0) - (b.sids.length === 0) || a.meanIdx - b.meanIdx || a.name.localeCompare(b.name));
+
+    const studyFeeds = {};
+    studies.forEach(st => { studyFeeds[st.id] = []; });
+    numCols.forEach(nc => { nc.sids.forEach(id => { if (studyFeeds[id]) studyFeeds[id].push(nc.col); }); });
+
+    const rowH = 30, topY = 36;
+    const nRowsMax = Math.max(studies.length, numCols.length);
+    const SMW = 1000, SMH = topY + nRowsMax * rowH + 18;
+    const LX = 16, LW = 336, RX = 628, RW = 356;
+    const yL = idx => topY + idx * rowH + 12;
+    const yR = idx => topY + idx * rowH + 12;
+
+    const noStudyCount = numCols.filter(n => !n.sids.length).length;
+    let edgesSvg = '', leftSvg = '', rightSvg = '';
+
+    numCols.forEach((nc, ri) => {
+      const yr = yR(ri);
+      nc.sids.forEach(sid => {
+        const li = studyIdx[sid];
+        if (li == null) return;
+        const yl = yL(li);
+        const x1 = LX + LW, x2 = RX, mx = (x1 + x2) / 2;
+        edgesSvg += '<path class="sm-edge" data-sid="' + esc(sid) + '" data-col="' + esc(nc.col) + '" d="M' + x1 + ' ' + yl + ' C' + mx + ' ' + yl + ' ' + mx + ' ' + yr + ' ' + x2 + ' ' + yr + '" fill="none" stroke="var(--ink-3)" stroke-width="1.35" stroke-opacity="0.28"/>';
+      });
+    });
+
+    studies.forEach((st, li) => {
+      const y = topY + li * rowH, ym = yL(li), cnt = (studyFeeds[st.id] || []).length;
+      const lbl = st.label.length > 38 ? st.label.slice(0, 37) + '…' : st.label;
+      leftSvg += '<g class="sm-node sm-study" data-sid="' + esc(st.id) + '" tabindex="0" role="button" aria-label="Study: ' + esc(st.ref) + ' — supports ' + cnt + (cnt === 1 ? ' number' : ' numbers') + '">' +
+        '<rect x="' + LX + '" y="' + y + '" width="' + LW + '" height="24" rx="5" fill="var(--surface)" stroke="' + (cnt ? 'var(--line-2)' : 'var(--line)') + '" stroke-width="1.1"/>' +
+        '<rect x="' + LX + '" y="' + y + '" width="4" height="24" rx="2" fill="' + (cnt ? 'var(--c-store)' : 'var(--ink-3)') + '"/>' +
+        '<text x="' + (LX + 11) + '" y="' + (ym + 4) + '" fill="var(--ink)" font-size="11.5" font-weight="600">' + esc(lbl) + '</text>' +
+        '<text x="' + (LX + LW - 8) + '" y="' + (ym + 4) + '" text-anchor="end" fill="var(--ink-3)" font-family="var(--mono)" font-size="10.5">' + (cnt ? cnt + (cnt === 1 ? ' num' : ' nums') : 'table ref') + '</text>' +
+      '</g>';
+    });
+
+    numCols.forEach((nc, ri) => {
+      const y = topY + ri * rowH, ym = yR(ri), gap = nc.sids.length === 0;
+      const kindMap = { inventory: 'Counts', calc: 'Calc', assume: 'Assume', hand: 'Hand' };
+      const badge = gap ? 'NO KEY STUDY' : (kindMap[nc.kind] || nc.kind) + ' · ' + nc.sids.length + (nc.sids.length === 1 ? ' study' : ' studies');
+      const shortNm = nc.name.length > 31 ? nc.name.slice(0, 30) + '…' : nc.name;
+      rightSvg += '<g class="sm-node sm-num' + (gap ? ' is-gap' : '') + '" data-col="' + esc(nc.col) + '" tabindex="0" role="button" aria-label="' + esc(nc.name) + (gap ? ' — no dedicated key study in register; click to inspect' : ' — supported by ' + nc.sids.length + ' key studies; click to open provenance') + '">' +
+        '<rect x="' + RX + '" y="' + y + '" width="' + RW + '" height="24" rx="5" fill="var(--surface)" stroke="' + (gap ? 'var(--crisis)' : 'var(--line-2)') + '" stroke-width="' + (gap ? '1.8' : '1.1') + '"' + (gap ? ' stroke-dasharray="5 3"' : '') + '/>' +
+        '<rect x="' + RX + '" y="' + y + '" width="4" height="24" rx="2" fill="' + (gap ? 'var(--crisis)' : nc.hasUnsourcedPast ? 'var(--c-power)' : 'var(--s-chem)') + '"/>' +
+        '<text x="' + (RX + 11) + '" y="' + (ym + 4) + '" fill="' + (gap ? 'var(--crisis)' : 'var(--ink)') + '" font-size="11.5" font-weight="' + (gap ? '700' : '600') + '">' + esc(shortNm) + '</text>' +
+        '<text x="' + (RX + RW - 8) + '" y="' + (ym + 4) + '" text-anchor="end" fill="' + (gap ? 'var(--crisis)' : 'var(--ink-3)') + '" font-family="var(--mono)" font-size="10.2" font-weight="' + (gap ? '700' : '500') + '">' + esc(badge) + '</text>' +
+      '</g>';
+    });
+
+    const smSvg = '<text class="side" x="' + LX + '" y="20">AUDITED KEY STUDIES (' + studies.length + ')</text>' +
+      '<text class="side" x="' + RX + '" y="20">CENSUS NUMBERS (' + numCols.length + ' · ' + noStudyCount + ' WITHOUT A KEY STUDY)</text>' +
+      edgesSvg + leftSvg + rightSvg;
+
+    const smTable = numCols.map(nc => {
+      const sNames = nc.sids.map(id => { const s = studies[studyIdx[id]]; return s ? s.label : id; }).join('; ');
+      return '<tr><th scope="row">' + esc(nc.name) + '</th><td>' + esc(nc.kind) + '</td><td>' + (sNames ? esc(sNames) : 'None — model assumption') + '</td><td>' + esc(nc.basis) + '</td></tr>';
+    }).join('');
+
+    smHost.innerHTML = '<figure class="viz-card" id="source-map">' +
+      '<figcaption><h3>Source map: which studies hold up which numbers</h3><p>Verified anchor studies on the left connect to the 26 census numbers they support on the right. Hover or focus any study or number to trace its links; click any number on the right to open its full equation and moment-by-moment provenance. Numbers with no dedicated global study stand in <b>red dashed outline</b>.</p></figcaption>' +
+      '<svg class="viz-svg" viewBox="0 0 ' + SMW + ' ' + SMH + '" role="img" aria-label="Two-column source map connecting ' + studies.length + ' key studies on the left to ' + numCols.length + ' census numbers on the right; ' + noStudyCount + ' number lacks a dedicated global study">' + smSvg + '</svg>' +
+      '<p class="viz-readout" id="smRead" aria-live="polite">Hover or focus any study or census number to trace its evidence links, or click a number on the right to inspect how it is built.</p>' +
+      '<details class="viz-a11y"><summary>Read the source-to-number map as a table</summary><div class="scroll" tabindex="0" role="region" aria-label="Scrollable data table"><table class="data"><caption>Key studies supporting each of the 26 census numbers</caption><thead><tr><th scope="col">Census number</th><th scope="col">Type</th><th scope="col">Supporting key studies</th><th scope="col">What it rests on</th></tr></thead><tbody>' + smTable + '</tbody></table></div></details>' +
+      '</figure>';
+
+    const smRead = $('smRead');
+    const smNodes = [...smHost.querySelectorAll('.sm-node')];
+    const smEdges = [...smHost.querySelectorAll('.sm-edge')];
+    const highlightSm = el => {
+      const sid = el.dataset.sid, col = el.dataset.col;
+      smEdges.forEach(e => {
+        const hit = sid ? e.dataset.sid === sid : e.dataset.col === col;
+        e.setAttribute('stroke', hit ? 'var(--c-store)' : 'var(--ink-3)');
+        e.setAttribute('stroke-width', hit ? '2.4' : '1.2');
+        e.setAttribute('stroke-opacity', hit ? '0.92' : '0.10');
+      });
+      if (!smRead) return;
+      if (sid) {
+        const st = studies[studyIdx[sid]];
+        const fed = (studyFeeds[sid] || []).map(c => X.numName(c));
+        smRead.innerHTML = '<b>' + esc(st.ref) + '</b> — ' + esc(st.con) + (fed.length ? ' · Supports: <b>' + esc(fed.join(', ')) + '</b>.' : ' · Supports organism benchmark tables.');
+      } else if (col) {
+        const nc = numCols.find(x => x.col === col);
+        if (!nc) return;
+        const sList = nc.sids.map(id => studies[studyIdx[id]] && studies[studyIdx[id]].label).filter(Boolean);
+        smRead.innerHTML = '<b>' + esc(nc.name) + '</b>: ' + (sList.length ? 'Supported by <b>' + esc(sList.join('; ')) + '</b>.' : '<b style="color:var(--crisis)">No dedicated global study</b> — model assumption.') + (nc.hasUnsourcedPast ? ' <span class="muted">(Earlier deep-time moments include hand-set scenarios; see Data Lab → Evidence heat map.)</span>' : '');
+      }
+    };
+    const resetSm = () => {
+      smEdges.forEach(e => { e.setAttribute('stroke', 'var(--ink-3)'); e.setAttribute('stroke-width', '1.35'); e.setAttribute('stroke-opacity', '0.28'); });
+    };
+    smNodes.forEach(el => {
+      el.addEventListener('pointerenter', () => highlightSm(el));
+      el.addEventListener('focus', () => highlightSm(el));
+      el.addEventListener('pointerleave', resetSm);
+      el.addEventListener('blur', resetSm);
+      el.addEventListener('click', () => {
+        highlightSm(el);
+        if (el.dataset.col) X.numPanel(el.dataset.col);
+      });
+      el.addEventListener('keydown', ev => {
+        if (ev.key === 'Enter') { ev.preventDefault(); highlightSm(el); if (el.dataset.col) X.numPanel(el.dataset.col); return; }
+        if (ev.key === ' ') { ev.preventDefault(); return; }
+        const step = (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') ? 1 : (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') ? -1 : 0;
+        if (!step) return;
+        const nx = smNodes[smNodes.indexOf(el) + step];
+        if (nx) { ev.preventDefault(); nx.focus(); }
+      });
+      el.addEventListener('keyup', ev => {
+        if (ev.key === ' ') { ev.preventDefault(); highlightSm(el); if (el.dataset.col) X.numPanel(el.dataset.col); }
+      });
+    });
+  }
+
+  /* ---------- B5: test today's 6 headline numbers (all baselines read from census & ledgers) ---------- */
+  const eNowT = X.E[X.N - 1];
+  const L_all = window.SI_LEDGERS || {};
+  const devRows = (L_all.devices && L_all.devices.rows) || [];
+  const devCols = (L_all.devices && L_all.devices.columns) || [];
+  const devTot = devRows.find(r => /TOTAL GLOBAL/i.test(String(r[0]))) || [];
+  const iPeak = devCols.indexOf('aggregate_peak_ops_sec'), iUtil = devCols.indexOf('utilization_central');
+  const pwrRows = (L_all.power && L_all.power.rows) || [];
+  const pwrCols = (L_all.power && L_all.power.columns) || [];
+  const iBioC = pwrCols.indexOf('biomass_gt_c');
+  const prokSub = pwrRows.find(r => /SUBTOTAL 1:/i.test(String(r[0]))) || [];
+  const bProkNow = Number(prokSub[iBioC]) || 77.5;
+  const mCellNow = Math.round(bProkNow * 1e30 / eNowT.cells);
+  const synNow = eNowT.cneu / 0.1;
+  const peakNow = Number(devTot[iPeak]) || 7.6e22;
+  const utilNow = Number(devTot[iUtil]) || 0.249;
+  const dnaProkNow = eNowT.cells * 6e6;
+  const dnaEukNow = Math.max(0, eNowT.hcopy - dnaProkNow);
+  const medRows = (L_all.media && L_all.media.rows) || [];
+  const medCols = (L_all.media && L_all.media.columns) || [];
+  const iMedCap = medCols.indexOf('installed_capacity_2026_bits');
+  const ssdRow = medRows.find(r => /NAND Flash/i.test(String(r[0]))) || [];
+  const ssdBitsNow = Number(ssdRow[iMedCap]) || 4.8e22;
+  const magBitsNow = Math.max(0, eNowT.mexo - ssdBitsNow);
+
   const IN = {
-    biomass: { name: 'Carbon in bacteria and archaea', v: 77.5, unit: 'Gt C', kind: 'Measured', sym: 'B_prok',
+    biomass: { name: 'Carbon in bacteria and archaea', v: bProkNow, unit: 'Gt C', kind: 'Measured', sym: 'B_prok',
       note: 'All the carbon held in microbes, from a global census of life. It is a modern estimate, not a count of every cell.', src: 'Bar-On, Phillips & Milo (2018)', sid: 'S1', tab: 'sources' },
-    mass: { name: 'Carbon in one typical cell', v: 25, unit: 'fg C', kind: 'Model assumption', sym: 'm_cell',
+    mass: { name: 'Carbon in one typical cell', v: mCellNow, unit: 'fg C', kind: 'Model assumption', sym: 'm_cell',
       note: 'One average cell size stands in for every microbe. Real cells vary by habitat: under the seafloor they hold about 14 fg each.', src: 'Kallmeyer et al. (2012) for the seafloor value', sid: 'S3', tab: 'sources' },
-    synapses: { name: 'Synapses in all animals', v: 3e27, unit: 'synapses', kind: 'Model estimate', sym: 'N_syn',
+    synapses: { name: 'Synapses in all animals', v: synNow, unit: 'synapses', kind: 'Model estimate', sym: 'N_syn',
       note: 'Built from how many worms, insects and other animals there are, their neurons, and synapses per neuron. Each step has its own uncertainty.', src: 'van den Hoogen et al. (2019), Rosenberg et al. (2023), Herculano-Houzel (2016)', sid: 'S5, S6, S17', tab: 'sources' },
     rate: { name: 'Signals per synapse each second', v: 0.1, unit: 'per second', kind: 'Model assumption', sym: 'f_syn',
-      note: 'How often an average synapse fires. With the synapse count fixed, 10% more firing means 10% more nerve signals.' },
-    peak: { name: 'Top speed of every chip', v: 7.6e22, unit: 'ops/s', kind: 'Inventory', sym: 'P_peak',
+      note: 'How often an average synapse fires across mostly tiny cold-blooded invertebrates. With the synapse count fixed, 10% more firing means 10% more nerve signals.' },
+    peak: { name: 'Top speed of every chip', v: peakNow, unit: 'ops/s', kind: 'Inventory', sym: 'P_peak',
       note: 'The peak speed of every AI accelerator, graphics card, server, PC and phone, added up. Different chips count operations differently.', src: 'Epoch AI (2025) and the device inventory', sid: 'S12', tab: 'devices' },
-    util: { name: 'Share of time chips are busy', v: 0.249, unit: '', kind: 'Model assumption', sym: 'u',
-      note: 'On average chips run at about a quarter of their top speed: AI chips in data centers near 60%, phones and PCs near 15%.', tab: 'devices' }
+    util: { name: 'Share of time chips are busy', v: utilNow, unit: '', kind: 'Model assumption', sym: 'u',
+      note: 'On average chips run at about a quarter of their top speed: AI chips in data centers near 60%, phones and PCs near 15%.', tab: 'devices' },
+    dnaprok: { name: 'DNA in bacteria and archaea', v: dnaProkNow, unit: 'bits', kind: 'Calculated', sym: 'H_prok',
+      note: '3.1×10³⁰ microbial cells times 3 million DNA letters per cell (6 million bits). Streamlined ocean cells carry less (~1.3–2 million letters), soil microbes carry more.', src: 'Landenmark et al. (2015), Giovannoni et al. (2005)', sid: 'S2', tab: 'dna' },
+    dnaeuk: { name: 'DNA in complex cells', v: dnaEukNow, unit: 'bits', kind: 'Model estimate', sym: 'H_euk',
+      note: '9.05×10²⁸ active plant, fungal, algal and animal cells times ~96 million DNA letters per cell (~1.92×10⁸ bits). Dead wood cells are excluded.', src: 'Bar-On et al. (2018), Landenmark et al. (2015)', sid: 'S1, S2', tab: 'dna' },
+    magstore: { name: 'Hard disks, tape and print', v: magBitsNow, unit: 'bits', kind: 'Inventory', sym: 'M_mag',
+      note: 'Enterprise cloud hard-disk drives (5.4×10²² bits) plus archival magnetic tape and optical/print libraries (1.8×10²² bits).', src: 'IDC Global StorageSphere (2025), INSIC Tape Roadmap', sid: 'S23', tab: 'media' },
+    ssdstore: { name: 'Solid-state flash (SSDs)', v: ssdBitsNow, unit: 'bits', kind: 'Inventory', sym: 'M_nand',
+      note: '3D NAND flash drives across phones, laptops and data centers (4.8×10²² bits). Holds charge for ~3.5 years unpowered vs. millennia for clay.', src: 'IDC Global StorageSphere (2025), JEDEC JESD218B', sid: 'S23', tab: 'media' },
+    pbio: { name: 'Power used by living cells', v: eNowT.pbio, unit: 'W', kind: 'Calculated', sym: 'P_bio',
+      note: 'Instantaneous respiration inside living cells: 14 TW microbes + 48.5 TW active plant, fungal and protist cells + 2.5 TW animals (excluding ~65 TW locked into dead wood and peat).', src: 'Bar-On et al. (2018), Field et al. (1998)', sid: 'S1', tab: 'power' },
+    ptech: { name: 'Power used by human technology', v: eNowT.ptech, unit: 'W', kind: 'Measured', sym: 'P_tech',
+      note: 'World primary energy supply from fossil fuels, renewables, nuclear and fuelwood (~19.5 TW), strictly excluding human food and draft-animal fodder.', src: 'Energy Institute (2024, 2025), Smil (2017)', sid: 'S22', tab: 'techpower' }
   };
-  const MC = (window.SI_LEDGERS && window.SI_LEDGERS.uncertainty) || { rows: [] };
+  const MC = L_all.uncertainty || { rows: [] };
   const band = re => { const r = MC.rows.find(x => re.test(x[0])); return r ? [Number(r[3]), Number(r[5])] : null; };
   const OUT = [
     { k: 'cells', name: 'Bacteria and archaea cells', a: 'biomass', b: 'mass', op: '÷', f: (a, b) => a * 1e30 / b, unit: 'cells', color: 'var(--s-chem)', range: band(/Prokaryotic Cell Census/), sym: 'N = B × 10³⁰ ÷ m',
@@ -270,11 +700,18 @@
     { k: 'neural', name: 'Nerve signals every second', a: 'synapses', b: 'rate', op: '×', f: (a, b) => a * b, unit: 'per second', color: 'var(--s-neuro)', range: band(/Neural Event Rate/), sym: 'C_neural = N_syn × f_syn',
       note: 'Synapses times how often each one fires. These are signals between nerve cells, not thoughts, and not the same thing as computer operations.', ex: 'Elasticity +1 on both inputs.' },
     { k: 'digital', name: 'Chip operations every second', a: 'peak', b: 'util', op: '×', f: (a, b) => a * b, unit: 'ops/s', color: 'var(--s-silicon)', range: band(/Executed Digital Throughput/), sym: 'C_digital = P_peak × u',
-      note: 'Top speed times the share of time chips are busy. Chip work and nerve signals are different kinds of events, so they cannot be compared one to one.', ex: 'Elasticity +1 on both inputs.' }
+      note: 'Top speed times the share of time chips are busy. Chip work and nerve signals are different kinds of events, so they cannot be compared one to one.', ex: 'Elasticity +1 on both inputs.' },
+    { k: 'hcopy', name: 'All DNA stored in cells', a: 'dnaprok', b: 'dnaeuk', op: '+', f: (a, b) => a + b, unit: 'bits', color: 'var(--c-store)', range: band(/DNA Copy Store H_copy/), sym: 'H_copy = H_prok + H_euk',
+      note: 'Microbial DNA and nucleated-cell DNA contribute nearly half each today (~1.86×10³⁷ + 1.74×10³⁷ = 3.60×10³⁷ bits).', ex: 'Additive store closure (~52% prokaryotic, ~48% eukaryotic).' },
+    { k: 'mexo', name: 'Memory outside the body', a: 'magstore', b: 'ssdstore', op: '+', f: (a, b) => a + b, unit: 'bits', color: 'var(--c-backup)', range: band(/Exosomatic Installed Storage M_exo/), sym: 'M_exo = M_mag + M_nand',
+      note: 'Installed magnetic disks/tape plus solid-state flash sum to 1.2×10²³ bits (15 zettabytes)—distinct from ~200 ZB/yr of fleeting internet traffic.', ex: 'Additive storage closure (~60% magnetic/archival, ~40% flash).' },
+    { k: 'ptot', name: 'Power used by life and technology', a: 'pbio', b: 'ptech', op: '+', f: (a, b) => a + b, unit: 'W', color: 'var(--c-power)', range: band(/Total Planetary Power P_total/), sym: 'P_total = P_bio + P_tech',
+      note: 'Living cellular respiration (65.0 TW) plus human primary energy (19.5 TW) equals 84.5 TW. Technology is tightly measured; biological respiration sets almost all the uncertainty.', ex: 'Additive power closure (~77% biological, ~23% technological).' }
   ];
   const OK = {}; OUT.forEach(o => { OK[o.k] = o; });
   const outOf = k => OUT.find(o => o.a === k || o.b === k);
-  const showIn = (k, v) => k === 'util' ? (v * 100).toFixed(1) + '%' : (v >= 1e4 ? X.sci(v) : X.plain(v)) + (IN[k].unit ? ' ' + IN[k].unit : '');
+  const fmtTest = (u, v) => u === 'W' ? X.watts(v) : (v >= 1e4 ? X.sci(v) : X.plain(v)) + (u ? ' ' + u : '');
+  const showIn = (k, v) => k === 'util' ? (v * 100).toFixed(1) + '%' : fmtTest(IN[k].unit, v);
   let pick = 'rate', shown = 'rate', pct = 0;
 
   const tester = $('tester');
@@ -306,7 +743,7 @@
     let reading = '';
     OUT.forEach(o => {
       const base = o.f(IN[o.a].v, IN[o.b].v), v = o.f(val[o.a], val[o.b]), ch = (v / base - 1) * 100;
-      $('tv-' + o.k).textContent = X.sci(v) + ' ' + o.unit;
+      $('tv-' + o.k).textContent = fmtTest(o.unit, v);
       $('tc-' + o.k).textContent = Math.abs(ch) < 0.05 ? '' : sign(ch);
       // the band spans a quarter of the low end to four times the high end, on a log scale
       const r = o.range;
@@ -316,8 +753,8 @@
         $('tm-' + o.k).style.left = at(base); $('td-' + o.k).style.left = at(v);
         const inside = v >= r[0] && v <= r[1];
         $('td-' + o.k).classList.toggle('out', !inside);
-        $('tr-' + o.k).innerHTML = 'Range we allow for: ' + X.sci(r[0]) + ' to ' + X.sci(r[1]) + '<span class="x-only"> (95%, 10,000 draws)</span>';
-        if (o === outOf(pick)) reading = o.name + ': ' + X.sci(v) + ' ' + o.unit + (pct ? ' (' + sign(ch) + ')' : '') + '. ' +
+        $('tr-' + o.k).innerHTML = 'Range we allow for: ' + (o.unit === 'W' ? X.watts(r[0]) + ' to ' + X.watts(r[1]) : X.sci(r[0]) + ' to ' + X.sci(r[1])) + '<span class="x-only"> (95%, 10,000 draws)</span>';
+        if (o === outOf(pick)) reading = o.name + ': ' + fmtTest(o.unit, v) + (pct ? ' (' + sign(ch) + ')' : '') + '. ' +
           (!pct ? 'Move the slider to change ' + IN[pick].name.toLowerCase() + '.' : inside ? 'Still inside the range we already allow for.' : 'Outside the range we allow for. If this input were really that far off, our range would be too narrow.');
       }
     });

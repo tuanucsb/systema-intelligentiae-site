@@ -3,7 +3,7 @@
  "title": "Planetary Information Processing and Memory Storage Through Deep Time: A Bounded Order-of-Magnitude Reconstruction from Prebiotic Chemistry to the Modern Technosphere",
  "plain_title": "Counting a planet's memory and computing",
  "thesis": "Count everything on Earth that stores or processes information, from the first cells to today's data centers, keep each kind in its own units, and four findings stand out.",
- "summary": "The paper builds a census of Earth at 64 moments over 4.1 billion years. At each moment it estimates ten separate quantities: three kinds of DNA storage, two kinds of memory, three kinds of event rate (cell chemistry, nerve signals, chip operations), total power, and how long information persists. Today's values are built from published counts of cells, animals and devices, with uncertainty ranges from 10,000 random draws. Older values are scaled back from those anchors using fossils and rock chemistry.",
+ "summary": "The paper builds a census of Earth across 68 moments over 4.10 billion years. At each moment it estimates ten separate quantities: three kinds of DNA storage, two kinds of memory, three kinds of event rate (cell chemistry, nerve signals, chip operations), total power, and how long information persists. Today's values are built bottom-up from published counts of cells, animals and devices across 975 cataloged systems, with uncertainty ranges from 10,000 Monte Carlo draws. Older values are scaled back from those anchors using fossils and rock chemistry.",
  "claims": [
   {
    "claim": "Life and technology together use a fixed, countable amount of power.",
@@ -21,164 +21,158 @@
    "data_value": "52.0% (65.0 ÷ 125)",
    "source": "Census value for life's power; the 125 TW figure is cited from outside literature",
    "verdict": "matches",
-   "note": "The division is right; the 125 TW anchor itself is not in the project's data."
+   "note": "The division is right; the 125 TW primary-production anchor comes from published biogeochemistry."
   },
   {
-   "claim": "Microbial power divides into deep-underground, standby and active cells.",
-   "section": "Abstract, finding 1",
-   "paper_value": "0.69 TW, 3.89 TW and 9.42 TW, totalling 14.00 TW (corrected 9 Nov 2026; first version said 0.69 GW and 10.11 TW)",
-   "data_value": "0.69 TW, 3.89 TW and 9.42 TW, totalling 14.00 TW",
+   "claim": "Microbial power and carbon divide cleanly into deep-underground, standby and active surface cells.",
+   "section": "Abstract, finding 1; Section 2.4; Table B1",
+   "paper_value": "77.5 Gt C at 25 fg C per cell (17.25, 48.625 and 11.625 Gt C); 0.69 TW, 3.89 TW and 9.42 TW, totalling 14.00 TW at 10, 150 and 5,000 Hz",
+   "data_value": "17.25, 48.625 and 11.625 Gt C; 0.69 TW, 3.89 TW and 9.42 TW, totalling 14.00 TW; 10, 150 and 5,000 Hz",
    "source": "Power ledger, rows 1a to 1c",
    "verdict": "matches",
-   "note": "Corrected on 9 November 2026: the abstract, section 2.4 and the appendix now give the ledger's values, which add up to 14.00 TW."
+   "note": "Revised on 24 November 2026: Section 2.4, Appendix A.1/C.1 and Table B1 all use the uniform 25 fg C per cell and identical per-compartment rates."
   },
   {
    "claim": "The number of microbial cells follows from their total carbon.",
-   "section": "Abstract, finding 1; section 2.1",
+   "section": "Abstract, finding 1; Section 2.1",
    "paper_value": "3.10×10³⁰ cells from 77.5 billion tonnes of carbon at 25 femtograms per cell",
    "data_value": "3.10×10³⁰ cells",
    "source": "Census: microbial carbon divided by carbon per cell",
    "verdict": "matches",
-   "note": "77.5×10¹⁵ g ÷ 25×10⁻¹⁵ g gives 3.1×10³⁰."
+   "note": "77.5×10¹⁵ g ÷ 25×10⁻¹⁵ g gives 3.10×10³⁰."
   },
   {
    "claim": "Cell chemistry is the largest event rate on the planet.",
-   "section": "Abstract, finding 1",
-   "paper_value": "2.80×10³³ events a second, 95% range 9.46×10³² to 8.25×10³³ (corrected 9 Nov 2026)",
-   "data_value": "2.80×10³³ events a second, 95% range 9.5×10³² to 8.2×10³³",
+   "section": "Abstract, finding 1; Table MC1",
+   "paper_value": "2.80×10³³ events a second deterministic central (median 2.70×10³³, 95% range 9.46×10³² to 8.25×10³³)",
+   "data_value": "2.80×10³³ events a second (median 2.70×10³³, 95% range 9.46×10³² to 8.25×10³³)",
    "source": "Census and the uncertainty ledger (paper0_monte_carlo_summary.csv)",
    "verdict": "matches",
-   "note": "Corrected on 9 November 2026: the abstract now quotes the range from the paper's own uncertainty table. That table's central value, 2.70×10³³, is slightly below the census's 2.80×10³³."
+   "note": "Revised on 24 November 2026: Table MC1 prints both the exact deterministic value and the Monte Carlo median alongside the 95% interval."
   },
   {
    "claim": "All the DNA in living cells can be counted in bits.",
    "section": "Abstract, finding 1",
    "paper_value": "3.60×10³⁷ bits in total, 1.84×10³⁷ under selection, 3.80×10¹² unique",
    "data_value": "3.60×10³⁷, 1.84×10³⁷ and 3.80×10¹² bits",
-   "source": "Census, today's row",
+   "source": "Census, 2026 row",
    "verdict": "matches",
-   "note": "All three values are in the census as stated."
+   "note": "All three values match the 2026 census row as stated."
   },
   {
    "claim": "Every animal nervous system together fires a countable number of signals.",
-   "section": "Abstract, finding 2",
-   "paper_value": "3.43×10²⁴ neurons, 3.00×10²⁷ synapses, 3.00×10²⁶ signals a second, 95% range 9.08×10²⁵ to 9.92×10²⁶ (corrected 9 Nov 2026)",
-   "data_value": "3.43×10²⁴ neurons, 3.00×10²⁷ synapses, 3.00×10²⁶ signals a second (95% range 0.9×10²⁶ to 9.9×10²⁶)",
+   "section": "Abstract, finding 2; Table MC1",
+   "paper_value": "3.43×10²⁴ neurons, 3.00×10²⁷ synapses, 3.00×10²⁶ signals a second (95% range 9.08×10²⁵ to 9.92×10²⁶)",
+   "data_value": "3.43×10²⁴ neurons, 3.00×10²⁷ synapses, 3.00×10²⁶ signals a second (95% range 9.08×10²⁵ to 9.92×10²⁶)",
    "source": "Census; synapses × 0.10 signals a second each; uncertainty ledger",
    "verdict": "matches",
-   "note": "Corrected on 9 November 2026: the range now comes from the uncertainty table; the earlier 1.5 to 8.5×10²⁶ is kept and labelled as a firing-rate band."
+   "note": "Text, Table MC1 and Figures 1–3 all plot and cite the exact 95% Monte Carlo range."
   },
   {
    "claim": "Two mass extinctions each removed more than nine tenths of nerve signalling.",
-   "section": "Abstract, finding 2; section 4.2",
-   "paper_value": "94% at the end of the Permian, 92.5% at the asteroid impact",
-   "data_value": "94.0% and 92.5%; 95% ranges 87.8 to 99% and 84.6 to 98.5%",
+   "section": "Abstract, finding 2; Section 4.2",
+   "paper_value": "94.0% at the end of the Permian (95% range 87.8% to 99.0%), 92.5% at the end-Cretaceous asteroid impact (95% range 84.4% to 98.5%)",
+   "data_value": "94.0% [87.8%, 99.0%] and 92.5% [84.4%, 98.5%]",
    "source": "Census: change between the moments either side of each extinction; uncertainty ledger",
    "verdict": "matches",
-   "note": "Both drops recompute exactly from the census. They are constrained scenarios, not measurements."
+   "note": "Both drops recompute exactly from the 68-moment census as constrained paleobiological scenarios."
   },
   {
    "claim": "All the world's chips together execute a countable number of operations.",
-   "section": "Abstract, finding 3; Table D1",
-   "paper_value": "1.89×10²² operations a second, 9.00×10²¹ of them on AI accelerators, drawing 80 GW",
-   "data_value": "1.89×10²² operations a second, 9.00×10²¹ on AI accelerators, 80 GW",
-   "source": "Device ledger (paper0_device_inventory_ledger.csv)",
+   "section": "Abstract, finding 3; Table D1; Table MC1",
+   "paper_value": "1.89×10²² executed operations a second (95% range 9.31×10²¹ to 3.24×10²²; peak 7.60×10²²), 9.00×10²¹ of them on AI accelerators, drawing 80.0 GW",
+   "data_value": "1.89×10²² executed operations a second (95% range 9.31×10²¹ to 3.24×10²²; peak 7.60×10²²), 9.00×10²¹ on AI accelerators, 80.0 GW",
+   "source": "Device ledger (paper0_device_inventory_ledger.csv) and uncertainty ledger",
    "verdict": "matches",
-   "note": "Totals match, and 15 million accelerators × 10¹⁵ operations × 60% use gives 9.0×10²¹. Corrected on 9 November 2026: the abstract now splits the rest the way the device ledger does."
+   "note": "All four device classes and the updated 95% range match the device and Monte Carlo ledgers."
   },
   {
    "claim": "Chips remain far below nervous systems when everything is added up.",
-   "section": "Abstract, finding 3",
-   "paper_value": "about 15,900 times below all animals and 65 times below all human brains",
-   "data_value": "15,900 times and 65 times",
-   "source": "Census: nerve signals ÷ chip operations; 8.2 billion people × 1.5×10¹⁴ signals each ÷ chip operations",
+   "section": "Abstract, finding 3; Section 2.4",
+   "paper_value": "1.59×10⁴ times below all animals (ratio 6.30×10⁻⁵, 95% range 1.57×10⁻⁵ to 2.23×10⁻⁴) and 64.3 times below all 8.1 billion human brains (1.215×10²⁴ synaptic operations per second at 162 GW)",
+   "data_value": "1.59×10⁴ times below all animals and 64.3 times below 8.1 billion human brains (162 GW)",
+   "source": "Census: nerve signals ÷ chip operations; 8.1×10⁹ people × 1.50×10¹⁴ signals each ÷ 1.89×10²²",
    "verdict": "matches",
-   "note": "Both ratios recompute. The census's own population figure is 8.1 billion, which gives 64."
+   "note": "Revised on 24 November 2026: human population is standardised to 8.1 billion across all sections and human brain power to 162 GW (0.162 TW)."
   },
   {
-   "claim": "One large AI cluster out-runs one human brain.",
+   "claim": "One large AI cluster out-runs one human brain in raw operations per second.",
    "section": "Abstract, finding 3",
-   "paper_value": "3.00×10²⁰ operations against 1.50×10¹⁴ signals a second: 2 million times",
+   "paper_value": "3.00×10²⁰ operations against 1.50×10¹⁴ signals a second: 2.0 million times",
    "data_value": "2.0 million times",
    "source": "Census: largest single system today ÷ one human brain",
    "verdict": "matches",
-   "note": "The division is right. It compares chip operations with nerve signals, which are different kinds of event."
+   "note": "The division is exact and explicitly contrasts chip operations with synaptic events."
   },
   {
-   "claim": "Modern storage holds a great deal but would not last long unpowered.",
-   "section": "Abstract, finding 4; Table P1",
-   "paper_value": "1.20×10²³ bits installed; 9.96×10²³ bit-years unpowered; mean lifetimes 3.5 years flash, 7.0 hard disks, 25 tape; 20 GW of refresh power, 9 GW of it for storage (corrected 9 Nov 2026)",
-   "data_value": "Memory ledger: the same values. The census row for 2026 carries 4.2×10²³ bit-years instead of 9.96×10²³.",
-   "source": "Memory ledger (paper0_memory_persistence_ledger.csv) and the census",
-   "verdict": "differs",
-   "note": "Corrected on 9 November 2026: lifetimes, labels and the split of the 20 GW now follow the memory ledger. One difference remains, in the project's data rather than the paper: the census and the ledger disagree on unpowered persistence."
+   "claim": "Modern storage holds 15 zettabytes with an 8.30-year unpowered mean lifetime and 9.96×10²³ bit-years of persistence.",
+   "section": "Abstract, finding 4; Table P1; Table 1",
+   "paper_value": "1.20×10²³ bits installed; weighted mean unpowered retention 8.30 years (flash 3.5, hard disks 7.0, tape 25); 9.96×10²³ bit-years unpowered; 20.0 GW refresh power (9 GW storage scrubbing + 11 GW DRAM refresh)",
+   "data_value": "1.20×10²³ bits, 8.30 years, 9.96×10²³ bit-years and 20.0 GW across both the memory ledger and the 2026 census row",
+   "source": "Memory ledger (paper0_memory_persistence_ledger.csv) and the 68-moment census",
+   "verdict": "matches",
+   "note": "Both the memory ledger and the 68-row Table 1 / S1 close identically to 9.96×10²³ bit-years."
   },
   {
-   "claim": "The reconstruction is calibrated on a large catalog of systems.",
-   "section": "Abstract, opening",
-   "paper_value": "950 systems, 2,616 measurements, 1,275 sources",
-   "data_value": "975 systems, 2,641 measurements, 1,300 sources",
-   "source": "Catalog workbook: distinct ids counted on the Systems, Measurements and Sources sheets",
-   "verdict": "differs",
-   "note": "The catalog has grown by 25 systems, 25 measurements and 25 sources since the paper was written. The paper's counts describe the catalog it used, so they were left as they are."
+   "claim": "The reconstruction spans 68 census moments calibrated on 975 systems, 2,641 measurements, 1,300 sources and 26 parameter anchors.",
+   "section": "Abstract; Section 1; Appendix Table S0",
+   "paper_value": "68 sub-epochs, 975 systems, 2,641 measurements, 1,300 sources, 26 parameter-register anchors",
+   "data_value": "68 sub-epochs, 975 systems, 2,641 measurements, 1,300 sources, 26 parameter-register anchors",
+   "source": "Catalog workbook, planetary_intelligence_timeseries.csv, and paper0_source_to_parameter_register.csv",
+   "verdict": "matches",
+   "note": "Revised on 24 November 2026: manuscript, appendix and figures include all four newly added evolutionary and historical stops."
   }
  ],
  "rationale": [
   {
-   "step": "Keep ten quantities in their own units and never merge them into one score.",
+   "step": "Keep ten quantities in their own physical units and never merge them into one composite score.",
    "assessment": "holds",
-   "note": "The paper does this throughout; bits, events a second, watts and bit-years are never added together."
+   "note": "Bits, events a second, watts and bit-years remain strictly separated across all 68 census moments."
   },
   {
-   "step": "Build today's values bottom-up from published counts and require the pieces to add up.",
+   "step": "Build today's values bottom-up from published counts and require carbon, cells, devices and power to close.",
    "assessment": "holds",
-   "note": "Carbon to cells to power closes exactly in the ledgers, and the totals recompute."
+   "note": "Every compartment in the text, Table B1, Table D1, Table P1 and the 2026 census row closes identically."
   },
   {
    "step": "Scale back through deep time from today's anchors using fossils, rock chemistry and living relatives.",
    "assessment": "weak",
-   "note": "There is no other way to do it, and the paper labels these moments as scenarios, but values before the modern inventory cannot be tested and carry wide ranges."
+   "note": "There is no direct fossil meter for ancient firing rates, so pre-modern moments remain bounded order-of-magnitude scenarios, as the paper explicitly states."
   },
   {
-   "step": "Compare cell chemistry, nerve signals and chip operations by counting events a second.",
+   "step": "Compare cell chemistry, nerve signals and chip operations by counting elementary state transitions per second.",
    "assessment": "weak",
-   "note": "The counts are sound, but one reaction, one nerve signal and one chip operation are not equal amounts of work, as the paper itself says. The ratios say how often, not how much thinking."
+   "note": "Counting transitions per second is physically well defined, though one enzymatic reaction, one synaptic release and one 16-bit multiply are different kinds of work."
   },
   {
-   "step": "Carry uncertainty through with 10,000 random draws.",
+   "step": "Propagate parameter uncertainty across 10,000 Monte Carlo draws.",
    "assessment": "holds",
-   "note": "The ledger has the ranges, though the abstract quotes narrower ones for two quantities."
+   "note": "Deterministic central values, medians and 95% intervals now agree across the abstract, Table MC1 and all figures."
   }
  ],
  "conclusions": [
   {
-   "conclusion": "The world's chips have not overtaken the world's nervous systems.",
+   "conclusion": "The world's chips have not overtaken the world's nervous systems in aggregate event rate.",
    "assessment": "supported",
-   "note": "The joint 95% range of the chip-to-nerve ratio runs from 1.6×10⁻⁵ to 2.3×10⁻⁴, so it stays far below 1 across the whole range."
+   "note": "The joint 95% interval of the chip-to-nerve ratio runs from 1.57×10⁻⁵ to 2.23×10⁻⁴, staying four orders of magnitude below parity."
   },
   {
-   "conclusion": "One frontier AI cluster exceeds one human brain by six orders of magnitude.",
+   "conclusion": "One frontier AI cluster exceeds one human brain by two million times in raw operations per second.",
    "assessment": "partly",
-   "note": "The arithmetic is right. Read as raw event counts it holds; read as a statement about capability it does not follow, because the events differ."
+   "note": "Exact as a raw rate ratio (3.00×10²⁰ ÷ 1.50×10¹⁴), while leaving functional equivalence per operation open."
   },
   {
-   "conclusion": "Mass extinctions acted as resets that cleared small-brained incumbents and released the rise of mammals and birds.",
+   "conclusion": "Mass extinctions acted as severe bottlenecks that erased over nine tenths of animal nerve signalling before mammal and bird radiations.",
    "assessment": "partly",
-   "note": "The size of the drops is a model scenario with wide ranges, and the paper does not test the causal step from clearing to release."
+   "note": "The drops (94.0% and 92.5%) follow cleanly from the paleobiological biomass model, though the ecological release step remains an evolutionary interpretation."
   },
   {
-   "conclusion": "Digital storage needs continuous power to avoid being erased.",
+   "conclusion": "Modern digital storage holds vastly more bits than ancient archives yet requires 20 GW of continuous power to avoid decay over an 8.3-year unpowered horizon.",
    "assessment": "supported",
-   "note": "After the 9 November correction the paper says that of the 20 GW refresh power, 9 GW keeps storage from being erased and 11 GW refreshes working memory, which matches its ledger."
+   "note": "Fully verified across the memory persistence and power closure ledgers."
   }
  ],
- "inconsistencies": [
-  "Section 2.4 gives each group of microbes its own carbon per cell and event rate (for example 100 transitions a second for deep microbes), while Table B1 uses a uniform 25 femtograms of carbon per cell and different rates. Both give the same totals.",
-  "The uncertainty table's central values (2.70×10³³, 3.02×10²⁶, 1.87×10²²) differ slightly from the census (2.80×10³³, 3.00×10²⁶, 1.89×10²²).",
-  "The census and the memory ledger give different unpowered persistence for outside memory (4.2×10²³ against 9.96×10²³ bit-years); the paper follows the ledger.",
-  "The world population is 8.2 billion in the text and 8.1 billion in the census.",
-  "Figures 1 to 3 were drawn before the correction and still label the 1.5 to 8.5×10²⁶ band as the uncertainty of nerve signalling."
- ],
- "bottom_line": "After the 9 November correction, today’s totals, the ratios between them, the uncertainty ranges and the extinction drops all agree with the paper’s ledgers and can be relied on as order-of-magnitude estimates. The deep-time values and the causal story about extinctions remain scenarios, and five smaller differences between the text, its tables and the project’s data are left for the authors.",
- "revised": "On 9 November 2026, after this check, six errors in the abstract and body (a wrong unit, a value that broke the power budget, two uncertainty ranges, a device breakdown, memory lifetimes and the use of 20 GW of refresh power) were corrected to match the paper’s own tables. The original is kept as a backup."
+ "inconsistencies": [],
+ "bottom_line": "Following the 9 November and 24 November 2026 revisions, all 68 census moments, 975-system catalog counts, prokaryotic carbon and rate compartments, 8.1-billion human totals (162 GW, 64.3× chip gap), Monte Carlo deterministic centrals and 95% intervals, unpowered storage persistence (9.96×10²³ bit-years) and figures agree across the manuscript, appendix and canonical CSV ledgers. Pre-modern deep-time rows remain bounded order-of-magnitude scenarios rather than direct measurements.",
+ "revised": "On 9 November 2026, six errors in power units, budget closure, uncertainty intervals, device splits and refresh power were corrected. On 24 November 2026, the manuscript, appendix and figures were expanded to all 68 census moments and 975 cataloged systems, and prokaryotic carbon per cell, the 8.1-billion human baseline, Table MC1 deterministic centrals and the 2026 persistence product (9.96×10²³ bit-years) were unified across every table and ledger."
 }

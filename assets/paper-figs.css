@@ -1,6 +1,23 @@
-/* Figures for Papers 1 to 5 on research.html (assets/paper-figs.js). Shared figure styles (.frame, .fig-say, .fig-sub,
-   .fig-src, .pf text and fills) live in site.css; this file adds only what these figures need. Colours are tokens. */
-.pfx { margin: 6px 0 0; grid-template-columns: minmax(0, 1fr); }
+/* Figures and 6-paper visual synthesis on research.html (assets/paper-figs.js, paper0-figs.js, paper-page.js).
+   Shared figure styles (.frame, .fig-say, .fig-sub, .fig-src, .pf text and fills) live in site.css; colours are tokens. */
+.psynth-wrap { container-type: inline-size; container-name: psynth; margin: 18px 0 22px; }
+.psynth-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@container psynth (max-width: 860px) { .psynth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container psynth (max-width: 540px) { .psynth-grid { grid-template-columns: minmax(0, 1fr); } }
+.pscard { position: relative; display: grid; gap: 8px; padding: 14px 16px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); color: inherit; text-decoration: none; transition: border-color .15s ease, transform .15s ease; }
+.pscard:hover { border-color: var(--ink-2); transform: translateY(-1px); }
+.pscard:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* WCAG 1.4.1: active paper indicated by a thick bottom bar + bold badge, never colour alone */
+.pscard[aria-current="true"] { border-color: var(--ink); background: var(--surface-2); }
+.pscard[aria-current="true"]::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 0; height: 3px; border-radius: 2px 2px 0 0; background: var(--ink); }
+.pscard-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.pscard-num { font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.pscard-stat { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink-2); }
+.pscard-title { font: 700 15px/1.3 var(--body); color: var(--ink); }
+.pscard-kpi { font: 600 12.5px/1.35 var(--body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pscard-viz { width: 100%; height: 54px; display: block; overflow: visible; }
+
+.pfx { container-type: inline-size; margin: 6px 0 0; grid-template-columns: minmax(0, 1fr); }
 .pfx > * { min-width: 0; }
 .pfx .pfw { min-width: 0; overflow: hidden; }
 .pfx .pfw svg { display: block; width: 100%; height: auto; }
@@ -13,15 +30,19 @@
 .pf .gh { fill: var(--ink-3); font: 700 11.5px var(--body); letter-spacing: .08em; }
 .pf .flat { stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 5 4; fill: none; }
 .pf .exoline { stroke: var(--l-exo); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.pf .bioline { stroke: var(--c-power); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.pf .neuline { stroke: var(--c-wire); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.pf .digline { stroke: var(--c-cpu); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
 .pf .say { stroke: var(--c-cpu); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
 .fig-note { font-size: 14px; color: var(--ink-2); padding: 2px 0 2px 12px; border-left: 3px solid var(--line-2); max-width: 84ch; }
 .fig-note b { color: var(--ink); font-weight: 700; }
 .fig-note ul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 3px; }
 .fig-nums summary { cursor: pointer; font-size: 14px; color: var(--ink-2); min-height: 32px; display: flex; align-items: center; }
 .fig-nums summary:hover { color: var(--ink); }
-.pfx-tw { overflow-x: auto; margin-top: 6px; }
+.pfx-tw { overflow-x: auto; margin-top: 6px; border-radius: 4px; }
+.pfx-tw:focus-visible, .p-tbl:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .pfx-tbl { border-collapse: collapse; font-size: 13.5px; min-width: 100%; }
 .pfx-tbl th { text-align: left; font: 700 12px/1.3 var(--body); color: var(--ink-3); padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line-2); vertical-align: bottom; }
 .pfx-tbl td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
 .pfx-tbl td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
-@media (max-width: 680px) { .pfx-tbl { font-size: 12.5px; } .pfx-tbl td.n { white-space: normal; } }
+@container (max-width: 620px) { .pfx-tbl { font-size: 12.5px; } .pfx-tbl td.n { white-space: normal; } }

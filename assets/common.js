@@ -627,23 +627,69 @@
     box.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Calculation graph for ' + esc(numName(col)) + '"><g class="ce">' + edges + '</g>' + nodes + '</svg>' +
       (leaves > 1 || root.kids.length ? '<p class="num-cap">Click a box on the left to open that number.</p>' : '<p class="num-cap">This number is not calculated from others in the census: it is entered directly.</p>');
   }
-  // the number at every moment, on a log scale, with the opened moment ringed
-  function histChart(col, i) {
+  // the number at every moment, on a log scale, with the opened moment ringed and 95% Monte Carlo band behind the line (B2)
+  function histChart(col, i, U) {
     const box = numDlg && numDlg.querySelector('#numHist'), R = (SI.numrefs || {})[col]; if (!box || !R || !R.k) return;
     const lin = /^(surface_temp_c|atm_o2_pct|gould_variance_right_tail)$/.test(col);
     const vals = E.map(e => Number(e[R.k])), ok = v => isFinite(v) && (lin || v > 0), tr = v => (lin ? v : Math.log10(v));
-    const ys = vals.filter(ok).map(tr); if (!ys.length) { box.innerHTML = ''; return; }
+
+    // Map per-moment 95% ranges from LED.uncertainty where present
+    const bandMap = {};
+    if (U && U.rows && U.columns) {
+      const iEp = U.columns.indexOf('epoch_id'), iCol = U.columns.indexOf('census_column');
+      if (iEp >= 0 && iCol >= 0) {
+        U.rows.forEach(r => {
+          if (r[iCol] === col && r[iEp]) {
+            const blo = Number(r[3]), bhi = Number(r[5]);
+            if (ok(blo) && ok(bhi)) bandMap[r[iEp]] = [blo, bhi];
+          }
+        });
+      }
+    }
+
+    const ys = vals.filter(ok).map(tr);
+    Object.keys(bandMap).forEach(ep => { ys.push(tr(bandMap[ep][0]), tr(bandMap[ep][1])); });
+    if (!ys.length) { box.innerHTML = ''; return; }
     const lo = Math.min(...ys), hi = Math.max(...ys), span = hi - lo || 1, W = 520, H = 150, L = 8, Rr = 8, T = 14, B = 30;
     const xp = k => L + k / (N - 1) * (W - L - Rr), yp = v => T + (1 - (tr(v) - lo) / span) * (H - T - B);
+
+    // Build contiguous 95% uncertainty band polygons (keeping plain line where moments have no range)
+    let bandSvg = '', seg = [], hasBand = false;
+    const flushSeg = () => {
+      if (seg.length >= 2) {
+        hasBand = true;
+        const topPts = seg.map(s => xp(s.k).toFixed(1) + ' ' + yp(s.hi).toFixed(1));
+        const botPts = seg.slice().reverse().map(s => xp(s.k).toFixed(1) + ' ' + yp(s.lo).toFixed(1));
+        bandSvg += '<path class="hb" d="M' + topPts.join('L') + 'L' + botPts.join('L') + 'Z"/>';
+      } else if (seg.length === 1) {
+        hasBand = true;
+        const s = seg[0], x0 = xp(s.k).toFixed(1);
+        bandSvg += '<line class="hb-w" x1="' + x0 + '" x2="' + x0 + '" y1="' + yp(s.hi).toFixed(1) + '" y2="' + yp(s.lo).toFixed(1) + '"/>';
+      }
+      seg = [];
+    };
+    E.forEach((e, k) => {
+      const b = bandMap[e.id];
+      if (b && ok(vals[k])) seg.push({ k, lo: b[0], hi: b[1] });
+      else flushSeg();
+    });
+    flushSeg();
+
     let d = '', pen = false;
     vals.forEach((v, k) => { if (ok(v)) { d += (pen ? 'L' : 'M') + xp(k).toFixed(1) + ' ' + yp(v).toFixed(1); pen = true; } else pen = false; });
     const acts = ACTS.map(a => '<line class="ab" x1="' + xp(a.i0).toFixed(1) + '" x2="' + xp(a.i0).toFixed(1) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tk" x="' + (xp(a.i0) + 3).toFixed(1) + '" y="' + (H - 12) + '">' + a.n + '</text>').join('');
     const fmtA = v => (lin ? numFmt(col, v) : '10' + sup(Math.round(v)));
-    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(numName(col)) + ' across the ' + N + ' moments">' + acts +
+    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(numName(col)) + ' across the ' + N + ' moments' + (hasBand ? ' with 95% uncertainty band' : '') + '">' + acts +
       '<text class="tk" x="' + (W - Rr) + '" y="' + (T - 3) + '" text-anchor="end">' + fmtA(hi) + '</text><text class="tk" x="' + (W - Rr) + '" y="' + (H - B + 12) + '" text-anchor="end">' + fmtA(lo) + '</text>' +
-      '<path class="hl" d="' + d + '"/>' + (ok(vals[i]) ? '<circle class="hr" cx="' + xp(i).toFixed(1) + '" cy="' + yp(vals[i]).toFixed(1) + '" r="5"/>' : '') + '</svg>' +
-      '<p class="num-cap">Roman numerals mark the seven acts, from the first chemistry (I) to silicon (VII).' + (lin ? ' This one is drawn on an ordinary scale.' : '') + '</p>';
+      bandSvg + '<path class="hl" d="' + d + '"/>' + (ok(vals[i]) ? '<circle class="hr" cx="' + xp(i).toFixed(1) + '" cy="' + yp(vals[i]).toFixed(1) + '" r="5"/>' : '') + '</svg>' +
+      '<p class="num-cap">Roman numerals mark the seven acts, from the first chemistry (I) to silicon (VII).' + (hasBand ? ' The shaded band marks the 95% range (10,000 draws); moments without a range keep the line alone.' : '') + (lin ? ' This one is drawn on an ordinary scale.' : '') + '</p>';
   }
+  const PROV_LABEL = {
+    measured: ['Measured here', 'Measured or inventoried directly for this moment.'],
+    hand_sourced: ['Set by hand · sourced', 'Entered at this moment from a named dataset, fossil proxy or historical survey.'],
+    hand_unsourced: ['Set by hand · no source', 'Entered by hand as a model scenario; no per-moment empirical dataset exists here.'],
+    calc: ['Calculated', 'Worked out deterministically at this moment from the equation and inputs below.']
+  };
   function numPanel(col, i) {
     const R = (SI.numrefs || {})[col];
     if (i == null || isNaN(i)) i = N - 1;
@@ -661,17 +707,20 @@
         numDlg.addEventListener('pointerdown', ev => { pressedOut = outside(ev, numDlg); });
         numDlg.addEventListener('pointerup', ev => { if (pressedOut && outside(ev, numDlg)) numDlg.close(); });
       }
-      numDlg.addEventListener('close', () => { numDlg.returnValue = ''; });
+      numDlg.addEventListener('close', () => {
+        numDlg.returnValue = '';
+        if (numLast && numLast.focus && document.contains(numLast)) numLast.focus();
+      });
     }
     const when = i === N - 1 ? 'today' : momentText(i);
     const epi = EPI[e.epi] || null, kd = R ? NUMKIND[R.kind] : null;
     let h = '<div class="num-top"><div><span class="eyebrow">Where this number comes from</span><h2 id="numDlgH">' + esc(numName(col)) + '</h2></div><button type="button" class="num-x" aria-label="Close">×</button></div>';
-    h += '<p class="num-val"><b>' + (val != null ? numFmt(col, val) : '—') + '</b><span>' + esc(when) + '</span></p><div class="num-range" id="numRange"></div>';
+    h += '<p class="num-val"><b>' + (val != null ? numFmt(col, val) : '—') + '</b><span>' + esc(when) + '</span><span id="numProvBadge"></span></p><div class="num-range" id="numRange"></div>';
     if (!R) {
       h += '<p class="muted">No source record exists for this number yet.</p>';
     } else {
-      h += '<div class="num-how"><span class="num-kind" tabindex="0" data-tip="How the number is made. ' + esc(kd ? kd[1] : '') + '">' + esc(kd ? kd[0] : R.kind) + '</span>' + (epi ? '<span class="num-kind" tabindex="0" data-tip="How sure we are at this moment: ' + esc(epi.about) + '">' + esc(epi.label) + '</span>' : '') +
-        '<p>' + esc(kd ? kd[1] : '') + (epi ? ' ' + esc(epi.about) : '') + '</p></div>';
+      h += '<div class="num-how"><span class="num-kind" tabindex="0" data-tip="How the number is made overall. ' + esc(kd ? kd[1] : '') + '">' + esc(kd ? kd[0] : R.kind) + '</span>' + (epi ? '<span class="num-kind" tabindex="0" data-tip="How sure we are at this moment: ' + esc(epi.about) + '">' + esc(epi.label) + '</span>' : '') +
+        '<p>' + esc(kd ? kd[1] : '') + (epi ? ' ' + esc(epi.about) : '') + '</p><p id="numProvNote" class="num-prov-note" hidden></p></div>';
       h += '<h3>How it is worked out</h3><pre class="formula">' + esc(R.eq) + '</pre><div id="numIn"></div>';
       h += '<div class="x-only num-graphs"><h3>The calculation as a graph</h3><p class="num-cap">Each box is one number at this moment; arrows show what feeds what. Boxes with a dashed edge are set by hand or are model assumptions, so the chain stops there.</p><div id="numCalc" class="num-calc"></div>' +
         '<h3>This number across all ' + N + ' moments</h3><p class="num-cap">Each step up is ten times more. Each column is one moment, not one year. The ring marks the moment you opened.</p><div id="numHist" class="num-hist"></div></div>';
@@ -681,17 +730,25 @@
       if (refs.length) h += '<details class="num-refs"><summary>' + refs.length + ' reference' + (refs.length > 1 ? 's' : '') + (here.length ? ' cited at this moment' : ' behind this number') + '</summary><ol class="refs">' + refs.map(n => '<li value="' + n + '">' + esc(SI.refs[n] || 'Reference ' + n) + '</li>').join('') + '</ol></details>';
       if (R.cite && R.cite.length) h += '<h3>Outside studies</h3><ul class="refs num-cite">' + R.cite.map(c => '<li>' + esc(c) + '</li>').join('') + '</ul>';
     }
-    h += '<p class="num-go"><a href="data.html#' + e.id + '">See every moment in the Data Lab →</a>' + (/^(total_cells|c_neural_ops_sec|c_digital_ops_sec)$/.test(col) && i === N - 1 ? '<a href="how.html#test">Test this number yourself →</a>' : '') + '</p>';
+    h += '<p class="num-go"><a href="data.html#' + e.id + '">See every moment in the Data Lab →</a><a href="data.html#evidence">Evidence heat map →</a>' + (/^(total_cells|c_neural_ops_sec|c_digital_ops_sec|h_copy_bits|m_exo_installed_bits|p_metabolic_watts)$/.test(col) && i === N - 1 ? '<a href="how.html#test">Test this number yourself →</a>' : '') + '</p>';
     numDlg.innerHTML = h;
     numLast = document.activeElement;
     if (!numDlg.open) { if (numDlg.showModal) numDlg.showModal(); else numDlg.setAttribute('open', ''); }
     if (!R) return;
     // Expert view: the calculation graph and the number's history
-    const drawGraphs = () => { if (document.body.classList.contains('expert')) loadCensus(C => { if (C && numDlg.open) { calcGraph(col, i, C); histChart(col, i); } }); };
+    const drawGraphs = () => {
+      if (document.body.classList.contains('expert')) {
+        loadCensus(C => {
+          if (!C || !numDlg.open) return;
+          calcGraph(col, i, C);
+          histChart(col, i, window.SI_LEDGERS && window.SI_LEDGERS.uncertainty);
+        });
+      }
+    };
     drawGraphs();
     document.removeEventListener('si:expert', numDlg._g || (() => {}));
     numDlg._g = drawGraphs; document.addEventListener('si:expert', drawGraphs);
-    // inputs need the full census; key sources and the 95% range need the ledgers
+    // inputs need the full census; key sources, per-moment provenance (B1), and 95% range (B2) need the ledgers
     if (R.in.length) loadCensus(C => {
       if (!C || !numDlg.open) return;
       const box = numDlg.querySelector('#numIn'); if (!box) return;
@@ -706,11 +763,37 @@
         const rows = R.s.map(id => S.rows.find(r => r[0] === id)).filter(Boolean);
         box.innerHTML = '<h3>Key studies</h3><ul class="num-src">' + rows.map(r => '<li><b>' + esc(r[iR]) + '</b><span>' + esc(r[iC]) + '</span><small class="x-only">' + esc(r[0]) + ' · ' + esc(r[iA]) + '</small></li>').join('') + '</ul>';
       }
+
+      // B1: Per-moment provenance tag beside the value + specific source/note at this moment
+      const OVR = L.overrides, pBadge = numDlg.querySelector('#numProvBadge'), pNote = numDlg.querySelector('#numProvNote');
+      if (pBadge) {
+        let pTag = 'calc', ovSrc = '', ovNote = '';
+        if (OVR && OVR.rows && OVR.columns) {
+          const iEp = OVR.columns.indexOf('epoch_id'), iCol = OVR.columns.indexOf('census_column'),
+            iTag = OVR.columns.indexOf('provenance_tag'), iSrc = OVR.columns.indexOf('source'), iNt = OVR.columns.indexOf('note');
+          const hit = OVR.rows.find(r => r[iEp] === e.id && r[iCol] === col);
+          if (hit) { pTag = hit[iTag] || 'hand_sourced'; ovSrc = hit[iSrc] || ''; ovNote = hit[iNt] || ''; }
+          else if (R.kind !== 'calc' && !R.in.length) { pTag = R.s.length ? 'hand_sourced' : 'hand_unsourced'; }
+        }
+        const meta = PROV_LABEL[pTag] || PROV_LABEL.calc;
+        pBadge.innerHTML = '<span class="num-kind prov-' + esc(pTag) + '" tabindex="0" data-tip="' + esc(meta[1]) + '">' + esc(meta[0]) + '</span>';
+        if (pNote && (ovNote || ovSrc)) {
+          pNote.hidden = false;
+          pNote.innerHTML = pTag === 'hand_unsourced'
+            ? '<b>At this moment:</b> set by hand with no per-moment source' + (ovNote ? ' — ' + esc(ovNote) : '.')
+            : '<b>At this moment:</b> ' + esc(ovNote) + (ovSrc ? ' <span class="muted">(Source: ' + esc(ovSrc) + ')</span>' : '');
+        }
+      }
+
+      // B2: 95% range at any moment that has one in LED.uncertainty, plus refresh histChart band if Expert view is on
       const U = L.uncertainty, tok = NUMUNC[col], rg = numDlg.querySelector('#numRange');
-      if (U && tok && i === N - 1 && rg) {
-        const r = U.rows.find(x => String(x[0]).indexOf(tok) >= 0);
+      if (U && rg) {
+        const iEp = U.columns ? U.columns.indexOf('epoch_id') : -1, iCol = U.columns ? U.columns.indexOf('census_column') : -1;
+        let r = (iEp >= 0 && iCol >= 0) ? U.rows.find(x => x[iEp] === e.id && x[iCol] === col) : null;
+        if (!r && tok && i === N - 1) r = U.rows.find(x => String(x[0]).indexOf(tok) >= 0);
         if (r) rg.innerHTML = '<p>95% range: ' + numFmt(col, Number(r[3])) + ' to ' + numFmt(col, Number(r[5])) + ' <span class="muted">(10,000 random draws of the inputs)</span></p>';
       }
+      if (document.body.classList.contains('expert') && U) histChart(col, i, U);
     });
   }
   document.addEventListener('click', ev => {
@@ -720,7 +803,13 @@
     numPanel(t.getAttribute('data-num'), t.hasAttribute('data-i') ? Number(t.getAttribute('data-i')) : null);
   });
   document.addEventListener('keydown', ev => {
-    const t = (ev.key === 'Enter' || ev.key === ' ') && ev.target.closest && ev.target.closest('[data-num][role="button"]');
+    const t = ev.target.closest && ev.target.closest('[data-num][role="button"]');
+    if (!t) return;
+    if (ev.key === 'Enter') { ev.preventDefault(); t.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+    else if (ev.key === ' ') { ev.preventDefault(); }
+  });
+  document.addEventListener('keyup', ev => {
+    const t = ev.key === ' ' && ev.target.closest && ev.target.closest('[data-num][role="button"]');
     if (t) { ev.preventDefault(); t.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
   });
 

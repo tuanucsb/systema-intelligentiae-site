@@ -36,10 +36,24 @@
   }
   const orders = f => Math.abs(Math.log10(f));
 
-  /* ---------- uncertainty: 95% ranges from the Monte Carlo ledger (today's values and two extinction drops) ---------- */
-  const UNC = (LED.uncertainty ? LED.uncertainty.rows : []).map(r => ({ name: String(r[0]), lo: Number(r[3]), hi: Number(r[5]) }));
+  /* ---------- uncertainty: 95% ranges from the Monte Carlo ledger (all 68 moments + extinction drops) ---------- */
+  const uCols = (LED.uncertainty && LED.uncertainty.columns) || [];
+  const iUEp = uCols.indexOf('epoch_id'), iUCol = uCols.indexOf('census_column');
+  const UNC = (LED.uncertainty ? LED.uncertainty.rows : []).map(r => ({
+    name: String(r[0]), lo: Number(r[3]), hi: Number(r[5]),
+    ep: iUEp >= 0 ? String(r[iUEp] || '') : '', col: iUCol >= 0 ? String(r[iUCol] || '') : ''
+  }));
   const uncFind = token => UNC.find(u => u.name.indexOf(token) >= 0);
-  function rangeOf(k, i) { if (i !== N - 1 || !Q[k].unc) return null; const u = uncFind(Q[k].unc); return u ? [u.lo, u.hi] : null; }
+  function rangeOf(k, i) {
+    const col = Q[k] && Q[k].col, ep = E[i] && E[i].id;
+    if (col && ep) {
+      const hit = UNC.find(u => u.ep === ep && u.col === col);
+      if (hit) return [hit.lo, hit.hi];
+    }
+    if (i !== N - 1 || !Q[k].unc) return null;
+    const u = uncFind(Q[k].unc);
+    return u ? [u.lo, u.hi] : null;
+  }
   // per-number sources: the footnotes that the census cites at that moment AND that stand behind that column,
   // plus the audited key sources for the column (content/number_sources.csv)
   const NR = X.SI.numrefs || {};

@@ -28,13 +28,13 @@
     'All columns': null
   };
 
-  const TABS = [['census', 'Census · ' + CEN.rows.length + ' moments'], ['plot', 'Plot builder']].concat(Object.keys(LED).map(k => [k, LED[k].title.split(' (')[0]]));
+  const TABS = [['census', 'Census · ' + CEN.rows.length + ' moments'], ['evidence', 'Evidence heat map'], ['plot', 'Plot builder']].concat(Object.keys(LED).map(k => [k, LED[k].title.split(' (')[0]]));
   const TAB_GROUPS = [
     { key: 'all', label: 'All (' + TABS.length + ')', match: null },
-    { key: 'core', label: 'Core & checks', match: new Set(['census', 'plot', 'systems', 'censuschecks', 'invmedia']) },
+    { key: 'core', label: 'Core & checks', match: new Set(['census', 'evidence', 'plot', 'overrides', 'paleoclimate', 'systems', 'censuschecks', 'reconciliations', 'invmedia']) },
     { key: 'dna', label: 'DNA, sex & making', match: new Set(['genomes', 'dnainventory', 'sex', 'making', 'motors']) },
-    { key: 'bio', label: 'Brains, plants & immunity', match: new Set(['biggest', 'neural', 'nervegenes', 'nervespeed', 'neuronsbygroup', 'brains', 'plants', 'immunity']) },
-    { key: 'net', label: 'Networks & space', match: new Set(['networks', 'offworld', 'offworld2026']) },
+    { key: 'bio', label: 'Brains, plants & immunity', match: new Set(['biggest', 'neural', 'nervegenes', 'nervespeed', 'neuronsbygroup', 'brains', 'deliberation', 'plants', 'immunity']) },
+    { key: 'net', label: 'Networks, groups & space', match: new Set(['networks', 'groupsize', 'techpower', 'outsidememory', 'offworld', 'offworld2026']) },
     { key: 'budget', label: '2026 budgets & sources', match: new Set(['bioelectric', 'uncertainty', 'power', 'devices', 'media', 'sources']) }
   ];
   let tab = 'census', tabGroup = 'all', preset = 'Story essentials', filter = '', sortCol = null, sortDir = 1, hiRow = null;
@@ -98,7 +98,7 @@
       const j = (opts.allCols || cols).indexOf(opts.sortCol), n = nums.has(opts.sortCol);
       rs.sort((a, b) => { const va = a.r[j], vb = b.r[j]; return (n ? (Number(va) - Number(vb)) : String(va).localeCompare(String(vb))) * opts.sortDir; });
     }
-    return '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + cols.map(c => '<th scope="col" data-sort="' + esc(c) + '"' + (opts.sortCol === c ? ' aria-sort="' + (opts.sortDir > 0 ? 'ascending' : 'descending') + '"' : '') + '>' + esc(c) + (opts.allCols && (X.SI.numrefs || {})[c] ? ' <button type="button" class="num-i" data-num="' + esc(c) + '"' + (opts.hi != null ? ' data-i="' + opts.hi + '"' : '') + ' aria-label="Where ' + esc(c) + ' comes from" data-tip="Where this column comes from: equation, inputs and sources">i</button>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
+    return '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Scrollable data table"><table class="tbl"><thead><tr>' + cols.map(c => '<th scope="col" data-sort="' + esc(c) + '"' + (opts.sortCol === c ? ' aria-sort="' + (opts.sortDir > 0 ? 'ascending' : 'descending') + '"' : '') + '>' + esc(c) + (opts.allCols && (X.SI.numrefs || {})[c] ? ' <button type="button" class="num-i" data-num="' + esc(c) + '"' + (opts.hi != null ? ' data-i="' + opts.hi + '"' : '') + ' aria-label="Where ' + esc(c) + ' comes from" data-tip="Where this column comes from: equation, inputs and sources">i</button>' : '') + '</th>').join('') + '</tr></thead><tbody>' +
       rs.map(x => '<tr' + (opts.hi != null && x.k === opts.hi ? ' class="cur" id="hiRow" style="outline:3px solid var(--c-cpu);outline-offset:-3px"' : '') + '>' + idx.map((j, c) => { const v = x.r[j]; const n = nums.has(cols[c]) && isNum(v); return '<td class="' + (n ? 'n' : '') + '"' + (n ? ' title="' + esc(v) + '"' : '') + '>' + (n ? fmtCell(v) : esc(v)) + '</td>'; }).join('') + '</tr>').join('') +
       (!rs.length && opts.filter ? '<tr><td class="empty" colspan="' + cols.length + '"><div class="em"><span>No moments match “' + esc(opts.filter) + '”. Try a period (Cambrian) or an epoch ID (EP14).</span><button type="button" class="btn sm ghost" id="clearFilt">Clear filter</button></div></td></tr>' : '') +
       '</tbody></table></div><p class="readout">' + rs.length + ' rows × ' + cols.length + ' columns. Click a column title to sort. Hover a number for its exact value.</p>';
@@ -1009,13 +1009,139 @@
 
   const FIGS = { genomes: figGenomes, biggest: figBiggest, sex: figSex, offworld: figOffworld, motors: figMotors, making: figMaking, neuronsbygroup: figNeuronsByGroup, plants: figPlants, immunity: figImmunity, power: figPower, devices: figDevices };
 
+  /* ---------- B7: Evidence heat map (26 census numbers × 68 moments) ---------- */
+  const EV_TIERS = {
+    measured: { label: 'Measured / inventory', sym: '●', desc: 'Direct modern census, thermometer/ice-core record, UN/imperial census or hardware inventory' },
+    fossil_proxy: { label: 'Fossil, proxy & archive', sym: '◆', desc: 'Fossil brain/colony record, geochemical/paleoclimate proxy compilation or historical archive' },
+    calc: { label: 'Calculated from equation', sym: '=', desc: 'Worked out deterministically by formula from other columns in the census' },
+    scenario: { label: 'Sourced scenario', sym: '~', desc: 'Model assumption or conditional scenario anchored to a published study' },
+    hand_unsourced: { label: 'Set by hand · no source', sym: '?', desc: 'Entered by hand for this moment with no per-moment source dataset' }
+  };
+  let evFilter = 'all';
+
+  function drawEvidence() {
+    const NR = X.SI.numrefs || {};
+    const cols = Object.keys(NR);
+    const OVR = LED.overrides || { columns: [], rows: [] };
+    const iEp = OVR.columns.indexOf('epoch_id'), iCol = OVR.columns.indexOf('census_column'),
+      iTier = OVR.columns.indexOf('evidence_tier'), iSrc = OVR.columns.indexOf('source'), iNt = OVR.columns.indexOf('note');
+    const ovMap = {};
+    OVR.rows.forEach(r => { ovMap[r[iEp] + '|' + r[iCol]] = r; });
+
+    const counts = { measured: 0, fossil_proxy: 0, calc: 0, scenario: 0, hand_unsourced: 0 };
+    const grid = cols.map(col => {
+      const R = NR[col];
+      const cells = X.E.map((e, i) => {
+        const hit = ovMap[e.id + '|' + col];
+        let tier = 'calc', src = '', note = '';
+        if (hit) {
+          tier = EV_TIERS[hit[iTier]] ? hit[iTier] : 'scenario';
+          src = hit[iSrc] || '';
+          note = hit[iNt] || '';
+        } else if (R.kind === 'assume') {
+          tier = 'scenario';
+          note = 'Calculated from a sourced model assumption (' + (R.eq || '') + ').';
+        } else if (R.kind !== 'calc' && !(R.in && R.in.length)) {
+          tier = (R.s && R.s.length) ? 'scenario' : 'hand_unsourced';
+        } else {
+          tier = 'calc';
+          note = 'Calculated deterministically from ' + (R.in || []).map(X.numName).join(', ') + '.';
+        }
+        counts[tier] = (counts[tier] || 0) + 1;
+        return { col, i, ep: e.id, t: e.t, tier, src, note, val: R.k ? e[R.k] : null };
+      });
+      return { col, name: X.numName(col), cells };
+    });
+
+    const totCells = cols.length * X.N;
+    const actSpan = X.ACTS.map((a, ai) => {
+      const i1 = ai < X.ACTS.length - 1 ? X.ACTS[ai + 1].i0 : X.N;
+      return { n: a.n, title: a.title, span: i1 - a.i0 };
+    });
+
+    const filtBar = '<div class="fig-tools" role="group" aria-label="Filter evidence level">' +
+      '<button type="button" class="part-chip" data-evf="all" aria-pressed="' + (evFilter === 'all') + '">All (' + totCells.toLocaleString('en-US') + ')</button>' +
+      Object.keys(EV_TIERS).map(tk => {
+        const m = EV_TIERS[tk], c = counts[tk] || 0;
+        return '<button type="button" class="part-chip ev-chip-' + tk + '" data-evf="' + tk + '" aria-pressed="' + (evFilter === tk) + '"><span class="ev-sym" aria-hidden="true">' + m.sym + '</span> ' + esc(m.label) + ' (' + c + ')</button>';
+      }).join('') + '</div>';
+
+    const legendHtml = '<div class="ev-legend">' + Object.keys(EV_TIERS).map(tk => {
+      const m = EV_TIERS[tk];
+      return '<div class="ev-leg-item"><span class="ev-swatch ev-' + tk + '" aria-hidden="true">' + m.sym + '</span><div><b>' + esc(m.label) + '</b><span>' + esc(m.desc) + '</span></div></div>';
+    }).join('') + '</div>';
+
+    const theadActs = '<tr class="ev-acts"><th scope="col" class="ev-sticky">Census number (' + cols.length + ')</th>' +
+      actSpan.map(a => '<th scope="colgroup" colspan="' + a.span + '" title="Act ' + esc(a.n) + ': ' + esc(a.title) + '">Act ' + esc(a.n) + '</th>').join('') + '</tr>';
+    const theadMoms = '<tr class="ev-moms"><th scope="col" class="ev-sticky">Click any cell for its source</th>' +
+      X.E.map((e, i) => '<th scope="col" title="' + esc(X.fmtShort(e.t) + ' — ' + X.titleOf(i)) + '">' + (i === 0 || i === X.N - 1 || i % 5 === 0 ? esc(X.fmtShort(e.t).replace(' ago', '')) : '·') + '</th>').join('') + '</tr>';
+
+    const tbody = grid.map(row => '<tr><th scope="row" class="ev-sticky"><button type="button" class="num-link" data-num="' + esc(row.col) + '">' + esc(row.name) + '</button></th>' +
+      row.cells.map(c => {
+        const m = EV_TIERS[c.tier];
+        const dim = evFilter !== 'all' && evFilter !== c.tier ? ' is-dim' : '';
+        return '<td class="ev-td"><button type="button" class="ev-cell ev-' + c.tier + dim + '" data-evcol="' + esc(c.col) + '" data-evi="' + c.i + '" aria-label="' + esc(row.name + ' at ' + X.fmtShort(c.t) + ': ' + m.label) + '">' + m.sym + '</button></td>';
+      }).join('') + '</tr>').join('');
+
+    $('panel').innerHTML = '<div class="lab-tools"><h2 style="font-size:1.4rem;flex:1 1 320px">Evidence heat map · ' + cols.length + ' numbers × ' + X.N + ' moments</h2>' +
+      (LED.overrides ? '<a class="btn sm" href="' + esc(LED.overrides.file) + '" download>Download overrides CSV</a>' : '') + '</div>' +
+      '<p class="lede" style="font-size:15px;margin:0 0 12px">Every cell shows how one census number is known at one moment in history—from direct modern measurements (<b>●</b>) and fossil/proxy series (<b>◆</b>) to equations (<b>=</b>), sourced scenarios (<b>~</b>) and moments set by hand with no source (<b>?</b>). Click any cell to open its equation, inputs and source.</p>' +
+      filtBar + legendHtml +
+      '<p class="readout fig-read" id="evRead" aria-live="polite">Hover or focus any cell to inspect its moment, value, evidence level and source; click to open “Where this number comes from”.</p>' +
+      '<div class="tbl-wrap ev-wrap" tabindex="0" role="region" aria-label="Evidence heat map across ' + cols.length + ' census numbers and ' + X.N + ' moments"><table class="ev-grid"><thead>' + theadActs + theadMoms + '</thead><tbody>' + tbody + '</tbody></table></div>';
+
+    $('panel').querySelectorAll('[data-evf]').forEach(b => b.addEventListener('click', () => {
+      evFilter = b.dataset.evf;
+      drawEvidence();
+    }));
+
+    const evRead = $('evRead');
+    const lookupCell = btn => {
+      const col = btn.dataset.evcol, idx = Number(btn.dataset.evi);
+      const rObj = grid.find(g => g.col === col);
+      return rObj ? rObj.cells[idx] : null;
+    };
+    const showEv = btn => {
+      const c = lookupCell(btn);
+      if (!c || !evRead) return;
+      const m = EV_TIERS[c.tier];
+      evRead.innerHTML = '<b>' + esc(X.numName(c.col)) + '</b> · <b>' + esc(c.i === X.N - 1 ? 'Today (2026)' : X.fmtShort(c.t)) + '</b>: <b>' + esc(c.val != null ? X.numFmt(c.col, c.val) : '—') + '</b> · <span class="chip">' + m.sym + ' ' + esc(m.label) + '</span>' +
+        (c.note ? ' — ' + esc(c.note) : '') + (c.src ? ' <span class="fig-src">(Source: ' + esc(c.src) + ')</span>' : '');
+    };
+    const evWrap = $('panel').querySelector('.ev-grid');
+    if (evWrap) {
+      evWrap.addEventListener('pointerover', ev => { const b = ev.target.closest('.ev-cell'); if (b) showEv(b); });
+      evWrap.addEventListener('focusin', ev => { const b = ev.target.closest('.ev-cell'); if (b) showEv(b); });
+      evWrap.addEventListener('click', ev => {
+        const b = ev.target.closest('.ev-cell');
+        if (!b) return;
+        showEv(b);
+        X.numPanel(b.dataset.evcol, Number(b.dataset.evi));
+      });
+    }
+  }
+
   /* ---------- ledgers ---------- */
+  let uncScope = 'today';
+  const ACT_STARTS = new Set(X.ACTS.map(a => X.E[a.i0] && X.E[a.i0].id).filter(Boolean));
   function drawLedger(k) {
     const l = LED[k];
     const nums = numericCols(l.columns, l.rows);
     const fig = FIGS[k] ? FIGS[k](l) : null;
+    let rowsToShow = l.rows, extraTools = '';
+    if (k === 'uncertainty' && l.columns.indexOf('epoch_id') >= 0) {
+      const iEp = l.columns.indexOf('epoch_id');
+      const todayRows = l.rows.filter((r, idx) => idx < 19 || r[iEp] === 'EP32b');
+      const actRows = l.rows.filter((r, idx) => idx < 19 || ACT_STARTS.has(r[iEp]));
+      rowsToShow = uncScope === 'today' ? todayRows : uncScope === 'acts' ? actRows : l.rows;
+      extraTools = '<div class="fig-tools" role="group" aria-label="Filter Monte Carlo scope" style="margin-bottom:10px">' +
+        '<button type="button" class="part-chip" data-uscope="today" aria-pressed="' + (uncScope === 'today') + '">Today & extinction drops (' + todayRows.length + ')</button>' +
+        '<button type="button" class="part-chip" data-uscope="acts" aria-pressed="' + (uncScope === 'acts') + '">Today + 7 Act openings (' + actRows.length + ')</button>' +
+        '<button type="button" class="part-chip" data-uscope="all" aria-pressed="' + (uncScope === 'all') + '">All 68 moments (' + l.rows.length + ')</button></div>';
+    }
     $('panel').innerHTML = '<div class="lab-tools"><h2 style="font-size:1.4rem;flex:1 1 300px">' + esc(l.title) + '</h2><a class="btn sm" href="' + esc(l.file) + '" download>Download CSV</a></div>' +
-      (fig ? fig.html : '') + table(l.columns, l.rows, nums, { sortCol, sortDir });
+      (fig ? fig.html : '') + extraTools + table(l.columns, rowsToShow, nums, { sortCol, sortDir });
+    $('panel').querySelectorAll('[data-uscope]').forEach(b => b.addEventListener('click', () => { uncScope = b.dataset.uscope; drawLedger(k); }));
     bindSort(() => drawLedger(k));
     if (fig) { fig.bind(); X.timeKeys(); }
   }
@@ -1028,6 +1154,7 @@
       if (on) $('panel').setAttribute('aria-labelledby', b.id);
     });
     if (tab === 'census') drawCensus();
+    else if (tab === 'evidence') drawEvidence();
     else if (tab === 'plot') drawPlot();
     else drawLedger(tab);
   }
@@ -1035,7 +1162,7 @@
   function applyHash() {
     const h = (location.hash || '').slice(1);
     if (X.IDX[h] !== undefined) { tab = 'census'; hiRow = X.IDX[h]; preset = 'Story essentials'; }
-    else if (h === 'plot' || h === 'census') { tab = h; hiRow = null; }
+    else if (h === 'plot' || h === 'census' || h === 'evidence') { tab = h; hiRow = null; }
     else if (LED[h]) { tab = h; hiRow = null; }
     const curGrp = TAB_GROUPS.find(g => g.key === tabGroup);
     if (curGrp && curGrp.match && !curGrp.match.has(tab)) tabGroup = 'all';
