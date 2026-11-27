@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Examples: five floors of thinking · Systema Intelligentiae</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* design examples only: nothing here is used by the live pages */
+.draft { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.draft .wrap { padding-block: 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.draft b { color: var(--ink); }
+.ex { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 44px 8px; }
+.ex-head { display: grid; gap: 6px; max-width: 76ch; }
+.ex-head .tag { font: 700 12px/1.3 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.ex-head p { color: var(--ink-2); }
+.frame { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; }
+@media (max-width: 680px) { .frame { padding: 14px; } }
+.fig-title { font: 800 clamp(1.3rem, 2.6vw, 1.7rem)/1.2 var(--display); margin-bottom: 4px; }
+.fig-sub { color: var(--ink-2); margin-bottom: 18px; max-width: 70ch; }
+.kbar { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--k); flex: none; }
+
+/* A: the building */
+.bld { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 0 22px; }
+.floors { display: grid; border-top: 1px solid var(--line-2); }
+.floor { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 4px 16px; align-items: center; padding: 12px 12px 12px 16px; border: 0; border-bottom: 1px solid var(--line-2); background: transparent; text-align: left; color: var(--ink); cursor: pointer; box-shadow: inset 4px 0 0 var(--k); }
+.floor:hover { background: var(--surface-2); }
+.floor[aria-pressed="true"] { background: var(--surface-2); box-shadow: inset 4px 0 0 var(--k), inset 0 0 0 1.5px var(--ink); }
+.floor .ph { width: 112px; aspect-ratio: 4 / 3; border-radius: var(--r-sm); overflow: hidden; background: var(--surface-3); display: grid; place-items: center; }
+.floor .ph svg { width: 100%; height: 100%; }
+.floor b { font: 800 1.15rem/1.2 var(--display); display: block; }
+.floor .one { display: block; color: var(--ink-2); font-size: 15px; line-height: 1.4; margin-top: 2px; }
+.floor .when { text-align: right; font-variant-numeric: tabular-nums; }
+.floor .when b { font: 700 1.05rem/1.2 var(--display); }
+.floor .when span { display: block; font-size: 13px; color: var(--ink-2); }
+.ground { font: 700 12px/1.3 var(--body); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); padding: 8px 0 0 16px; }
+.clock { position: relative; border-left: 2px solid var(--ink); margin-block: 0 26px; }
+.clock .hr { position: absolute; left: 8px; transform: translateY(50%); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.clock .hr::before { content: ''; position: absolute; left: -8px; top: 50%; width: 5px; border-top: 1px solid var(--ink-3); }
+.clock .mk { position: absolute; left: -7px; width: 12px; height: 12px; border-radius: 50%; background: var(--k); border: 2px solid var(--surface); transform: translateY(50%); }
+.clock .cap { position: absolute; left: 14px; right: 0; font-size: 12.5px; line-height: 1.3; color: var(--ink-2); }
+.clock .cap b { color: var(--ink); display: block; }
+.detail { margin-top: 18px; padding: 16px 18px; border-radius: var(--r-md); background: var(--surface-2); display: grid; gap: 8px; max-width: 80ch; }
+.detail h3 { font-size: 1.2rem; }
+.detail .big { font: 700 1.05rem/1.4 var(--display); }
+@media (max-width: 760px) { .bld { grid-template-columns: minmax(0, 1fr); } .clock { display: none; } .floor { grid-template-columns: 84px minmax(0, 1fr); } .floor .ph { width: 84px; } .floor .when { grid-column: 2; text-align: left; } }
+
+/* B: the staircase */
+.stairs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; padding-top: 8px; }
+.step { display: grid; gap: 0; }
+.step .card5 { display: grid; gap: 6px; align-content: start; padding: 10px 10px 12px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line-2); box-shadow: inset 0 3px 0 var(--k); }
+.step .ph { aspect-ratio: 4 / 3; border-radius: var(--r-sm); overflow: hidden; background: var(--surface-3); display: grid; place-items: center; }
+.step .ph svg { width: 100%; height: 100%; }
+.step b { font: 800 1rem/1.2 var(--display); }
+.step .one { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+.step .since { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.step .riser { background: var(--surface-2); border: 1px solid var(--line); border-top: 0; border-radius: 0 0 var(--r-sm) var(--r-sm); display: grid; align-content: end; padding: 8px 10px; font-size: 13px; color: var(--ink-2); }
+.step .riser b { font: 700 14px/1.25 var(--body); color: var(--ink); display: block; }
+.waits { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; font-size: 15px; color: var(--ink-2); }
+.waits b { color: var(--ink); font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .stairs { grid-template-columns: minmax(0, 1fr); } .step .riser { min-height: 0 !important; } .step .card5 { grid-template-columns: 96px minmax(0, 1fr); column-gap: 12px; } .step .ph { grid-row: span 3; } }
+
+/* C: one day, zoomed */
+.zoom-wrap { overflow-x: auto; }
+.zoom-wrap svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.zm .lane { stroke: var(--surface); stroke-width: 1.5; }
+.zm .bt { fill: var(--ink); font: 800 15px var(--display); }
+.zm .bs { fill: var(--ink-2); font: 13px var(--body); }
+.zm .ln { fill: var(--ink); font: 700 12.5px var(--body); }
+.zm .tk { fill: var(--ink-3); font: 11.5px var(--body); font-variant-numeric: tabular-nums; }
+.zm .frame-l { stroke: var(--line-2); fill: none; }
+.zm .zl { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+.zm .zf { fill: var(--ink); opacity: .05; }
+.zm .nt { fill: var(--ink-2); font: italic 12.5px var(--body); }
+</style>
+</head>
+<body>
+<div class="draft"><div class="wrap"><b>Design examples</b><span>Three ways the story figure could look, drawn with the site's real photographs and numbers. Not linked from the site. <a href="index.html">Back to Home</a></span></div></div>
+
+<main class="wrap">
+  <div class="page-head">
+    <h1 style="font-size:clamp(2rem,5vw,3rem)">Earth learned to think five times</h1>
+    <p>Each new way arrived faster than the last, and none of the old ones went away. Below are three figures built to tell that one story.</p>
+  </div>
+
+  <section class="ex" aria-labelledby="exA">
+    <div class="ex-head"><span class="tag">Example A</span><h2 id="exA">The building</h2><p>Five floors, read from the ground up, with a one-day clock beside them. Best at "nothing was replaced": the old floors are still holding the new ones up. Click a floor.</p></div>
+    <div class="frame">
+      <div class="fig-title">Five floors of thinking</div>
+      <p class="fig-sub">If all of Earth’s history were one day, the ground floor opened at midnight. The top three floors were all built in the last 70 seconds.</p>
+      <div class="bld">
+        <div><div class="floors" id="floors"></div><div class="ground">Ground · 4.1 billion years ago</div></div>
+        <div class="clock" id="clock" aria-hidden="true"></div>
+      </div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="ex" aria-labelledby="exB">
+    <div class="ex-head"><span class="tag">Example B</span><h2 id="exB">The staircase</h2><p>Five steps climbing left to right, with the wait before each step written on it. Best at "faster each time": the waits are the first thing you read.</p></div>
+    <div class="frame">
+      <div class="fig-title">Each step came sooner than the last</div>
+      <p class="fig-sub">The first step took 3.5 billion years to follow. The latest took 67.</p>
+      <div class="stairs" id="stairs"></div>
+      <p class="waits" id="waits"></p>
+    </div>
+  </section>
+
+  <section class="ex" aria-labelledby="exC">
+    <div class="ex-head"><span class="tag">Example C</span><h2 id="exC">One day, zoomed in three times</h2><p>Three time bars, each a close-up of the end of the one above. Best at showing how late everything human is, with no special scale to learn. It is the most chart-like of the three.</p></div>
+    <div class="frame">
+      <div class="fig-title">You have to zoom in twice to find the machines</div>
+      <p class="fig-sub">Every bar is drawn to scale. Each one magnifies the last sliver of the bar above it.</p>
+      <div class="zoom-wrap"><svg id="zoom" role="img" aria-label="Three time bars. The whole day shows chemistry from midnight and nerves from 20:45. The last 70 seconds adds memory outside the body. The last 2 milliseconds adds chips from 1945 and neural nets from 2012."></svg></div>
+    </div>
+  </section>
+  <div style="height:64px"></div>
+</main>
+
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(function () {
+  'use strict';
+  const X = window.SIX, E = X.E, esc = X.esc, now = E[X.N - 1];
+  const $ = id => document.getElementById(id);
+  const T0 = E[0].t * 1e6;                                   // years in the whole story
+  const firstYears = f => E[E.findIndex(f)].t * 1e6;
+  // two significant figures: 551,700,000 reads as "550 million"
+  const sig2 = n => { const p = Math.pow(10, Math.floor(Math.log10(n)) - 1); return Math.round(n / p) * p; };
+  const big = n => { const v = sig2(n); return v >= 1e9 ? String(+(v / 1e9).toFixed(1)) + ' billion' : v >= 1e6 ? String(+(v / 1e6).toFixed(1)) + ' million' : Math.round(n).toLocaleString('en'); };
+  const times = n => (n >= 1e6 ? Math.round(n / 1e6) + ' million' : Math.round(n / 1000) * 1000 >= 1000 ? (Math.round(n / 1000) * 1000).toLocaleString('en') : String(Math.round(n)));
+  // clock time on a one-day history: seconds before midnight
+  const secLeft = y => y / T0 * 86400;
+  function clock(y) {
+    const s = secLeft(y);
+    if (s >= 86399) return '00:00';
+    if (s < 1) return 'last ' + (s * 1000 < 1 ? (s * 1000).toFixed(1) : Math.round(s * 1000)) + ' thousandths of a second';
+    const t = 86400 - s, h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), ss = Math.floor(t % 60);
+    return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + (s < 3600 ? ':' + String(ss).padStart(2, '0') : '');
+  }
+  const FLOORS = [
+    { k: 'chem', name: 'Chemistry in cells', one: 'Reactions inside single cells keep score of what works.', years: T0, stop: 'EP02a', enter: 'EP01a', color: 'var(--l-chem)',
+      today: 'Still the biggest floor: about ' + times(now.cbio / now.cneu) + ' times more reactions each second than every nerve signal on Earth.',
+      more: 'For 3.5 billion years this was the only kind of thinking there was. A bacterium senses food, compares it with a few seconds ago, and swims the better way. No floor above could run without it.' },
+    { k: 'nerve', name: 'Nerves and brains', one: 'Cells send fast signals to each other. Animals can sense, decide and move.', years: firstYears(e => e.cneu > 0), stop: 'EP08b', enter: 'EP07b', color: 'var(--l-nerve)',
+      today: 'All the animals alive fire about ' + times(now.cneu / now.cdig) + ' times more signals each second than every chip does operations.',
+      more: 'A nerve signal crosses a body thousands of times faster than a chemical can drift there. That speed made hunting, fleeing, learning and, much later, daydreaming possible.' },
+    { k: 'exo', name: 'Memory outside the body', one: 'Knowledge survives outside any one brain: tools, then speech, then writing.', years: firstYears(e => e.mexo > 0), stop: 'EP25a', enter: 'EP21a', color: 'var(--l-exo)',
+      today: 'About ' + (now.mexo / 8 / now.grp / 1e12).toFixed(1).replace(/\.0$/, '') + ' terabytes kept outside the body for every person alive.',
+      more: 'A stone tool is a memory of how to make it. Speech lets a whole group share one. Writing lets the dead teach the living. From here on, each generation starts where the last one stopped.' },
+    { k: 'sil', name: 'Machines that compute', one: 'People build thinking out of something that was never alive.', years: firstYears(e => e.id === 'EP30a'), stop: 'EP30a', enter: 'EP30a', color: 'var(--l-sil)',
+      today: 'About ' + (now.cdig / now.grp / 1e12).toFixed(1) + ' trillion chip operations each second for every person alive.',
+      more: 'The first electronic computers filled a room and did a few thousand sums a second. Chips follow instructions exactly, and that is all they did for their first 67 years.' },
+    { k: 'ai', name: 'Machines that learn', one: 'Chips run neural nets that learn from examples, as brains do.', years: firstYears(e => e.cai > 0), stop: 'EP31b', enter: 'EP31b', color: 'var(--l-ai)',
+      today: 'Already about ' + Math.round(now.cai / now.cdig * 100) + '% of all chip work, and growing about 2.4 times every year.',
+      more: 'A neural net is not told the rules. It is shown millions of examples and adjusts itself until it gets them right. It is the newest floor and, so far, a thin one.' }
+  ];
+  FLOORS.forEach((f, i) => { f.wait = i ? FLOORS[i - 1].years - f.years : 0; f.who = (X.STOP[f.stop] || {}).who; f.glyph = (X.STOP[f.stop] || {}).glyph; });
+  const ago = f => (f.years >= T0 ? '4.1 billion years ago' : f.years < 200 ? 'since ' + Math.round(2026 - f.years) : big(f.years) + ' years ago');
+  const photo = f => '<span class="ph">' + X.plateThumb(f.stop, f.glyph) + '</span>';
+
+  /* A: the building */
+  let sel = 4;
+  function drawA() {
+    $('floors').innerHTML = FLOORS.slice().reverse().map(f => {
+      const i = FLOORS.indexOf(f);
+      return '<button type="button" class="floor" data-i="' + i + '" aria-pressed="' + (i === sel) + '" style="--k:' + f.color + '">' + photo(f) +
+        '<span><b>' + esc(f.name) + '</b><span class="one">' + esc(f.one) + '</span></span>' +
+        '<span class="when"><b>' + clock(f.years) + '</b><span>' + ago(f) + '</span></span></button>';
+    }).join('');
+    const f = FLOORS[sel];
+    $('detail').innerHTML = '<h3>' + esc(f.name) + '</h3><p>' + esc(f.more) + '</p><p class="big">Today: ' + esc(f.today) + '</p>' +
+      '<p>' + (f.wait ? 'It arrived ' + big(f.wait) + ' years after the floor below it. ' : 'It has been running since the start. ') + '<a href="journey.html#' + f.enter + '">See where it began in the journey →</a></p>';
+  }
+  $('floors').addEventListener('click', ev => { const b = ev.target.closest('.floor'); if (b) { sel = Number(b.dataset.i); drawA(); } });
+  drawA();
+  // the clock: midnight at the bottom, midnight again at the top; three of the five marks land on the top edge
+  const pct = y => (1 - y / T0) * 100;
+  $('clock').innerHTML = [['00:00', 0], ['06:00', 25], ['12:00', 50], ['18:00', 75], ['24:00', 100]].map(h => '<span class="hr" style="bottom:' + h[1] + '%">' + h[0] + '</span>').join('') +
+    FLOORS.map(f => '<i class="mk" style="--k:' + f.color + ';bottom:' + pct(f.years).toFixed(2) + '%"></i>').join('') +
+    '<span class="cap" style="bottom:' + (pct(FLOORS[1].years) - 9) + '%;left:58px"><b>' + clock(FLOORS[1].years) + '</b>nerves</span>' +
+    '<span class="cap" style="top:-4px;left:58px"><b>last 70 seconds</b>three floors at once</span>';
+
+  /* B: the staircase */
+  $('stairs').innerHTML = FLOORS.map((f, i) => '<div class="step"><div class="card5" style="--k:' + f.color + '">' + photo(f) + '<b>' + esc(f.name) + '</b><span class="one">' + esc(f.one) + '</span><span class="since">' + clock(f.years) + ' · ' + ago(f) + '</span></div>' +
+    '<div class="riser" style="min-height:' + (i * 34) + 'px">' + (i ? '<span><b>' + big(f.wait) + ' years</b>after the step before</span>' : '') + '</div></div>').join('');
+  $('waits').innerHTML = 'The waits: ' + FLOORS.slice(1).map(f => '<b>' + big(f.wait) + ' years</b>').join(' <span aria-hidden="true">→</span> ') + '.';
+
+  /* C: one day, zoomed in three times */
+  (function () {
+    const s = $('zoom'), W = 1000, L = 190, R = 980, PW = R - L, LH = 22, f1 = n => n.toFixed(1);
+    s.classList.add('zm');
+    const span3 = 100;                                         // years shown in the last bar
+    const BARS = [
+      { title: 'The whole day', sub: big(T0) + ' years', span: T0, lanes: [0, 1], ticks: [[T0, '00:00'], [T0 * .75, '06:00'], [T0 * .5, '12:00'], [T0 * .25, '18:00'], [0, 'midnight']] },
+      { title: 'The last ' + Math.round(secLeft(FLOORS[2].years)) + ' seconds', sub: big(FLOORS[2].years) + ' years', span: FLOORS[2].years, lanes: [0, 1, 2], ticks: [[FLOORS[2].years, big(FLOORS[2].years) + ' years ago'], [2e6, '2 million'], [1e6, '1 million'], [0, 'today']] },
+      { title: 'The last ' + Math.round(secLeft(span3) * 1000) + ' thousandths of a second', sub: span3 + ' years', span: span3, lanes: [0, 1, 2, 3, 4], ticks: [[100, '1926'], [81, '1945'], [56, '1970'], [26, '2000'], [14, '2012'], [0, '2026']] }
+    ];
+    let y = 34, g = '', prev = null;
+    BARS.forEach((b, bi) => {
+      const top = y + 12, h = b.lanes.length * LH, xx = yr => L + (1 - Math.min(yr, b.span) / b.span) * PW;
+      g += '<text class="bt" x="' + L + '" y="' + y + '">' + b.title + '</text><text class="bs" x="' + R + '" y="' + y + '" text-anchor="end">' + b.sub + '</text>';
+      if (prev) {
+        // dashed lines from the end of the bar above to the full width of this one
+        g += '<path class="zf" d="M' + R + ' ' + prev.bottom + ' L' + R + ' ' + top + ' L' + L + ' ' + top + ' L' + f1(prev.x) + ' ' + prev.bottom + ' Z"/>';
+        g += '<path class="zl" d="M' + f1(prev.x) + ' ' + prev.bottom + ' L' + L + ' ' + top + '"/><path class="zl" d="M' + R + ' ' + prev.bottom + ' L' + R + ' ' + top + '"/>';
+      }
+      b.lanes.forEach((li, r) => {
+        const f = FLOORS[li], x0 = xx(f.years), ly = top + (b.lanes.length - 1 - r) * LH;
+        g += '<rect class="lane" x="' + f1(x0) + '" y="' + ly + '" width="' + f1(Math.max(2, R - x0)) + '" height="' + LH + '" style="fill:' + f.color + '"/>';
+        g += '<text class="ln" x="' + (L - 10) + '" y="' + (ly + 15) + '" text-anchor="end">' + f.name + '</text>';
+      });
+      g += '<rect class="frame-l" x="' + L + '" y="' + top + '" width="' + PW + '" height="' + h + '"/>';
+      b.ticks.forEach(([yr, lbl], k) => { g += '<text class="tk" x="' + f1(xx(yr)) + '" y="' + (top + h + 15) + '" text-anchor="' + (k === 0 ? 'start' : yr === 0 ? 'end' : 'middle') + '">' + lbl + '</text>'; });
+      const next = BARS[bi + 1];
+      prev = next ? { x: Math.min(R - 3, xx(next.span)), bottom: top + h + 22 } : null;
+      if (next) g += '<text class="nt" x="' + (R - 8) + '" y="' + (top + h + 34) + '" text-anchor="end">the last sliver, magnified below ↓</text>';
+      y = top + h + 66;
+    });
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + (y - 34));
+    s.innerHTML = g;
+  })();
+})();
+</script>
+</body>
+</html>

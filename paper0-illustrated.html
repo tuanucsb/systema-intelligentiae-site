@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Key paper, illustrated · Systema Intelligentiae</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/paper-figs.css">
+<style>
+.draft { background: var(--surface-2); border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.draft .wrap { padding-block: 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.draft b { color: var(--ink); }
+.fx { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 44px 8px; }
+.fx-head { display: grid; gap: 6px; max-width: 76ch; }
+.fx-head .tag { font: 700 12px/1.3 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.fx-head p { color: var(--ink-2); }
+.frame { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 14px; }
+@media (max-width: 680px) { .frame { padding: 14px; } }
+</style>
+</head>
+<body>
+<div class="draft"><div class="wrap"><b>Illustrated gallery</b><span>Six data-driven figures for the key census paper, drawn live from its ledgers across all 68 moments. <a href="research.html">Open all six papers</a></span></div></div>
+
+<main class="wrap">
+  <div class="page-head">
+    <span class="eyebrow">Key paper · 68-moment census</span>
+    <h1 style="font-size:clamp(1.9rem,4.6vw,2.8rem)">Planetary information processing and memory through deep time, illustrated</h1>
+    <p>Each figure below states one core finding of the key census paper in a plain sentence and draws every bar, curve and ratio directly from the canonical audit ledgers.</p>
+  </div>
+
+  <section class="fx" aria-labelledby="f1">
+    <div class="fx-head"><span class="tag">Finding 1 · the power budget closes</span><h2 id="f1">Where the planet’s power goes</h2></div>
+    <div class="frame">
+      <p class="fig-say" id="say1"></p>
+      <p class="fig-sub">One bar is all the power used by life and technology on Earth. Each piece is as wide as its share.</p>
+      <div class="fw"><svg id="fig1" class="pf" role="img" aria-label="One bar showing how Earth's 84.5 terawatts divide between plants and other active complex cells, microbes, animals and technology."></svg></div>
+      <p class="fig-src">Source: closed compartment power ledger. Drawn on a plain linear scale.</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Power budget data table"><table class="pfx-tbl" id="tbl1"></table></div></details>
+    </div>
+  </section>
+
+  <section class="fx" aria-labelledby="f2">
+    <div class="fx-head"><span class="tag">Finding 2 · extinctions as resets</span><h2 id="f2">What the five mass extinctions cost</h2></div>
+    <div class="frame">
+      <p class="fig-say">Twice, Earth lost more than nine tenths of its nerve signalling almost overnight.</p>
+      <p class="fig-sub">Each red bar is the fall in animal nerve signalling across one extinction. The grey bar is the fall in living biomass over the same step.</p>
+      <div class="legend2"><span><i style="background:var(--crisis)"></i>Nerve signalling lost</span><span><i style="background:color-mix(in srgb, var(--ink) 22%, var(--surface))"></i>Biomass lost</span><span><svg width="34" height="12" aria-hidden="true"><line x1="2" x2="32" y1="6" y2="6" stroke="currentColor" stroke-width="1.6"/><line x1="2" x2="2" y1="2" y2="10" stroke="currentColor" stroke-width="1.6"/><line x1="32" x2="32" y1="2" y2="10" stroke="currentColor" stroke-width="1.6"/></svg>95% range, where the paper gives one</span></div>
+      <div class="fw"><svg id="fig2" class="pf" role="img" aria-label="Five mass extinctions with the percentage of nerve signalling and biomass lost at each."></svg></div>
+      <p class="fig-src">Source: 68-moment census and Monte Carlo uncertainty ledger. Constrained paleobiological scenarios.</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Mass extinction losses data table"><table class="pfx-tbl" id="tbl2"></table></div></details>
+    </div>
+  </section>
+
+  <section class="fx" aria-labelledby="f3">
+    <div class="fx-head"><span class="tag">Finding 3 · silicon versus biology</span><h2 id="f3">One machine beats one brain. All machines do not beat all brains.</h2></div>
+    <div class="frame">
+      <p class="fig-say" id="say3"></p>
+      <p class="fig-sub">A ladder of events per second. Each rung up is a hundred times more. Pink marks are nervous systems, blue marks are chips.</p>
+      <div class="fw"><svg id="fig3" class="pf" role="img" aria-label="A ladder from one human brain up to all animal nervous systems, with the largest AI cluster, all chips and all human brains between them."></svg></div>
+      <p class="fig-src">Source: device inventory and 68-moment census. A nerve signal and a chip operation are different kinds of event.</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Event rate ladder data table"><table class="pfx-tbl" id="tbl3"></table></div></details>
+    </div>
+  </section>
+
+  <section class="fx" aria-labelledby="f4">
+    <div class="fx-head"><span class="tag">Finding 4 · the fragile archive</span><h2 id="f4">How long a memory lasts with the power off</h2></div>
+    <div class="frame">
+      <p class="fig-say">The newer the medium, the sooner it forgets.</p>
+      <p class="fig-sub">Each bar is how long a medium keeps its contents if nobody maintains it. Each step along the axis is ten times longer.</p>
+      <div class="fw"><svg id="fig4" class="pf" role="img" aria-label="Retention lifetimes of memory media without maintenance, from computer memory at a few billionths of a year to fired clay at five thousand years."></svg></div>
+      <p class="fig-src">Source: memory persistence ledger (weighted 2026 digital mean: 8.30 years; 9.96×10²³ bit-years).</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Storage media retention data table"><table class="pfx-tbl" id="tbl4"></table></div></details>
+    </div>
+  </section>
+
+  <section class="fx" aria-labelledby="f5">
+    <div class="fx-head"><span class="tag">Deep time · 68 moments</span><h2 id="f5">Four billion years of cell chemistry, nerve signals and chips</h2></div>
+    <div class="frame">
+      <p class="fig-say" id="say5"></p>
+      <p class="fig-sub">All 68 census moments plotted on a squeezed log-time axis from 4.10 billion years ago to 2026.</p>
+      <div class="fw"><svg id="fig5" class="pf" role="img" aria-label="Deep-time curves of cell chemistry, animal nerve signals and digital chip operations across 68 moments."></svg></div>
+      <p class="fig-src">Source: 68-moment planetary census.</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Deep-time census milestones table"><table class="pfx-tbl" id="tbl5"></table></div></details>
+    </div>
+  </section>
+
+  <section class="fx" aria-labelledby="f6">
+    <div class="fx-head"><span class="tag">2026 silicon · inside the 80 GW</span><h2 id="f6">Where today’s chip operations come from</h2></div>
+    <div class="frame">
+      <p class="fig-say" id="say6"></p>
+      <p class="fig-sub">Grey bar: peak hardware capacity if every chip ran flat out. Blue bar: operations actually executed in 2026.</p>
+      <div class="fw"><svg id="fig6" class="pf" role="img" aria-label="Four classes of silicon hardware comparing peak capacity against executed operations per second in 2026."></svg></div>
+      <p class="fig-src">Source: 2026 device inventory ledger (1.89×10²² executed operations per second across 80 GW active IT power).</p>
+      <details class="fig-nums"><summary>Show the numbers</summary><div class="pfx-tw" tabindex="0" role="region" aria-label="Device inventory breakdown table"><table class="pfx-tbl" id="tbl6"></table></div></details>
+    </div>
+  </section>
+  <div style="height:64px"></div>
+</main>
+
+<script src="assets/data.js"></script>
+<script src="assets/ledgers.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/paper0-figs.js"></script>
+<script>window.SIX.paper0Figures();</script>
+</body>
+</html>

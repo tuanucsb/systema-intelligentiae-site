@@ -35,6 +35,8 @@
   const OFFWORLD = {}; (SI.offworld || []).forEach(r => { (OFFWORLD[r.ep] || (OFFWORLD[r.ep] = [])).push(r); });
   const PLANTS = {}; (SI.plants || []).forEach(r => { (PLANTS[r.ep] || (PLANTS[r.ep] = [])).push(r); });
   const IMMUNITY = {}; (SI.immunity || []).forEach(r => { (IMMUNITY[r.ep] || (IMMUNITY[r.ep] = [])).push(r); });
+  const BRAINS10D = {}; (SI.brains10d || []).forEach(r => { (BRAINS10D[r.ep] || (BRAINS10D[r.ep] = [])).push(r); });
+  const EYES10D = {}; (SI.eyes10d || []).forEach(r => { (EYES10D[r.ep] || (EYES10D[r.ep] = [])).push(r); });
   const PERSP = SI.perspectives || [];
   const PERSP_EP = {}, PERSP_INV = {};
   PERSP.forEach(p => {
@@ -264,7 +266,7 @@
   function chrome(page) {
     const mark = ORDER.map(k => '<i style="background:var(--c-' + k + ')"></i>').join('');
     const links = [['journey.html', 'journey', 'Journey'], ['tree.html', 'tree', 'Tree'], ['stories.html', 'stories', 'Stories'], ['atlas.html', 'atlas', 'Atlas'], ['how.html', 'how', 'How we know'], ['data.html', 'data', 'Data Lab'], ['theories.html', 'theories', 'Theories', true]];
-    const footLinks = links.concat([['intelligence.html', 'intelligence', 'Intelligence formulas'], ['research.html', 'research', 'Papers'], ['papers.html', 'papers', 'Research desk']]);
+    const footLinks = links.concat([['brains.html', 'brains', 'Brains (10D)'], ['eyes.html', 'eyes', 'Eyes (10D)'], ['dna.html', 'dna', 'DNA & automata'], ['intelligence.html', 'intelligence', 'Intelligence formulas'], ['research.html', 'research', 'Papers'], ['papers.html', 'papers', 'Research desk']]);
     const head = document.getElementById('siteHead');
     const tools = head && head.querySelector('.head-tools');
     if (tools) {
@@ -283,7 +285,7 @@
       foot.innerHTML = '<div class="wrap">' +
         '<div class="colo" data-url="' + esc(location.href.split('#')[0]) + '"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' + mark + '</span>Systema Intelligentiae</a>' +
         '<p>A natural history of thinking matter: how Earth built memory, wiring and computing over 4.1 billion years, from one open census.</p>' +
-        '<p class="upd">Last updated 22 Nov 2026</p></div>' +
+        '<p class="upd">Last updated 26 Nov 2026</p></div>' +
         '<nav aria-labelledby="footExplore"><h2 id="footExplore">Explore</h2>' + footLinks.map(l => cur(l[0], l[1], l[3]) + l[2] + '</a>').join('') + '</nav>' +
         '<nav aria-labelledby="footAbout"><h2 id="footAbout">About</h2>' + cur('about.html', 'about') + 'About this project</a><a href="about.html#cite">How to cite</a>' +
         cur('credits.html', 'credits') + 'Image credits</a><a href="about.html#licence">Data licence</a><a href="data.html">Download the data</a></nav></div>';
@@ -1093,7 +1095,7 @@
   const numBtn = (col, html, i) => '<button type="button" class="num" data-num="' + col + '"' + (i != null ? ' data-i="' + i + '"' : '') + ' data-tip="Where this number comes from: its equation, inputs and sources">' + html + '</button>';
 
   window.SIX = {
-    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, TOUR, PLATES, MYTHS, NEURAL, NETWORKS, MAKING, MOTORS, SEX, GENOMES, NERVEGENES, OFFWORLD, PLANTS, IMMUNITY, PERSP, PERSP_EP, PERSP_INV, MOM, titleOf, hookOf, stopsAround,
+    SI, E, N, IDX, ACTS, actOf, CRISIS, PARTS, PK, ORDER, INV, INVK, HIST, stateAt, newAt, STOPS, STOP, TOUR, PLATES, MYTHS, NEURAL, NETWORKS, MAKING, MOTORS, SEX, GENOMES, NERVEGENES, OFFWORLD, PLANTS, IMMUNITY, BRAINS10D, EYES10D, PERSP, PERSP_EP, PERSP_INV, MOM, titleOf, hookOf, stopsAround,
     IN, OUT, closure, EPI, GAUGES, RANGE, sup, esc, plain, sci, watts, fmtTime, fmtShort, delta, icon, glyph, plateArt, plateCredit, plateThumb, chrome, chart, LEGEND, stack, LAYERS, LK, DIGITS, stackHeight, loadAtlas, KINDS, KIND, yearsAgo,
     loadCensus, loadLedgers, readLast, writeLast, placeOf, momentText, readExpert, numPanel, numBtn, numName, COLOF, invMore, avCardHtml, invGallery, invThumbStrip, bindCarousels, slidesOfInv, openInvLightbox, perspCard, perspForEpoch, perspForInv, timeKeys
   };

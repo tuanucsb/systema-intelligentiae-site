@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evolution of the Eye &amp; Vision Across 10 Dimensions · Systema Intelligentiae</title>
+<meta name="description" content="Track 2.7 billion years of eye and vision evolution across 10 quantitative dimensions: optical geometry, photoreceptors, acuity, color &amp; polarization, flicker speed, dynamic range, stereo range, retinal edge compression, energy cost, and Pax6/opsins across 36 stages.">
+<meta property="og:title" content="Evolution of the Eye &amp; Vision Across 10 Dimensions · Systema Intelligentiae">
+<meta property="og:description" content="From bacterial microlenses, Nautilus pinholes, and trilobite calcite lenses to 16-channel mantis shrimp, 300-Hz dragonflies, 27-cm giant squid eyes, 140-cpd eagles, human retinal compression, and JWST.">
+<meta property="og:image" content="assets/og/default.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evolution of the Eye &amp; Vision Across 10 Dimensions · Systema Intelligentiae">
+<meta name="twitter:description" content="Interactive optical ray-tracing lab, 10-dimension deep-time trajectories, 3-eye radar comparator, and 36-stage sortable vision ledger.">
+<meta name="twitter:image" content="assets/og/default.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/organs10d.css">
+</head>
+<body class="org-page">
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">Interactive optical ray-tracing, charts, radar comparisons, and sorting run in JavaScript, which is turned off here. You can still <a href="data/eye_evolution_10d.csv" download>download the full 36-stage × 10-dimension Eye CSV</a>.</p></noscript>
+
+<main id="main" class="wrap">
+  <div class="page-head" style="max-width:78ch">
+    <span class="eyebrow">Deep-time optics &amp; neural edge computing · 2.7 billion years ago to 2026 · Companion: <a href="brains.html">Brains across 10 dimensions →</a></span>
+    <h1 style="font-size:clamp(2rem,5vw,3.25rem)">How eyes and vision evolved across ten dimensions</h1>
+    <p>Charles Darwin confessed in 1859 that imagining natural selection building an eagle’s eye seemed “absurd in the highest possible degree”—before arguing that a smooth chain of useful light-sensing steps must bridge the gap. Today we have every link in that chain: from three-micrometer bacteria using their own round bodies as microlenses to crystal-calcite trilobite doublets, 200-mirror scallops, 16-channel mantis shrimp, 300-hertz dragonflies, 27-centimeter giant squid eyes, 140-cycles-per-degree eagles, our 114:1 edge-compressing retina, and 6.5-meter space mirrors. Tracking <b>36 stages across ten optical and neural dimensions</b> shows how physics shaped sight—and how sight ignited brain evolution.</p>
+  </div>
+
+  <div class="org-kpis" id="eyeKpis"></div>
+
+  <nav class="org-jump" aria-label="Sections on this page">
+    <a href="#ray-bench"><span>01</span> Live optical ray-tracing bench</a>
+    <a href="#dimensions"><span>02</span> 10 dimensions &amp; deep-time curves</a>
+    <a href="#comparator"><span>03</span> 3-eye 10-axis radar</a>
+    <a href="#paradoxes"><span>04</span> Six vision paradoxes</a>
+    <a href="#ledger"><span>05</span> Sortable 36-stage ledger</a>
+  </nav>
+
+  <!-- 01. LIVE INTERACTIVE OPTICAL RAY-TRACING & NILSSON-PELGER BENCH -->
+  <section class="sec" id="ray-bench" aria-labelledby="rayH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">01 · Interactive optical physics lab</span>
+      <h2 id="rayH">Trace light rays through six eye designs—and test the pinhole trap</h2>
+      <p>In 1994, Dan-Eric Nilsson and Susan Pelger proved mathematically that 1,829 tiny 1% steps—fewer than <b>364,000 generations</b>—carry a flat patch of skin to a sharp camera eye. Switch optical architectures and drag the aperture and lens sliders below to watch image sharpness and photon brightness trade off live.</p>
+    </div>
+
+    <div class="org-bench">
+      <div style="display:flex;flex-wrap:wrap;gap:6px" role="group" aria-label="Choose optical architecture" id="opticModes">
+        <button type="button" class="part-chip" data-opt="patch" aria-pressed="false" style="--pc:var(--c-power)">1 · Flat opsin patch</button>
+        <button type="button" class="part-chip" data-opt="cup" aria-pressed="false" style="--pc:var(--c-store)">2 · Concave pigment cup</button>
+        <button type="button" class="part-chip" data-opt="pinhole" aria-pressed="false" style="--pc:var(--c-make)">3 · Nautilus pinhole</button>
+        <button type="button" class="part-chip" data-opt="camera" aria-pressed="true" style="--pc:var(--c-io)">4 · Graded-lens camera eye</button>
+        <button type="button" class="part-chip" data-opt="compound" aria-pressed="false" style="--pc:var(--c-cpu)">5 · Insect compound eye</button>
+        <button type="button" class="part-chip" data-opt="mirror" aria-pressed="false" style="--pc:var(--c-net)">6 · Scallop / JWST mirror</button>
+      </div>
+
+      <div class="org-bench-controls">
+        <div class="org-slider-field">
+          <div class="org-slider-head">
+            <label for="pupilSlider">Aperture / pupil opening</label>
+            <output id="pupilOut" for="pupilSlider">38% (f/2.1)</output>
+          </div>
+          <input type="range" class="org-range" id="pupilSlider" min="6" max="85" step="1" value="38">
+        </div>
+
+        <div class="org-slider-field">
+          <div class="org-slider-head">
+            <label for="lensSlider">Refractive / mirror focusing power</label>
+            <output id="lensOut" for="lensSlider">100% (in focus)</output>
+          </div>
+          <input type="range" class="org-range" id="lensSlider" min="0" max="130" step="2" value="100">
+        </div>
+      </div>
+
+      <svg id="eyeRaySvg" class="org-chart-frame" viewBox="0 0 920 275" role="img" aria-label="Interactive optical ray-tracing diagram showing rays from two distant targets entering the chosen eye geometry and forming blurred or sharp spots on the retina"></svg>
+      <div class="org-chart-readout" id="eyeRayReadout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 02. TEN DIMENSIONS & DEEP-TIME TRAJECTORIES -->
+  <section class="sec" id="dimensions" aria-labelledby="edimH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">02 · Ten coupled axes of visual evolution</span>
+      <h2 id="edimH">Follow each optical and neural dimension across 2.7 billion years</h2>
+      <p>Select any tab or dimension card to plot all 36 biological and synthetic visual systems across deep time. <span class="v-ptr">Click</span><span class="v-touch">Tap</span> any point to open its 10-dimension specimen card.</p>
+    </div>
+
+    <div class="org-tablist" role="tablist" aria-label="Eye evolution dimensions" id="eyeTabs">
+      <button type="button" role="tab" id="etab-all" data-dim="all" aria-selected="true" style="--tab-accent:var(--c-io)">All 10 normalized (0–100)</button>
+      <button type="button" role="tab" id="etab-d1" data-dim="d1" aria-selected="false" style="--tab-accent:var(--c-io)">1 · Optics &amp; size</button>
+      <button type="button" role="tab" id="etab-d2" data-dim="d2" aria-selected="false" style="--tab-accent:var(--c-cpu)">2 · Photoreceptors</button>
+      <button type="button" role="tab" id="etab-d3" data-dim="d3" aria-selected="false" style="--tab-accent:var(--c-prog)">3 · Acuity (cpd)</button>
+      <button type="button" role="tab" id="etab-d4" data-dim="d4" aria-selected="false" style="--tab-accent:var(--c-make)">4 · Color &amp; polarization</button>
+      <button type="button" role="tab" id="etab-d5" data-dim="d5" aria-selected="false" style="--tab-accent:var(--c-wire)">5 · Flicker speed (Hz)</button>
+      <button type="button" role="tab" id="etab-d6" data-dim="d6" aria-selected="false" style="--tab-accent:var(--c-power)">6 · Dynamic range</button>
+      <button type="button" role="tab" id="etab-d7" data-dim="d7" aria-selected="false" style="--tab-accent:var(--c-net)">7 · Stereo &amp; air range</button>
+      <button type="button" role="tab" id="etab-d8" data-dim="d8" aria-selected="false" style="--tab-accent:var(--c-ram)">8 · Retinal compression</button>
+      <button type="button" role="tab" id="etab-d9" data-dim="d9" aria-selected="false" style="--tab-accent:var(--s-chem)">9 · Metabolic cost</button>
+      <button type="button" role="tab" id="etab-d10" data-dim="d10" aria-selected="false" style="--tab-accent:var(--c-store)">10 · Pax6 &amp; opsins</button>
+    </div>
+
+    <div role="tabpanel" id="eyeTabPanel" aria-labelledby="etab-all">
+      <div class="org-panel-box">
+        <div id="eyeDimIntro"></div>
+        <svg id="eyeTimeSvg" class="org-chart-frame" viewBox="0 0 1000 390" role="img" aria-label="Deep-time scatter and trajectory chart of eye evolution across 36 stages"></svg>
+        <div class="org-chart-readout" id="eyeChartReadout" aria-live="polite">
+          <span>Select or hover any point on the chart to inspect its optics, acuity, opsins, and date.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dim-cards" id="eyeDimCards" aria-label="Summary cards for the ten dimensions of eye evolution"></div>
+  </section>
+
+  <!-- 03. HEAD-TO-HEAD 10-AXIS EYE RADAR COMPARATOR -->
+  <section class="sec" id="comparator" aria-labelledby="ecmpH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">03 · Multi-dimensional vision overlay</span>
+      <h2 id="ecmpH">Compare any three eyes or cameras across all ten dimensions</h2>
+      <p>No single eye wins every axis: eagles win daytime acuity, mantis shrimp win spectral &amp; polarization channels, dragonflies win biological speed, giant squid win underwater aperture, and humans balance acuity, 10¹⁰× dynamic range and 114:1 retinal compression.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:12px" role="group" aria-label="Preset eye trios">
+      <button type="button" class="btn sm ghost" data-epreset="human-foveal-edge-retina,eagle-140cpd-dual-fovea,mantis-shrimp-16-channel">Human vs. Eagle vs. Mantis Shrimp</button>
+      <button type="button" class="btn sm ghost" data-epreset="nautilus-pinhole-eye,scallop-200-mirror-eyes,giant-squid-270mm-eye">Nautilus Pinhole vs. Scallop Mirror vs. Giant Squid</button>
+      <button type="button" class="btn sm ghost" data-epreset="dragonfly-300hz-pursuit,jumping-spider-telephoto,nocturnal-moth-superposition">Dragonfly vs. Jumping Spider vs. Night Moth</button>
+      <button type="button" class="btn sm ghost" data-epreset="tiktaalik-water-to-air-leap,swordfish-heated-eye,blind-cavefish-regression">Tiktaalik Air Leap vs. Swordfish Heater vs. Cavefish</button>
+      <button type="button" class="btn sm ghost" data-epreset="human-foveal-edge-retina,smartphone-stacked-cmos,jwst-cryo-infrared-eye">Human Eye vs. 200-MP CMOS vs. JWST</button>
+    </div>
+
+    <div class="org-pickers" id="eyePickers"></div>
+
+    <div class="org-radar-grid" style="margin-block-start:14px">
+      <div class="org-panel-box" style="margin:0">
+        <svg id="eyeRadarSvg" class="org-chart-frame" viewBox="0 0 520 460" role="img" aria-label="Ten-axis radar polygon comparing three selected eyes or cameras"></svg>
+        <p style="font-size:13px;color:var(--ink-3);margin:0">Each spoke runs from 0 (no directional sight) to 10 (outer ring, biological or exosomatic ceiling).</p>
+      </div>
+      <div class="org-panel-box" style="margin:0;overflow-x:auto">
+        <table class="org-spec-cmp" id="eyeCmpTable">
+          <caption class="visually-hidden">Unit-by-unit comparison of the three selected eyes across all 10 dimensions</caption>
+          <thead id="eyeCmpHead"></thead>
+          <tbody id="eyeCmpBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. SIX OPTICAL & NEURAL PARADOXES -->
+  <section class="sec" id="paradoxes" aria-labelledby="eparaH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">04 · Six surprises in visual evolution</span>
+      <h2 id="eparaH">Why physics forced eyes down radically different paths</h2>
+    </div>
+
+    <div class="paradox-grid">
+      <article class="paradox-card" style="--pc:var(--c-io)">
+        <span class="eyebrow">Paradox 1 · Diffraction Wall</span>
+        <h3>To match human sharpness, an insect compound eye would have to be 1 meter wide</h3>
+        <p>Because each tiny facet of a compound eye has its own narrow aperture (~30 µm), wave diffraction blurs light across neighboring facets. Shrinking facets makes diffraction <i>worse</i>—so compound eyes plateau near <b>2 cycles/degree</b> and dominate on 360° coverage and <b>300-Hz speed</b> instead.</p>
+        <div class="paradox-stat">Dragonfly: 28,000 facets · 2 cpd · 300 Hz  |  Eagle camera eye: 140 cpd</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-net)">
+        <span class="eyebrow">Paradox 2 · Water to Air</span>
+        <h3>Lifting eyes out of water multiplied visible volume a millionfold</h3>
+        <p>Even crystal-clear water absorbs and scatters photons within tens of meters. Fossil Devonian skulls show fish like <i>Tiktaalik</i> tripled eye size and perched orbits crocodile-style <i>before</i> limbs walked ashore: a <b>100× range leap</b> that expanded monitored 3D space <b>1,000,000×</b> and rewarded planning ahead.</p>
+        <div class="paradox-stat">Water range: ~6 m  ──▶  Air horizon: >600 m (10⁶× volume, MacIver 2017)</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-make)">
+        <span class="eyebrow">Paradox 3 · Mantis Shrimp Barcode</span>
+        <h3>16 color channels—yet worse fine-hue discrimination than ours</h3>
+        <p>Behavioral tests stunned biologists: despite packing 12–16 spectral receptors, mantis shrimp fail to tell wavelengths 15 nm apart that humans distinguish at 1–2 nm! Why? Instead of burning heavy brain cortex computing cone ratios, their midband acts as an <b>instant 16-bin hardware lookup table</b> for lightning reef strikes.</p>
+        <div class="paradox-stat">Mantis shrimp: 16 hardware bins  |  Human: 3 cones + cortical opponent ratios</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-power)">
+        <span class="eyebrow">Paradox 4 · Dark Current Bill</span>
+        <h3>Eyes burn the most energy in complete darkness—so cavefish deleted theirs</h3>
+        <p>Counterintuitively, vertebrate rods stay depolarized in the dark, leaking sodium ions nonstop (`dark current`) and burning ATP 24/7. Direct respirometry on blind Mexican cavefish proved that deleting eyes and optic tecta saves <b>15% of a young fish’s entire resting energy</b>—turning starvation caves survivable.</p>
+        <div class="paradox-stat">Blowfly retina: ~8.5% body ATP  |  Juvenile Astyanax eye cost: ~15%</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-ram)">
+        <span class="eyebrow">Paradox 5 · Inverted Yet Brilliant</span>
+        <h3>Our ‘backward’ retina runs a 5-layer convolutional compressor</h3>
+        <p>Octopuses wire nerves cleanly behind their photoreceptors; vertebrates wire nerves in front, creating a blind spot. Yet pressing photoreceptors directly into oxygen-rich choroid blood and pigment recycling lets our retina burn hotter and run five neural layers that distil <b>1 gigabit/s</b> of raw light into <b>~8.75 megabits/s</b> across 30 feature channels.</p>
+        <div class="paradox-stat">126M receptors (~1 Gb/s)  ──(5 layers)──▶  1.2M axons (~8.75 Mb/s, 114:1)</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-store)">
+        <span class="eyebrow">Paradox 6 · Deep Homology</span>
+        <h3>One master switch (`Pax6`) builds fly, squid and human eyes</h3>
+        <p>Switching on a mouse’s <i>Pax6</i> gene on a fruit fly’s leg grows a working <i>fly</i> compound eye right on the leg. Although compound eyes and camera eyes evolved their lenses independently (co-opting ordinary heat-shock and metabolic enzymes as crystal-clear crystallins), all bilaterians inherited the same ancient light-patch switch.</p>
+        <div class="paradox-stat">Shared switch: Pax6/eyeless  |  Split sensors: r-opsin (fly) vs. c-opsin (rod/cone)</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05. FULL 36-STAGE SORTABLE 10D EYE LEDGER -->
+  <section class="sec" id="ledger" aria-labelledby="eledH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">05 · Complete calibrated vision dataset</span>
+      <h2 id="eledH">All 36 eyes and cameras across 10 dimensions</h2>
+      <p>Click any column header button to sort ascending or descending, or filter by optical class, lineage, or opsin family.</p>
+    </div>
+
+    <div class="org-filter-bar">
+      <search aria-label="Filter eye evolution stages">
+        <label for="eyeSearch" class="visually-hidden">Search eye stages</label>
+        <input type="search" id="eyeSearch" placeholder="Filter: trilobite, scallop, mantis, eagle, squid, cavefish, CMOS, JWST…">
+        <label for="eyeGroupSel" class="visually-hidden">Filter by visual group</label>
+        <select id="eyeGroupSel">
+          <option value="all">All visual groups (36)</option>
+          <option value="Microbial light switches">Microbial light switches (3)</option>
+          <option value="First cups, pinholes & mirrors">First cups, pinholes &amp; mirrors (6)</option>
+          <option value="Arthropod compound & hyperspectral eyes">Arthropod compound &amp; hyperspectral (8)</option>
+          <option value="Vertebrate camera eyes">Vertebrate camera eyes (14)</option>
+          <option value="Human & synthetic vision">Human &amp; synthetic vision (5)</option>
+        </select>
+      </search>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="btn sm" href="data/eye_evolution_10d.csv" download>Download 10D Eye CSV</a>
+        <a class="btn sm ghost" href="brains.html">Companion: Brains (10D) →</a>
+      </div>
+    </div>
+
+    <p id="eyeSortStatus" role="status" class="visually-hidden"></p>
+
+    <div class="org-table-region" tabindex="0" role="region" aria-labelledby="eyeTblCap">
+      <table class="org-sort-table" id="eyeSortTable">
+        <caption id="eyeTblCap">36 evolutionary stages and optical sensors measured across 10 quantitative visual dimensions (click any stage name for full narrative &amp; citations)</caption>
+        <thead>
+          <tr>
+            <th scope="col" data-type="text"><button type="button" commandfor="eyeSortTable" command="--sort"><span>Eye / Species</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number" aria-sort="descending"><button type="button" commandfor="eyeSortTable" command="--sort"><span>Age</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>1 · Size (mm) &amp; f/#</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>2 · Receptors</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>3 · Acuity (cpd)</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>4 · Colors &amp; Pol</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>5 · Speed (Hz)</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>6 · Dyn. Range</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>7 · Stereo / Range</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>8 · Compression</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>9 · Power (mW)</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="text"><button type="button" commandfor="eyeSortTable" command="--sort"><span>10 · Opsin / Sensor</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="eyeSortTable" command="--sort"><span>10D Score</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+          </tr>
+        </thead>
+        <tbody id="eyeTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <dialog id="eyeStageModal" class="org-modal" closedby="any" aria-labelledby="eyeModalTitle"></dialog>
+</main>
+
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/ledgers.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/eyes.js"></script>
+</body>
+</html>

@@ -111,7 +111,7 @@
 
   /* ---------- Hero KPIs ---------- */
   $('heroKpis').innerHTML = [
-    { c: 'var(--c-prog)', sub: 'Literature synthesis', val: '8 schools · 12 debates', txt: 'Schrödinger (1944) to Bennett (2023) & Agüera y Arcas (2025), tested against one dataset.' },
+    { c: 'var(--c-prog)', sub: 'Literature synthesis', val: '9 schools · 12 debates', txt: 'Schrödinger (1944) & Wolfram (2002) to Bennett (2023) & Agüera y Arcas (2025), tested against one dataset.' },
     { c: 'var(--c-store)', sub: 'Empirical audit scope', val: N + ' moments · ' + ledgerCount + ' ledgers', txt: sysCount.toLocaleString('en-US') + ' tracked systems, 10 functional board parts & 10,000-draw uncertainty closure.' },
     { c: 'var(--l-chem)', sub: 'Anti-entropic floor', val: sci(bitNow) + ' J/bit', txt: 'Landauer minimum at ' + Math.round(eNow.temp) + ' °C; ' + X.watts(RAW[N - 1].P) + ' holds Earth’s biology & archives ordered.' },
     { c: 'var(--c-cpu)', sub: 'Planetary intelligence gain', val: fmtGain(baseTopDex), txt: f1(baseTopDex) + ' orders of magnitude (' + f1(baseDoublings) + ' doublings) since 4.10 Ga.' }
@@ -121,7 +121,7 @@
      SECTION 1: EIGHT FOUNDATIONAL BOOKS & THEORETICAL SCHOOLS
      ========================================================================== */
   const SCHOOLS = [
-    { k: 'all', label: 'All 8 schools', c: 'var(--ink)' },
+    { k: 'all', label: 'All 9 schools', c: 'var(--ink)' },
     { k: 'physics', label: 'Thermodynamics & physics', c: 'var(--c-power)' },
     { k: 'compute', label: 'Computation & automata', c: 'var(--c-make)' },
     { k: 'neuro', label: 'Evolution & neuroscience', c: 'var(--c-prog)' },
@@ -248,6 +248,21 @@
       verdict: 'Explains the sharpest inflection in our entire census: human skull volume stayed flat while exosomatic storage rose ×10¹⁹ from early hominins to 15 zettabytes.',
       critique: 'Reveals the Archival Fragility Paradox in our persistence ledger: unpowered clay cuneiform survives 5,000 years at 0 W, whereas modern 3D NAND flash decays in ~3.5 years without 20 GW of continuous electrical maintenance.',
       links: [['Walk how memory left the body →', 'tree.html#path=memory'], ['Persistence media ledger →', 'data.html#media']]
+    },
+    {
+      id: 'turing-wolfram', cat: 'compute', color: 'var(--c-store)', yr: '1952 · 2002 · 2019',
+      school: 'Morphogenesis, Cellular Automata & Algorithmic DNA Self-Assembly',
+      author: 'Alan Turing, Stephen Wolfram & Erik Winfree',
+      work: 'The Chemical Basis of Morphogenesis (1952) · A New Kind of Science (2002) · Algorithmic DNA Self-Assembly (2004, 2019)',
+      thesis: 'Turing showed that short-range activation plus fast-diffusing inhibition breaks uniform cell sheets into periodic digits, stripes and spots. Wolfram demonstrated that even 1D 2-state 3-neighbor local rules generate deterministic chaos (Rule 30, echoed on Conus textile snail shells) and full Turing universality (Cook–Wolfram Rule 110)—and Manukyan & Milinkovitch (2017) proved that lizard skin scales discretize Turing’s PDEs into a living 2D cellular automaton. Winfree, Rothemund & Woods closed the loop by programming 5-nt DNA sticky-end tiles to self-assemble Rule 90 and Rule 110 in water.',
+      law: 'Rule 110: next(C) = (C ∨ R) ∧ ¬(L ∧ C ∧ R)   |   2D Crystal Growth ≡ 1D Cellular Automaton',
+      origin: '3.80 billion yrs ago (DNA base pairing) → 541 Ma (Turing morphogens) → 2004–2019 (DNA tile CAs)',
+      originHref: 'dna.html#automata-lab',
+      trackedHtml: () => nRows('automata') + '-system molecular & CA benchmark alongside global cellular chemistry (' + X.numBtn('c_biochem_ops_sec', sci(eNow.cbio) + ' events/s') + ').',
+      aiView: 'Highlights that complex computation emerges from minimal local rules without hand-designed weights, while computational irreducibility bounds exact multi-step lookahead.',
+      verdict: 'Confirmed in living skin/shell lattices and 355-tile DNA circuits (~20–42× Landauer), while refuting any equivalence between bare universality and agency.',
+      critique: 'Wolfram’s Principle of Computational Equivalence conflates Turing universality with intelligence: unproofread Rule 110 gliders dissolve at ~1.4% thermal noise, nearest-neighbor lattices choke on O(N) transit, and adaptive minds survive by finding coarse-grained reducible shortcuts inside a Markov blanket.',
+      links: [['Run live Wolfram & DNA tile lab →', 'dna.html#automata-lab'], ['Molecular & automata ledger →', 'data.html#automata']]
     }
   ];
 
@@ -436,6 +451,14 @@
       links: [['Making ledger →', 'data.html#making'], ['Tree path →', 'tree.html#path=making']]
     },
     {
+      name: 'Molecular Computers & Cellular Automata', c: 'var(--c-store)',
+      rows: nRows('automata') + ' genomic, biological CA & DNA tile systems',
+      span: '5.7×10⁻²⁰ J Pol III (~20× Landauer) → lizard 2D CA → 355-tile DNA Rule 110',
+      anchors: 'Hopfield (1974); Cook (2004); Rothemund & Winfree (2004); Manukyan et al. (2017); Woods et al. (2019); Lv et al. (2023)',
+      audit: '✓ Bridges natural cis-regulatory/ribosome/Oxytricha DNA computing with Wolfram CAs and lab DPGA circuits; separates universality from agency.',
+      links: [['DNA & automata lab →', 'dna.html'], ['Automata ledger →', 'data.html#automata']]
+    },
+    {
       name: 'Plants & Fungal Non-Neural Sensing', c: 'var(--s-chem)',
       rows: nRows('plants') + ' sensing & memory milestones',
       span: '0.5 s eyespot → 20 s Ca²⁺ counter → winter Polycomb chromatin & seed dormancy',
@@ -468,12 +491,20 @@
       links: [['Neural ledger →', 'data.html#neural'], ['Neurons by clade →', 'data.html#neuronsbygroup']]
     },
     {
-      name: 'Brain Architecture & Biggest Brains', c: 'var(--s-neuro)',
-      rows: nRows('brains') + ' dissected species + ' + nRows('biggest') + ' moment leaders',
-      span: '302 neurons (C. elegans) → 8.6×10¹⁰ (human) → 2.57×10¹¹ (elephant)',
-      anchors: 'Herculano-Houzel (2016, 2023); Olkowicz et al. (2016) avian pallium; Caspar et al. (2024)',
-      audit: '✓ Isotropic fractionator counts for living species; non-avian dinosaur neuron ranges explicitly bracket reptile-like (250M) vs. endotherm (3.3B) scaling.',
-      links: [['Biggest brain →', 'data.html#biggest'], ['54 brains →', 'data.html#brains']]
+      name: 'Brain Evolution Across 10 Dimensions', c: 'var(--s-neuro)',
+      rows: nRows('brains10d') + ' 10D stages + ' + nRows('brains') + ' dissected species + ' + nRows('biggest') + ' moment leaders',
+      span: '0 → 257B neurons · 50 ng → 7.8 kg · 20 W (20%–52% share) · 39.1 b/s speech',
+      anchors: 'Herculano-Houzel (2014, 2016); Olkowicz et al. (2016); Dorkenwald et al. (2024); Siletti et al. (2023); Coupé et al. (2019)',
+      audit: '✓ Jointly tracks neurons, mass/EQ, synapses/speed, watts/body-share, ops/s, memory, horizon, cell types, language and childhood plasticity.',
+      links: [['10D Brain Explorer →', 'brains.html'], ['10D Brain ledger →', 'data.html#brains10d']]
+    },
+    {
+      name: 'Eye & Vision Evolution Across 10 Dimensions', c: 'var(--c-io)',
+      rows: nRows('eyes10d') + ' optical & retinal benchmark stages',
+      span: '3 µm microlens → 270 mm squid eye · 140 cpd eagle · 16 ch · 300 Hz · 114:1 retina',
+      anchors: 'Nilsson & Pelger (1994); Land & Nilsson (2012); MacIver et al. (2017); Reymond (1985); Moran et al. (2015); Koch et al. (2006)',
+      audit: '✓ Resolves pinhole vs. lens physics, compound diffraction walls, cavefish 15% dark-current ATP savings, and 5-layer retinal edge compression.',
+      links: [['10D Eye Explorer →', 'eyes.html'], ['10D Eye ledger →', 'data.html#eyes10d']]
     },
     {
       name: 'Communication Networks & Collectives', c: 'var(--c-net)',

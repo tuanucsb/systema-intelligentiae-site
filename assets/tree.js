@@ -10,10 +10,19 @@
   const PATHS = [
     {
       key: 'neural',
-      label: 'How neural computation evolved',
+      label: 'How brains & neural computation evolved',
       color: 'var(--c-cpu)',
-      about: 'From spare synapse proteins and jellyfish nerve nets to octopus arm cords, bird forebrains, human cortex and reasoning AI.',
-      steps: ['synapse-kit', 'bioelectric', 'neurons', 'three-part-brain', 'distributed-arms', 'reinforcing', 'escape-reflex', 'myelin', 'mushroom-bodies', 'three-layer-pallium', 'neocortex', 'flight-controller', 'dense-pallium', 'folded-cortex', 'mentalizing', 'parietal-visuomotor', 'hierarchical-planning', 'speaking', 'gpus', 'transformers', 'reasoning'].filter(id => X.INVK[id])
+      about: 'From spare synapse proteins and jellyfish nerve nets to octopus arm cords, bird forebrains, 8-kg whale brains, 69B-neuron cerebellums, language and AI.',
+      deepLink: ['Explore all 10 dimensions of brain evolution →', 'brains.html'],
+      steps: ['synapse-kit', 'bioelectric', 'neurons', 'three-part-brain', 'distributed-arms', 'reinforcing', 'escape-reflex', 'myelin', 'mushroom-bodies', 'three-layer-pallium', 'neocortex', 'flight-controller', 'dense-pallium', 'giant-cetacean-brains', 'folded-cortex', 'mentalizing', 'cerebellar-models', 'parietal-visuomotor', 'hierarchical-planning', 'broca-arcuate-loop', 'speaking', 'gpus', 'transformers', 'reasoning'].filter(id => X.INVK[id])
+    },
+    {
+      key: 'eyes',
+      label: 'How eyes & vision evolved',
+      color: 'var(--c-io)',
+      about: 'From algal eyespots, Nautilus pinholes and trilobite crystal lenses to 16-color mantis shrimp, 300-Hz dragonflies, 140-cpd eagle foveas, 100:1 retinal edge compression and CMOS cameras.',
+      deepLink: ['Explore all 10 dimensions of eye evolution →', 'eyes.html'],
+      steps: ['oxy-photo', 'eyespot', 'pinhole-lens-eyes', 'compound-eyes', 'trilobite-mirror-eyes', 'hyperspectral-eyes', 'eyes-in-air', 'dragonfly-optic-lobes', 'duplex-night-retina', 'tetrachromat-fovea', 'color-fovea', 'trichromat-stereo', 'retinal-compression', 'mobile-cloud', 'cmos-event-vision', 'offworld-fleet'].filter(id => X.INVK[id])
     },
     {
       key: 'networks',
@@ -33,8 +42,9 @@
       key: 'senses',
       label: 'Senses & edge computing',
       color: 'var(--c-io)',
-      about: 'From molecules bumping a wall to 16,000-lens compound eyes, water-ripple sensors, whiskers, 100:1 retinal edge compression and sonar.',
-      steps: ['contact-chem', 'chemoreceptors', 'eyespot', 'compound-eyes', 'lateral-line', 'eyes-in-air', 'whiskers-turbinals', 'middle-ear', 'color-fovea', 'echolocation', 'bipedal-gait', 'tool-hands'].filter(id => X.INVK[id])
+      about: 'From molecules bumping a wall to 16,000-lens compound eyes, water-ripple sensors, whiskers, 100:1 retinal edge compression, sonar and CMOS.',
+      deepLink: ['Compare eyes across 10 dimensions →', 'eyes.html'],
+      steps: ['contact-chem', 'chemoreceptors', 'eyespot', 'pinhole-lens-eyes', 'compound-eyes', 'lateral-line', 'eyes-in-air', 'whiskers-turbinals', 'duplex-night-retina', 'middle-ear', 'tetrachromat-fovea', 'color-fovea', 'echolocation', 'trichromat-stereo', 'bipedal-gait', 'tool-hands', 'retinal-compression', 'cmos-event-vision'].filter(id => X.INVK[id])
     },
     {
       key: 'bennett',
@@ -310,6 +320,7 @@
     const nextId = idx >= 0 && idx < P.steps.length - 1 ? P.steps[idx + 1] : null;
     return '<div class="path-bar" style="--pc:' + P.color + '"><div class="pb-head"><span class="sub">Guided path' + (idx >= 0 ? ' · Step ' + (idx + 1) + ' / ' + P.steps.length : '') + '</span><button type="button" class="pb-exit" data-clear-path="1">Exit path</button></div>' +
       '<b>' + esc(P.label) + '</b><p>' + esc(P.about) + '</p>' +
+      (P.deepLink ? '<p style="margin:2px 0 4px;font-size:13.5px;font-weight:700"><a href="' + esc(P.deepLink[1]) + '">' + esc(P.deepLink[0]) + '</a></p>' : '') +
       '<div class="pb-nav"><button type="button" class="btn sm ghost" data-step="' + (prevId || '') + '"' + (prevId ? '' : ' disabled') + '>← Earlier</button>' +
       '<button type="button" class="btn sm" data-step="' + (nextId || '') + '"' + (nextId ? '' : ' disabled') + '>Next in path →</button></div></div>';
   }
@@ -356,7 +367,15 @@
       '<div class="dr-spot" style="--sc:var(--c-prog)"><span class="sub">Immune memory · ' + when(im.t) + '</span><b>' + esc(im.pt) + '</b><p>' + esc(im.px) + '</p>' +
       '<p class="x-only">' + esc(im.sys) + ' · ' + esc(im.mech) + '</p>' +
       '<a href="data.html#immunity">All ' + (X.SI.immunity || []).length + ' immune milestones →</a> · <a href="stories.html#immunity-story">Immunity story →</a></div>');
-    return off.concat(gen, sx, pl, imm, neu, ng, net, mk, mot).join('');
+    const ey = (X.SI.eyes10d || []).filter(r => r.inv === u.id).map(e =>
+      '<div class="dr-spot" style="--sc:var(--c-io)"><span class="sub">10D eye &amp; vision milestone · ' + when(e.t) + '</span><b>' + esc(e.pt) + '</b><p>' + esc(e.px) + '</p>' +
+      '<p class="x-only">' + esc(e.sys) + (e.cpd > 0 ? ' · ' + X.plain(e.cpd) + ' cpd acuity' : '') + (e.chan > 0 ? ' · ' + e.chan + ' color ch' : '') + (e.hz > 0 ? ' · ' + X.plain(e.hz) + ' Hz' : '') + '</p>' +
+      '<a href="eyes.html">Open 10D Eye Explorer →</a> · <a href="data.html#eyes10d">Eye 10D ledger →</a></div>');
+    const br = (X.SI.brains10d || []).filter(r => r.inv === u.id).map(b =>
+      '<div class="dr-spot" style="--sc:var(--c-cpu)"><span class="sub">10D brain milestone · ' + when(b.t) + '</span><b>' + esc(b.pt) + '</b><p>' + esc(b.px) + '</p>' +
+      '<p class="x-only">' + esc(b.sys) + (b.neu > 0 ? ' · ' + X.sci(b.neu) + ' neurons' : '') + (b.mass > 0 ? ' · ' + X.plain(b.mass) + ' g' : '') + (b.w > 0 ? ' · ' + X.watts(b.w) : '') + '</p>' +
+      '<a href="brains.html">Open 10D Brain Explorer →</a> · <a href="data.html#brains10d">Brain 10D ledger →</a></div>');
+    return off.concat(ey, br, gen, sx, pl, imm, neu, ng, net, mk, mot).join('');
   }
   function epochLedgerHtml(ep) {
     const when = t => !(t > 0) ? 'today' : (t * 1e6 < 10000 ? 'in ' : 'about ') + X.fmtTime(t);
@@ -378,7 +397,13 @@
     const ng = (X.NERVEGENES[ep] || []).map(g =>
       '<div class="dr-spot" style="--sc:var(--c-wire)"><span class="sub">Nerve genes · ' + when(g.t) + '</span><b>' + esc(g.pt) + '</b><p>' + esc(g.px) + '</p>' +
       '<a href="data.html#nervegenes">Open nerve-gene ledger →</a></div>');
-    return off.concat(gen, sx, pl, imm, ng).join('');
+    const ey = (X.EYES10D[ep] || []).map(e =>
+      '<div class="dr-spot" style="--sc:var(--c-io)"><span class="sub">Eyes &amp; vision (10D) · ' + when(e.t) + '</span><b>' + esc(e.pt) + '</b><p>' + esc(e.px) + '</p>' +
+      '<a href="eyes.html">Explore 10D Eye Evolution →</a></div>');
+    const br = (X.BRAINS10D[ep] || []).map(b =>
+      '<div class="dr-spot" style="--sc:var(--c-cpu)"><span class="sub">Brain evolution (10D) · ' + when(b.t) + '</span><b>' + esc(b.pt) + '</b><p>' + esc(b.px) + '</p>' +
+      '<a href="brains.html">Explore 10D Brain Evolution →</a></div>');
+    return off.concat(ey, br, gen, sx, pl, imm, ng).join('');
   }
   const top = (chip, title) => '<button type="button" class="dr-handle" aria-expanded="' + !peek + '" aria-label="' + (peek ? 'Show details' : 'Fold details down') + '"><i aria-hidden="true"></i><span>' + esc(title) + '</span></button>' +
     '<div class="dr-top">' + chip + '<button type="button" class="x" id="drClose" aria-label="Close details">×</button></div>';

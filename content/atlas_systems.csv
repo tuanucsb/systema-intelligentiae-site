@@ -218,7 +218,7 @@ Gran Dolina hominin endocast,850000,1.2e+14,nerve,estimate,Homo antecessor (Gran
 Mycoplasma minimal cellular genome,1.5e+09,120,chem,estimate,Mycoplasma genitalium (Minimal Genome),Unicellular Molecular Biochemical Computing,0
 Subterranean termite gallery mesh,1e+08,1.8e+14,nerve,estimate,Reticulitermes speratus (Soil Network),Arthropod Mushroom Body & Optical Flow,5e+11
 Desert parasitic plant gene graft,3e+07,80000,chem,estimate,Cistanche deserticola (Parasitic HGT),Cellular & Molecular Biochemical Signaling,0
-Conway Game of Life automaton,56,1e+06,sil,class,Conway's Game of Life (1970),Synthetic Algorithmic Computing,0
+Conway Game of Life automaton,56,2.5e+06,sil,estimate,Conway's Game of Life (1970),Synthetic Algorithmic Computing,0
 Variational Autoencoder engine,13,5e+10,ai,estimate,Variational Autoencoder (VAE 2013),Synthetic Algorithmic Computing,0
 Mixture-of-Depths adaptive compute,2,5e+12,ai,estimate,Mixture-of-Depths Transformer (MoD 2024),Deep Connectionist Neural AI,0
 RLHF alignment policy optimizer,9,2e+12,ai,estimate,Reinforcement Learning from Human Feedback (RLHF),Synthetic Algorithmic Computing,0
@@ -702,3 +702,37 @@ Mycoplasma mycoides JCVI-syn1.0 synthetic cell,16,400,chem,estimate,Mycoplasma m
 Lipid-nanoparticle modified-mRNA vaccine platform,6,5000,chem,estimate,Nucleoside-modified mRNA LNP,"4,284-nt N1-methylpseudouridine mRNA instructing host antigen synthesis",0
 High-throughput optical/nanopore DNA sequencer,12,2e+08,sil,estimate,Illumina SBS / Oxford Nanopore,Massively parallel base-calling reading ~10^10 DNA bases per run,0
 ASML Twinscan EUV 13.5-nm lithography scanner,7,5e+11,sil,estimate,ASML NXE/EXE EUV Scanner,Laser-produced tin plasma + Bragg mirrors printing nanometer transistor ,0
+Bacterial lacZYA AND-NOT promoter logic gate,3.2e+09,42,chem,estimate,Escherichia coli K-12 lacZYA,LacI repressor + CRP-cAMP transcriptional Boolean AND-NOT switch,0
+Tandem glycine riboswitch allosteric mRNA gate,3.2e+09,1000,chem,estimate,Vibrio cholerae gcvT mRNA,Cooperative two-aptamer glycine binding mRNA AND logic without proteins,0
+Bacteriophage BPP-1 DGR hypervariable mutator,2.8e+09,12,chem,estimate,Bordetella phage BPP-1 DGR,Reverse-transcriptase adenine mutagenesis exploring 10^14 tail keys,0
+Oxytricha trifallax RNA-guided genome unscrambler,8.5e+08,1040,chem,estimate,Oxytricha trifallax (Ciliophora),"Pointer-guided RNA templates unscrambling 225,000 DNA segments",0
+Conus textile shell Rule-30 pigment automaton,5.5e+07,4e+06,nerve,estimate,Conus textile (Gastropoda),1D mantle-edge lateral-inhibition shell pigment CA + ganglionic CNS,200000
+Timon lepidus ocellated lizard skin 2D automaton,2e+07,1.2e+09,nerve,estimate,Timon lepidus (Lacertidae),Hexagonal skin-scale 2D cellular automaton + reptilian pallial CNS,15000000
+Elowitz-Leibler synthetic DNA Repressilator clock,26,0.2,chem,estimate,Synthetic E. coli 3-gene ring,Three-repressor cyclic NOT-gate ring oscillator on plasmid DNA,0
+Von Neumann 29-state self-reproducing cellular automaton,78,2e+11,sil,estimate,2D 5-neighbor 29-state grid,"200,000-cell 2D cellular automaton with passive tape & construction arm",0
+Wolfram Rule 30 chaotic elementary cellular automaton,43,1.3e+14,sil,estimate,1D 3-neighbor binary Rule 30,Deterministic 8-bit local rule L XOR (C OR R) generating Class 3 chaos,0
+Wolfram-Cook Rule 110 universal cellular automaton,22,1.3e+14,sil,estimate,1D 3-neighbor binary Rule 110,Minimal 1D 2-state local-neighbor glider Turing-complete computer,0
+"Wolfram-Smith (2,3) minimal universal Turing machine",19,1.3e+11,sil,estimate,2-state 3-symbol Turing tape,Six-transition head rule achieving full Turing universality,0
+Benenson-Shapiro FokI autonomous DNA automaton,25,1e+09,sil,estimate,FokI nuclease + dsDNA droplet,10^12 autonomous enzymatic DNA 2-state machines in microlitre buffer,0
+Winfree-Rothemund DX DNA tile Rule-90 automaton,22,3.3e+07,sil,estimate,Double-crossover DNA tiles,Sticky-end Watson-Crick hybridization self-assembling Sierpinski XOR,0
+Woods-Winfree 355-tile 6-bit reprogrammable DNA circuit,7,1.7e+08,sil,estimate,355 ssDNA nanotube tile set,6-bit iterative DNA nanotube CA executing Rule 110 & 20 other programs,0
+Lv-Fan programmable DNA gate array (DPGA),3,1.1e+08,sil,estimate,24-gate 500-strand liquid IC,Instruction-wired universal DNA logic executing >100B circuit configs,0
+Aguera y Arcas BFF self-replicating tape soup,2,2e+10,sil,estimate,64-byte BFF instruction soup,Unseeded random self-modifying byte tapes snapping into replicators,0
+Synechocystis unicellular microlens phototaxis,2.7e+09,2,chem,estimate,Synechocystis sp. PCC 6803,3-um spherical cell body acting as microlens focusing light onto far wal,0
+Warnowiid dinoflagellate subcellular ocelloid eye,8.5e+08,80,chem,estimate,Erythropsidinium (Dinoflagellata),Mitochondrial cornea + captured red-algal plastid polarized retina in 1 ,0
+Phacops calcite doublet-lens trilobite eye,4.7e+08,3e+06,nerve,estimate,Phacops rana (Trilobita),Aplanatic single-crystal CaCO3 Huygens-Descartes doublet compound eye,250000
+Dolichopteryx barreleye spookfish mirror-lens eye,2e+07,2e+10,nerve,estimate,Dolichopteryx longipes (Teleostei),Upward f/0.9 lens tube + downward guanine crystal-plate mirror pouch,15000000
+Temnodontosaurus 264-mm giant ichthyosaur eye,1.85e+08,8e+11,nerve,estimate,Temnodontosaurus platyodon (Ichthyosauria),264-mm bony-ringed f/1.0 mesopelagic photon-bucket camera eye,350000000
+Xiphias gladius cranial-heated retina & tectum,3e+07,3e+11,nerve,estimate,Xiphias gladius (Swordfish),1.5-W retro-orbital heater muscle warming 90-mm eye +14 C for 40-Hz visi,150000000
+Astyanax mexicanus eyeless energy-saving cavefish,300000,1.2e+10,nerve,estimate,Astyanax mexicanus Pachon morph,Adaptive embryonic lens apoptosis saving 15% of juvenile metabolic energ,8000000
+Aquila audax 140-cpd dual-fovea eagle visual system,3.2e+07,4e+12,nerve,estimate,Aquila audax (Accipitridae),1M cones/mm2 convex-pit telephoto fovea achieving 140 cycles/deg acuity,2200000000
+Carlito syrichta giant nocturnal tarsier eye,4.5e+07,6e+11,nerve,estimate,Carlito syrichta (Tarsiidae),f/0.85 tubular eyes each heavier than its brain after tapetum loss,320000000
+Chamaeleo negative-lens monocular rangefinder eye,4.5e+07,2.5e+11,nerve,estimate,Chamaeleo calyptratus (Chamaeleonidae),Independent 180-deg turrets + diverging negative lens rangefinder,45000000
+Papilio xuthus 8-receptor hexachromatic butterfly eye,7.5e+07,3e+08,nerve,estimate,Papilio xuthus (Lepidoptera),8 photoreceptors of 6 spectral classes + polarization per ommatidium,1000000
+Deilephila elpenor starlight color superposition eye,1.2e+08,2e+08,nerve,estimate,Deilephila elpenor (Sphingidae),Refracting superposition compound eye pooling facets for starlight color,900000
+Tachyglossus aculeatus folded-cortex monotreme brain,4.5e+07,7.5e+11,nerve,estimate,Tachyglossus aculeatus (Monotremata),Independently gyrified monotreme neocortex (~50% frontal) without callos,650000000
+"Poecile atricapillus 10,000-cache hippocampal bird brain",1.5e+07,3.8e+11,nerve,estimate,Poecile atricapillus (Paridae),1-g brain with autumn hippocampal neurogenesis & neural cache barcodes,226000000
+Stacked 200-MP back-illuminated CMOS camera sensor,14,5.7e+10,sil,estimate,3D-stacked BSI-CMOS + ISP,200M pinned photodiodes (85% QE) + wafer-bonded neural ISP,0
+Dynamic Vision Sensor neuromorphic event camera,18,1e+10,sil,estimate,Asynchronous log-contrast silicon retina,Frameless per-pixel microsecond log-intensity change spike sensor,0
+PRIMA photovoltaic subretinal bionic visual implant,6,1e+07,sil,estimate,378-pixel wireless NIR subretinal array,Near-infrared photovoltaic silicon wafer stimulating human bipolar neuro,0
+Intel Hala Point 1.15B-neuron neuromorphic rack,2,3.8e+14,sil,estimate,"1,152 Loihi-2 asynchronous spiking chips",Event-driven 1.15B-neuron 128B-synapse silicon spiking mesh at 2.6 kW,0

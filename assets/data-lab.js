@@ -32,8 +32,8 @@
   const TAB_GROUPS = [
     { key: 'all', label: 'All (' + TABS.length + ')', match: null },
     { key: 'core', label: 'Core & checks', match: new Set(['census', 'evidence', 'plot', 'overrides', 'paleoclimate', 'systems', 'censuschecks', 'reconciliations', 'invmedia']) },
-    { key: 'dna', label: 'DNA, sex & making', match: new Set(['genomes', 'dnainventory', 'sex', 'making', 'motors']) },
-    { key: 'bio', label: 'Brains, plants & immunity', match: new Set(['biggest', 'neural', 'nervegenes', 'nervespeed', 'neuronsbygroup', 'brains', 'deliberation', 'plants', 'immunity']) },
+    { key: 'dna', label: 'DNA, sex & making', match: new Set(['genomes', 'dnainventory', 'automata', 'sex', 'making', 'motors']) },
+    { key: 'bio', label: 'Brains, eyes, plants & immunity', match: new Set(['brains10d', 'eyes10d', 'biggest', 'neural', 'nervegenes', 'nervespeed', 'neuronsbygroup', 'brains', 'deliberation', 'plants', 'immunity']) },
     { key: 'net', label: 'Networks, groups & space', match: new Set(['networks', 'groupsize', 'techpower', 'outsidememory', 'offworld', 'offworld2026']) },
     { key: 'budget', label: '2026 budgets & sources', match: new Set(['bioelectric', 'uncertainty', 'power', 'devices', 'media', 'sources']) }
   ];

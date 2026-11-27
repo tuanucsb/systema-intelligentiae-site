@@ -169,6 +169,18 @@ plant-signals,EP17m,wire,Plant warning waves,Bitten leaves fire glutamate-calciu
 prefrontal-ram,EP20a,ram,Prefrontal working memory,Primate frontal loops hold active goals and rules online across distractions so plans survive interruptions.,23; 39; 115
 abacus-scratchpad,EP26a,ram,Counting boards & abacus,"Pebbles and sliding beads hold intermediate sums outside the skull, breaking our ~4-item mental scratchpad limit.",25; 29; 115; 116
 mobile-cloud,EP31m,io,Pocket smartphone sensors,"Over a billion phones pair cameras, microphones and GPS with mobile networks, sensing the live planet.",25; 26; 44; 86
-synthetic-cell,EP31m,make,Synthetic bacterial cell,"Chemists stitch 1.08 million DNA letters from a computer file to boot the first living cell with a human-written genome.",20; 28; 86; 117
+synthetic-cell,EP31m,make,Synthetic bacterial cell,Chemists stitch 1.08 million DNA letters from a computer file to boot the first living cell with a human-written genome.,20; 28; 86; 117
 kv-context,EP32a,ram,Attention context cache,Transformer key-value caches keep hundreds of thousands of words live in fast chip memory while reasoning.,39; 77; 78; 118
 mrna-vaccines,EP32a,store,Programmable mRNA vaccines,Digitally written messenger RNA in lipid droplets teaches human cells to print viral proteins and build immunity.,28; 86; 112; 118
+pinhole-lens-eyes,EP08a,io,Pinhole & jellyfish lens eyes,"Pigment cups deepen into Nautilus-style pinholes and 24-eye box-jellyfish clusters with graded lenses, turning shadows into true directions.",39; 50; 119
+trilobite-mirror-eyes,EP09a,io,Crystal & mirror eyes,Trilobites grind aberration-free doublet lenses from pure calcite crystal while scallops focus light off 200 curved guanine mirrors.,50; 51; 119; 120
+hyperspectral-eyes,EP11b,io,16-color & polarized eyes,"Reef mantis shrimp split UV-to-red light across up to 16 opsin channels plus circular polarization, spotting signals invisible to fish.",50; 119; 121
+dragonfly-optic-lobes,EP13a,io,"28,000-facet 300-Hz eyes","Giant aerial hunters wrap nearly 360 degrees of sky in 28,000 facets, refreshing motion up to 300 times a second to intercept prey mid-air.",9; 37; 50; 121
+duplex-night-retina,EP15b,io,Rod-packed night retina,"Nocturnal early mammals trade two color cones for 100 million single-photon rods and an eye-shine mirror, spanning ten billion-fold light levels.",50; 65; 119; 123
+tetrachromat-fovea,EP17a,io,Four-color & eagle fovea,"Feathered dinosaurs and birds keep UV-plus-RGB cones filtered by colored oil droplets, reaching 140 cycles per degree in eagles.",50; 61; 122
+trichromat-stereo,EP19c,io,Three-color primate fovea,"Old World monkeys duplicate a green-red opsin gene, lighting up ripe fruit and social blushes against green leaves at 60 cycles per degree.",23; 39; 50; 123
+giant-cetacean-brains,EP19c,cpu,8-kg whale & dolphin brains,"Sperm whales and dolphins grow the heaviest brains in Earth's history (up to 7.8 kg and 37B neurons), wiring sonar and lifetime clan dialects.",10; 23; 62; 125
+cerebellar-models,EP21a,cpu,69B-neuron cerebellum,"Four-fifths of human brain neurons pack into cerebellar forward-timing models, smoothing rapid stone-knapping, balance and later speech.",23; 39; 124; 125
+retinal-compression,EP22c,io,100:1 retinal edge filter,Five layers of human retinal neurons distil 126 million receptors into ~30 parallel edge and motion movies before a spike enters the brain.,18; 39; 50; 123
+broca-arcuate-loop,EP23b,cpu,Arcuate language highway,"An expanded white-matter arch links auditory, conceptual and motor cortex across 180 areas so humans parse nested speech at 39 bits per second.",23; 39; 44; 125
+cmos-event-vision,EP31b,io,CMOS & neuromorphic cameras,"Stacked 200-megapixel CMOS sensors, microsecond event retinas and bionic subretinal chips give machines and medicine synthetic sight.",25; 77; 80; 126

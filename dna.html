@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Why DNA Is Really a Computer · Cellular Automata &amp; Molecular Logic · Systema Intelligentiae</title>
+<meta name="description" content="Why living DNA is a literal universal computing architecture—not a metaphor—and how Wolfram cellular automata, lizard-skin lattices, and synthetic DNA tiles compute from simple local rules.">
+<meta property="og:title" content="Why DNA Is Really a Computer — and How Simple Local Rules Compute · Systema Intelligentiae">
+<meta property="og:description" content="Five physical proofs that cells run genuine digital tape computation near Landauer's limit, paired with live operon logic, ribosome decoding, and Wolfram DNA tile cellular automata.">
+<meta property="og:image" content="assets/og/default.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why DNA Is Really a Computer · Cellular Automata &amp; Molecular Logic">
+<meta name="twitter:description" content="Explore how living DNA, cone-snail shells, lizard scales, Wolfram Rule 110, and Winfree DNA tiles compute from local rules.">
+<meta name="twitter:image" content="assets/og/default.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/dna.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">This page runs live operon logic gates, ribosome codon translation, and Wolfram DNA tile cellular automata in JavaScript, which is turned off here. You can still <a href="data/molecular_and_automata_computing.csv" download>download the full molecular &amp; automata CSV</a>.</p></noscript>
+
+<main id="main" class="wrap">
+  <div class="page-head" style="max-width:78ch">
+    <span class="eyebrow">Molecular computation &amp; cellular automata · 3.8 billion years ago to 2026</span>
+    <h1 style="font-size:clamp(2rem,5vw,3.25rem)">Why DNA is really a computer—and how simple local rules compute</h1>
+    <p>People often hear that DNA is “like computer code” and shrug it off as a metaphor borrowed from laptops. Physics and computer science say the exact opposite: <b>silicon computers unknowingly reinvented the architecture living cells have run for 3.8 billion years</b>. Five years before Watson and Crick solved the double helix, John von Neumann proved from pure logic that any machine capable of open-ended evolution must split into a passive discrete tape and an active tape-reading builder. And since 2004, chemists have closed the circle—programming synthetic DNA tiles in water to execute Stephen Wolfram’s universal cellular automata.</p>
+  </div>
+
+  <div class="dna-kpis" id="dnaKpis"></div>
+
+  <nav class="dna-jump" aria-label="Sections on this page">
+    <a href="#proofs"><span>01</span> Five physical proofs</a>
+    <a href="#operon-lab"><span>02</span> Live operon &amp; ribosome lab</a>
+    <a href="#automata-lab"><span>03</span> Wolfram CA &amp; DNA tiles</a>
+    <a href="#wolfram-verdict"><span>04</span> Universality vs. intelligence</a>
+    <a href="#ledger"><span>05</span> Energy &amp; density ledger</a>
+  </nav>
+
+  <!-- 1. FIVE PHYSICAL PROOFS THAT DNA IS A REAL COMPUTER -->
+  <section class="sec" id="proofs" aria-labelledby="proofsH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">01 · Beyond metaphor</span>
+      <h2 id="proofsH">Five physical reasons a living genome is a literal computing system</h2>
+      <p>A planetary orbit or a flowing river obeys physical equations, yet neither is a programmable computer because changing its behavior requires rebuilding its physical medium. A genuine computer separates <b>medium</b> from <b>message</b>: discrete symbols are stored on an arbitrary-sequence memory, protected against thermal noise by energy-burning error correction, switched by Boolean gates, and read by finite-state transducers. Living DNA satisfies every requirement.</p>
+    </div>
+
+    <div class="dna-proof-wrap">
+      <div class="dna-proof-grid">
+        <article class="dna-proof-card" style="--pc:var(--c-store)">
+          <div class="dna-proof-top">
+            <span class="dna-proof-tag">1 · Arbitrary Digital Tape</span>
+            <span class="dna-proof-stat">2 bits/bp · 2.4×10²¹ bits/cm³</span>
+          </div>
+          <h3>Quaternary symbols decoupled from backbone chemistry</h3>
+          <p>Along a double-stranded B-DNA polymer, the sugar–phosphate rails stay geometrically uniform regardless of whether the rungs read <b>A, C, G or T</b> (log₂ 4 = 2 bits per base pair). Because any permutation of bases is almost equally stable chemically—what Erwin Schrödinger called an <i>aperiodic crystal</i> in 1944—the molecule’s physics does not force one message. That sequence-independence is the exact physical definition of digital memory, packing information <b>13 million times denser than 3D NAND flash</b>.</p>
+          <div class="dna-eq-chip">Alphabet Σ = {A, C, G, T} (2 bits/bp)  |  Earth total today: <span id="inlineHcopy">3.6×10³⁷ bits</span></div>
+        </article>
+
+        <article class="dna-proof-card" style="--pc:var(--c-power)">
+          <div class="dna-proof-top">
+            <span class="dna-proof-tag">2 · Thermodynamic Error Ratchet</span>
+            <span class="dna-proof-stat">5.7×10⁻²⁰ J/op · ~20× Landauer</span>
+          </div>
+          <h3>Kinetic proofreading heads that spend fuel to erase typos</h3>
+          <p>Left to passive thermal equilibrium at body temperature, Watson–Crick hydrogen bonding would mispair roughly <b>1 in 10,000 letters</b>—melting a bacterial genome within generations. John Hopfield and Jacques Ninio showed in 1974–1975 that DNA Polymerase III burns high-energy phosphate bonds to run an irreversible two-stage test, backed by exonuclease backspace and mismatch repair, cutting copying errors to <b>2.2×10⁻¹⁰ per base</b> while spending just <b>~20 times Rolf Landauer’s minimum possible heat cost</b>.</p>
+          <div class="dna-eq-chip">ε_eq ≈ 10⁻⁴  ──(ΔG pyrophosphate + exonuclease)──▶  ε_final ≈ 2.2×10⁻¹⁰ / base</div>
+        </article>
+
+        <article class="dna-proof-card" style="--pc:var(--c-prog)">
+          <div class="dna-proof-top">
+            <span class="dna-proof-tag">3 · Boolean Gates &amp; Latches</span>
+            <span class="dna-proof-stat">AND · OR · NOT · SR Flip-Flop</span>
+          </div>
+          <h3>Promoters and RNA riboswitches compute combinational &amp; sequential logic</h3>
+          <p>Genes do not run blindly. In <i>Escherichia coli</i>, roughly 300 transcription factors bind operator DNA next to promoters to evaluate <b>AND, OR, NAND, IMPLIES and AND-NOT</b> truth tables over chemical inputs, while cross-repressing gene pairs (like phage λ’s CI/Cro toggle) form <b>1-bit SR flip-flops</b> that hold state across cell divisions. Even naked messenger RNA folds into protein-free tandem aptamer <b>AND</b> and <b>NOR</b> riboswitches.</p>
+          <div class="dna-eq-chip">lacZYA transcription = (Allolactose = 1) AND NOT (Glucose = 1)</div>
+        </article>
+
+        <article class="dna-proof-card" style="--pc:var(--c-make)">
+          <div class="dna-proof-top">
+            <span class="dna-proof-tag">4 · Finite-State Transducer</span>
+            <span class="dna-proof-stat">64 codons → 20 aa + STOP</span>
+          </div>
+          <h3>The 70S ribosome steps a 3-letter frame like a hardware tape head</h3>
+          <p>Every living cell runs thousands of 2.5-megadalton ribonucleoprotein machines—<b>ribosomes</b>—that clamp onto messenger RNA, ratify a 3-base codon against transfer RNA using GTP-powered kinetic proofreading, forge a peptide bond at ~18 amino acids a second, and ratchet forward by <b>exactly three letters</b>. Moreover, the universal genetic code is structured like an error-minimizing Gray code: single-letter slips preferentially map to chemically similar amino acids.</p>
+          <div class="dna-eq-chip">State(t + 1) = δ(State(t), mRNA[3k : 3k+3])  |  ~20,000 parallel heads / E. coli</div>
+        </article>
+
+        <article class="dna-proof-card wide" style="--pc:var(--c-cpu)">
+          <div class="dna-proof-top">
+            <span class="dna-proof-tag">5 · Self-Modifying Tape Recorders &amp; Compilers</span>
+            <span class="dna-proof-stat">CRISPR LIFO · 225,000-piece Oxytricha · V(D)J</span>
+          </div>
+          <h3>Cells actively edit, push, permute and compile their own DNA</h3>
+          <p>Critics sometimes picture DNA as read-only stone tablets edited only by blind mutation. In fact, living cells execute algorithmic read–write operations on their own DNA: bacteria use <b>Cas1–Cas2</b> to push 33-base viral snippets onto the front of their <b>CRISPR</b> locus as a chronological last-in-first-out logbook; bacteriophage <b>diversity-generating retroelements (DGRs)</b> selectively randomize adenines across <b>10¹⁴–10²⁰</b> tail-fiber keys while keeping the scaffold untouched; jawed vertebrates cut and splice <b>V(D)J</b> antibody cassettes across 10¹¹ lymphocytes; and the single-celled pond ciliate <b><i>Oxytricha trifallax</i></b> uses maternal RNA guide maps to delete 90% of its germline DNA and unscramble <b>225,000 out-of-order, inverted gene fragments</b> into 16,000 working nanochromosomes.</p>
+        </article>
+      </div>
+    </div>
+
+    <div tabindex="0" role="region" aria-labelledby="isoCap" class="dna-table-region" style="margin-top:16px">
+      <table class="dna-table">
+        <caption id="isoCap">Exact component-by-component mapping between von Neumann’s 1948 self-reproducing constructor, a living bacterial cell, and a modern silicon computer</caption>
+        <thead>
+          <tr>
+            <th scope="col">Functional part</th>
+            <th scope="col">Von Neumann Automaton (1948)</th>
+            <th scope="col">Living Cell (3.8 billion yrs ago → today)</th>
+            <th scope="col">Modern Silicon Computer (1945 → 2026)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Arbitrary symbolic tape (<i>I</i>)</th>
+            <td>1D passive cell string encoding machine layout</td>
+            <td>Double-stranded chromosomal DNA (2 bits/bp, 2.4×10²¹ bits/cm³)</td>
+            <td>3D NAND SSD / HBM3 DRAM bit arrays (1.8×10¹⁴ bits/cm³)</td>
+          </tr>
+          <tr>
+            <th scope="row">Uninterpreted tape copier (<i>B</i>)</th>
+            <td> Tape-duplicating arm copying <i>I</i> without executing it</td>
+            <td>DNA Polymerase III replisome + mismatch repair (~2.2×10⁻¹⁰ error/bp)</td>
+            <td>DMA controller / RAID block replication + Reed–Solomon / ECC</td>
+          </tr>
+          <tr>
+            <th scope="row">Universal tape transducer (<i>A</i>)</th>
+            <td>Construction arm reading <i>I</i> to assemble any target machine</td>
+            <td>RNA Polymerase + 70S Ribosome decoding 64 codons into 3D proteins</td>
+            <td>Instruction decoder + EUV lithography / robotic assembly line</td>
+          </tr>
+          <tr>
+            <th scope="row">Conditional logic controller (<i>C</i>)</th>
+            <td>Finite-state control switching between copy and build</td>
+            <td>Cis-regulatory promoters, transcription factors, riboswitches &amp; epigenetic marks</td>
+            <td>CMOS Boolean ALU/branch predictor + operating-system scheduler</td>
+          </tr>
+          <tr>
+            <th scope="row">Autonomous closure</th>
+            <td>100% closed on mathematical 29-state grid</td>
+            <td><b>100% closed in water</b>: one cell builds a full daughter cell in 20 minutes</td>
+            <td><b>Not yet self-enclosed</b>: chips design chips, but fabs require civilization</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="dna-faq-stack">
+      <details class="dna-disc">
+        <summary>Objection 1: “Isn’t calling DNA a computer backward—didn’t biology just inspire a loose Silicon Valley metaphor?”</summary>
+        <div class="dna-disc-body">
+          <p>Historically it happened the other way around. Alan Turing formalized universal tape machines in <b>1936</b>, Erwin Schrödinger predicted an “aperiodic crystal code-script” in <b>1944</b>, and John von Neumann proved his tape-plus-constructor theorem in <b>1948</b>—five years before Watson, Crick, Franklin and Wilkins revealed DNA’s base-paired helix in <b>1953</b> and eight years before Crick’s adaptor hypothesis. Biology was not squeezed into a laptop metaphor; molecular biologists discovered that cells literally implement Turing–von Neumann symbolic tape translation.</p>
+        </div>
+      </details>
+      <details class="dna-disc">
+        <summary>Objection 2: “Cells don’t have a 5 GHz global clock—how can asynchronous wet chemistry be digital computation?”</summary>
+        <div class="dna-disc-body">
+          <p>A synchronous crystal clock is an engineering convenience for long copper wires, not a requirement of computation. Computer science has a whole branch—<b>asynchronous, quasi-delay-insensitive and chemical reaction network (CRN) computing</b>—where operations fire whenever local reactants meet and ratchet forward via free-energy drops. Both Intel’s Loihi neuromorphic chips and living cells ditch a global clock so idle gates burn nearly zero power while trillions of molecules compute in parallel.</p>
+        </div>
+      </details>
+      <details class="dna-disc">
+        <summary>Objection 3: “Where DNA differs from silicon: why cells crush chips on energy and density, yet lose by 10¹⁰× on serial speed”</summary>
+        <div class="dna-disc-body">
+          <p>Because transcription factors and DNA strands travel by random Brownian jostling (<span class="mono">t ≈ L² / 2D</span>), flipping one genetic switch takes seconds to minutes whereas a 3 nm silicon transistor switches in half a nanosecond. Cells compensate by packing <b>billions of parallel molecular gates into a single drop</b> and spending <b>5.7×10⁻²⁰ J</b> per proofread base—about ten million times less energy than a GPU tensor operation. Once bodies grew past a millimetre and needed millisecond reflexes, evolution kept DNA for slow archival code and added fast axons and brains on top (<a href="journey.html#EP07b">see Journey stop 14 →</a>).</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 2. INTERACTIVE LAB 1: OPERON BOOLEAN GATE & RIBOSOME TRANSDUCER -->
+  <section class="sec" id="operon-lab" aria-labelledby="opLabH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">02 · Interactive molecular hardware lab</span>
+      <h2 id="opLabH">Flip a living bacterial logic gate and step a ribosome down mRNA</h2>
+      <p>Test two foundational pieces of living cellular hardware discovered in the 1960s: François Jacob and Jacques Monod’s <b><i>lac</i> operon <span class="mono">AND-NOT</span> gate</b>, and Francis Crick and Sydney Brenner’s <b>triplet-frame ribosome tape reader</b>.</p>
+    </div>
+
+    <div class="dna-lab-wrap">
+      <div class="dna-lab-cols">
+        <!-- Module A: lac Operon Boolean Logic -->
+        <article class="dna-lab-box" style="--lc:var(--c-prog)">
+          <span class="eyebrow">Combinational promoter gate · Escherichia coli lacZYA</span>
+          <h3>Live DNA <span class="mono">AND-NOT</span> switch</h3>
+          <p class="dna-lab-sub"><i>E. coli</i> only builds milk-sugar-digesting enzymes when <b>lactose is present</b> AND <b>glucose is absent</b>. Toggle both chemical inputs below.</p>
+
+          <div class="dna-toggle-row" role="group" aria-label="Chemical inputs to the lac operon">
+            <button type="button" class="dna-in-btn" id="btnLactose" aria-pressed="true">
+              <b><span>Lactose (inducer)</span><span class="pill-state" id="lacPill">1 · PRESENT</span></b>
+              <span id="lacDesc">Allolactose pulls LacI repressor off operator DNA</span>
+            </button>
+            <button type="button" class="dna-in-btn" id="btnGlucose" aria-pressed="false">
+              <b><span>Glucose (preferred sugar)</span><span class="pill-state" id="gluPill">0 · ABSENT</span></b>
+              <span id="gluDesc">High cAMP arms CRP activator to recruit RNA Pol</span>
+            </button>
+          </div>
+
+          <div class="dna-slider-field">
+            <div class="dna-slider-head">
+              <label for="leakSlider">Thermal repressor unbinding (promoter leakiness)</label>
+              <output id="leakOut" for="leakSlider">1%</output>
+            </div>
+            <input type="range" class="dna-range" id="leakSlider" min="0" max="15" step="1" value="1">
+          </div>
+
+          <svg id="operonSvg" class="dna-svg-frame" viewBox="0 0 560 185" role="img" aria-label="Schematic of E. coli lac promoter showing CAP activator site, RNA polymerase binding site, lacO operator repressor site, and lacZYA output transcription"></svg>
+
+          <div class="dna-readout-card" id="operonReadout" aria-live="polite"></div>
+
+          <table class="dna-truth-mini" aria-label="Truth table for the lac operon AND-NOT gate">
+            <thead>
+              <tr><th scope="col">Lactose</th><th scope="col">Glucose</th><th scope="col">DNA state</th><th scope="col">Output (lacZYA mRNA)</th></tr>
+            </thead>
+            <tbody id="operonTruthBody"></tbody>
+          </table>
+        </article>
+
+        <!-- Module B: 70S Ribosome Tape Transducer -->
+        <article class="dna-lab-box" style="--lc:var(--c-make)">
+          <span class="eyebrow">Finite-state tape transducer · 70S Ribosome</span>
+          <h3>Step the 3-base codon reader &amp; test mutations</h3>
+          <p class="dna-lab-sub">Modeled on the human β-globin start sequence. Step the ribosome three RNA bases at a time, then compare a <b>silent wobble</b>, the <b>sickle-cell point change</b>, and a <b>+1 frameshift</b>.</p>
+
+          <div class="dna-btn-bar" role="group" aria-label="Ribosome stepper and mutation controls">
+            <button type="button" class="btn sm" id="riboStep">Step ribosome (+3 bases) →</button>
+            <button type="button" class="btn sm ghost" id="riboReset">Rewind to AUG</button>
+            <button type="button" class="btn sm ghost" id="mutWobble">Silent wobble (GAG→GAA)</button>
+            <button type="button" class="btn sm ghost" id="mutSickle">Missense (GAG→GUG)</button>
+            <button type="button" class="btn sm ghost" id="mutFrame">+1 Frameshift insert</button>
+            <button type="button" class="btn sm ghost" id="mutWild">Wild-type tape</button>
+          </div>
+
+          <div class="dna-tape-strip" id="riboTape" role="group" aria-label="Messenger RNA codons; click any codon to move the ribosome read head"></div>
+
+          <svg id="riboSvg" class="dna-svg-frame" viewBox="0 0 560 165" role="img" aria-label="70S ribosome reading frame diagram showing coding DNA, mRNA triplet codon, matching tRNA anticodon, and growing amino-acid chain"></svg>
+
+          <div class="dna-readout-card" id="riboReadout" aria-live="polite"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTERACTIVE LAB 2: WOLFRAM CELLULAR AUTOMATA & WINFREE DNA STICKY-END TILES -->
+  <section class="sec" id="automata-lab" aria-labelledby="caLabH">
+    <div class="sec-head" style="max-width:78ch">
+      <span class="eyebrow">03 · Wolfram cellular automata &amp; algorithmic DNA self-assembly</span>
+      <h2 id="caLabH">How one 8-bit local rule—or four sticky DNA tiles—computes anything</h2>
+      <p>In an <b>elementary cellular automaton</b>, a row of 0s and 1s updates in lockstep using only each cell’s <b>left, center and right</b> neighbors (<span class="mono">2³ = 8</span> possible 3-bit neighborhoods, so there are <span class="mono">2⁸ = 256</span> rules from Rule 0 to Rule 255). In 1998–2004, Erik Winfree and Paul Rothemund proved that synthetic <b>double-crossover (DX) DNA tiles</b> with 5-letter sticky ends physically execute these exact cellular automata as a crystal grows row by row in water—culminating in Damien Woods and Winfree’s 2019 <b>355-tile DNA computer</b> running Wolfram’s Turing-complete <b>Rule 110</b>.</p>
+    </div>
+
+    <div class="dna-ca-wrap">
+      <div class="dna-tabs-bar" role="tablist" aria-label="Preset cellular automata and DNA tile rules" id="caTabs">
+        <button type="button" role="tab" id="catab-90" data-rule="90" aria-selected="true" tabindex="0">Rule 90 · DNA Sierpiński XOR</button>
+        <button type="button" role="tab" id="catab-110" data-rule="110" aria-selected="false" tabindex="-1">Rule 110 · Universal Turing CA</button>
+        <button type="button" role="tab" id="catab-30" data-rule="30" aria-selected="false" tabindex="-1">Rule 30 · Cone-Snail Chaos</button>
+        <button type="button" role="tab" id="catab-184" data-rule="184" aria-selected="false" tabindex="-1">Rule 184 · Ribosome Traffic</button>
+        <button type="button" role="tab" id="catab-custom" data-rule="custom" aria-selected="false" tabindex="-1">Custom 8-bit Rule (0–255)</button>
+      </div>
+
+      <div role="tabpanel" id="caPanel" aria-labelledby="catab-90">
+        <div class="dna-panel-inner">
+          <div id="caPresetIntro" style="display:grid;gap:4px"></div>
+
+          <div class="dna-ca-controls">
+            <div class="dna-select-field">
+              <label for="caSeed">Initial top row (seed tape)</label>
+              <select id="caSeed">
+                <option value="single">Single 1 in center (classic impulse)</option>
+                <option value="gliders">Structured Rule-110 glider seed</option>
+                <option value="traffic">45% density traffic / random seed</option>
+                <option value="sparse">Two separated seeds (interference test)</option>
+              </select>
+            </div>
+
+            <div class="dna-slider-field">
+              <div class="dna-slider-head">
+                <label for="caWidth">Lattice width (cells)</label>
+                <output id="caWidthOut" for="caWidth">71 × 46 rows</output>
+              </div>
+              <input type="range" class="dna-range" id="caWidth" min="31" max="111" step="10" value="71">
+            </div>
+
+            <div class="dna-slider-field">
+              <div class="dna-slider-head">
+                <label for="caNoise">Thermal tile mismatch rate</label>
+                <output id="caNoiseOut" for="caNoise">0% (exact formal CA)</output>
+              </div>
+              <input type="range" class="dna-range" id="caNoise" min="0" max="5" step="0.2" value="0">
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px">
+              <span class="sub" style="font:700 11.5px/1.2 var(--body);text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Click any 3-cell neighborhood below to flip its output bit and invent your own rule</span>
+              <span class="mono" id="caRuleBadge" style="font-size:13px;font-weight:700;color:var(--ink)">Rule 90 = 01011010₂</span>
+            </div>
+            <div class="dna-rule-bits" id="caRuleBits" role="group" aria-label="8-bit neighborhood truth table"></div>
+          </div>
+
+          <div class="dna-ca-layout">
+            <div class="dna-ca-canvas-box">
+              <svg id="caSvg" class="dna-ca-svg" viewBox="0 0 710 460" role="img" aria-label="Spacetime cellular automaton grid; time runs downward row by row. Click any cell to inspect its 3-cell parent neighborhood and matching DNA sticky-end tile."></svg>
+              <p class="teach" style="margin:0"><span class="v-ptr">Click</span><span class="v-touch">Tap</span> any cell in the crystal above (or use the nudge buttons) to highlight its three parent cells on the row above and inspect the <b>physical DNA sticky-end tile</b> that computes that step.</p>
+            </div>
+
+            <aside class="dna-tile-inspector" id="caTileInspector" aria-live="polite"></aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SCIENTIFIC VERDICT ON WOLFRAM & LIVING CELLULAR AUTOMATA -->
+  <section class="sec cv-defer" id="wolfram-verdict" aria-labelledby="verdictH">
+    <div class="sec-head" style="max-width:78ch">
+      <span class="eyebrow">04 · Critical review against the 68-moment planetary census</span>
+      <h2 id="verdictH">What Wolfram got right—and why universal rules are not yet minds</h2>
+      <p>In <cite>A New Kind of Science</cite> (2002), Stephen Wolfram proposed the <b>Principle of Computational Equivalence</b>: almost all processes that are not obviously simple perform computations of equivalent, maximal sophistication. Tested against 4.1 billion years of planetary biophysics, Wolfram’s discovery illuminates <i>how cheap raw computation is</i>—while exposing four physical reasons why a Rule 30 cone-snail shell is not a brain.</p>
+    </div>
+
+    <div class="dna-verdict-grid">
+      <article class="dna-verdict-card" style="--vc:var(--l-chem)">
+        <span class="eyebrow">Confirmed in biology &amp; wetware</span>
+        <h3>1. Nature really does run cellular automata on shells, lizard skin &amp; DNA crystals</h3>
+        <p>Along the growing shell lip of the marine snail <b><i>Conus textile</i></b>, a 1D row of neurosecretory pigment cells fires lateral-inhibition waves that freeze time into calcium carbonate—printing Rule-30-like aperiodic triangles. Even more strikingly, Michel Milinkovitch’s team proved in <i>Nature</i> (2017) that thin borders between hexagonal skin scales on the ocellated lizard <b><i>Timon lepidus</i></b> discretize Alan Turing’s reaction–diffusion chemistry into a literal <b>2D green-and-black cellular automaton</b>. And in test tubes, Winfree and Woods’s 355-tile DNA nanotubes physically execute Rule 110.</p>
+      </article>
+
+      <article class="dna-verdict-card" style="--vc:var(--c-power)">
+        <span class="eyebrow">Gap 1 · Error catastrophe</span>
+        <h3>2. Turing universality is cheap; thermodynamic error correction is hard</h3>
+        <p>Drag the <b>Thermal tile mismatch</b> slider above from 0% to 1.4% (the measured error rate of Rothemund &amp; Winfree’s 2004 unproofread DNA Sierpiński tiles) while viewing <b>Rule 110</b>: its delicate glider spaceships dissolve into noise within dozens of rows. Bare universality has zero built-in fault tolerance. Living cells only sustained billion-year lineages because they paired discrete DNA with energy-burning <b>Hopfield kinetic proofreading</b> and mismatch repair (<span class="mono">2.2×10⁻¹⁰</span> error/base).</p>
+      </article>
+
+      <article class="dna-verdict-card" style="--vc:var(--c-wire)">
+        <span class="eyebrow">Gap 2 · Nearest-neighbor wiring ceiling</span>
+        <h3>3. Local lattices choke on long-range communication</h3>
+        <p>In a 1D or 2D cellular automaton, information can advance at most <b>one cell per step</b>—a strict lattice light cone. Coordinating a 1-metre animal body one cell-width (10 µm) at a time would require 100,000 serial hops. Evolution broke out of nearest-neighbor cellular grids twice: first with <b>molecular motors</b> walking along microtubules, and then with <b>myelinated nerve axons</b> (<a href="journey.html#EP11a">425 million years ago</a>) and <b>optical/copper interconnects</b> jumping straight across distant modules at up to 2×10⁸ m/s.</p>
+      </article>
+
+      <article class="dna-verdict-card" style="--vc:var(--c-io)">
+        <span class="eyebrow">Gap 3 · Coarse-graining &amp; Markov blankets</span>
+        <h3>4. Brains survive by finding reducible shortcuts—not running raw Rule 30</h3>
+        <p>Wolfram’s <b>computational irreducibility</b> shows that predicting the exact <i>n</i>-th bit of Rule 30 or fluid turbulence takes ~<i>n</i> steps. Yet if a dragonfly had to simulate every air molecule to catch a midge, it would starve. Intelligent agents persist inside a <b>Markov blanket</b> precisely by extracting <i>computationally reducible pockets</i>—coarse-grained world models (center-of-mass trajectories, object permanence, grammar, laws of physics) that forecast survival-relevant futures faster than reality unfolds (<a href="theories.html#book-turing-wolfram">compare in Theories →</a>).</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. HEAD-TO-HEAD BENCHMARK CHART & 22-SYSTEM DATA LEDGER -->
+  <section class="sec cv-defer" id="ledger" aria-labelledby="ledgerH">
+    <div class="sec-head" style="max-width:78ch">
+      <span class="eyebrow">05 · Sourced benchmark ledger · 22 molecular &amp; automaton systems</span>
+      <h2 id="ledgerH">How living DNA, lab DNA circuits, biological CAs and silicon compare</h2>
+      <p>Every system below comes from our audited <span class="mono">molecular_and_automata_computing.csv</span> ledger (also open in the <a href="data.html#automata">Data Lab →</a>). Living DNA polymerases and synthetic DNA tiles cluster within <b>20× to 200× of Landauer’s physical floor</b>—six to seven orders of magnitude more energy-efficient per state change than room-temperature CMOS—while trading nanosecond serial clock speed for trillions-way molecular parallelism.</p>
+    </div>
+
+    <figure class="dna-fig-card" aria-labelledby="dnaChartCap">
+      <figcaption id="dnaChartCap">
+        <span class="eyebrow">Thermodynamic efficiency vs. serial step speed</span>
+        <h3>Energy per operation (multiples of Landauer’s 300 K floor) across molecular, automaton &amp; silicon substrates</h3>
+        <p>Left is closer to physics’s minimum heat cost (<span class="mono">k<sub>B</sub>T ln 2 ≈ 2.87×10⁻²¹ J</span>); right burns more energy per step for speed and long-range wiring. The full semantic table below gives every value and primary citation.</p>
+      </figcaption>
+      <svg id="dnaBenchSvg" class="dna-svg-frame" viewBox="0 0 920 360" role="img" aria-label="Horizontal logarithmic chart comparing energy per operation in multiples of the 300 K Landauer limit across DNA Polymerase III (~20x), riboswitches (~17x), Winfree DNA Rule 90 tiles (~28x), Woods 355-tile Rule 110 (~42x), 70S ribosome (~132x), Qian-Winfree seesaw DNA gates (~174x), mammalian cortical synapses (~3.5 million x), and GPU tensor cores (~250 million x). The table directly below lists all 22 rows."></svg>
+    </figure>
+
+    <div class="dna-filter-bar">
+      <div class="dna-pills" id="ledgerCats" role="group" aria-label="Filter systems by category"></div>
+      <a class="btn sm" href="data/molecular_and_automata_computing.csv" download>Download CSV (22 rows)</a>
+    </div>
+
+    <div tabindex="0" role="region" aria-labelledby="ledCap" class="dna-table-region">
+      <table class="dna-table" id="dnaLedgerTable">
+        <caption id="ledCap">Complete 22-system benchmark of living genomic computers, biological skin/shell cellular automata, formal Wolfram/minimal automata, and engineered DNA circuits</caption>
+        <thead>
+          <tr>
+            <th scope="col">System &amp; milestone</th>
+            <th scope="col">Category</th>
+            <th scope="col">Local rule / gate</th>
+            <th scope="col">Step time</th>
+            <th scope="col">Energy / op (J)</th>
+            <th scope="col">× Landauer</th>
+            <th scope="col">Parallel units</th>
+            <th scope="col">Primary source</th>
+          </tr>
+        </thead>
+        <tbody id="dnaLedgerBody"></tbody>
+      </table>
+    </div>
+
+    <p class="note" style="margin-top:14px">Continue exploring: <a href="stories.html#dna-story">Read the 45-milestone DNA &amp; genomes story →</a> · <a href="tree.html#path=making">Walk self-reproducing constructors &amp; EUV fabs in the Tree →</a> · <a href="research.html#paper1">Check Paper 1 &amp; Paper 4 manuscripts →</a></p>
+  </section>
+</main>
+
+<div class="tip" id="tip" hidden></div>
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/ledgers.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/dna.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evolution of the Brain Across 10 Dimensions · Systema Intelligentiae</title>
+<meta name="description" content="Track 900 million years of brain evolution across 10 quantitative dimensions: neuron count, mass &amp; EQ, synapses &amp; axon speed, metabolic power, ops/s, memory, planning horizon, circuit complexity, language bandwidth, and plasticity across 42 landmark stages.">
+<meta property="og:title" content="Evolution of the Brain Across 10 Dimensions · Systema Intelligentiae">
+<meta property="og:description" content="From pre-synaptic choanoflagellates and 302-neuron worms to 500M-neuron octopuses, hyperdense ravens, 257B-neuron elephants, 20-watt human language brains, and 120-MW AI clusters.">
+<meta property="og:image" content="assets/og/default.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evolution of the Brain Across 10 Dimensions · Systema Intelligentiae">
+<meta name="twitter:description" content="Interactive 10-dimension brain evolution explorer: deep-time trajectories, 3-species radar comparator, metabolic scaling simulator, and 42-stage sortable ledger.">
+<meta name="twitter:image" content="assets/og/default.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#15172e">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/organs10d.css">
+</head>
+<body class="org-page">
+<a class="skip" href="#main">Skip to content</a>
+<header id="siteHead" class="site-head"><div class="wrap"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i style="background:var(--c-power)"></i><i style="background:var(--c-io)"></i><i style="background:var(--c-wire)"></i><i style="background:var(--c-cpu)"></i><i style="background:var(--c-ram)"></i><i style="background:var(--c-prog)"></i><i style="background:var(--c-store)"></i><i style="background:var(--c-backup)"></i><i style="background:var(--c-net)"></i><i style="background:var(--c-make)"></i></span>Systema Intelligentiae</a><nav class="site-nav" aria-label="Main"><a href="journey.html">Journey</a><a href="tree.html">Tree</a><a href="stories.html">Stories</a><a href="atlas.html">Atlas</a><a href="how.html">How we know</a><a href="data.html">Data Lab</a><a href="theories.html" class="x-only">Theories</a></nav><div class="head-tools"></div></div></header>
+<noscript><p class="nojs wrap">Interactive charts, radar comparisons, and sorting run in JavaScript, which is turned off here. You can still <a href="data/brain_evolution_10d.csv" download>download the full 42-stage × 10-dimension Brain CSV</a>.</p></noscript>
+
+<main id="main" class="wrap">
+  <div class="page-head" style="max-width:78ch">
+    <span class="eyebrow">Deep-time neurobiology · 900 million years ago to 2026 · Companion: <a href="eyes.html">Eyes across 10 dimensions →</a></span>
+    <h1 style="font-size:clamp(2rem,5vw,3.25rem)">How brains evolved across ten dimensions</h1>
+    <p>No single number captures a brain. If head weight decided intelligence, the 7.8-kilogram sperm whale would rule Earth; if raw neuron count decided it, the 257-billion-neuron African elephant would beat us three to one; if packing density decided it, a twelve-gram songbird crams four times more neurons per gram than we do. Tracking <b>42 landmark stages across ten physical and architectural dimensions</b>—from spare synapse proteins in single-celled cousins to 20-watt human language brains and 120-megawatt silicon clusters—reveals why every mind is a different compromise with physics.</p>
+  </div>
+
+  <div class="org-kpis" id="brainKpis"></div>
+
+  <nav class="org-jump" aria-label="Sections on this page">
+    <a href="#dimensions"><span>01</span> 10 dimensions &amp; deep-time curves</a>
+    <a href="#comparator"><span>02</span> 3-brain 10-axis radar</a>
+    <a href="#scaling-lab"><span>03</span> Scaling &amp; cooking simulator</a>
+    <a href="#paradoxes"><span>04</span> Six brain paradoxes</a>
+    <a href="#ledger"><span>05</span> Sortable 42-stage ledger</a>
+  </nav>
+
+  <!-- 01. TEN DIMENSIONS & DEEP-TIME TRAJECTORIES -->
+  <section class="sec" id="dimensions" aria-labelledby="dimH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">01 · Ten coupled axes of neural evolution</span>
+      <h2 id="dimH">Follow each dimension across 900 million years</h2>
+      <p>Pick any tab or dimension card below to plot all 42 evolutionary stages from pre-synaptic choanoflagellates to today, or view all ten normalized trajectories together. <span class="v-ptr">Click</span><span class="v-touch">Tap</span> any plotted stage to inspect its full 10-dimension profile and peer-reviewed sources.</p>
+    </div>
+
+    <div class="org-tablist" role="tablist" aria-label="Brain evolution dimensions" id="brainTabs">
+      <button type="button" role="tab" id="btab-all" data-dim="all" aria-selected="true" style="--tab-accent:var(--c-cpu)">All 10 normalized (0–100)</button>
+      <button type="button" role="tab" id="btab-d1" data-dim="d1" aria-selected="false" style="--tab-accent:var(--c-cpu)">1 · Neurons</button>
+      <button type="button" role="tab" id="btab-d2" data-dim="d2" aria-selected="false" style="--tab-accent:var(--c-make)">2 · Mass &amp; EQ</button>
+      <button type="button" role="tab" id="btab-d3" data-dim="d3" aria-selected="false" style="--tab-accent:var(--c-wire)">3 · Synapses &amp; speed</button>
+      <button type="button" role="tab" id="btab-d4" data-dim="d4" aria-selected="false" style="--tab-accent:var(--c-power)">4 · Power &amp; body %</button>
+      <button type="button" role="tab" id="btab-d5" data-dim="d5" aria-selected="false" style="--tab-accent:var(--s-neuro)">5 · Compute &amp; ops/J</button>
+      <button type="button" role="tab" id="btab-d6" data-dim="d6" aria-selected="false" style="--tab-accent:var(--c-ram)">6 · Memory stack</button>
+      <button type="button" role="tab" id="btab-d7" data-dim="d7" aria-selected="false" style="--tab-accent:var(--c-prog)">7 · Planning horizon</button>
+      <button type="button" role="tab" id="btab-d8" data-dim="d8" aria-selected="false" style="--tab-accent:var(--c-store)">8 · Circuit complexity</button>
+      <button type="button" role="tab" id="btab-d9" data-dim="d9" aria-selected="false" style="--tab-accent:var(--c-net)">9 · Language &amp; social</button>
+      <button type="button" role="tab" id="btab-d10" data-dim="d10" aria-selected="false" style="--tab-accent:var(--c-backup)">10 · Plasticity &amp; youth</button>
+    </div>
+
+    <div role="tabpanel" id="brainTabPanel" aria-labelledby="btab-all">
+      <div class="org-panel-box">
+        <div id="brainDimIntro"></div>
+        <svg id="brainTimeSvg" class="org-chart-frame" viewBox="0 0 1000 390" role="img" aria-label="Deep-time scatter and trajectory chart of brain evolution across 42 stages"></svg>
+        <div class="org-chart-readout" id="brainChartReadout" aria-live="polite">
+          <span>Select or hover any point on the chart to read its date, species, measurement, and lineage.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dim-cards" id="brainDimCards" aria-label="Summary cards for the ten dimensions of brain evolution"></div>
+  </section>
+
+  <!-- 02. HEAD-TO-HEAD 10-AXIS RADAR COMPARATOR -->
+  <section class="sec" id="comparator" aria-labelledby="cmpH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">02 · Multi-dimensional profile overlay</span>
+      <h2 id="cmpH">Compare any three brains across all ten dimensions</h2>
+      <p>Overlay three evolutionary stages on the same calibrated 0–10 decagon to see where an insect, cephalopod, songbird, elephant, whale, hominin or GPU supercluster excels—and what each one sacrificed.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-block-end:12px" role="group" aria-label="Preset brain trios">
+      <button type="button" class="btn sm ghost" data-preset="homo-sapiens-globular-language,raven-corvid-pallium,african-elephant-257b">Human vs. Raven vs. Elephant</button>
+      <button type="button" class="btn sm ghost" data-preset="fruit-fly-connectome,octopus-distributed-mind,homo-sapiens-globular-language">Fly vs. Octopus vs. Human</button>
+      <button type="button" class="btn sm ghost" data-preset="bottlenose-dolphin-sonar-brain,sperm-whale-heaviest-brain,chimpanzee-great-ape">Dolphin vs. Sperm Whale vs. Chimp</button>
+      <button type="button" class="btn sm ghost" data-preset="australopithecus-bipedal-ape,homo-erectus-cooking-expansion,homo-sapiens-globular-language">3.3 Myr Hominin Tripling</button>
+      <button type="button" class="btn sm ghost" data-preset="homo-sapiens-globular-language,neuromorphic-spiking-array,frontier-reasoning-cluster">Human vs. Neuromorphic vs. 100k-GPU AI</button>
+    </div>
+
+    <div class="org-pickers" id="brainPickers"></div>
+
+    <div class="org-radar-grid" style="margin-block-start:14px">
+      <div class="org-panel-box" style="margin:0">
+        <svg id="brainRadarSvg" class="org-chart-frame" viewBox="0 0 520 460" role="img" aria-label="Ten-axis radar polygon comparing three selected brains"></svg>
+        <p style="font-size:13px;color:var(--ink-3);margin:0">Each spoke runs from 0 (center, pre-neural baseline) to 10 (outer ring, biological or planetary ceiling on a logarithmic or architectural tier scale).</p>
+      </div>
+      <div class="org-panel-box" style="margin:0;overflow-x:auto">
+        <table class="org-spec-cmp" id="brainCmpTable">
+          <caption class="visually-hidden">Unit-by-unit comparison of the three selected brains across all 10 dimensions</caption>
+          <thead id="brainCmpHead"></thead>
+          <tbody id="brainCmpBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. INTERACTIVE SCALING & COOKING SIMULATOR -->
+  <section class="sec" id="scaling-lab" aria-labelledby="simH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">03 · Biophysical brain-builder lab</span>
+      <h2 id="simH">Test how packing rules, metabolic cost, and cooking limit brain size</h2>
+      <p>Why couldn’t a gorilla simply grow a three-kilogram primate brain on a raw-leaf diet? Drag the mass slider and switch cellular scaling architectures below to watch neuron count, watt budget, daily raw-food foraging hours, and cross-brain conduction delay collide with physical limits.</p>
+    </div>
+
+    <div class="org-bench">
+      <div class="org-bench-controls">
+        <div class="org-pick-field" style="--pc:var(--c-cpu)">
+          <label for="simArch">Cellular packing architecture</label>
+          <select id="simArch">
+            <option value="primate" selected>Primate linear scaling (macaque → human)</option>
+            <option value="corvid">Songbird / corvid nuclear hyperdensity</option>
+            <option value="rodent">Non-primate mammal bloating (rodent / ungulate)</option>
+            <option value="cephalopod">Unmyelinated cephalopod distributed lobes</option>
+          </select>
+        </div>
+
+        <div class="org-slider-field">
+          <div class="org-slider-head">
+            <label for="simMassSlider">Brain mass (log scale)</label>
+            <output id="simMassOut" for="simMassSlider">1,350 g</output>
+          </div>
+          <input type="range" class="org-range" id="simMassSlider" min="-1" max="3.9" step="0.05" value="3.13" style="--slider-fill-color:var(--c-cpu)">
+        </div>
+
+        <div class="org-pick-field" style="--pc:var(--c-power)">
+          <label for="simDiet">Caloric supply regime</label>
+          <select id="simDiet">
+            <option value="raw">Raw wild ape foraging (~8 hr/day ceiling)</option>
+            <option value="cooked" selected>Fire, cooking &amp; cooperative sharing (Homo erectus+)</option>
+          </select>
+        </div>
+      </div>
+
+      <svg id="brainSimSvg" class="org-chart-frame" viewBox="0 0 920 230" role="img" aria-label="Live biophysical readout comparing neuron packing, metabolic watts, foraging hours per day, and cross-skull spike travel time"></svg>
+      <div class="org-chart-readout" id="brainSimReadout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 04. SIX EVOLUTIONARY PARADOXES -->
+  <section class="sec" id="paradoxes" aria-labelledby="paraH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">04 · Six surprises in the data</span>
+      <h2 id="paraH">Why bigger isn’t always smarter—and where biology still beats silicon</h2>
+    </div>
+
+    <div class="paradox-grid">
+      <article class="paradox-card" style="--pc:var(--c-cpu)">
+        <span class="eyebrow">Paradox 1 · Elephant vs. Human</span>
+        <h3>257 billion neurons—and 97.5% sit in the cerebellum</h3>
+        <p>For decades textbooks guessed human brains held 100 billion neurons and larger elephant brains must hold even more cortical machinery. Isotropic fractionator cell counts revealed the twist: an African elephant holds <b>257 billion total neurons</b>, but <b>251 billion</b> pack into its cerebellum to coordinate a 40,000-muscle sensorimotor trunk, leaving <b>5.6 billion</b> in its cerebral cortex versus <b>16.3 billion</b> in ours.</p>
+        <div class="paradox-stat">Human cortex: 16.3B  |  Elephant cortex: 5.6B  |  Elephant cerebellum: 251B</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-prog)">
+        <span class="eyebrow">Paradox 2 · Raven vs. Monkey</span>
+        <h3>Monkey-scale forebrains inside a 14.5-gram walnut</h3>
+        <p>Because flying animals pay a brutal weight penalty for every extra gram in the skull, songbirds and parrots ditched heavy six-layer cortical sheets for ultra-compact nuclear clusters that pack up to <b>247 million neurons per gram</b> and burn roughly one-third the glucose per neuron of mammalian cortex—letting a raven hold <b>1.2 billion forebrain neurons</b>, ahead of a capuchin monkey.</p>
+        <div class="paradox-stat">Raven: 14.5 g → 1.20B pallial neurons  |  Capuchin: 52 g → 1.14B</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-power)">
+        <span class="eyebrow">Paradox 3 · Metabolic Champions</span>
+        <h3>A fish at 60% oxygen share—and human 5-year-olds at 52%</h3>
+        <p>Adult humans spend ~20% of resting energy on a brain that weighs 2% of the body, yet two stages go far beyond that: <b>Peters’ elephantnose fish</b> devotes <b>60% of whole-body oxygen</b> to a giant cerebellum decoding self-made electric fields, while a <b>four-to-five-year-old human child</b> temporarily wires ~300 trillion synapses, burning over half the resting body’s glucose so body growth stalls while grammar locks in.</p>
+        <div class="paradox-stat">Adult human: 20%  |  5-yr human child: ~52%  |  Gnathonemus fish: 60%</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-wire)">
+        <span class="eyebrow">Paradox 4 · The Cable Bottleneck</span>
+        <h3>Without myelin, human spinal cords would have to be tree trunks</h3>
+        <p>In bare unmyelinated nerve fibers, spike velocity grows only with the <b>square root of fiber diameter</b>: to hit 25 m/s, a squid must fuse hundreds of cells into a 1-millimeter giant axon. Jawed vertebrates wrapped axons in insulating myelin so impulses leap node-to-node at <b>80–120 m/s</b> inside 10-micrometer fibers at <b>1% of the ATP cost per centimeter</b>.</p>
+        <div class="paradox-stat">Squid 1,000 µm bare: 25 m/s  |  Mammal 10 µm myelinated: 100 m/s</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--c-net)">
+        <span class="eyebrow">Paradox 5 · Universal 39 bits/s</span>
+        <h3>Fast-syllable Japanese and dense Mandarin carry the exact same bit rate</h3>
+        <p>Across 17 spoken languages spanning nine language families, syllable rates vary nearly twofold (from ~5 syllables/s in Mandarin and Thai to ~8 in Japanese and Spanish), yet bit-per-syllable density trades off inversely so every human spoken stream converges near <b>39.1 bits per second</b>—suggesting a shared auditory-prefrontal bottleneck along the arcuate loop.</p>
+        <div class="paradox-stat">Spoken rate ≈ 39.1 bits/s across 17 languages (Coupé et al. 2019)</div>
+      </article>
+
+      <article class="paradox-card" style="--pc:var(--s-silicon)">
+        <span class="eyebrow">Paradox 6 · Moravec’s Inversion</span>
+        <h3>Silicon started at Breakthrough 5 and is working backward</h3>
+        <p>Vertebrates spent 500 million years stacking 3D steering, dopamine reward, hippocampal simulation and social mind-reading before adding recursive language in the last ~100,000 years. Frontier AI clusters trained straight on humanity’s written archive—mastering 200 languages and formal proofs at <b>120 megawatts</b> while still struggling with a toddler’s 20-watt sensorimotor dexterity.</p>
+        <div class="paradox-stat">Human skull: 20 W · 7.5×10¹² ops/J  |  100k-GPU AI: 120 MW · 1.7×10¹² ops/J</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 05. FULL 42-STAGE SORTABLE 10D LEDGER -->
+  <section class="sec" id="ledger" aria-labelledby="ledH">
+    <div class="sec-head" style="max-width:76ch">
+      <span class="eyebrow">05 · Complete calibrated dataset</span>
+      <h2 id="ledH">All 42 brain stages across 10 dimensions</h2>
+      <p>Click any column header button to sort ascending or descending while keeping focus and row identity intact, or filter by clade, species, or circuit motif.</p>
+    </div>
+
+    <div class="org-filter-bar">
+      <search aria-label="Filter brain evolution stages">
+        <label for="brainSearch" class="visually-hidden">Search stages</label>
+        <input type="search" id="brainSearch" placeholder="Filter: octopus, raven, elephant, hominin, myelin, GPU…">
+        <label for="brainGroupSel" class="visually-hidden">Filter by lineage group</label>
+        <select id="brainGroupSel">
+          <option value="all">All lineages (42)</option>
+          <option value="Pre-neural">Pre-neural (3)</option>
+          <option value="Nerve nets & invertebrates">Nerve nets &amp; invertebrates (8)</option>
+          <option value="Fish & amphibians">Fish &amp; amphibians (6)</option>
+          <option value="Reptiles, dinosaurs & birds">Reptiles, dinosaurs &amp; birds (5)</option>
+          <option value="Mammals">Mammals (6)</option>
+          <option value="Primates & hominins">Primates &amp; hominins (9)</option>
+          <option value="People & silicon">People &amp; silicon (4)</option>
+        </select>
+      </search>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="btn sm" href="data/brain_evolution_10d.csv" download>Download 10D Brain CSV</a>
+        <a class="btn sm ghost" href="eyes.html">Companion: Eyes (10D) →</a>
+      </div>
+    </div>
+
+    <p id="brainSortStatus" role="status" class="visually-hidden"></p>
+
+    <div class="org-table-region" tabindex="0" role="region" aria-labelledby="brainTblCap">
+      <table class="org-sort-table" id="brainSortTable">
+        <caption id="brainTblCap">42 evolutionary stages and benchmark systems measured across 10 quantitative brain dimensions (click any row’s stage name for full narrative &amp; citations)</caption>
+        <thead>
+          <tr>
+            <th scope="col" data-type="text"><button type="button" commandfor="brainSortTable" command="--sort"><span>Stage / Species</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number" aria-sort="descending"><button type="button" commandfor="brainSortTable" command="--sort"><span>Age</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>1 · Neurons</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>2 · Mass (g) / EQ</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>3 · Synapses &amp; m/s</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>4 · Power &amp; Body %</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>5 · Ops/s</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>6 · Storage bits</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>7 · Horizon</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>8 · Cell types</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>9 · Comm b/s</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>10 · Youth (yr)</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-type="number"><button type="button" commandfor="brainSortTable" command="--sort"><span>10D Score</span><svg class="sort-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2 10 7H2z" fill="currentColor"/></svg></button></th>
+          </tr>
+        </thead>
+        <tbody id="brainTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <dialog id="brainStageModal" class="org-modal" closedby="any" aria-labelledby="brainModalTitle"></dialog>
+</main>
+
+<footer id="siteFoot"></footer>
+<script src="assets/data.js"></script>
+<script src="assets/ledgers.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/brains.js"></script>
+</body>
+</html>

@@ -303,8 +303,42 @@
       '<p class="spot-foot"><a href="data.html#immunity">All ' + all + ' immune milestones →</a> · <a href="stories.html#immunity-story">Immunity story →</a></p></div>';
   }
 
+  function eye10dCard(r) {
+    const pills = [];
+    if (r.cpd > 0) pills.push('<b>' + X.plain(r.cpd) + ' cpd</b> acuity');
+    if (r.rec > 0) pills.push('<b>' + X.sci(r.rec) + '</b> receptors');
+    if (r.chan > 0) pills.push('<b>' + r.chan + '</b> color ch');
+    if (r.hz > 0) pills.push('<b>' + X.plain(r.hz) + ' Hz</b> speed');
+    if (r.comp > 1) pills.push('<b>' + X.plain(r.comp) + ':1</b> compression');
+    return '<div class="spot-card" style="--sc:var(--c-io)">' +
+      '<span class="sub">Eyes &amp; vision (10D) · ' + esc(r.grp) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      '<p class="spot-sys"><span>Optics: ' + esc(r.opt) + ' · Opsin: ' + esc(r.opsin) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="eyes.html">Explore all 10 eye dimensions →</a> · <a href="stories.html#eyes-story">Eyes story →</a></p></div>';
+  }
+
+  function brain10dCard(r) {
+    const pills = [];
+    if (r.neu > 0) pills.push('<b>' + X.sci(r.neu) + '</b> neurons');
+    if (r.mass > 0) pills.push('<b>' + X.plain(r.mass) + ' g</b>' + (r.eq > 0 ? ' (EQ ' + r.eq + ')' : ''));
+    if (r.w > 0) pills.push('<b>' + X.watts(r.w) + '</b> (' + r.share + '%)');
+    if (r.bps > 0) pills.push('<b>' + X.plain(r.bps) + ' b/s</b> comm');
+    return '<div class="spot-card" style="--sc:var(--c-cpu)">' +
+      '<span class="sub">Brain evolution (10D) · ' + esc(r.grp) + '</span>' +
+      '<h3>' + esc(r.pt) + '</h3><p class="spot-when">' + whenOf(r.t) + '</p><p>' + esc(r.px) + '</p>' +
+      '<div class="x-only spot-x"><p class="spot-sys">' + esc(r.name) + ' · <span>' + esc(r.sys) + '</span></p>' +
+      (pills.length ? '<div class="spot-pills">' + pills.map(p => '<span>' + p + '</span>').join('') + '</div>' : '') +
+      dateHtml(r) + '<p class="spot-src">Source: ' + esc(r.src) + '</p></div>' +
+      '<p class="spot-foot"><a href="brains.html">Explore all 10 brain dimensions →</a> · <a href="stories.html#nerves-story">Brains story →</a></p></div>';
+  }
+
   function renderSpotlights(ep) {
-    const cards = (X.OFFWORLD[ep] || []).map(o => offworldCard(o))
+    const cards = (X.EYES10D[ep] || []).map(e => eye10dCard(e))
+      .concat((X.BRAINS10D[ep] || []).map(b => brain10dCard(b)))
+      .concat((X.OFFWORLD[ep] || []).map(o => offworldCard(o)))
       .concat((X.GENOMES[ep] || []).map(g => genomeCard(g)))
       .concat((X.SEX[ep] || []).map(s => sexCard(s)))
       .concat((X.PLANTS[ep] || []).map(p => plantCard(p)))
